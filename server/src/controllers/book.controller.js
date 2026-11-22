@@ -1,7 +1,40 @@
 // Book Controller - Handles all Book Catalog logic
 // Explains clearly to faculty how CRUD and multi-tag filtering work
 
+const fs = require("fs");
+const path = require("path");
 const prisma = require("../config/prisma");
+
+// Fallback to local 700 books JSON dataset if PostgreSQL is not currently running
+const FALLBACK_BOOKS_PATH = path.join(__dirname, "../../prisma/data/books.json");
+
+function getLocalFallbackBooks(search, genre, tag) {
+  try {
+    if (!fs.existsSync(FALLBACK_BOOKS_PATH)) return [];
+    const content = fs.readFileSync(FALLBACK_BOOKS_PATH, "utf-8");
+    let list = JSON.parse(content);
+
+    if (genre && genre !== "All") {
+      list = list.filter((b) => b.genre && b.genre.toLowerCase() === genre.toLowerCase());
+    }
+    if (tag) {
+      list = list.filter((b) => b.tags && b.tags.some((t) => t.toLowerCase() === tag.toLowerCase()));
+    }
+    if (search && search.trim() !== "") {
+      const q = search.trim().toLowerCase();
+      list = list.filter(
+        (b) =>
+          (b.bookname && b.bookname.toLowerCase().includes(q)) ||
+          (b.author && b.author.toLowerCase().includes(q)) ||
+          (b.isbn && b.isbn.includes(q)) ||
+          (b.tags && b.tags.some((t) => t.toLowerCase().includes(q)))
+      );
+    }
+    return list;
+  } catch (err) {
+    return [];
+  }
+}
 
 /**
  * 1. GET ALL BOOKS
@@ -57,6 +90,16 @@ async function getAllBooks(req, res, next) {
       data: books,
     });
   } catch (error) {
+    console.warn("PostgreSQL connection error, serving 700 books dataset:", error.message);
+    const fallbackList = getLocalFallbackBooks(req.query.search, req.query.genre, req.query.tag);
+    if (fallbackList.length > 0) {
+      return res.json({
+        success: true,
+        count: fallbackList.length,
+        data: fallbackList,
+        source: "local_dataset_700",
+      });
+    }
     next(error);
   }
 }
@@ -92,6 +135,12 @@ async function getBookById(req, res, next) {
       data: book,
     });
   } catch (error) {
+    const bookId = parseInt(req.params.id, 10);
+    const fallbackList = getLocalFallbackBooks();
+    const fallbackBook = fallbackList.find((b) => b.id === bookId || b.id === `gbook_${bookId}`);
+    if (fallbackBook) {
+      return res.json({ success: true, data: fallbackBook });
+    }
     next(error);
   }
 }

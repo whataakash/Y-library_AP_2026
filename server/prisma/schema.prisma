@@ -34,12 +34,40 @@ model Book {
   @@map("books")
 }
 
-// 2. Borrow Records Table
+// 2. Users Table
+// Multi-user authentication & personalization profiles (Local + Google OAuth)
+model User {
+  id              Int            @id @default(autoincrement())
+  email           String         @unique
+  name            String
+  password        String?        // Nullable if authenticated via Google OAuth
+  googleId        String?        @unique @map("google_id")
+  avatar          String?
+  major           String         @default("Computer Science & AI")
+  year            String         @default("Year 1")
+  preferredGenres String[]       @default([]) @map("preferred_genres")
+  interests       String[]       @default([])
+  readBooks       String[]       @default([]) @map("read_books")
+  favorites       String[]       @default([])
+  continueReading Json?          @default("[]") @map("continue_reading")
+  readingGoal     Json?          @default("{\"target\":10,\"completed\":0,\"streakDays\":1}") @map("reading_goal")
+  createdAt       DateTime       @default(now()) @map("created_at")
+  updatedAt       DateTime       @updatedAt @map("updated_at")
+
+  // Relational link to student borrow records
+  borrowRecords   BorrowRecord[]
+
+  @@map("users")
+}
+
+// 3. Borrow Records Table
 // Tracks book loans, student identities, and return dates
 model BorrowRecord {
   id          Int       @id @default(autoincrement())
   bookId      Int       @map("book_id") // Foreign key pointing to the Book
   book        Book      @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  userId      Int?      @map("user_id") // Optional relation to User
+  user        User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
   userName    String    @map("user_name") // Name of the student borrowing
   userEmail   String    @map("user_email") // University email address
   borrowDate  DateTime  @default(now()) @map("borrow_date") // When the book was taken out

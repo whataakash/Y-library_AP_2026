@@ -2,19 +2,47 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { api } from "../services/api";
 import Icon from "../components/Icon";
+import UserSwitcherModal from "../components/UserSwitcherModal";
+import AuthModal from "../components/AuthModal";
+import BookTile from "../components/BookTile";
+
+const ALL_GENRES = [
+  "Technology",
+  "Science Fiction",
+  "Philosophy",
+  "Psychology",
+  "Economics",
+  "Business",
+  "History",
+  "Science",
+  "Classics",
+  "Fantasy",
+  "Mystery",
+  "General Fiction",
+];
 
 export default function Dashboard({ onSelectBook, setActiveTab }) {
-  const { user, markAsRead, toggleFavorite } = useAuth();
+  const {
+    user,
+    isAuthenticated,
+    logout,
+    markAsRead,
+    toggleFavorite,
+    toggleGenrePreference,
+    startOrUpdateReading,
+    removeContinueReading,
+  } = useAuth();
+
   const [allBooks, setAllBooks] = useState([]);
   const [locks, setLocks] = useState([]);
   const [borrowedRecords, setBorrowedRecords] = useState([]);
   const [readlists, setReadlists] = useState([]);
-  const [newListName, setNewListName] = useState("");
-  const [newListDesc, setNewListDesc] = useState("");
+  const [isSwitcherOpen, setIsSwitcherOpen] = useState(false);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [user]);
 
   const loadData = async () => {
     const books = await api.getBooks();
@@ -32,10 +60,10 @@ export default function Dashboard({ onSelectBook, setActiveTab }) {
   const handleReturnBook = async (borrowId) => {
     try {
       await api.returnBookToDB(borrowId);
-      alert("Book successfully marked as returned in PostgreSQL database!");
+      alert("Book successfully returned to university library shelf!");
       loadData();
     } catch (err) {
-      alert(err.message || "Failed to return book to database.");
+      alert(err.message || "Failed to return book.");
     }
   };
 
@@ -44,39 +72,37 @@ export default function Dashboard({ onSelectBook, setActiveTab }) {
     loadData();
   };
 
-  const handleCreateReadlist = async (e) => {
-    e.preventDefault();
-    if (!newListName) return;
-    await api.createReadlist(newListName, newListDesc);
-    setNewListName("");
-    setNewListDesc("");
-    loadData();
-  };
-
-  // Curated read & favorite books
+  // User curated lists
   const readBooks = allBooks.filter((b) =>
-    user?.readBooks?.some((id) => String(id) === String(b.id))
+    user?.readBooks?.some((id) => String(id) === String(b.id || b.isbn))
   );
 
-  // Book Suggestions: books not read yet
-  const suggestions = allBooks
-    .filter((b) => !user?.readBooks?.some((id) => String(id) === String(b.id)))
-    .slice(0, 3);
+  const favoriteBooks = allBooks.filter((b) =>
+    user?.favorites?.some((id) => String(id) === String(b.id || b.isbn))
+  );
+
+  const continueReadingList = user?.continueReading || [];
+
+  const goalTarget = user?.readingGoal?.target || 10;
+  const goalCompleted = user?.readBooks?.length || user?.readingGoal?.completed || 0;
+  const goalPercent = Math.min(100, Math.round((goalCompleted / goalTarget) * 100));
 
   return (
     <div>
       {/* Profile Header */}
       <div
         style={{
-          background: "linear-gradient(180deg, #0d0d11 0%, #040406 100%)",
+          background: "var(--steam-panel)",
           border: "1px solid var(--steam-border)",
           borderRadius: "16px",
-          padding: "24px 32px",
+          padding: "28px 32px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          marginBottom: "32px",
-          boxShadow: "0 16px 40px rgba(0, 0, 0, 0.9)",
+          marginBottom: "28px",
+          boxShadow: "var(--steam-shadow)",
+          flexWrap: "wrap",
+          gap: "20px",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
@@ -84,48 +110,306 @@ export default function Dashboard({ onSelectBook, setActiveTab }) {
             src={user?.avatar}
             alt={user?.name}
             style={{
-              width: "64px",
-              height: "64px",
+              width: "72px",
+              height: "72px",
               borderRadius: "50%",
+              objectFit: "cover",
               border: "3px solid var(--steam-orange)",
             }}
           />
           <div>
-            <div style={{ fontSize: "12px", color: "var(--steam-orange)", fontWeight: "700" }}>
-              CAMPUS READER PROFILE
+            <div style={{ fontSize: "11px", color: "var(--steam-orange)", fontWeight: "800", textTransform: "uppercase", letterSpacing: "1px" }}>
+              CAMPUS STUDENT PROFILE · {user?.studentId || "STU-2026"}
             </div>
-            <h2 style={{ fontSize: "24px", fontWeight: "800" }}>{user?.name}</h2>
-            <p style={{ color: "var(--steam-muted)", fontSize: "13px" }}>{user?.major}</p>
+            <h2 style={{ fontSize: "26px", fontWeight: "900", color: "var(--steam-text)" }}>
+              {user?.name}
+            </h2>
+            <p style={{ color: "var(--steam-muted)", fontSize: "13px", marginTop: "2px" }}>
+              {user?.major} • {user?.year} • {user?.email}
+            </p>
           </div>
         </div>
 
-        <div style={{ display: "flex", gap: "24px", textAlign: "center" }}>
-          <div>
-            <div style={{ fontSize: "24px", fontWeight: "800", color: "#fff" }}>
-              {user?.readBooks?.length || 0}
-            </div>
-            <small style={{ color: "var(--steam-muted)", fontSize: "11px" }}>BOOKS READ</small>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <button
+            onClick={() => setIsAuthOpen(true)}
+            className="steam-btn-primary"
+            style={{
+              padding: "10px 18px",
+              fontSize: "13px",
+              borderRadius: "10px",
+            }}
+          >
+            <span>Switch / Add Account ⇄</span>
+          </button>
+          <button
+            onClick={logout}
+            style={{
+              padding: "10px 16px",
+              fontSize: "13px",
+              borderRadius: "10px",
+              background: "rgba(239, 68, 68, 0.12)",
+              color: "#ef4444",
+              border: "1px solid rgba(239, 68, 68, 0.3)",
+              fontWeight: "600",
+              cursor: "pointer",
+            }}
+          >
+            Sign Out
+          </button>
+        </div>
+      </div>
+
+      {/* Grid of Student Metrics & Reading Goal */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: "16px",
+          marginBottom: "32px",
+        }}
+      >
+        {/* Semester Reading Goal */}
+        <div
+          style={{
+            background: "var(--steam-panel)",
+            border: "1px solid var(--steam-border)",
+            borderRadius: "14px",
+            padding: "18px 20px",
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
+            <span style={{ fontSize: "12px", color: "var(--steam-muted)", fontWeight: "600" }}>
+              SEMESTER READING GOAL
+            </span>
+            <span style={{ fontSize: "12px", fontWeight: "700", color: "var(--steam-orange)" }}>
+              {goalCompleted} / {goalTarget} Books
+            </span>
           </div>
-          <div>
-            <div style={{ fontSize: "24px", fontWeight: "800", color: "#22c55e" }}>
-              {borrowedRecords.length}
-            </div>
-            <small style={{ color: "var(--steam-muted)", fontSize: "11px" }}>DB LOANS</small>
+          <div style={{ width: "100%", height: "8px", background: "var(--steam-input-bg)", borderRadius: "4px", overflow: "hidden", marginBottom: "8px" }}>
+            <div
+              style={{
+                width: `${goalPercent}%`,
+                height: "100%",
+                background: "linear-gradient(90deg, #ff7722, var(--steam-orange))",
+              }}
+            />
           </div>
-          <div>
-            <div style={{ fontSize: "24px", fontWeight: "800", color: "var(--steam-orange)" }}>
-              {locks.length}
-            </div>
-            <small style={{ color: "var(--steam-muted)", fontSize: "11px" }}>ACTIVE LOCKS</small>
+          <div style={{ fontSize: "11px", color: "var(--steam-muted)" }}>
+            {goalPercent}% complete · {user?.readingGoal?.streakDays || 12}-day reading streak 🔥
           </div>
-          <div>
-            <div style={{ fontSize: "24px", fontWeight: "800", color: "#f0a500" }}>
-              {readlists.length}
-            </div>
-            <small style={{ color: "var(--steam-muted)", fontSize: "11px" }}>READLISTS</small>
+        </div>
+
+        {/* Total Read */}
+        <div
+          style={{
+            background: "var(--steam-panel)",
+            border: "1px solid var(--steam-border)",
+            borderRadius: "14px",
+            padding: "18px 20px",
+            textAlign: "center",
+          }}
+        >
+          <div style={{ fontSize: "28px", fontWeight: "900", color: "var(--steam-text)" }}>
+            {readBooks.length}
+          </div>
+          <div style={{ fontSize: "11px", color: "var(--steam-muted)", fontWeight: "700", marginTop: "2px" }}>
+            FINISHED BOOKS
+          </div>
+        </div>
+
+        {/* In Progress */}
+        <div
+          style={{
+            background: "var(--steam-panel)",
+            border: "1px solid var(--steam-border)",
+            borderRadius: "14px",
+            padding: "18px 20px",
+            textAlign: "center",
+          }}
+        >
+          <div style={{ fontSize: "28px", fontWeight: "900", color: "var(--steam-orange)" }}>
+            {continueReadingList.length}
+          </div>
+          <div style={{ fontSize: "11px", color: "var(--steam-muted)", fontWeight: "700", marginTop: "2px" }}>
+            CURRENTLY READING
+          </div>
+        </div>
+
+        {/* Favorites */}
+        <div
+          style={{
+            background: "var(--steam-panel)",
+            border: "1px solid var(--steam-border)",
+            borderRadius: "14px",
+            padding: "18px 20px",
+            textAlign: "center",
+          }}
+        >
+          <div style={{ fontSize: "28px", fontWeight: "900", color: "#f0a500" }}>
+            {favoriteBooks.length}
+          </div>
+          <div style={{ fontSize: "11px", color: "var(--steam-muted)", fontWeight: "700", marginTop: "2px" }}>
+            FAVORITES SAVED
           </div>
         </div>
       </div>
+
+      {/* Interactive Preferred Reading Genres Filter */}
+      <section
+        style={{
+          background: "var(--steam-panel)",
+          border: "1px solid var(--steam-border)",
+          borderRadius: "16px",
+          padding: "20px 24px",
+          marginBottom: "32px",
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
+          <div>
+            <h3 style={{ fontSize: "16px", fontWeight: "800", color: "var(--steam-text)" }}>
+              My Preferred Genres & Recommendation Interests
+            </h3>
+            <p style={{ fontSize: "12px", color: "var(--steam-muted)" }}>
+              Toggle your topics below to instantly re-tune your personalized catalog recommendations:
+            </p>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+          {ALL_GENRES.map((g) => {
+            const isSelected = (user?.preferredGenres || []).includes(g);
+            return (
+              <button
+                key={g}
+                onClick={() => toggleGenrePreference(g)}
+                style={{
+                  padding: "7px 16px",
+                  borderRadius: "999px",
+                  fontSize: "12px",
+                  fontWeight: "600",
+                  background: isSelected
+                    ? "linear-gradient(135deg, #ff6200, #ff4500)"
+                    : "var(--steam-input-bg)",
+                  color: isSelected ? "#ffffff" : "var(--steam-muted)",
+                  border: isSelected
+                    ? "1px solid var(--steam-orange)"
+                    : "1px solid var(--steam-border)",
+                  cursor: "pointer",
+                  transition: "all 0.2s",
+                }}
+              >
+                {isSelected ? "✓ " : "+ "}
+                {g}
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Continue Reading Tracker */}
+      <section style={{ marginBottom: "36px" }}>
+        <div className="steam-section-head">
+          <h2 style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <Icon name="play" size={18} color="var(--steam-orange)" />
+            <span>My Active Reading Tracker</span>
+          </h2>
+        </div>
+
+        {continueReadingList.length > 0 ? (
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+              gap: "16px",
+            }}
+          >
+            {continueReadingList.map((item) => (
+              <div
+                key={item.bookId || item.id}
+                style={{
+                  background: "var(--steam-panel)",
+                  border: "1px solid var(--steam-border)",
+                  borderRadius: "14px",
+                  padding: "16px",
+                  display: "flex",
+                  gap: "14px",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  src={item.cover}
+                  alt={item.title}
+                  style={{
+                    width: "60px",
+                    aspectRatio: "1 / 1.5",
+                    borderRadius: "8px",
+                    objectFit: "cover",
+                    flexShrink: 0,
+                  }}
+                />
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <h4
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: "700",
+                      color: "var(--steam-text)",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    {item.title}
+                  </h4>
+                  <p style={{ fontSize: "11px", color: "var(--steam-muted)", marginTop: "2px" }}>
+                    {item.chapter}
+                  </p>
+                  <div style={{ marginTop: "8px" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "11px", marginBottom: "3px" }}>
+                      <span style={{ color: "var(--steam-muted)" }}>Progress</span>
+                      <span style={{ color: "var(--steam-orange)", fontWeight: "700" }}>{item.progress}%</span>
+                    </div>
+                    <div style={{ width: "100%", height: "4px", background: "var(--steam-input-bg)", borderRadius: "2px", overflow: "hidden" }}>
+                      <div style={{ width: `${item.progress}%`, height: "100%", background: "var(--steam-orange)" }} />
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", gap: "8px", marginTop: "10px" }}>
+                    <button
+                      onClick={() => onSelectBook(item.bookId)}
+                      style={{
+                        padding: "5px 12px",
+                        borderRadius: "6px",
+                        background: "var(--steam-orange)",
+                        color: "#fff",
+                        fontSize: "11px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      Resume
+                    </button>
+                    <button
+                      onClick={() => removeContinueReading(item.bookId)}
+                      style={{
+                        padding: "5px 10px",
+                        borderRadius: "6px",
+                        border: "1px solid var(--steam-border)",
+                        color: "var(--steam-muted)",
+                        fontSize: "11px",
+                      }}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div style={{ padding: "24px", textAlign: "center", color: "var(--steam-muted)", background: "var(--steam-panel)", borderRadius: "12px" }}>
+            You haven't added any books to your active reading list yet. Explore the catalog and start reading!
+          </div>
+        )}
+      </section>
 
       {/* Active PostgreSQL Borrowed Books */}
       {borrowedRecords.length > 0 && (
@@ -154,7 +438,7 @@ export default function Dashboard({ onSelectBook, setActiveTab }) {
                   <div style={{ fontSize: "11px", color: "#22c55e", fontWeight: "700" }}>
                     DUE: {new Date(record.dueDate).toLocaleDateString()}
                   </div>
-                  <h4 style={{ fontSize: "16px", fontWeight: "700", marginTop: "4px" }}>
+                  <h4 style={{ fontSize: "16px", fontWeight: "700", marginTop: "4px", color: "var(--steam-text)" }}>
                     {record.book?.bookname || `Book #${record.bookId}`}
                   </h4>
                   <p style={{ fontSize: "12px", color: "var(--steam-muted)" }}>
@@ -174,7 +458,7 @@ export default function Dashboard({ onSelectBook, setActiveTab }) {
                     border: "1px solid #22c55e",
                     borderRadius: "6px",
                     fontSize: "12px",
-                    color: "#fff",
+                    color: "var(--steam-text)",
                     fontWeight: "600",
                     cursor: "pointer",
                   }}
@@ -214,11 +498,13 @@ export default function Dashboard({ onSelectBook, setActiveTab }) {
                   <div style={{ fontSize: "11px", color: "var(--steam-orange)", fontWeight: "700" }}>
                     HOLD EXPIRES IN {lock.expiresIn}
                   </div>
-                  <h4 style={{ fontSize: "16px", fontWeight: "700", marginTop: "4px" }}>{lock.title}</h4>
+                  <h4 style={{ fontSize: "16px", fontWeight: "700", marginTop: "4px", color: "var(--steam-text)" }}>
+                    {lock.title}
+                  </h4>
                   <p style={{ fontSize: "12px", color: "var(--steam-muted)" }}>{lock.author}</p>
                   <div style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "12px", color: "#f0a500", marginTop: "8px" }}>
                     <Icon name="pin" size={13} color="#f0a500" />
-                    <span>{lock.location}</span>
+                    <span>Central Library / Reserved Shelf</span>
                   </div>
                 </div>
                 <button
@@ -226,14 +512,16 @@ export default function Dashboard({ onSelectBook, setActiveTab }) {
                   style={{
                     marginTop: "14px",
                     padding: "8px",
-                    background: "rgba(255,255,255,0.08)",
-                    border: "1px solid var(--steam-border)",
+                    background: "rgba(255, 98, 0, 0.2)",
+                    border: "1px solid var(--steam-orange)",
                     borderRadius: "6px",
                     fontSize: "12px",
-                    color: "#fff",
+                    color: "var(--steam-text)",
+                    fontWeight: "600",
+                    cursor: "pointer",
                   }}
                 >
-                  Release Hold / Picked Up
+                  Release Hold
                 </button>
               </div>
             ))}
@@ -241,181 +529,68 @@ export default function Dashboard({ onSelectBook, setActiveTab }) {
         </section>
       )}
 
-      {/* Curate Profile: Books You've Read */}
+      {/* Saved Favorites Collection */}
       <section style={{ marginBottom: "36px" }}>
         <div className="steam-section-head">
-          <h2>Books You've Read ({readBooks.length})</h2>
-          <span style={{ fontSize: "13px", color: "var(--steam-muted)" }}>
-            Used to match you with similar readers
-          </span>
+          <h2>Your Saved Favorites ({favoriteBooks.length})</h2>
+          {favoriteBooks.length > 0 && (
+            <span style={{ fontSize: "12px", color: "var(--steam-muted)" }}>
+              Click any tile to open details
+            </span>
+          )}
         </div>
-
-        {readBooks.length > 0 ? (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px" }}>
-            {readBooks.map((b) => (
-              <div
-                key={b.id}
-                onClick={() => onSelectBook(b.id)}
-                style={{
-                  background: "#161b22",
-                  border: "1px solid var(--steam-border)",
-                  borderRadius: "12px",
-                  padding: "12px",
-                  cursor: "pointer",
-                }}
-              >
-                <img
-                  src={b.coverImg}
-                  alt={b.title}
-                  style={{ width: "100%", height: "160px", objectFit: "cover", borderRadius: "8px" }}
-                />
-                <h4 style={{ fontSize: "14px", fontWeight: "700", marginTop: "8px" }}>{b.title}</h4>
-                <div style={{ display: "flex", justifyContent: "space-between", marginTop: "6px" }}>
-                  <span style={{ fontSize: "11px", color: "var(--steam-muted)" }}>{b.genre}</span>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      markAsRead(b.id);
-                    }}
-                    style={{ fontSize: "11px", color: "#ef4444" }}
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
+        {favoriteBooks.length > 0 ? (
+          <div className="book-grid-aspect">
+            {favoriteBooks.map((b) => (
+              <BookTile
+                key={b.id || b.isbn}
+                book={b}
+                onSelect={onSelectBook}
+                showAction={false}
+              />
             ))}
           </div>
         ) : (
-          <p style={{ color: "var(--steam-muted)", fontSize: "14px" }}>
-            You haven't marked any books as read yet. Browse the store and click "+ Mark as Read"!
-          </p>
+          <div style={{ padding: "24px", textAlign: "center", color: "var(--steam-muted)", background: "var(--steam-panel)", borderRadius: "12px" }}>
+            No favorite books saved yet. Click the star on any book to add it!
+          </div>
         )}
       </section>
 
-      {/* Custom Readlists */}
+      {/* Books Read Collection */}
       <section style={{ marginBottom: "36px" }}>
         <div className="steam-section-head">
-          <h2>Your Readlists ({readlists.length})</h2>
+          <h2>Finished Books ({readBooks.length})</h2>
         </div>
-
-        {/* Create Readlist Form */}
-        <form
-          onSubmit={handleCreateReadlist}
-          style={{
-            background: "#161b22",
-            padding: "16px 20px",
-            borderRadius: "12px",
-            border: "1px solid var(--steam-border)",
-            display: "flex",
-            gap: "12px",
-            marginBottom: "16px",
-          }}
-        >
-          <input
-            type="text"
-            placeholder="Readlist Title (e.g. Weekend Deep Dives)"
-            value={newListName}
-            onChange={(e) => setNewListName(e.target.value)}
-            style={{ flex: 1 }}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Short description..."
-            value={newListDesc}
-            onChange={(e) => setNewListDesc(e.target.value)}
-            style={{ flex: 1 }}
-          />
-          <button
-            type="submit"
-            style={{
-              padding: "10px 20px",
-              background: "linear-gradient(135deg, #ff6200, #ff4500)",
-              borderRadius: "999px",
-              color: "#ffffff",
-              fontWeight: "700",
-              fontSize: "13px",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px",
-              boxShadow: "0 4px 14px rgba(255, 98, 0, 0.35)",
-            }}
-          >
-            <Icon name="plus" size={15} color="#fff" />
-            <span>Create Readlist</span>
-          </button>
-        </form>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "16px" }}>
-          {readlists.map((list) => (
-            <div
-              key={list.id}
-              style={{
-                background: "#161b22",
-                border: "1px solid var(--steam-border)",
-                borderRadius: "12px",
-                padding: "20px",
-              }}
-            >
-              <h3 style={{ fontSize: "16px", fontWeight: "700", display: "flex", alignItems: "center", gap: "8px" }}>
-                <Icon name="bookmark" size={16} color="var(--steam-orange)" />
-                <span>{list.title}</span>
-              </h3>
-              <p style={{ fontSize: "13px", color: "var(--steam-muted)", margin: "4px 0 12px" }}>
-                {list.description}
-              </p>
-              <div style={{ fontSize: "12px", color: "var(--steam-orange)" }}>
-                {list.bookIds?.length || 0} books in readlist
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Book Suggestions for You */}
-      <section>
-        <div className="steam-section-head">
-          <h2>Find Book Suggestions (Curated for You)</h2>
-          <button className="steam-link" onClick={() => setActiveTab("books")}>
-            View all →
-          </button>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
-          {suggestions.map((b) => (
-            <div
-              key={b.id}
-              onClick={() => onSelectBook(b.id)}
-              style={{
-                background: "#161b22",
-                borderRadius: "12px",
-                padding: "16px",
-                border: "1px solid var(--steam-border)",
-                cursor: "pointer",
-                display: "flex",
-                gap: "14px",
-              }}
-            >
-              <img
-                src={b.coverImg}
-                alt={b.title}
-                style={{ width: "70px", height: "100px", objectFit: "cover", borderRadius: "6px" }}
+        {readBooks.length > 0 ? (
+          <div className="book-grid-aspect">
+            {readBooks.map((b) => (
+              <BookTile
+                key={b.id || b.isbn}
+                book={b}
+                onSelect={onSelectBook}
+                showAction={false}
               />
-              <div>
-                <span style={{ fontSize: "11px", color: "var(--steam-orange)" }}>{b.genre}</span>
-                <h4 style={{ fontSize: "15px", fontWeight: "700", margin: "2px 0" }}>{b.title}</h4>
-                <p style={{ fontSize: "12px", color: "var(--steam-muted)" }}>{b.author}</p>
-                <div style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "11px", color: "#f0a500", marginTop: "8px" }}>
-                  <Icon name="star" size={11} color="#f0a500" />
-                  <span>{b.rating}</span>
-                  <span style={{ margin: "0 4px", color: "var(--steam-border)" }}>•</span>
-                  <Icon name="pin" size={11} color="#f0a500" />
-                  <span>{b.location.split("·")[0]}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div style={{ padding: "24px", textAlign: "center", color: "var(--steam-muted)", background: "var(--steam-panel)", borderRadius: "12px" }}>
+            No books marked as read yet.
+          </div>
+        )}
       </section>
+
+      {/* Switcher Modal */}
+      <UserSwitcherModal
+        isOpen={isSwitcherOpen}
+        onClose={() => setIsSwitcherOpen(false)}
+      />
+
+      {/* Auth Modal (Google Sign-In + Email/Password) */}
+      <AuthModal
+        isOpen={isAuthOpen}
+        onClose={() => setIsAuthOpen(false)}
+      />
     </div>
   );
 }

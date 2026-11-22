@@ -1,0 +1,141 @@
+[
+  {
+    "id": 1,
+    "name": "Alex Morgan",
+    "email": "alex.morgan@y-university.edu",
+    "password": "6b5766a1ab8b91b41123fe0376f94d8b:f00e801310458bee6bc141fb92317030cc8599053c7b8f6368811d20b95c3337eb981f9972d277e625a8b29496ac5c921bfcb044e38109423b1b03f4c4ba96c0",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop",
+    "major": "Computer Science & AI",
+    "year": "Senior (Year 4)",
+    "preferredGenres": [
+      "Technology",
+      "Science Fiction",
+      "Mathematics",
+      "Science"
+    ],
+    "interests": [
+      "artificial intelligence",
+      "algorithms",
+      "machine learning",
+      "python"
+    ],
+    "readBooks": [
+      "gbook_1",
+      "gbook_4"
+    ],
+    "favorites": [
+      "gbook_1",
+      "gbook_14"
+    ],
+    "continueReading": [
+      {
+        "bookId": "gbook_1",
+        "title": "Clean Code",
+        "author": "Robert C. Martin",
+        "cover": "https://covers.openlibrary.org/b/id/1094406-L.jpg",
+        "chapter": "Ch. 3 · Functions & Meaningful Names",
+        "progress": 68,
+        "lastRead": "2 hours ago"
+      }
+    ],
+    "readingGoal": {
+      "target": 12,
+      "completed": 8,
+      "streakDays": 14
+    },
+    "createdAt": "2026-11-22T23:21:40.810Z"
+  },
+  {
+    "id": 2,
+    "name": "Maya Chen",
+    "email": "maya.chen@y-university.edu",
+    "password": "4e28ef846871186eb22089258a3a33eb:3edfd0d948a28be233feabbba9f9c10b816c072d180b8b1a4b502f4b37a14657d7dc0d6dd80f617d3a3e320c95d5f66cdc7e5c993e7694d25954a9e358c26783",
+    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop",
+    "major": "Architecture & Urban Design",
+    "year": "Junior (Year 3)",
+    "preferredGenres": [
+      "History",
+      "Philosophy",
+      "Classics",
+      "General Fiction"
+    ],
+    "interests": [
+      "architecture",
+      "design",
+      "urbanism",
+      "history"
+    ],
+    "readBooks": [
+      "gbook_2"
+    ],
+    "favorites": [
+      "gbook_2"
+    ],
+    "continueReading": [
+      {
+        "bookId": "gbook_2",
+        "title": "Architecture: Form, Space, & Order",
+        "author": "Francis D. K. Ching",
+        "cover": "https://covers.openlibrary.org/b/id/8314120-L.jpg",
+        "chapter": "Ch. 4 · Spatial Enclosures",
+        "progress": 84,
+        "lastRead": "3 hours ago"
+      }
+    ],
+    "readingGoal": {
+      "target": 15,
+      "completed": 10,
+      "streakDays": 21
+    },
+    "createdAt": "2026-11-22T23:21:40.832Z"
+  },
+  {
+    "id": 1795389700862,
+    "name": "Jordan Lee",
+    "email": "jordan.lee@y-university.edu",
+    "password": "2db42352295f07e0ebe86096ade2da8d:c246143f42fdf2dea364598a6c96b75b1e769f6870ab5f877002dcae001be8ca533c6beb38917f93c2fd18257d39615eb01a1ad3e292fda5a4a5dd4918aac138",
+    "avatar": "https://images.unsplash.com/photo-1534528744385?w=200&h=200&fit=crop",
+    "major": "Economics & Finance",
+    "year": "Year 3",
+    "preferredGenres": [
+      "Technology",
+      "Science"
+    ],
+    "interests": [],
+    "readBooks": [],
+    "favorites": [],
+    "continueReading": [],
+    "readingGoal": {
+      "target": 10,
+      "completed": 0,
+      "streakDays": 1
+    },
+    "createdAt": "2026-11-22T23:21:40.862Z"
+  },
+  {
+    "id": 1795389700886,
+    "name": "Google Student",
+    "email": "google.student@gmail.com",
+    "googleId": "google_998877",
+    "avatar": "https://example.com/avatar.jpg",
+    "major": "Computer Science & AI",
+    "year": "Year 1",
+    "preferredGenres": [
+      "Technology",
+      "Science Fiction",
+      "Science"
+    ],
+    "interests": [
+      "artificial intelligence"
+    ],
+    "readBooks": [],
+    "favorites": [],
+    "continueReading": [],
+    "readingGoal": {
+      "target": 10,
+      "completed": 0,
+      "streakDays": 1
+    },
+    "createdAt": "2026-11-22T23:21:40.886Z"
+  }
+]

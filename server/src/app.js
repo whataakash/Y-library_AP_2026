@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 
 // Import route handlers
+const authRoutes = require("./routes/auth.routes");
 const bookRoutes = require("./routes/book.routes");
 const borrowRoutes = require("./routes/borrow.routes");
 
@@ -22,6 +23,7 @@ app.get("/api/health", (req, res) => {
 });
 
 // Mount Routes
+app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
 app.use("/api/borrow", borrowRoutes);
 

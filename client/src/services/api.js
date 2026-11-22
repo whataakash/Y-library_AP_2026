@@ -282,7 +282,41 @@ export const api = {
       console.warn("Google Books API network fallback:", err.message);
     }
 
-    // C) Offline / Fallback
+    // C) 700 Books Dataset Fallback (/data/books.json)
+    try {
+      const res = await fetch("/data/books.json");
+      if (res.ok) {
+        const list = await res.json();
+        if (Array.isArray(list) && list.length > 0) {
+          let filtered = list;
+          if (query.trim()) {
+            const q = query.trim().toLowerCase();
+            filtered = filtered.filter(
+              (b) =>
+                b.bookname.toLowerCase().includes(q) ||
+                b.author.toLowerCase().includes(q) ||
+                b.isbn.includes(q) ||
+                b.tags?.some((t) => t.toLowerCase().includes(q))
+            );
+          }
+          if (genre && genre !== "All") {
+            filtered = filtered.filter((b) => b.genre.toLowerCase() === genre.toLowerCase());
+          }
+          if (tag) {
+            filtered = filtered.filter((b) => b.tags?.some((t) => t.toLowerCase().includes(tag.toLowerCase())));
+          }
+          if (filtered.length > 0) {
+            const normalized = filtered.map((b) => normalizeBackendBook(b));
+            googleBooksCache = normalized;
+            return normalized;
+          }
+        }
+      }
+    } catch (e) {
+      // Continue to static fallback
+    }
+
+    // D) In-Memory Cache or Static Fallback
     if (googleBooksCache.length > 0) {
       return googleBooksCache;
     }

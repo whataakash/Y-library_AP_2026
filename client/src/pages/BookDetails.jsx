@@ -1,14 +1,20 @@
 import { useState, useEffect } from "react";
 import { api } from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import { calculateBookMatchScore, getRecommendationReason } from "../services/personalization";
 import Icon from "../components/Icon";
 
 export default function BookDetails({ bookId, onBack }) {
-  const { user, markAsRead, toggleFavorite } = useAuth();
+  const { user, markAsRead, toggleFavorite, startOrUpdateReading, removeContinueReading } = useAuth();
   const [book, setBook] = useState(null);
   const [ageLevel, setAgeLevel] = useState("5");
   const [llmSummary, setLlmSummary] = useState("");
   const [llmLoading, setLlmLoading] = useState(false);
+
+  // Reading tracker state
+  const [readingChapter, setReadingChapter] = useState("Chapter 1");
+  const [readingProgress, setReadingProgress] = useState(25);
+  const [readingSavedMsg, setReadingSavedMsg] = useState("");
 
   // Peer review form
   const [reviewRating, setReviewRating] = useState(5);
@@ -26,6 +32,19 @@ export default function BookDetails({ bookId, onBack }) {
     });
   }, [bookId]);
 
+  // Sync reading state if user is already reading this book
+  useEffect(() => {
+    if (book && user?.continueReading) {
+      const active = user.continueReading.find(
+        (item) => String(item.bookId) === String(book.id) || String(item.id) === String(book.id)
+      );
+      if (active) {
+        setReadingChapter(active.chapter || "Chapter 1");
+        setReadingProgress(active.progress || 25);
+      }
+    }
+  }, [book, user]);
+
   const loadSummary = async (bookData, age) => {
     setLlmLoading(true);
     setAgeLevel(age);
@@ -37,7 +56,7 @@ export default function BookDetails({ bookId, onBack }) {
   const handleLock = async () => {
     try {
       await api.lockBookDigitally(book.id, user?.name);
-      setLockMsg("Book successfully locked for 24 hours! Visit shelf to pick it up.");
+      setLockMsg(`Book successfully locked for 24h under ${user?.name}!`);
       const updated = await api.getBookById(book.id);
       setBook(updated);
     } catch (err) {
@@ -67,6 +86,13 @@ export default function BookDetails({ bookId, onBack }) {
     }
   };
 
+  const handleSaveReadingProgress = () => {
+    if (!book) return;
+    startOrUpdateReading(book, readingChapter, Number(readingProgress));
+    setReadingSavedMsg("Reading progress saved to your profile!");
+    setTimeout(() => setReadingSavedMsg(""), 3500);
+  };
+
   const handleAddReview = async (e) => {
     e.preventDefault();
     if (!reviewText) return;
@@ -83,6 +109,12 @@ export default function BookDetails({ bookId, onBack }) {
 
   const isRead = user?.readBooks?.some((id) => String(id) === String(book.id));
   const isFavorite = user?.favorites?.some((id) => String(id) === String(book.id));
+  const isCurrentlyReading = user?.continueReading?.some(
+    (item) => String(item.bookId) === String(book.id) || String(item.id) === String(book.id)
+  );
+
+  const matchScore = calculateBookMatchScore(user, book);
+  const recommendationReason = getRecommendationReason(user, book);
 
   return (
     <div>
@@ -95,6 +127,7 @@ export default function BookDetails({ bookId, onBack }) {
           alignItems: "center",
           gap: "8px",
           fontSize: "14px",
+          cursor: "pointer",
         }}
       >
         <Icon name="arrowLeft" size={16} />
@@ -106,11 +139,11 @@ export default function BookDetails({ bookId, onBack }) {
           display: "grid",
           gridTemplateColumns: "300px 1fr",
           gap: "32px",
-          background: "linear-gradient(180deg, #0d0d11 0%, #040406 100%)",
+          background: "var(--steam-panel)",
           borderRadius: "16px",
           padding: "32px",
           border: "1px solid var(--steam-border)",
-          boxShadow: "0 20px 50px rgba(0, 0, 0, 0.9)",
+          boxShadow: "var(--steam-shadow)",
         }}
       >
         {/* Left Column: Cover & Profile Actions */}
@@ -120,7 +153,7 @@ export default function BookDetails({ bookId, onBack }) {
             alt={book.title}
             style={{
               width: "100%",
-              height: "400px",
+              aspectRatio: "1 / 1.5",
               objectFit: "cover",
               borderRadius: "12px",
               boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
@@ -135,9 +168,9 @@ export default function BookDetails({ bookId, onBack }) {
               style={{
                 padding: "10px",
                 borderRadius: "8px",
-                background: isRead ? "rgba(34, 197, 94, 0.2)" : "rgba(255,255,255,0.06)",
+                background: isRead ? "rgba(34, 197, 94, 0.2)" : "var(--steam-input-bg)",
                 border: `1px solid ${isRead ? "#22c55e" : "var(--steam-border)"}`,
-                color: isRead ? "#22c55e" : "#fff",
+                color: isRead ? "#22c55e" : "var(--steam-text)",
                 fontWeight: "600",
                 fontSize: "13px",
                 display: "flex",
@@ -146,7 +179,7 @@ export default function BookDetails({ bookId, onBack }) {
                 gap: "8px",
               }}
             >
-              <Icon name="check" size={15} color={isRead ? "#22c55e" : "#fff"} />
+              <Icon name="check" size={15} color={isRead ? "#22c55e" : "currentColor"} />
               <span>{isRead ? "Read (Added to Your Profile)" : "Mark as Read"}</span>
             </button>
 
@@ -155,9 +188,9 @@ export default function BookDetails({ bookId, onBack }) {
               style={{
                 padding: "10px",
                 borderRadius: "8px",
-                background: isFavorite ? "rgba(255, 98, 0, 0.2)" : "rgba(255,255,255,0.06)",
+                background: isFavorite ? "rgba(255, 98, 0, 0.2)" : "var(--steam-input-bg)",
                 border: `1px solid ${isFavorite ? "var(--steam-orange)" : "var(--steam-border)"}`,
-                color: isFavorite ? "var(--steam-orange)" : "#fff",
+                color: isFavorite ? "var(--steam-orange)" : "var(--steam-text)",
                 fontWeight: "600",
                 fontSize: "13px",
                 display: "flex",
@@ -166,18 +199,56 @@ export default function BookDetails({ bookId, onBack }) {
                 gap: "8px",
               }}
             >
-              <Icon name="star" size={15} color={isFavorite ? "var(--steam-orange)" : "#fff"} />
+              <Icon name="star" size={15} color={isFavorite ? "var(--steam-orange)" : "currentColor"} />
               <span>{isFavorite ? "In Your Favorites" : "Add to Favorites"}</span>
             </button>
           </div>
         </div>
 
-        {/* Right Column: Information & Features */}
+        {/* Right Column: Information & Personalization Engine */}
         <div>
+          {/* Personalized Student Insight Banner */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              background: "rgba(255, 85, 0, 0.08)",
+              border: "1px solid rgba(255, 85, 0, 0.3)",
+              padding: "10px 16px",
+              borderRadius: "10px",
+              marginBottom: "16px",
+            }}
+          >
+            <span style={{ fontSize: "16px" }}>✨</span>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: "12px", fontWeight: "700", color: "var(--steam-orange)" }}>
+                {recommendationReason}
+              </div>
+              <div style={{ fontSize: "11px", color: "var(--steam-muted)" }}>
+                Curated specifically for {user?.name} ({user?.major})
+              </div>
+            </div>
+            <span
+              style={{
+                fontSize: "13px",
+                fontWeight: "800",
+                color: "#ff6200",
+                background: "rgba(255, 85, 0, 0.15)",
+                padding: "4px 8px",
+                borderRadius: "6px",
+              }}
+            >
+              {matchScore}%
+            </span>
+          </div>
+
           <div style={{ fontSize: "12px", color: "var(--steam-orange)", fontWeight: "700" }}>
             {book.genre} · {book.tags?.join(", ")}
           </div>
-          <h1 style={{ fontSize: "32px", fontWeight: "800", margin: "6px 0" }}>{book.title}</h1>
+          <h1 style={{ fontSize: "32px", fontWeight: "800", margin: "6px 0", color: "var(--steam-text)" }}>
+            {book.title}
+          </h1>
           <p style={{ fontSize: "16px", color: "var(--steam-muted)", marginBottom: "16px" }}>
             by {book.author}
           </p>
@@ -189,9 +260,9 @@ export default function BookDetails({ bookId, onBack }) {
                 fontSize: "12px",
                 padding: "4px 10px",
                 borderRadius: "6px",
-                background: "rgba(255, 255, 255, 0.06)",
+                background: "var(--steam-input-bg)",
                 border: "1px solid var(--steam-border)",
-                color: "#e2e8f0",
+                color: "var(--steam-text)",
               }}
             >
               ISBN: <b>{book.isbn || "N/A"}</b>
@@ -201,9 +272,9 @@ export default function BookDetails({ bookId, onBack }) {
                 fontSize: "12px",
                 padding: "4px 10px",
                 borderRadius: "6px",
-                background: "rgba(255, 255, 255, 0.06)",
+                background: "var(--steam-input-bg)",
                 border: "1px solid var(--steam-border)",
-                color: "#e2e8f0",
+                color: "var(--steam-text)",
               }}
             >
               Edition: <b>{book.edition || "1st Edition"}</b>
@@ -222,7 +293,9 @@ export default function BookDetails({ bookId, onBack }) {
             </span>
           </div>
 
-          <p style={{ lineHeight: 1.6, color: "#d0d7de", marginBottom: "20px" }}>{book.summary}</p>
+          <p style={{ lineHeight: 1.6, color: "var(--steam-text-secondary)", marginBottom: "20px" }}>
+            {book.summary}
+          </p>
 
           {/* Location & Availability Box */}
           <div
@@ -230,7 +303,7 @@ export default function BookDetails({ bookId, onBack }) {
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
               gap: "14px",
-              background: "rgba(0,0,0,0.3)",
+              background: "var(--steam-input-bg)",
               padding: "16px",
               borderRadius: "12px",
               border: "1px solid var(--steam-border)",
@@ -257,7 +330,7 @@ export default function BookDetails({ bookId, onBack }) {
           </div>
 
           {/* CTAs: PostgreSQL Borrow & Digital Lock */}
-          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "16px" }}>
+          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "20px" }}>
             <button
               onClick={handleBorrowDB}
               disabled={book.copies <= 0 || isBorrowing}
@@ -280,7 +353,7 @@ export default function BookDetails({ bookId, onBack }) {
               }}
             >
               <Icon name="book" size={16} color="#fff" />
-              <span>{isBorrowing ? "Processing..." : "Borrow from Library (PostgreSQL Loan)"}</span>
+              <span>{isBorrowing ? "Processing..." : `Borrow Book as ${user?.name}`}</span>
             </button>
 
             <button
@@ -289,9 +362,9 @@ export default function BookDetails({ bookId, onBack }) {
               style={{
                 padding: "12px 20px",
                 borderRadius: "10px",
-                background: "rgba(255, 255, 255, 0.06)",
+                background: "var(--steam-input-bg)",
                 border: "1px solid var(--steam-border)",
-                color: "#fff",
+                color: "var(--steam-text)",
                 fontWeight: "600",
                 fontSize: "13px",
                 display: "inline-flex",
@@ -300,7 +373,7 @@ export default function BookDetails({ bookId, onBack }) {
                 cursor: book.copies > 0 ? "pointer" : "not-allowed",
               }}
             >
-              <Icon name="lock" size={15} color="#fff" />
+              <Icon name="lock" size={15} color="currentColor" />
               <span>Lock Digitally (24h Hold)</span>
             </button>
           </div>
@@ -333,143 +406,189 @@ export default function BookDetails({ bookId, onBack }) {
                 marginBottom: "16px",
               }}
             >
-              🔒 {lockMsg}
+              ✓ {lockMsg}
             </div>
           )}
 
-          {/* FEATURE: Free LLM Book Explainer for 5 y/o and 10 y/o */}
+          {/* Interactive Personal Reading Tracker */}
           <div
             style={{
-              marginTop: "24px",
-              background: "rgba(255, 98, 0, 0.08)",
-              border: "1px solid rgba(255, 98, 0, 0.3)",
+              background: "var(--steam-input-bg)",
+              border: "1px solid var(--steam-border)",
               borderRadius: "12px",
-              padding: "20px",
+              padding: "18px",
+              marginBottom: "24px",
             }}
           >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <Icon name="sparkles" size={17} color="var(--steam-orange)" />
-                <b style={{ color: "var(--steam-orange)", fontSize: "15px" }}>
-                  AI Book Explainer (Free LLM)
-                </b>
+                <Icon name="play" size={14} color="var(--steam-orange)" />
+                <span style={{ fontSize: "14px", fontWeight: "700", color: "var(--steam-text)" }}>
+                  Personal Reading Tracker for {user?.name}
+                </span>
               </div>
-              <div style={{ display: "flex", gap: "8px" }}>
-                <button
-                  onClick={() => loadSummary(book, "5")}
-                  style={{
-                    padding: "6px 12px",
-                    borderRadius: "6px",
-                    fontSize: "12px",
-                    fontWeight: "600",
-                    background: ageLevel === "5" ? "var(--steam-orange)" : "rgba(255,255,255,0.06)",
-                    color: "#fff",
-                  }}
-                >
-                  Explain to a 5 y/o
-                </button>
-                <button
-                  onClick={() => loadSummary(book, "10")}
-                  style={{
-                    padding: "6px 12px",
-                    borderRadius: "6px",
-                    fontSize: "12px",
-                    fontWeight: "600",
-                    background: ageLevel === "10" ? "var(--steam-orange)" : "rgba(255,255,255,0.06)",
-                    color: "#fff",
-                  }}
-                >
-                  Explain to a 10 y/o
-                </button>
+              {isCurrentlyReading && (
+                <span style={{ fontSize: "11px", fontWeight: "700", color: "var(--steam-orange)" }}>
+                  ● In Your Continue Reading
+                </span>
+              )}
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 140px", gap: "12px", alignItems: "center", marginBottom: "12px" }}>
+              <input
+                type="text"
+                placeholder="Current Chapter / Milestone (e.g. Chapter 4)"
+                value={readingChapter}
+                onChange={(e) => setReadingChapter(e.target.value)}
+                style={{ width: "100%", fontSize: "13px" }}
+              />
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={readingProgress}
+                  onChange={(e) => setReadingProgress(e.target.value)}
+                  style={{ width: "100%", accentColor: "var(--steam-orange)" }}
+                />
+                <span style={{ fontSize: "12px", fontWeight: "700", color: "var(--steam-orange)", minWidth: "35px" }}>
+                  {readingProgress}%
+                </span>
               </div>
             </div>
 
-            <p style={{ fontSize: "14px", lineHeight: 1.6, color: "#fff" }}>
-              {llmLoading ? "Generating AI explanation..." : llmSummary}
-            </p>
-          </div>
-
-          {/* FEATURE: Peer Ratings & Reviews */}
-          <div style={{ marginTop: "32px" }}>
-            <h3 style={{ fontSize: "18px", fontWeight: "700", marginBottom: "14px" }}>
-              Peer Ratings & Reviews ({book.peerReviews?.length || 0})
-            </h3>
-
-            {/* Submit Review Form */}
-            <form
-              onSubmit={handleAddReview}
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                padding: "16px",
-                borderRadius: "10px",
-                marginBottom: "20px",
-              }}
-            >
-              <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "10px" }}>
-                <span style={{ fontSize: "13px", color: "var(--steam-muted)" }}>Your Rating:</span>
-                <select
-                  value={reviewRating}
-                  onChange={(e) => setReviewRating(e.target.value)}
-                  style={{ background: "#222", padding: "4px 10px", borderRadius: "6px" }}
-                >
-                  <option value={5}>5 Stars ★★★★★</option>
-                  <option value={4}>4 Stars ★★★★☆</option>
-                  <option value={3}>3 Stars ★★★☆☆</option>
-                  <option value={2}>2 Stars ★★☆☆☆</option>
-                  <option value={1}>1 Star ★☆☆☆☆</option>
-                </select>
-              </div>
-
-              <textarea
-                placeholder="Write a peer review for your fellow campus readers..."
-                value={reviewText}
-                onChange={(e) => setReviewText(e.target.value)}
-                rows={2}
-                style={{
-                  width: "100%",
-                  background: "#111",
-                  borderRadius: "8px",
-                  padding: "10px",
-                  marginBottom: "10px",
-                }}
-              />
-
+            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
               <button
-                type="submit"
+                onClick={handleSaveReadingProgress}
+                className="steam-btn-primary"
                 style={{
                   padding: "8px 16px",
-                  background: "var(--steam-orange)",
-                  borderRadius: "6px",
-                  color: "#fff",
-                  fontWeight: "600",
                   fontSize: "12px",
+                  borderRadius: "8px",
                 }}
               >
-                Post Peer Review
+                {isCurrentlyReading ? "Update Reading Progress" : "Add to My Continue Reading"}
               </button>
+
+              {isCurrentlyReading && (
+                <button
+                  onClick={() => removeContinueReading(book.id)}
+                  style={{
+                    padding: "8px 14px",
+                    fontSize: "12px",
+                    color: "var(--steam-muted)",
+                    borderRadius: "8px",
+                    border: "1px solid var(--steam-border)",
+                  }}
+                >
+                  Remove from In-Progress
+                </button>
+              )}
+
+              {readingSavedMsg && (
+                <span style={{ fontSize: "12px", color: "#4ade80", fontWeight: "600" }}>
+                  ✓ {readingSavedMsg}
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* AI ELI5 Explanations */}
+          <div style={{ marginBottom: "28px" }}>
+            <h3 style={{ fontSize: "16px", fontWeight: "700", marginBottom: "10px", color: "var(--steam-text)" }}>
+              AI Simplified Explanations
+            </h3>
+            <div style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
+              {[
+                { label: "ELI5 (Child)", val: "5" },
+                { label: "ELI10 (Student)", val: "10" },
+                { label: "Freshman College", val: "15" },
+              ].map((lvl) => (
+                <button
+                  key={lvl.val}
+                  onClick={() => loadSummary(book, lvl.val)}
+                  style={{
+                    padding: "6px 14px",
+                    borderRadius: "6px",
+                    fontSize: "12px",
+                    fontWeight: "600",
+                    background: ageLevel === lvl.val ? "var(--steam-orange)" : "var(--steam-input-bg)",
+                    color: "#fff",
+                    border: "1px solid var(--steam-border)",
+                  }}
+                >
+                  {lvl.label}
+                </button>
+              ))}
+            </div>
+            <div
+              style={{
+                background: "var(--steam-input-bg)",
+                padding: "16px",
+                borderRadius: "10px",
+                border: "1px solid var(--steam-border)",
+                fontSize: "13px",
+                lineHeight: 1.6,
+                color: "var(--steam-text-secondary)",
+              }}
+            >
+              {llmLoading ? "Generating AI summary..." : llmSummary}
+            </div>
+          </div>
+
+          {/* Peer Reviews */}
+          <div>
+            <h3 style={{ fontSize: "16px", fontWeight: "700", marginBottom: "12px", color: "var(--steam-text)" }}>
+              Campus Peer Reviews
+            </h3>
+            <form onSubmit={handleAddReview} style={{ marginBottom: "16px" }}>
+              <div style={{ display: "flex", gap: "10px", marginBottom: "8px" }}>
+                <select
+                  value={reviewRating}
+                  onChange={(e) => setReviewRating(Number(e.target.value))}
+                  style={{ width: "120px", fontSize: "13px" }}
+                >
+                  <option value={5}>★★★★★ (5)</option>
+                  <option value={4}>★★★★☆ (4)</option>
+                  <option value={3}>★★★☆☆ (3)</option>
+                  <option value={2}>★★☆☆☆ (2)</option>
+                  <option value={1}>★☆☆☆☆ (1)</option>
+                </select>
+                <input
+                  type="text"
+                  placeholder={`Write your peer note as ${user?.name}...`}
+                  value={reviewText}
+                  onChange={(e) => setReviewText(e.target.value)}
+                  style={{ flex: 1, fontSize: "13px" }}
+                />
+                <button
+                  type="submit"
+                  className="steam-btn-primary"
+                  style={{ padding: "0 18px", fontSize: "13px", borderRadius: "8px" }}
+                >
+                  Post
+                </button>
+              </div>
             </form>
 
-            {/* List Reviews */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              {book.peerReviews?.map((rev, idx) => (
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              {(book.peerReviews || []).map((rev, idx) => (
                 <div
                   key={idx}
                   style={{
-                    background: "rgba(255,255,255,0.02)",
+                    background: "var(--steam-input-bg)",
                     border: "1px solid var(--steam-border)",
-                    padding: "12px 16px",
                     borderRadius: "8px",
+                    padding: "12px 14px",
                   }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px" }}>
-                    <b style={{ fontSize: "13px" }}>{rev.user}</b>
-                    <span style={{ color: "#f0a500", display: "inline-flex", gap: "2px" }}>
-                      {[...Array(Number(rev.rating) || 5)].map((_, i) => (
-                        <Icon key={i} name="star" size={12} color="#f0a500" />
-                      ))}
+                    <b style={{ fontSize: "13px", color: "var(--steam-text)" }}>{rev.user}</b>
+                    <span style={{ color: "var(--steam-orange)", fontSize: "12px" }}>
+                      {"★".repeat(rev.rating)}
                     </span>
                   </div>
-                  <p style={{ fontSize: "13px", color: "#c9d1d9" }}>{rev.comment}</p>
+                  <p style={{ fontSize: "12px", color: "var(--steam-text-secondary)" }}>{rev.comment}</p>
                 </div>
               ))}
             </div>

@@ -1,8 +1,32 @@
+import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 import Icon from "./Icon";
+import AuthModal from "./AuthModal";
+import { GoogleLogo } from "./GoogleAccountChooserModal";
 
-export default function Navbar({ searchQuery, setSearchQuery, onSearchSubmit, setActiveTab }) {
-  const { user } = useAuth();
+const QUICK_CATEGORIES = [
+  "All",
+  "Technology",
+  "Science Fiction",
+  "Fantasy",
+  "Philosophy",
+  "Psychology",
+  "History",
+];
+
+export default function Navbar({
+  searchQuery,
+  setSearchQuery,
+  onSearchSubmit,
+  setActiveTab,
+  activeCategory = "All",
+  onSelectCategory,
+}) {
+  const { user, isAuthenticated, logout } = useAuth();
+  const { isDark, toggleTheme } = useTheme();
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -10,71 +34,239 @@ export default function Navbar({ searchQuery, setSearchQuery, onSearchSubmit, se
     }
   };
 
+  const handleCategoryClick = (cat) => {
+    if (onSelectCategory) {
+      onSelectCategory(cat);
+    }
+    setActiveTab("books");
+  };
+
+  const handleLogout = () => {
+    logout();
+    setIsProfileDropdownOpen(false);
+  };
+
   return (
-    <header className="steam-header">
-      {/* Mobile Logo Brand */}
-      <div className="steam-mobile-logo" onClick={() => setActiveTab("home")}>
-        <img
-          src="/y-lib-logo.svg"
-          alt="Y-Library"
-          style={{ width: "28px", height: "28px", borderRadius: "6px", objectFit: "contain" }}
-        />
-        <span>Y—LIBRARY</span>
-      </div>
-
-      {/* Pill Search Bar */}
-      <div className="steam-search-wrap">
-        <span className="steam-search-icon">
-          <Icon name="search" size={16} color="var(--steam-muted)" />
-        </span>
-        <input
-          type="text"
-          className="steam-search-input"
-          placeholder="Search books, authors, physical locations, ISBN..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-      </div>
-
-      {/* Header Actions */}
-      <div className="steam-header-actions">
-        {/* Notification Bell */}
-        <button
-          className="steam-icon-btn"
-          title="Notifications"
-          onClick={() => alert("Campus Alert: 'The Secret History' reserve hold active for 24 hours.")}
-        >
-          <Icon name="bell" size={17} />
-          <span className="steam-badge-dot" />
-        </button>
-
-        {/* Readlist / Cart Icon */}
-        <button
-          className="steam-icon-btn"
-          title="My Readlists & Saved Books"
-          onClick={() => setActiveTab("library")}
-        >
-          <Icon name="bookmark" size={17} />
-        </button>
-
-        {/* User Profile Pill */}
-        <div
-          className="steam-user-profile"
-          onClick={() => setActiveTab("library")}
-          title="Click to view profile & curated books"
-        >
-          <img
-            src={user?.avatar || "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"}
-            alt={user?.name || "User"}
-            className="steam-user-avatar"
-          />
-          <span style={{ fontSize: "13px", fontWeight: "600" }}>
-            {user?.name || "Jenny Wilson"}
+    <>
+      <header className="steam-header">
+        {/* Pill Search Bar */}
+        <div className="steam-search-wrap">
+          <span className="steam-search-icon">
+            <Icon name="search" size={16} color="var(--steam-muted)" />
           </span>
-          <Icon name="chevronDown" size={13} color="var(--steam-muted)" />
+          <input
+            type="text"
+            className="steam-search-input"
+            placeholder="Search 700+ books, authors, locations, ISBN..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
         </div>
-      </div>
-    </header>
+
+        {/* Category Pills (Inspired by mockup) */}
+        <div className="steam-header-categories">
+          {QUICK_CATEGORIES.map((cat) => {
+            const isActive = activeCategory === cat;
+            return (
+              <button
+                key={cat}
+                className={`steam-cat-pill ${isActive ? "active" : ""}`}
+                onClick={() => handleCategoryClick(cat)}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Header Actions */}
+        <div className="steam-header-actions" style={{ position: "relative" }}>
+          {/* Dark / Light Mode Toggle */}
+          <button
+            className="steam-theme-toggle"
+            onClick={toggleTheme}
+            title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            aria-label="Toggle theme"
+          >
+            <div className="steam-theme-toggle-track">
+              <Icon
+                name={isDark ? "sun" : "moon"}
+                size={15}
+                color={isDark ? "#f0a500" : "#ff4500"}
+              />
+            </div>
+          </button>
+
+          {/* Notification Bell */}
+          <button
+            className="steam-icon-btn"
+            title="Notifications"
+            onClick={() =>
+              alert(
+                isAuthenticated
+                  ? `Campus Alert for ${user?.name}: 2 books reserved on Central Library shelves.`
+                  : "Please sign in to check campus library holds."
+              )
+            }
+          >
+            <Icon name="bell" size={17} />
+            <span className="steam-badge-dot" />
+          </button>
+
+          {/* Authenticated User Profile Pill or Sign-In Button */}
+          {isAuthenticated ? (
+            <div style={{ position: "relative" }}>
+              <div
+                className="steam-user-profile"
+                onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
+                title="Account & Session Settings"
+              >
+                <img
+                  src={
+                    user?.avatar ||
+                    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop"
+                  }
+                  alt={user?.name || "Student"}
+                  className="steam-user-avatar"
+                />
+                <span className="steam-user-name">
+                  {user?.name || "Student"}
+                </span>
+                <Icon name="chevronDown" size={13} color="var(--steam-muted)" />
+              </div>
+
+              {/* Profile Dropdown Menu */}
+              {isProfileDropdownOpen && (
+                <div
+                  style={{
+                    position: "absolute",
+                    right: 0,
+                    top: "48px",
+                    width: "240px",
+                    background: "var(--steam-panel)",
+                    border: "1px solid var(--steam-border)",
+                    borderRadius: "14px",
+                    boxShadow: "0 16px 40px rgba(0,0,0,0.5)",
+                    padding: "14px",
+                    zIndex: 100,
+                  }}
+                >
+                  <div style={{ paddingBottom: "10px", borderBottom: "1px solid var(--steam-border)", marginBottom: "10px" }}>
+                    <div style={{ fontSize: "14px", fontWeight: "700", color: "var(--steam-text)" }}>
+                      {user?.name}
+                    </div>
+                    <div style={{ fontSize: "11px", color: "var(--steam-muted)", overflow: "hidden", textOverflow: "ellipsis" }}>
+                      {user?.email}
+                    </div>
+                    <div style={{ fontSize: "11px", color: "var(--steam-orange)", fontWeight: "600", marginTop: "4px" }}>
+                      {user?.major}
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      setActiveTab("library");
+                      setIsProfileDropdownOpen(false);
+                    }}
+                    style={{
+                      width: "100%",
+                      textAlign: "left",
+                      padding: "8px 10px",
+                      borderRadius: "8px",
+                      fontSize: "13px",
+                      color: "var(--steam-text)",
+                      background: "transparent",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = "var(--steam-panel-hover)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                  >
+                    <Icon name="heart" size={15} color="var(--steam-orange)" />
+                    <span>My Reading & Loans</span>
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setIsAuthModalOpen(true);
+                      setIsProfileDropdownOpen(false);
+                    }}
+                    style={{
+                      width: "100%",
+                      textAlign: "left",
+                      padding: "8px 10px",
+                      borderRadius: "8px",
+                      fontSize: "13px",
+                      color: "var(--steam-text)",
+                      background: "transparent",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = "var(--steam-panel-hover)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                  >
+                    <GoogleLogo size={15} />
+                    <span>Switch / Add Account</span>
+                  </button>
+
+                  <div style={{ borderTop: "1px solid var(--steam-border)", margin: "8px 0" }} />
+
+                  <button
+                    onClick={handleLogout}
+                    style={{
+                      width: "100%",
+                      textAlign: "left",
+                      padding: "8px 10px",
+                      borderRadius: "8px",
+                      fontSize: "13px",
+                      color: "#ef4444",
+                      background: "transparent",
+                      cursor: "pointer",
+                      fontWeight: "600",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(239, 68, 68, 0.1)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <button
+              onClick={() => setIsAuthModalOpen(true)}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "8px 16px",
+                borderRadius: "999px",
+                background: "#ffffff",
+                color: "#1f2937",
+                fontSize: "13px",
+                fontWeight: "700",
+                border: "1px solid #dadce0",
+                boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
+                cursor: "pointer",
+              }}
+            >
+              <GoogleLogo size={16} />
+              <span>Sign In</span>
+            </button>
+          )}
+        </div>
+      </header>
+
+      {/* Authentication Modal (Credentials + Google Sign-In) */}
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+      />
+    </>
   );
 }
