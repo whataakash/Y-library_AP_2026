@@ -1,0 +1,52 @@
+// Prisma Schema for Y-Library (PostgreSQL)
+// Clean, beginner-friendly and modular for faculty explanation
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 1. Books Table
+// Stores all book catalog information matching faculty requirements & OpenLibrary dataset
+model Book {
+  id              Int            @id @default(autoincrement())
+  bookname        String         // Title of the book
+  book_image      String         @map("book_image") // OpenLibrary / Google Books cover URL
+  isbn            String         @unique // Unique International Standard Book Number
+  total_count     Int            @default(1) @map("total_count") // Total copies owned by the library
+  available_count Int            @default(1) @map("available_count") // Copies currently available for borrowing
+  edition         String         @default("1st Edition") // Edition of the book
+  rating          Float?         @default(4.5) // Student/peer rating out of 5.0
+  location        String         // Physical shelf or rack location (e.g. "Central Library / Floor 1 - Section A")
+  author          String         // Name of author(s)
+  genre           String         // Main genre inferred from OpenLibrary subjects
+  tags            String[]       // Multi-tag array (e.g. ["science-fiction", "space", "dystopia"])
+  createdAt       DateTime       @default(now()) @map("created_at")
+  updatedAt       DateTime       @updatedAt @map("updated_at")
+
+  // Relational link to borrow records
+  borrowRecords   BorrowRecord[]
+
+  @@map("books")
+}
+
+// 2. Borrow Records Table
+// Tracks book loans, student identities, and return dates
+model BorrowRecord {
+  id          Int       @id @default(autoincrement())
+  bookId      Int       @map("book_id") // Foreign key pointing to the Book
+  book        Book      @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  userName    String    @map("user_name") // Name of the student borrowing
+  userEmail   String    @map("user_email") // University email address
+  borrowDate  DateTime  @default(now()) @map("borrow_date") // When the book was taken out
+  dueDate     DateTime  @map("due_date") // When the book is due back
+  returnDate  DateTime? @map("return_date") // When returned (null if still borrowed)
+  status      String    @default("BORROWED") // "BORROWED" or "RETURNED"
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  @@map("borrow_records")
+}
