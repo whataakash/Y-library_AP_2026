@@ -20,8 +20,8 @@ export default function BookTile({
   const rating = parseFloat(book.rating || "4.5");
   const fullStars = Math.min(5, Math.floor(rating));
   const reviewsCount = book.reviewsCount || ((Math.abs(hashCode(displayTitle)) % 800) + 25);
-  const isAvailable = (book.copies ?? book.available_count ?? 1) > 0;
-  const copiesCount = book.copies ?? book.available_count ?? 1;
+  const copies = Number(book.copies ?? book.available_count ?? 0);
+  const isAvailable = copies > 0;
 
   function hashCode(str) {
     let hash = 0;
@@ -101,7 +101,7 @@ export default function BookTile({
 
         {/* Availability Badge */}
         <div className={`book-tile-badge-copies ${isAvailable ? "available" : "unavailable"}`}>
-          {isAvailable ? `${copiesCount} Available` : "Waitlist"}
+          {isAvailable ? `✓ In Stock (${copies} copies)` : "✕ Currently Loaned Out"}
         </div>
 
         {/* Genre Pill */}
