@@ -1,0 +1,79 @@
+=== Run 1 ===
+QUERY PLAN
+Sort  (cost=2.56..2.57 rows=2 width=108) (actual time=0.045..0.046 rows=2.00 loops=1)
+  Sort Key: b.borrow_date DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=7
+  ->  Merge Join  (cost=1.35..2.55 rows=2 width=108) (actual time=0.038..0.040 rows=2.00 loops=1)
+        Merge Cond: (k.id = b.book_id)
+        Buffers: shared hit=4
+        ->  Index Scan using books_pkey on books k  (cost=0.28..79.41 rows=900 width=83) (actual time=0.002..0.003 rows=5.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=3
+        ->  Sort  (cost=1.07..1.08 rows=2 width=33) (actual time=0.034..0.034 rows=2.00 loops=1)
+              Sort Key: b.book_id
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=1
+              ->  Seq Scan on borrow_records b  (cost=0.00..1.06 rows=2 width=33) (actual time=0.003..0.003 rows=2.00 loops=1)
+                    Filter: ((user_email)::text = 'alex.morgan@y-university.edu'::text)
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=376
+Planning Time: 0.760 ms
+Execution Time: 0.070 ms
+(22 rows)
+
+
+=== Run 2 ===
+QUERY PLAN
+Sort  (cost=2.56..2.57 rows=2 width=108) (actual time=0.015..0.015 rows=2.00 loops=1)
+  Sort Key: b.borrow_date DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=7
+  ->  Merge Join  (cost=1.35..2.55 rows=2 width=108) (actual time=0.009..0.011 rows=2.00 loops=1)
+        Merge Cond: (k.id = b.book_id)
+        Buffers: shared hit=4
+        ->  Index Scan using books_pkey on books k  (cost=0.28..79.41 rows=900 width=83) (actual time=0.002..0.002 rows=5.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=3
+        ->  Sort  (cost=1.07..1.08 rows=2 width=33) (actual time=0.006..0.006 rows=2.00 loops=1)
+              Sort Key: b.book_id
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=1
+              ->  Seq Scan on borrow_records b  (cost=0.00..1.06 rows=2 width=33) (actual time=0.002..0.002 rows=2.00 loops=1)
+                    Filter: ((user_email)::text = 'alex.morgan@y-university.edu'::text)
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=376
+Planning Time: 0.404 ms
+Execution Time: 0.039 ms
+(22 rows)
+
+
+=== Run 3 ===
+QUERY PLAN
+Sort  (cost=2.56..2.57 rows=2 width=108) (actual time=0.015..0.015 rows=2.00 loops=1)
+  Sort Key: b.borrow_date DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=7
+  ->  Merge Join  (cost=1.35..2.55 rows=2 width=108) (actual time=0.009..0.010 rows=2.00 loops=1)
+        Merge Cond: (k.id = b.book_id)
+        Buffers: shared hit=4
+        ->  Index Scan using books_pkey on books k  (cost=0.28..79.41 rows=900 width=83) (actual time=0.002..0.003 rows=5.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=3
+        ->  Sort  (cost=1.07..1.08 rows=2 width=33) (actual time=0.006..0.006 rows=2.00 loops=1)
+              Sort Key: b.book_id
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=1
+              ->  Seq Scan on borrow_records b  (cost=0.00..1.06 rows=2 width=33) (actual time=0.002..0.002 rows=2.00 loops=1)
+                    Filter: ((user_email)::text = 'alex.morgan@y-university.edu'::text)
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=376
+Planning Time: 0.402 ms
+Execution Time: 0.036 ms
+(22 rows)

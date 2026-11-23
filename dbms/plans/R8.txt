@@ -1,0 +1,76 @@
+=== Run 1 ===
+QUERY PLAN
+GroupAggregate  (cost=2.14..2.19 rows=1 width=88) (actual time=0.021..0.021 rows=1.00 loops=1)
+  Group Key: u.email
+  Buffers: shared hit=5
+  ->  Sort  (cost=2.14..2.15 rows=2 width=77) (actual time=0.016..0.016 rows=2.00 loops=1)
+        Sort Key: u.email
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=5
+        ->  Nested Loop Left Join  (cost=0.00..2.13 rows=2 width=77) (actual time=0.006..0.007 rows=2.00 loops=1)
+              Buffers: shared hit=2
+              ->  Seq Scan on users u  (cost=0.00..1.05 rows=1 width=64) (actual time=0.003..0.004 rows=1.00 loops=1)
+                    Filter: (id = 1)
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+              ->  Seq Scan on borrow_records b  (cost=0.00..1.06 rows=2 width=17) (actual time=0.002..0.002 rows=2.00 loops=1)
+                    Filter: (user_id = 1)
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=214
+Planning Time: 0.353 ms
+Execution Time: 0.047 ms
+(21 rows)
+
+
+=== Run 2 ===
+QUERY PLAN
+GroupAggregate  (cost=2.14..2.19 rows=1 width=88) (actual time=0.017..0.017 rows=1.00 loops=1)
+  Group Key: u.email
+  Buffers: shared hit=5
+  ->  Sort  (cost=2.14..2.15 rows=2 width=77) (actual time=0.013..0.013 rows=2.00 loops=1)
+        Sort Key: u.email
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=5
+        ->  Nested Loop Left Join  (cost=0.00..2.13 rows=2 width=77) (actual time=0.005..0.006 rows=2.00 loops=1)
+              Buffers: shared hit=2
+              ->  Seq Scan on users u  (cost=0.00..1.05 rows=1 width=64) (actual time=0.003..0.003 rows=1.00 loops=1)
+                    Filter: (id = 1)
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+              ->  Seq Scan on borrow_records b  (cost=0.00..1.06 rows=2 width=17) (actual time=0.001..0.002 rows=2.00 loops=1)
+                    Filter: (user_id = 1)
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=214
+Planning Time: 0.310 ms
+Execution Time: 0.036 ms
+(21 rows)
+
+
+=== Run 3 ===
+QUERY PLAN
+GroupAggregate  (cost=2.14..2.19 rows=1 width=88) (actual time=0.019..0.019 rows=1.00 loops=1)
+  Group Key: u.email
+  Buffers: shared hit=5
+  ->  Sort  (cost=2.14..2.15 rows=2 width=77) (actual time=0.015..0.015 rows=2.00 loops=1)
+        Sort Key: u.email
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=5
+        ->  Nested Loop Left Join  (cost=0.00..2.13 rows=2 width=77) (actual time=0.005..0.006 rows=2.00 loops=1)
+              Buffers: shared hit=2
+              ->  Seq Scan on users u  (cost=0.00..1.05 rows=1 width=64) (actual time=0.003..0.003 rows=1.00 loops=1)
+                    Filter: (id = 1)
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+              ->  Seq Scan on borrow_records b  (cost=0.00..1.06 rows=2 width=17) (actual time=0.002..0.002 rows=2.00 loops=1)
+                    Filter: (user_id = 1)
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=214
+Planning Time: 0.318 ms
+Execution Time: 0.041 ms
+(21 rows)

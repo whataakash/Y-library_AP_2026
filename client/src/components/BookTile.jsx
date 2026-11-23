@@ -52,7 +52,7 @@ export default function BookTile({
   return (
     <div
       className="book-tile"
-      onClick={() => onSelect && onSelect(book.id)}
+      onClick={() => onSelect && onSelect(book)}
       style={style}
     >
       {/* 1 : 1.5 Aspect Ratio Book Cover */}

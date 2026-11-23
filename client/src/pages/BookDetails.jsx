@@ -5,17 +5,16 @@ import { calculateBookMatchScore, getRecommendationReason } from "../services/pe
 import { capitalizeTitle, capitalizeAuthor } from "../utils/formatters";
 import Icon from "../components/Icon";
 
-export default function BookDetails({ bookId, onBack }) {
-  const { user, markAsRead, toggleFavorite, startOrUpdateReading, removeContinueReading } = useAuth();
-  const [book, setBook] = useState(null);
+// BookDetails: Modular page displaying single book information
+// Uses clean React props: book (full object), bookId (identifier), onBack (callback)
+export default function BookDetails({ book: propBook, bookId, onBack }) {
+  const { user, markAsRead, toggleFavorite } = useAuth();
+  
+  // State for the currently displayed book
+  const [book, setBook] = useState(propBook || null);
   const [ageLevel, setAgeLevel] = useState("5");
   const [llmSummary, setLlmSummary] = useState("");
   const [llmLoading, setLlmLoading] = useState(false);
-
-  // Reading tracker state
-  const [readingChapter, setReadingChapter] = useState("Chapter 1");
-  const [readingProgress, setReadingProgress] = useState(25);
-  const [readingSavedMsg, setReadingSavedMsg] = useState("");
 
   // Peer review form
   const [reviewRating, setReviewRating] = useState(5);
@@ -24,27 +23,25 @@ export default function BookDetails({ bookId, onBack }) {
   const [borrowMsg, setBorrowMsg] = useState("");
   const [isBorrowing, setIsBorrowing] = useState(false);
 
+  // Load book details whenever propBook or bookId changes
   useEffect(() => {
-    api.getBookById(bookId).then((data) => {
-      setBook(data);
-      if (data) {
-        loadSummary(data, "5");
-      }
-    });
-  }, [bookId]);
-
-  // Sync reading state if user is already reading this book
-  useEffect(() => {
-    if (book && user?.continueReading) {
-      const active = user.continueReading.find(
-        (item) => String(item.bookId) === String(book.id) || String(item.id) === String(book.id)
-      );
-      if (active) {
-        setReadingChapter(active.chapter || "Chapter 1");
-        setReadingProgress(active.progress || 25);
-      }
+    // 1. If full book object is passed via props, use it immediately
+    if (propBook) {
+      setBook(propBook);
+      loadSummary(propBook, "5");
+      return;
     }
-  }, [book, user]);
+
+    // 2. Otherwise fetch book by ID or ISBN from the API/catalog
+    if (bookId) {
+      api.getBookById(bookId).then((data) => {
+        if (data) {
+          setBook(data);
+          loadSummary(data, "5");
+        }
+      });
+    }
+  }, [propBook, bookId]);
 
   const loadSummary = async (bookData, age) => {
     setLlmLoading(true);
@@ -87,13 +84,6 @@ export default function BookDetails({ bookId, onBack }) {
     }
   };
 
-  const handleSaveReadingProgress = () => {
-    if (!book) return;
-    startOrUpdateReading(book, readingChapter, Number(readingProgress));
-    setReadingSavedMsg("Reading progress saved to your profile!");
-    setTimeout(() => setReadingSavedMsg(""), 3500);
-  };
-
   const handleAddReview = async (e) => {
     e.preventDefault();
     if (!reviewText) return;
@@ -110,9 +100,6 @@ export default function BookDetails({ bookId, onBack }) {
 
   const isRead = user?.readBooks?.some((id) => String(id) === String(book.id));
   const isFavorite = user?.favorites?.some((id) => String(id) === String(book.id));
-  const isCurrentlyReading = user?.continueReading?.some(
-    (item) => String(item.bookId) === String(book.id) || String(item.id) === String(book.id)
-  );
 
   const matchScore = calculateBookMatchScore(user, book);
   const recommendationReason = getRecommendationReason(user, book);
@@ -410,89 +397,6 @@ export default function BookDetails({ bookId, onBack }) {
               ✓ {lockMsg}
             </div>
           )}
-
-          {/* Interactive Personal Reading Tracker */}
-          <div
-            style={{
-              background: "var(--steam-input-bg)",
-              border: "1px solid var(--steam-border)",
-              borderRadius: "12px",
-              padding: "18px",
-              marginBottom: "24px",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <Icon name="play" size={14} color="var(--steam-orange)" />
-                <span style={{ fontSize: "14px", fontWeight: "700", color: "var(--steam-text)" }}>
-                  Personal Reading Tracker for {user?.name}
-                </span>
-              </div>
-              {isCurrentlyReading && (
-                <span style={{ fontSize: "11px", fontWeight: "700", color: "var(--steam-orange)" }}>
-                  ● In Your Continue Reading
-                </span>
-              )}
-            </div>
-
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 140px", gap: "12px", alignItems: "center", marginBottom: "12px" }}>
-              <input
-                type="text"
-                placeholder="Current Chapter / Milestone (e.g. Chapter 4)"
-                value={readingChapter}
-                onChange={(e) => setReadingChapter(e.target.value)}
-                style={{ width: "100%", fontSize: "13px" }}
-              />
-              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={readingProgress}
-                  onChange={(e) => setReadingProgress(e.target.value)}
-                  style={{ width: "100%", accentColor: "var(--steam-orange)" }}
-                />
-                <span style={{ fontSize: "12px", fontWeight: "700", color: "var(--steam-orange)", minWidth: "35px" }}>
-                  {readingProgress}%
-                </span>
-              </div>
-            </div>
-
-            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-              <button
-                onClick={handleSaveReadingProgress}
-                className="steam-btn-primary"
-                style={{
-                  padding: "8px 16px",
-                  fontSize: "12px",
-                  borderRadius: "8px",
-                }}
-              >
-                {isCurrentlyReading ? "Update Reading Progress" : "Add to My Continue Reading"}
-              </button>
-
-              {isCurrentlyReading && (
-                <button
-                  onClick={() => removeContinueReading(book.id)}
-                  style={{
-                    padding: "8px 14px",
-                    fontSize: "12px",
-                    color: "var(--steam-muted)",
-                    borderRadius: "8px",
-                    border: "1px solid var(--steam-border)",
-                  }}
-                >
-                  Remove from In-Progress
-                </button>
-              )}
-
-              {readingSavedMsg && (
-                <span style={{ fontSize: "12px", color: "#4ade80", fontWeight: "600" }}>
-                  ✓ {readingSavedMsg}
-                </span>
-              )}
-            </div>
-          </div>
 
           {/* AI ELI5 Explanations */}
           <div style={{ marginBottom: "28px" }}>

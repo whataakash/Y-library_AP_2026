@@ -1,0 +1,49 @@
+=== Run 1 ===
+QUERY PLAN
+Sort  (cost=55.51..55.52 rows=1 width=103) (actual time=0.385..0.385 rows=2.00 loops=1)
+  Sort Key: rating DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=45
+  ->  Seq Scan on books  (cost=0.00..55.50 rows=1 width=103) (actual time=0.005..0.376 rows=2.00 loops=1)
+        Filter: (((bookname)::text ~~* '%Money%'::text) OR ((author)::text ~~* '%Housel%'::text))
+        Rows Removed by Filter: 898
+        Buffers: shared hit=42
+Planning:
+  Buffers: shared hit=210
+Planning Time: 0.668 ms
+Execution Time: 0.403 ms
+(12 rows)
+
+
+=== Run 2 ===
+QUERY PLAN
+Sort  (cost=55.51..55.52 rows=1 width=103) (actual time=0.387..0.388 rows=2.00 loops=1)
+  Sort Key: rating DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=45
+  ->  Seq Scan on books  (cost=0.00..55.50 rows=1 width=103) (actual time=0.004..0.379 rows=2.00 loops=1)
+        Filter: (((bookname)::text ~~* '%Money%'::text) OR ((author)::text ~~* '%Housel%'::text))
+        Rows Removed by Filter: 898
+        Buffers: shared hit=42
+Planning:
+  Buffers: shared hit=210
+Planning Time: 0.333 ms
+Execution Time: 0.404 ms
+(12 rows)
+
+
+=== Run 3 ===
+QUERY PLAN
+Sort  (cost=55.51..55.52 rows=1 width=103) (actual time=0.397..0.397 rows=2.00 loops=1)
+  Sort Key: rating DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=45
+  ->  Seq Scan on books  (cost=0.00..55.50 rows=1 width=103) (actual time=0.004..0.390 rows=2.00 loops=1)
+        Filter: (((bookname)::text ~~* '%Money%'::text) OR ((author)::text ~~* '%Housel%'::text))
+        Rows Removed by Filter: 898
+        Buffers: shared hit=42
+Planning:
+  Buffers: shared hit=210
+Planning Time: 0.331 ms
+Execution Time: 0.412 ms
+(12 rows)

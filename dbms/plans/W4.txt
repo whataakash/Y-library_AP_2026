@@ -1,0 +1,76 @@
+=== Run 1 ===
+QUERY PLAN
+Update on borrow_records  (cost=1.08..2.15 rows=0 width=0) (actual time=0.070..0.070 rows=0.00 loops=1)
+  Buffers: shared hit=24
+  InitPlan 1
+    ->  Limit  (cost=1.08..1.08 rows=1 width=12) (actual time=0.009..0.009 rows=1.00 loops=1)
+          Buffers: shared hit=4
+          ->  Sort  (cost=1.08..1.09 rows=4 width=12) (actual time=0.009..0.009 rows=1.00 loops=1)
+                Sort Key: borrow_records_1.borrow_date
+                Sort Method: top-N heapsort  Memory: 25kB
+                Buffers: shared hit=4
+                ->  Seq Scan on borrow_records borrow_records_1  (cost=0.00..1.06 rows=4 width=12) (actual time=0.001..0.002 rows=4.00 loops=1)
+                      Filter: ((status)::text = 'BORROWED'::text)
+                      Rows Removed by Filter: 1
+                      Buffers: shared hit=1
+  ->  Seq Scan on borrow_records  (cost=0.00..1.06 rows=1 width=72) (actual time=0.016..0.016 rows=1.00 loops=1)
+        Filter: (id = (InitPlan 1).col1)
+        Rows Removed by Filter: 4
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=143
+Planning Time: 0.227 ms
+Execution Time: 0.107 ms
+(21 rows)
+
+
+=== Run 2 ===
+QUERY PLAN
+Update on borrow_records  (cost=1.08..2.15 rows=0 width=0) (actual time=0.071..0.071 rows=0.00 loops=1)
+  Buffers: shared hit=25
+  InitPlan 1
+    ->  Limit  (cost=1.08..1.08 rows=1 width=12) (actual time=0.009..0.009 rows=1.00 loops=1)
+          Buffers: shared hit=4
+          ->  Sort  (cost=1.08..1.09 rows=4 width=12) (actual time=0.009..0.009 rows=1.00 loops=1)
+                Sort Key: borrow_records_1.borrow_date
+                Sort Method: top-N heapsort  Memory: 25kB
+                Buffers: shared hit=4
+                ->  Seq Scan on borrow_records borrow_records_1  (cost=0.00..1.06 rows=4 width=12) (actual time=0.001..0.002 rows=4.00 loops=1)
+                      Filter: ((status)::text = 'BORROWED'::text)
+                      Rows Removed by Filter: 1
+                      Buffers: shared hit=1
+  ->  Seq Scan on borrow_records  (cost=0.00..1.06 rows=1 width=72) (actual time=0.015..0.016 rows=1.00 loops=1)
+        Filter: (id = (InitPlan 1).col1)
+        Rows Removed by Filter: 4
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=143
+Planning Time: 0.229 ms
+Execution Time: 0.108 ms
+(21 rows)
+
+
+=== Run 3 ===
+QUERY PLAN
+Update on borrow_records  (cost=1.08..2.15 rows=0 width=0) (actual time=0.072..0.072 rows=0.00 loops=1)
+  Buffers: shared hit=25
+  InitPlan 1
+    ->  Limit  (cost=1.08..1.08 rows=1 width=12) (actual time=0.009..0.009 rows=1.00 loops=1)
+          Buffers: shared hit=4
+          ->  Sort  (cost=1.08..1.09 rows=4 width=12) (actual time=0.008..0.008 rows=1.00 loops=1)
+                Sort Key: borrow_records_1.borrow_date
+                Sort Method: top-N heapsort  Memory: 25kB
+                Buffers: shared hit=4
+                ->  Seq Scan on borrow_records borrow_records_1  (cost=0.00..1.06 rows=4 width=12) (actual time=0.001..0.002 rows=4.00 loops=1)
+                      Filter: ((status)::text = 'BORROWED'::text)
+                      Rows Removed by Filter: 1
+                      Buffers: shared hit=1
+  ->  Seq Scan on borrow_records  (cost=0.00..1.06 rows=1 width=72) (actual time=0.018..0.018 rows=1.00 loops=1)
+        Filter: (id = (InitPlan 1).col1)
+        Rows Removed by Filter: 4
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=143
+Planning Time: 0.222 ms
+Execution Time: 0.109 ms
+(21 rows)

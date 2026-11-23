@@ -14,12 +14,21 @@ import Requests from "./pages/Requests";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("home");
-  const [selectedBookId, setSelectedBookId] = useState("gbook_1");
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [selectedBookId, setSelectedBookId] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const handleSelectBook = (id) => {
-    setSelectedBookId(id);
+  // Modular handler: accepts either a book object OR a book ID
+  // When a book tile is clicked, the full book object is passed directly via props
+  const handleSelectBook = (bookOrId) => {
+    if (typeof bookOrId === "object" && bookOrId !== null) {
+      setSelectedBook(bookOrId);
+      setSelectedBookId(bookOrId.id || bookOrId.isbn);
+    } else {
+      setSelectedBookId(bookOrId);
+      setSelectedBook(null);
+    }
     setActiveTab("details");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -74,8 +83,9 @@ export default function App() {
 
               {activeTab === "details" && (
                 <BookDetails
+                  book={selectedBook}
                   bookId={selectedBookId}
-                  onBack={() => setActiveTab("home")}
+                  onBack={() => setActiveTab("books")}
                 />
               )}
 

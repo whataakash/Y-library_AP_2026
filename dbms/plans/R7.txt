@@ -1,0 +1,88 @@
+=== Run 1 ===
+QUERY PLAN
+Limit  (cost=63.42..63.44 rows=10 width=66) (actual time=0.123..0.123 rows=10.00 loops=1)
+  Buffers: shared hit=26
+  ->  Sort  (cost=63.42..63.53 rows=44 width=66) (actual time=0.122..0.122 rows=10.00 loops=1)
+        Sort Key: b.rating DESC
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=26
+        ->  Nested Loop  (cost=7.63..62.47 rows=44 width=66) (actual time=0.024..0.077 rows=357.00 loops=1)
+              Buffers: shared hit=23
+              ->  Seq Scan on users u  (cost=0.00..1.05 rows=1 width=66) (actual time=0.003..0.003 rows=1.00 loops=1)
+                    Filter: ((email)::text = 'alex.morgan@y-university.edu'::text)
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+              ->  Bitmap Heap Scan on books b  (cost=7.63..56.93 rows=449 width=66) (actual time=0.021..0.057 rows=357.00 loops=1)
+                    Recheck Cond: ((genre)::text = ANY (u.preferred_genres))
+                    Filter: (available_count > 0)
+                    Heap Blocks: exact=21
+                    Buffers: shared hit=22
+                    ->  Bitmap Index Scan on idx_books_genre  (cost=0.00..7.52 rows=449 width=0) (actual time=0.015..0.015 rows=357.00 loops=1)
+                          Index Cond: ((genre)::text = ANY (u.preferred_genres))
+                          Index Searches: 1
+                          Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=330
+Planning Time: 0.420 ms
+Execution Time: 0.137 ms
+(25 rows)
+
+
+=== Run 2 ===
+QUERY PLAN
+Limit  (cost=63.42..63.44 rows=10 width=66) (actual time=0.120..0.121 rows=10.00 loops=1)
+  Buffers: shared hit=26
+  ->  Sort  (cost=63.42..63.53 rows=44 width=66) (actual time=0.120..0.120 rows=10.00 loops=1)
+        Sort Key: b.rating DESC
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=26
+        ->  Nested Loop  (cost=7.63..62.47 rows=44 width=66) (actual time=0.021..0.075 rows=357.00 loops=1)
+              Buffers: shared hit=23
+              ->  Seq Scan on users u  (cost=0.00..1.05 rows=1 width=66) (actual time=0.003..0.003 rows=1.00 loops=1)
+                    Filter: ((email)::text = 'alex.morgan@y-university.edu'::text)
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+              ->  Bitmap Heap Scan on books b  (cost=7.63..56.93 rows=449 width=66) (actual time=0.018..0.056 rows=357.00 loops=1)
+                    Recheck Cond: ((genre)::text = ANY (u.preferred_genres))
+                    Filter: (available_count > 0)
+                    Heap Blocks: exact=21
+                    Buffers: shared hit=22
+                    ->  Bitmap Index Scan on idx_books_genre  (cost=0.00..7.52 rows=449 width=0) (actual time=0.011..0.011 rows=357.00 loops=1)
+                          Index Cond: ((genre)::text = ANY (u.preferred_genres))
+                          Index Searches: 1
+                          Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=330
+Planning Time: 0.406 ms
+Execution Time: 0.133 ms
+(25 rows)
+
+
+=== Run 3 ===
+QUERY PLAN
+Limit  (cost=63.42..63.44 rows=10 width=66) (actual time=0.125..0.126 rows=10.00 loops=1)
+  Buffers: shared hit=26
+  ->  Sort  (cost=63.42..63.53 rows=44 width=66) (actual time=0.125..0.125 rows=10.00 loops=1)
+        Sort Key: b.rating DESC
+        Sort Method: top-N heapsort  Memory: 27kB
+        Buffers: shared hit=26
+        ->  Nested Loop  (cost=7.63..62.47 rows=44 width=66) (actual time=0.022..0.080 rows=357.00 loops=1)
+              Buffers: shared hit=23
+              ->  Seq Scan on users u  (cost=0.00..1.05 rows=1 width=66) (actual time=0.003..0.003 rows=1.00 loops=1)
+                    Filter: ((email)::text = 'alex.morgan@y-university.edu'::text)
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+              ->  Bitmap Heap Scan on books b  (cost=7.63..56.93 rows=449 width=66) (actual time=0.019..0.060 rows=357.00 loops=1)
+                    Recheck Cond: ((genre)::text = ANY (u.preferred_genres))
+                    Filter: (available_count > 0)
+                    Heap Blocks: exact=21
+                    Buffers: shared hit=22
+                    ->  Bitmap Index Scan on idx_books_genre  (cost=0.00..7.52 rows=449 width=0) (actual time=0.012..0.012 rows=357.00 loops=1)
+                          Index Cond: ((genre)::text = ANY (u.preferred_genres))
+                          Index Searches: 1
+                          Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=330
+Planning Time: 0.438 ms
+Execution Time: 0.140 ms
+(25 rows)

@@ -11,9 +11,12 @@ export const BACKEND_URL = "http://localhost:5001/api";
 // and frontend UI components (title, coverImg, copies, totalCopies)
 // Automatically capitalizes bookname/title and author for display to the user
 function normalizeBackendBook(b) {
-  const cover = b.book_image || b.bookImage || `https://covers.openlibrary.org/b/isbn/${b.isbn}-L.jpg`;
-  const available = b.available_count !== undefined ? b.available_count : b.availableCount !== undefined ? b.availableCount : 1;
-  const total = b.total_count !== undefined ? b.total_count : b.totalCount !== undefined ? b.totalCount : 1;
+  const isbn = b.isbn || "9781000000000";
+  // Guarantee every book has a stable, unique ID (uses b.id, b.isbn, or derived id)
+  const bookId = b.id !== undefined && b.id !== null ? b.id : isbn;
+  const cover = b.book_image || b.bookImage || b.coverImg || `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`;
+  const available = b.available_count !== undefined ? b.available_count : b.availableCount !== undefined ? b.availableCount : (b.copies !== undefined ? b.copies : 1);
+  const total = b.total_count !== undefined ? b.total_count : b.totalCount !== undefined ? b.totalCount : (b.totalCopies !== undefined ? b.totalCopies : 1);
 
   const rawTitle = b.bookname || b.title || "Untitled Book";
   const rawAuthor = b.author || "Unknown Author";
@@ -21,40 +24,40 @@ function normalizeBackendBook(b) {
   const displayAuthor = capitalizeAuthor(rawAuthor);
 
   return {
-    id: b.id,
+    id: bookId,
+    isbn: isbn,
     title: displayTitle,
     bookname: displayTitle,
     author: displayAuthor,
     rawTitle: rawTitle,
     rawAuthor: rawAuthor,
-    isbn: b.isbn,
     rating: String(b.rating || "4.5"),
-    reviewsCount: (b.borrowRecords ? b.borrowRecords.length : 0) + 18,
+    reviewsCount: (b.borrowRecords ? b.borrowRecords.length : 0) + (b.reviewsCount || 18),
     status: available > 0 ? "Available" : "Checked Out",
-    genre: b.genre,
-    tags: Array.isArray(b.tags) ? b.tags : [b.genre],
+    genre: b.genre || "General",
+    tags: Array.isArray(b.tags) ? b.tags : [b.genre || "Book"],
     coverImg: cover,
     bookImage: cover,
     book_image: cover,
-    location: b.location,
+    location: b.location || "Central Library / A-01",
     copies: available,
     available_count: available,
     availableCount: available,
     totalCopies: total,
     total_count: total,
     totalCount: total,
-    edition: b.edition || "1st Edition",
+    edition: b.edition || "Campus Edition",
     price: "Free Campus Loan",
-    summary: `${displayTitle} by ${displayAuthor}. Campus Shelf: ${b.location}. Available copies: ${available} of ${total}.`,
-    eli5Summary: `A fun book called "${displayTitle}"! You can find it on shelf ${b.location} in the university library.`,
-    eli10Summary: `"${displayTitle}" is written by ${displayAuthor}. It is currently catalogued in ${b.location} with edition ${b.edition}.`,
-    readers: ["Maya Chen", "Idris Okafor", "Sofia Reyes"],
+    summary: b.summary || `${displayTitle} by ${displayAuthor}. Campus Shelf: ${b.location || "Central Library"}. Available copies: ${available} of ${total}.`,
+    eli5Summary: b.eli5Summary || `A fun book called "${displayTitle}"! You can find it on shelf ${b.location || "Central Library"} in the university library.`,
+    eli10Summary: b.eli10Summary || `"${displayTitle}" is written by ${displayAuthor}. It is currently catalogued in ${b.location || "Central Library"} with edition ${b.edition || "1st Edition"}.`,
+    readers: b.readers || ["Maya Chen", "Idris Okafor", "Sofia Reyes"],
     borrowRecords: b.borrowRecords || [],
-    peerReviews: [
+    peerReviews: b.peerReviews || [
       {
         user: "Sofia Reyes",
         rating: 5,
-        comment: `Found this on ${b.location}, copy was in great condition.`,
+        comment: `Found this on ${b.location || "Central Library"}, copy was in great condition.`,
         date: "Recently",
       },
     ],
@@ -340,9 +343,12 @@ export const api = {
     return FALLBACK_BOOKS;
   },
 
-  // 2. Get single book by ID
+  // 2. Get single book by ID or ISBN
   getBookById: async (id) => {
-    // Try Express Backend if ID is numeric
+    if (!id) return null;
+    const target = String(id).trim().toLowerCase();
+
+    // A) Try Express Backend if ID is numeric
     if (!isNaN(id) && Number(id) > 0) {
       try {
         const res = await fetch(`${BACKEND_URL}/books/${id}`);
@@ -353,18 +359,44 @@ export const api = {
           }
         }
       } catch (e) {
-        // Continue to cache/Google Books
+        // Continue to local matchers
       }
     }
 
-    // Check local cache
-    const cached = googleBooksCache.find((b) => String(b.id) === String(id));
+    // Helper matcher to test if a book matches id, isbn, or title
+    const matches = (b) => {
+      if (!b) return false;
+      return (
+        (b.id && String(b.id).toLowerCase() === target) ||
+        (b.isbn && String(b.isbn).toLowerCase() === target) ||
+        (b.title && b.title.toLowerCase() === target) ||
+        (b.bookname && b.bookname.toLowerCase() === target)
+      );
+    };
+
+    // B) Check in-memory cache
+    const cached = googleBooksCache.find(matches);
     if (cached) return cached;
 
-    const fallback = FALLBACK_BOOKS.find((b) => String(b.id) === String(id));
-    if (fallback) return fallback;
+    // C) Check the 900 books dataset (/data/books.json)
+    try {
+      const res = await fetch("/data/books.json");
+      if (res.ok) {
+        const list = await res.json();
+        if (Array.isArray(list)) {
+          const found = list.find(matches);
+          if (found) {
+            const normalized = normalizeBackendBook(found);
+            googleBooksCache.push(normalized);
+            return normalized;
+          }
+        }
+      }
+    } catch (e) {
+      // Continue to next fallback
+    }
 
-    // Fetch directly from Google Books API by Volume ID
+    // D) Try Google Books API by Volume ID
     try {
       const res = await fetch(`https://www.googleapis.com/books/v1/volumes/${id}`);
       if (res.ok) {
@@ -374,10 +406,14 @@ export const api = {
         return book;
       }
     } catch (e) {
-      console.warn("Could not fetch volume by ID:", e.message);
+      // Continue
     }
 
-    return googleBooksCache[0] || FALLBACK_BOOKS[0];
+    // E) Try default fallback catalog
+    const fallback = FALLBACK_BOOKS.find(matches);
+    if (fallback) return fallback;
+
+    return null;
   },
 
   // 3. PostgreSQL Database Loan Methods (Express Backend)

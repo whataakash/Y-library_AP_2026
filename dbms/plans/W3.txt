@@ -1,0 +1,49 @@
+=== Run 1 ===
+QUERY PLAN
+Insert on borrow_records  (cost=0.00..1.07 rows=0 width=0) (actual time=0.291..0.291 rows=0.00 loops=1)
+  Buffers: shared hit=78
+  ->  Seq Scan on users  (cost=0.00..1.07 rows=1 width=738) (actual time=0.033..0.034 rows=1.00 loops=1)
+        Filter: ((email)::text = 'alex.morgan@y-university.edu'::text)
+        Rows Removed by Filter: 3
+        Buffers: shared hit=16
+Planning:
+  Buffers: shared hit=138
+Planning Time: 0.248 ms
+Trigger for constraint borrow_records_book_id_fkey: time=0.280 calls=1
+Trigger for constraint borrow_records_user_id_fkey: time=0.029 calls=1
+Execution Time: 0.611 ms
+(12 rows)
+
+
+=== Run 2 ===
+QUERY PLAN
+Insert on borrow_records  (cost=0.00..1.07 rows=0 width=0) (actual time=0.087..0.087 rows=0.00 loops=1)
+  Buffers: shared hit=78
+  ->  Seq Scan on users  (cost=0.00..1.07 rows=1 width=738) (actual time=0.023..0.024 rows=1.00 loops=1)
+        Filter: ((email)::text = 'alex.morgan@y-university.edu'::text)
+        Rows Removed by Filter: 3
+        Buffers: shared hit=16
+Planning:
+  Buffers: shared hit=138
+Planning Time: 0.242 ms
+Trigger for constraint borrow_records_book_id_fkey: time=0.216 calls=1
+Trigger for constraint borrow_records_user_id_fkey: time=0.023 calls=1
+Execution Time: 0.336 ms
+(12 rows)
+
+
+=== Run 3 ===
+QUERY PLAN
+Insert on borrow_records  (cost=0.00..1.07 rows=0 width=0) (actual time=0.086..0.086 rows=0.00 loops=1)
+  Buffers: shared hit=78
+  ->  Seq Scan on users  (cost=0.00..1.07 rows=1 width=738) (actual time=0.023..0.023 rows=1.00 loops=1)
+        Filter: ((email)::text = 'alex.morgan@y-university.edu'::text)
+        Rows Removed by Filter: 3
+        Buffers: shared hit=16
+Planning:
+  Buffers: shared hit=138
+Planning Time: 0.252 ms
+Trigger for constraint borrow_records_book_id_fkey: time=0.196 calls=1
+Trigger for constraint borrow_records_user_id_fkey: time=0.020 calls=1
+Execution Time: 0.311 ms
+(12 rows)

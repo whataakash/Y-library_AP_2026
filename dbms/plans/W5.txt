@@ -1,0 +1,43 @@
+=== Run 1 ===
+QUERY PLAN
+Update on users  (cost=0.00..1.05 rows=0 width=0) (actual time=0.224..0.224 rows=0.00 loops=1)
+  Buffers: shared hit=7
+  ->  Seq Scan on users  (cost=0.00..1.05 rows=1 width=70) (actual time=0.189..0.189 rows=1.00 loops=1)
+        Filter: (id = 1)
+        Rows Removed by Filter: 3
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=129
+Planning Time: 0.220 ms
+Execution Time: 0.257 ms
+(10 rows)
+
+
+=== Run 2 ===
+QUERY PLAN
+Update on users  (cost=0.00..1.05 rows=0 width=0) (actual time=0.040..0.040 rows=0.00 loops=1)
+  Buffers: shared hit=7
+  ->  Seq Scan on users  (cost=0.00..1.05 rows=1 width=70) (actual time=0.010..0.010 rows=1.00 loops=1)
+        Filter: (id = 1)
+        Rows Removed by Filter: 3
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=129
+Planning Time: 0.202 ms
+Execution Time: 0.074 ms
+(10 rows)
+
+
+=== Run 3 ===
+QUERY PLAN
+Update on users  (cost=0.00..1.05 rows=0 width=0) (actual time=0.039..0.039 rows=0.00 loops=1)
+  Buffers: shared hit=7
+  ->  Seq Scan on users  (cost=0.00..1.05 rows=1 width=70) (actual time=0.010..0.010 rows=1.00 loops=1)
+        Filter: (id = 1)
+        Rows Removed by Filter: 3
+        Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=129
+Planning Time: 0.194 ms
+Execution Time: 0.072 ms
+(10 rows)

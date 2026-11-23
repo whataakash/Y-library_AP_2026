@@ -1,0 +1,79 @@
+=== Run 1 ===
+QUERY PLAN
+Sort  (cost=2.61..2.62 rows=2 width=129) (actual time=0.243..0.244 rows=2.00 loops=1)
+  Sort Key: b.due_date
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=7
+  ->  Merge Join  (cost=1.37..2.60 rows=2 width=129) (actual time=0.236..0.238 rows=2.00 loops=1)
+        Merge Cond: (k.id = b.book_id)
+        Buffers: shared hit=4
+        ->  Index Scan using books_pkey on books k  (cost=0.28..79.41 rows=900 width=42) (actual time=0.002..0.004 rows=14.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=3
+        ->  Sort  (cost=1.10..1.10 rows=2 width=67) (actual time=0.008..0.008 rows=2.00 loops=1)
+              Sort Key: b.book_id
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=1
+              ->  Seq Scan on borrow_records b  (cost=0.00..1.09 rows=2 width=67) (actual time=0.005..0.005 rows=2.00 loops=1)
+                    Filter: (((status)::text = 'BORROWED'::text) AND (due_date < now()))
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=438
+Planning Time: 0.518 ms
+Execution Time: 0.261 ms
+(22 rows)
+
+
+=== Run 2 ===
+QUERY PLAN
+Sort  (cost=2.61..2.62 rows=2 width=129) (actual time=0.023..0.023 rows=2.00 loops=1)
+  Sort Key: b.due_date
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=7
+  ->  Merge Join  (cost=1.37..2.60 rows=2 width=129) (actual time=0.015..0.017 rows=2.00 loops=1)
+        Merge Cond: (k.id = b.book_id)
+        Buffers: shared hit=4
+        ->  Index Scan using books_pkey on books k  (cost=0.28..79.41 rows=900 width=42) (actual time=0.002..0.004 rows=14.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=3
+        ->  Sort  (cost=1.10..1.10 rows=2 width=67) (actual time=0.006..0.006 rows=2.00 loops=1)
+              Sort Key: b.book_id
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=1
+              ->  Seq Scan on borrow_records b  (cost=0.00..1.09 rows=2 width=67) (actual time=0.002..0.002 rows=2.00 loops=1)
+                    Filter: (((status)::text = 'BORROWED'::text) AND (due_date < now()))
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=438
+Planning Time: 0.609 ms
+Execution Time: 0.040 ms
+(22 rows)
+
+
+=== Run 3 ===
+QUERY PLAN
+Sort  (cost=2.61..2.62 rows=2 width=129) (actual time=0.023..0.023 rows=2.00 loops=1)
+  Sort Key: b.due_date
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=7
+  ->  Merge Join  (cost=1.37..2.60 rows=2 width=129) (actual time=0.015..0.017 rows=2.00 loops=1)
+        Merge Cond: (k.id = b.book_id)
+        Buffers: shared hit=4
+        ->  Index Scan using books_pkey on books k  (cost=0.28..79.41 rows=900 width=42) (actual time=0.002..0.004 rows=14.00 loops=1)
+              Index Searches: 1
+              Buffers: shared hit=3
+        ->  Sort  (cost=1.10..1.10 rows=2 width=67) (actual time=0.005..0.005 rows=2.00 loops=1)
+              Sort Key: b.book_id
+              Sort Method: quicksort  Memory: 25kB
+              Buffers: shared hit=1
+              ->  Seq Scan on borrow_records b  (cost=0.00..1.09 rows=2 width=67) (actual time=0.002..0.002 rows=2.00 loops=1)
+                    Filter: (((status)::text = 'BORROWED'::text) AND (due_date < now()))
+                    Rows Removed by Filter: 3
+                    Buffers: shared hit=1
+Planning:
+  Buffers: shared hit=438
+Planning Time: 0.539 ms
+Execution Time: 0.040 ms
+(22 rows)

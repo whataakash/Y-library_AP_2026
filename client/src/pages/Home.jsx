@@ -171,7 +171,7 @@ export default function Home({ onSelectBook, setActiveTab }) {
           <div className="modern-hero-btn-row">
             <button
               className="modern-hero-btn-primary"
-              onClick={() => onSelectBook(featuredBook.id)}
+              onClick={() => onSelectBook(featuredBook)}
             >
               <Icon name="play" size={14} color="#000000" />
               <span>Read / Details</span>
@@ -259,7 +259,7 @@ export default function Home({ onSelectBook, setActiveTab }) {
             {userContinueReading.map((item) => (
               <div
                 key={item.bookId || item.id}
-                onClick={() => onSelectBook(item.bookId)}
+                onClick={() => onSelectBook(item.book || item.bookId || item.id)}
                 style={{
                   display: "flex",
                   gap: "14px",

@@ -137,5 +137,30 @@
       "streakDays": 1
     },
     "createdAt": "2026-11-22T23:21:40.886Z"
+  },
+  {
+    "id": 1795424807969,
+    "name": "Leo Hoffman",
+    "email": "leo.hoffman.econ@gmail.com",
+    "googleId": "google_3918239102",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+    "major": "Computer Science & AI",
+    "year": "Year 1",
+    "preferredGenres": [],
+    "interests": [
+      "artificial intelligence"
+    ],
+    "readBooks": [],
+    "favorites": [
+      "9781544514208"
+    ],
+    "continueReading": [],
+    "readingGoal": {
+      "target": 10,
+      "completed": 0,
+      "streakDays": 1
+    },
+    "createdAt": "2026-11-23T09:06:47.969Z",
+    "updatedAt": "2026-11-23T10:50:46.484Z"
   }
 ]

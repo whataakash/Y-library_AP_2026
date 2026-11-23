@@ -375,7 +375,7 @@ export default function Dashboard({ onSelectBook, setActiveTab }) {
                   </div>
                   <div style={{ display: "flex", gap: "8px", marginTop: "10px" }}>
                     <button
-                      onClick={() => onSelectBook(item.bookId)}
+                      onClick={() => onSelectBook(item.book || item.bookId || item.id)}
                       style={{
                         padding: "5px 12px",
                         borderRadius: "6px",
