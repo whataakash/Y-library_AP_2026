@@ -113,6 +113,29 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
   const matchScore = calculateBookMatchScore(user, book);
   const recommendationReason = getRecommendationReason(user, book);
 
+  const getEstimatedReadingHours = () => {
+    if (!book) return 5;
+    if (typeof book.readingTime === "number") return book.readingTime;
+    if (typeof book.reading_time === "number") return book.reading_time;
+
+    let pages = book.pageCount || book.pages || book.page_count || book.numPages;
+    if (!pages && book.edition) {
+      const pageMatch = String(book.edition).match(/(\d+)\s*(?:pages?|pp?\.?)/i);
+      if (pageMatch) {
+        pages = parseInt(pageMatch[1], 10);
+      } else if (/^\d+$/.test(String(book.edition).trim()) && Number(book.edition) > 30) {
+        pages = Number(book.edition);
+      }
+    }
+    const pagesNum = Number(pages);
+    if (pagesNum && !isNaN(pagesNum) && pagesNum > 0) {
+      return Math.max(1, Math.round(pagesNum / 50));
+    }
+    return 5;
+  };
+
+  const readingHours = getEstimatedReadingHours();
+
   return (
     <div>
       <button
@@ -336,6 +359,18 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
               }}
             >
               ★ <b>{book.rating || "4.5"}</b> Rating
+            </span>
+            <span
+              style={{
+                fontSize: "12px",
+                padding: "4px 10px",
+                borderRadius: "6px",
+                background: "var(--steam-input-bg)",
+                border: "1px solid var(--steam-border)",
+                color: "var(--steam-text)",
+              }}
+            >
+              ⏱ ~{readingHours} hrs read
             </span>
           </div>
 
