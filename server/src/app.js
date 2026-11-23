@@ -6,6 +6,7 @@ const cors = require("cors");
 const authRoutes = require("./routes/auth.routes");
 const bookRoutes = require("./routes/book.routes");
 const borrowRoutes = require("./routes/borrow.routes");
+const chatRoutes = require("./routes/chat.routes");
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.get("/api/health", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
 app.use("/api/borrow", borrowRoutes);
+app.use("/api/chat", chatRoutes);
 
 // Global Error Handler for beginners
 app.use((err, req, res, next) => {
