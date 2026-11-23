@@ -22,6 +22,7 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
   const [lockMsg, setLockMsg] = useState("");
   const [borrowMsg, setBorrowMsg] = useState("");
   const [isBorrowing, setIsBorrowing] = useState(false);
+  const [copiedIsbn, setCopiedIsbn] = useState(false);
 
   // Load book details whenever propBook or bookId changes
   useEffect(() => {
@@ -94,6 +95,14 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
     });
     setBook(updated);
     setReviewText("");
+  };
+
+  const handleCopyIsbn = () => {
+    navigator.clipboard.writeText(book.isbn);
+    setCopiedIsbn(true);
+    setTimeout(() => {
+      setCopiedIsbn(false);
+    }, 2000);
   };
 
   if (!book) return <div style={{ padding: "40px" }}>Loading book details...</div>;
@@ -251,9 +260,58 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
                 background: "var(--steam-input-bg)",
                 border: "1px solid var(--steam-border)",
                 color: "var(--steam-text)",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                position: "relative",
               }}
             >
-              ISBN: <b>{book.isbn || "N/A"}</b>
+              <span>
+                ISBN: <b>{book.isbn || "N/A"}</b>
+              </span>
+              <button
+                type="button"
+                onClick={handleCopyIsbn}
+                title={copiedIsbn ? "Copied!" : "Copy ISBN"}
+                aria-label="Copy ISBN"
+                style={{
+                  background: copiedIsbn ? "rgba(34, 197, 94, 0.2)" : "rgba(255, 255, 255, 0.08)",
+                  border: `1px solid ${copiedIsbn ? "#22c55e" : "var(--steam-border)"}`,
+                  color: copiedIsbn ? "#22c55e" : "var(--steam-text)",
+                  borderRadius: "4px",
+                  padding: "2px 6px",
+                  fontSize: "11px",
+                  cursor: "pointer",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "4px",
+                  transition: "all 0.2s ease",
+                  lineHeight: "1.2",
+                }}
+              >
+                <Icon name={copiedIsbn ? "check" : "clipboard"} size={11} color={copiedIsbn ? "#22c55e" : "currentColor"} />
+                <span>{copiedIsbn ? "Copied!" : "Copy"}</span>
+              </button>
+              {copiedIsbn && (
+                <span
+                  style={{
+                    position: "absolute",
+                    top: "-24px",
+                    right: "0",
+                    background: "#22c55e",
+                    color: "#ffffff",
+                    fontSize: "10px",
+                    fontWeight: "700",
+                    padding: "2px 6px",
+                    borderRadius: "4px",
+                    boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
+                    whiteSpace: "nowrap",
+                    pointerEvents: "none",
+                  }}
+                >
+                  Copied!
+                </span>
+              )}
             </span>
             <span
               style={{
