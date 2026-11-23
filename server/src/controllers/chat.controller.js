@@ -134,9 +134,10 @@ async function generateAssistantReply(message, studentName, enrollmentId) {
   if (
     q.includes("location") ||
     q.includes("shelf") ||
+    q.includes("shelves") ||
     q.includes("where") ||
-    q.includes("wing") ||
-    q.includes("floor")
+    q.includes("floor") ||
+    /\b(wing|wings)\b/.test(q)
   ) {
     const locationsText = PROJECT_KNOWLEDGE.libraryLocations
       .map(
