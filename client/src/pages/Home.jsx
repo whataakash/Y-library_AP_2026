@@ -350,6 +350,19 @@ export default function Home({
         </div>
       </div>
 
+      {/* Subtle Result Count Summary */}
+      <p
+        className="catalog-count-summary"
+        style={{
+          fontSize: "13px",
+          color: "var(--steam-muted)",
+          marginTop: "24px",
+          marginBottom: "8px",
+        }}
+      >
+        Showing {books.length} available library books
+      </p>
+
       {/* SECTION 1: Continue Reading (If user has books in progress) */}
       {userContinueReading.length > 0 && (
         <section className="book-shelf-wrap" style={{ marginTop: "38px" }}>
