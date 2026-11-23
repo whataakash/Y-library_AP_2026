@@ -2,7 +2,7 @@
 
 **Course:** Database Management Systems · **Applied Programming (AP) Project**  
 **Database:** PostgreSQL 18.6 on Apple Silicon Mac  
-**Schema:** akash, ,   
+**Schema:** `users`, `books`, `borrow_records`   
 **Methodology:** Each query executed 3 times via `EXPLAIN (ANALYZE, BUFFERS)`; average execution time recorded. Write queries wrapped in `BEGIN ... ROLLBACK`.
 
 ---
