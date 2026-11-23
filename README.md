@@ -99,6 +99,8 @@ The server will run on: **`http://localhost:5001`**
 - Health Check: `http://localhost:5001/api/health`
 - Books API: `http://localhost:5001/api/books`
 - Borrow API: `http://localhost:5001/api/borrow`
+- AI Chatbot API: `http://localhost:5001/api/chat/message`
+- Library FAQ API: `http://localhost:5001/api/chat/faq`
 
 ### Step 3: Start React.js Frontend
 In a new terminal window:
@@ -133,3 +135,9 @@ When presenting to your professors or evaluators, explain the project using thes
 - The React client in `client/src/services/api.js` queries our Express backend (`http://localhost:5001/api`).
 - If the backend is running, it renders live PostgreSQL data with full CRUD and borrowing support.
 - If the local database is ever offline during a quick presentation, it automatically falls back to the live Google Books API, ensuring the demo never breaks.
+
+### 5. Campus Library AI Chatbot
+- **Student Enrollment Gate:** Prior to initiating a conversation, the assistant requests the student's **Full Name** and **University Enrollment ID** (e.g., `EN2024101` or `2026AP042`) to personalize interactions, track sessions, and link borrower inquiries.
+- **Project Knowledge Base:** The assistant is trained on the entire project architecture, database schemas (`books`, `borrow_records`, `users`), physical shelf coordinates across campus wings (East Wing CS/AI, West Wing Philosophy/History, North Hall Sciences), borrowing policies (14-day duration, $0.50/day late fees, max 4 books), and live catalog inventory checks.
+- **Dual-Engine Architecture:** The chatbot communicates with the Express backend endpoint `POST /api/chat/message`, and gracefully falls back to a built-in client knowledge engine if the backend is offline.
+- **Steam-Inspired Design:** Built with dark & orange accent tokens (`--steam-orange`), animated glowing FAB launcher, typing indicators, collapsible/expandable window, and categorized quick inquiry chips.
