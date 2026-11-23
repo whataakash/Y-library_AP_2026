@@ -1,0 +1,846 @@
+/* client/src/components/Chatbot/Chatbot.css */
+/* Styles for Y-Library AI Chatbot & Floating Action Button */
+
+/* Floating Action Button (FAB) */
+.steam-chatbot-fab {
+  position: fixed;
+  bottom: 84px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--steam-orange) 0%, #ff7e67 100%);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px var(--steam-orange-glow), 0 4px 12px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.steam-chatbot-fab:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 12px 30px var(--steam-orange-glow), 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+.steam-chatbot-fab:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.steam-chatbot-fab.active {
+  background: var(--steam-panel);
+  border-color: var(--steam-border);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.steam-chatbot-fab-pulse {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  bottom: -3px;
+  left: -3px;
+  border-radius: 50%;
+  border: 2px solid var(--steam-orange);
+  animation: chatbot-pulse 2.2s infinite;
+  pointer-events: none;
+}
+
+@keyframes chatbot-pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+.steam-chatbot-fab-tooltip {
+  position: absolute;
+  right: 64px;
+  white-space: nowrap;
+  background: var(--steam-panel);
+  color: var(--steam-text);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--steam-border);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(10px);
+  transition: all 0.2s ease;
+}
+
+.steam-chatbot-fab:hover .steam-chatbot-fab-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Chatbot Overlay & Modal Window */
+.steam-chatbot-overlay {
+  position: fixed;
+  bottom: 148px;
+  right: 28px;
+  z-index: 9998;
+  width: 440px;
+  height: 620px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 170px);
+  display: flex;
+  flex-direction: column;
+  animation: chatbot-pop-in 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.steam-chatbot-overlay.expanded {
+  width: 720px;
+  height: 750px;
+  max-height: calc(100vh - 120px);
+  bottom: 90px;
+}
+
+@keyframes chatbot-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.steam-chatbot-window {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var(--steam-panel);
+  border: 1px solid var(--steam-border);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--steam-border);
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+
+/* Header */
+.steam-chatbot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: var(--steam-surface);
+  border-bottom: 1px solid var(--steam-border);
+}
+
+.steam-chatbot-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.steam-chatbot-header-avatar {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(249, 92, 75, 0.12);
+  border: 1px solid rgba(249, 92, 75, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steam-chatbot-status-online {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #10b981;
+  border: 2px solid var(--steam-panel);
+}
+
+.steam-chatbot-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.steam-chatbot-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.steam-chatbot-header-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--steam-text);
+  letter-spacing: 0.3px;
+}
+
+.steam-chatbot-ai-badge {
+  font-size: 9px;
+  font-weight: 800;
+  background: var(--steam-orange);
+  color: #ffffff;
+  padding: 1px 6px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.steam-chatbot-header-student {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.steam-chatbot-student-name {
+  font-weight: 600;
+  color: var(--steam-text);
+}
+
+.steam-chatbot-student-id {
+  color: var(--steam-orange);
+  font-weight: 700;
+  font-family: monospace;
+}
+
+.steam-chatbot-switch-btn {
+  background: transparent;
+  border: none;
+  color: var(--steam-muted);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0 4px;
+  text-decoration: underline;
+  transition: color 0.15s;
+}
+
+.steam-chatbot-switch-btn:hover {
+  color: var(--steam-orange);
+}
+
+.steam-chatbot-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.steam-chatbot-ctrl-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.steam-chatbot-ctrl-btn:hover {
+  background: var(--steam-panel-hover);
+}
+
+.steam-chatbot-ctrl-btn.close:hover {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+/* Body */
+.steam-chatbot-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: var(--steam-panel);
+}
+
+.steam-chatbot-body.enrollment-view {
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* Enrollment Form Card */
+.steam-chatbot-enrollment {
+  width: 100%;
+  max-width: 360px;
+}
+
+.steam-chatbot-enrollment-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.steam-chatbot-avatar-badge {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.steam-chatbot-avatar-inner {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(249, 92, 75, 0.15);
+  border: 1px solid rgba(249, 92, 75, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steam-chatbot-pulse-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--steam-orange);
+  box-shadow: 0 0 10px var(--steam-orange);
+}
+
+.steam-chatbot-enrollment-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--steam-text);
+  margin-bottom: 6px;
+}
+
+.steam-chatbot-enrollment-subtitle {
+  font-size: 12px;
+  color: var(--steam-muted);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.steam-chatbot-error-banner {
+  width: 100%;
+  padding: 8px 12px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  color: #ef4444;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.steam-chatbot-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.steam-chatbot-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.steam-chatbot-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--steam-text);
+}
+
+.steam-chatbot-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.steam-chatbot-input-icon {
+  position: absolute;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.steam-chatbot-input {
+  width: 100%;
+  padding: 10px 14px 10px 36px;
+  background: var(--steam-input-bg);
+  border: 1px solid var(--steam-border);
+  border-radius: 12px;
+  color: var(--steam-text);
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.steam-chatbot-input:focus {
+  outline: none;
+  border-color: var(--steam-orange);
+  box-shadow: 0 0 0 3px var(--steam-orange-glow);
+}
+
+.steam-chatbot-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  margin-top: 6px;
+  border-radius: 12px;
+  background: var(--steam-orange);
+  color: #ffffff;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 14px var(--steam-orange-glow);
+}
+
+.steam-chatbot-submit-btn:hover {
+  background: var(--steam-orange-hover);
+  transform: translateY(-1px);
+}
+
+.steam-chatbot-enrollment-footer {
+  margin-top: 18px;
+  font-size: 10px;
+  color: var(--steam-muted);
+  line-height: 1.4;
+}
+
+/* Suggested Queries Drawer */
+.steam-chatbot-suggested-section {
+  padding: 12px 16px 8px 16px;
+  border-bottom: 1px solid var(--steam-border);
+  background: var(--steam-surface);
+  flex-shrink: 0;
+}
+
+.steam-chatbot-suggested-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.steam-chatbot-suggested-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--steam-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.steam-chatbot-cat-pill-row {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.steam-chatbot-cat-pill {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--steam-border);
+  background: transparent;
+  color: var(--steam-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.steam-chatbot-cat-pill.active {
+  background: var(--steam-orange);
+  border-color: var(--steam-orange);
+  color: #ffffff;
+}
+
+.steam-chatbot-chip-grid {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.steam-chatbot-chip-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.steam-chatbot-query-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--steam-panel-hover);
+  border: 1px solid var(--steam-border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 11px;
+  color: var(--steam-text);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.steam-chatbot-query-chip:hover {
+  border-color: var(--steam-orange);
+  color: var(--steam-orange);
+  transform: translateY(-1px);
+}
+
+.steam-chatbot-chip-arrow {
+  color: var(--steam-orange);
+  font-size: 11px;
+}
+
+/* Messages Scroll Area */
+.steam-chatbot-messages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.steam-chatbot-msg-wrapper {
+  display: flex;
+  gap: 10px;
+  max-width: 90%;
+  animation: chatbot-fade-in 0.2s ease-out;
+}
+
+@keyframes chatbot-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.steam-chatbot-msg-wrapper.bot {
+  align-self: flex-start;
+}
+
+.steam-chatbot-msg-wrapper.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.steam-chatbot-avatar {
+  flex-shrink: 0;
+}
+
+.steam-chatbot-bot-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: rgba(249, 92, 75, 0.15);
+  border: 1px solid rgba(249, 92, 75, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steam-chatbot-user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--steam-orange);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.steam-chatbot-bubble-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.steam-chatbot-bubble-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.steam-chatbot-sender-name {
+  font-weight: 700;
+  color: var(--steam-text);
+}
+
+.steam-chatbot-timestamp {
+  color: var(--steam-muted);
+  font-size: 10px;
+}
+
+.steam-chatbot-source-pill {
+  font-size: 9px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--steam-panel-hover);
+  color: var(--steam-muted);
+  border: 1px solid var(--steam-border);
+}
+
+.steam-chatbot-bubble-body {
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--steam-text);
+  word-break: break-word;
+}
+
+.steam-chatbot-msg-wrapper.bot .steam-chatbot-bubble-body {
+  background: var(--steam-panel-hover);
+  border: 1px solid var(--steam-border);
+  border-top-left-radius: 4px;
+}
+
+.steam-chatbot-msg-wrapper.user .steam-chatbot-bubble-body {
+  background: var(--steam-orange);
+  color: #ffffff;
+  border-top-right-radius: 4px;
+}
+
+.steam-chatbot-strong {
+  font-weight: 700;
+  color: var(--steam-text);
+}
+
+.steam-chatbot-msg-wrapper.user .steam-chatbot-strong {
+  color: #ffffff;
+}
+
+.steam-chatbot-inline-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #ff9d8f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.steam-chatbot-bullet-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 3px;
+}
+
+.steam-chatbot-bullet-dot {
+  color: var(--steam-orange);
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+.steam-chatbot-msg-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.steam-chatbot-msg-suggestion-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: var(--steam-surface);
+  border: 1px solid var(--steam-border);
+  border-radius: 8px;
+  font-size: 11px;
+  color: var(--steam-text);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.steam-chatbot-msg-suggestion-chip:hover {
+  border-color: var(--steam-orange);
+  color: var(--steam-orange);
+}
+
+.steam-chatbot-bubble-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.steam-chatbot-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  font-size: 10px;
+  color: var(--steam-muted);
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.15s;
+}
+
+.steam-chatbot-copy-btn:hover {
+  color: var(--steam-orange);
+}
+
+/* Typing Indicator Animation */
+.steam-chatbot-typing-bubble {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 16px;
+  background: var(--steam-panel-hover);
+  border: 1px solid var(--steam-border);
+  border-radius: 14px;
+  border-top-left-radius: 4px;
+  width: fit-content;
+}
+
+.steam-chatbot-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--steam-orange);
+  animation: chatbot-bounce 1.4s infinite ease-in-out both;
+}
+
+.steam-chatbot-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.steam-chatbot-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes chatbot-bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Input Bar */
+.steam-chatbot-input-bar {
+  padding: 12px 16px 14px 16px;
+  background: var(--steam-surface);
+  border-top: 1px solid var(--steam-border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.steam-chatbot-input-container {
+  display: flex;
+  align-items: center;
+  background: var(--steam-input-bg);
+  border: 1px solid var(--steam-border);
+  border-radius: 14px;
+  padding: 4px 6px 4px 14px;
+  transition: all 0.2s;
+}
+
+.steam-chatbot-input-container:focus-within {
+  border-color: var(--steam-orange);
+  box-shadow: 0 0 0 3px var(--steam-orange-glow);
+}
+
+.steam-chatbot-main-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--steam-text);
+  font-size: 13px;
+  padding: 8px 4px;
+}
+
+.steam-chatbot-main-input::placeholder {
+  color: var(--steam-muted);
+}
+
+.steam-chatbot-send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--steam-orange);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.steam-chatbot-send-btn:hover:not(:disabled) {
+  background: var(--steam-orange-hover);
+  transform: scale(1.05);
+}
+
+.steam-chatbot-send-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.steam-chatbot-input-subtext {
+  font-size: 10px;
+  color: var(--steam-muted);
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .steam-chatbot-overlay {
+    bottom: 74px;
+    right: 12px;
+    width: calc(100vw - 24px);
+    height: calc(100vh - 100px);
+  }
+
+  .steam-chatbot-fab {
+    bottom: 74px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+  }
+}
