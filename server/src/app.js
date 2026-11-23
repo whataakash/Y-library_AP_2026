@@ -17,8 +17,8 @@ app.use(express.json()); // Parse incoming JSON request bodies
 // Health check endpoint
 app.get("/api/health", (req, res) => {
   res.json({
-    status: "OK",
-    message: "Y-Library Express API is running smoothly",
+    status: "ok",
+    uptimeSeconds: Math.floor(process.uptime()),
     timestamp: new Date().toISOString(),
   });
 });
