@@ -4,7 +4,7 @@ import Icon from "./Icon";
 import AuthModal from "./AuthModal";
 import { GoogleLogo } from "./GoogleAccountChooserModal";
 
-export default function Sidebar({ activeTab, setActiveTab, onSelectBook }) {
+export default function Sidebar({ activeTab, setActiveTab, onSelectBook, onOpenChatbot }) {
   const { user, isAuthenticated } = useAuth();
   const [isAuthOpen, setIsAuthOpen] = useState(false);
 
@@ -129,6 +129,36 @@ export default function Sidebar({ activeTab, setActiveTab, onSelectBook }) {
                 </button>
               );
             })}
+
+            {/* AI Assistant Quick Launcher */}
+            <button
+              type="button"
+              className="steam-nav-item"
+              onClick={onOpenChatbot}
+              style={{
+                marginTop: "10px",
+                background: "rgba(249, 92, 75, 0.1)",
+                border: "1px solid rgba(249, 92, 75, 0.25)",
+              }}
+              title="Open Y-Library AI Assistant"
+            >
+              <Icon name="chat" size={18} color="var(--steam-orange)" />
+              <span style={{ color: "var(--steam-orange)", fontWeight: "700" }}>AI Assistant</span>
+              <span
+                style={{
+                  marginLeft: "auto",
+                  fontSize: "9px",
+                  fontWeight: "800",
+                  background: "var(--steam-orange)",
+                  color: "#ffffff",
+                  padding: "1px 6px",
+                  borderRadius: "6px",
+                  letterSpacing: "0.5px",
+                }}
+              >
+                AI
+              </span>
+            </button>
           </nav>
         </div>
 

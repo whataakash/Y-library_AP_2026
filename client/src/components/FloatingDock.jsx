@@ -1,7 +1,7 @@
 import Icon from "./Icon";
 
 // Modern Floating Dock inspired by the mockup
-export default function FloatingDock({ activeTab, setActiveTab }) {
+export default function FloatingDock({ activeTab, setActiveTab, onOpenChatbot }) {
   const dockItems = [
     { id: "home", icon: "home", label: "Home" },
     { id: "library", icon: "heart", label: "Favorites" },
@@ -29,6 +29,22 @@ export default function FloatingDock({ activeTab, setActiveTab }) {
           </button>
         );
       })}
+
+      {/* Direct AI Assistant Dock Trigger */}
+      {onOpenChatbot && (
+        <button
+          type="button"
+          className="steam-dock-item"
+          onClick={onOpenChatbot}
+          title="Ask AI Assistant"
+          style={{
+            background: "rgba(249, 92, 75, 0.2)",
+            border: "1px solid rgba(249, 92, 75, 0.4)",
+          }}
+        >
+          <Icon name="chat" size={18} color="var(--steam-orange)" />
+        </button>
+      )}
     </nav>
   );
 }

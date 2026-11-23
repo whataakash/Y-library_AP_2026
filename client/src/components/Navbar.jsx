@@ -22,6 +22,7 @@ export default function Navbar({
   setActiveTab,
   activeCategory = "All",
   onSelectCategory,
+  onOpenChatbot,
 }) {
   const { user, isAuthenticated, logout } = useAuth();
   const { isDark, toggleTheme } = useTheme();
@@ -96,6 +97,21 @@ export default function Navbar({
                 color={isDark ? "var(--color-stone)" : "var(--color-coral)"}
               />
             </div>
+          </button>
+
+          {/* AI Assistant Pill Button */}
+          <button
+            className="steam-icon-btn"
+            title="Ask Y-Library AI Assistant"
+            onClick={onOpenChatbot}
+            style={{
+              background: "rgba(249, 92, 75, 0.12)",
+              border: "1px solid rgba(249, 92, 75, 0.3)",
+              color: "var(--steam-orange)",
+            }}
+          >
+            <Icon name="chat" size={17} color="var(--steam-orange)" />
+            <span className="steam-badge-dot" style={{ background: "var(--steam-orange)" }} />
           </button>
 
           {/* Notification Bell */}

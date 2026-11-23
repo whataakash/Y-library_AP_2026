@@ -4,6 +4,8 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import FloatingDock from "./components/FloatingDock";
+import AIChatbot from "./components/Chatbot/AIChatbot";
+import ChatTriggerButton from "./components/Chatbot/ChatTriggerButton";
 import Home from "./pages/Home";
 import Books from "./pages/Books";
 import BookDetails from "./pages/BookDetails";
@@ -18,6 +20,7 @@ export default function App() {
   const [selectedBookId, setSelectedBookId] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
 
   // Modular handler: accepts either a book object OR a book ID
   // When a book tile is clicked, the full book object is passed directly via props
@@ -49,7 +52,12 @@ export default function App() {
       <AuthProvider>
         <div className="steam-app-layout">
           {/* Left Steam Sidebar */}
-          <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+          <Sidebar
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            onSelectBook={handleSelectBook}
+            onOpenChatbot={() => setIsChatbotOpen(true)}
+          />
 
           {/* Right Main Area */}
           <div className="steam-main-area">
@@ -61,6 +69,7 @@ export default function App() {
               setActiveTab={setActiveTab}
               activeCategory={selectedCategory}
               onSelectCategory={handleSelectCategory}
+              onOpenChatbot={() => setIsChatbotOpen(true)}
             />
 
             {/* Dynamic Content Views */}
@@ -107,7 +116,21 @@ export default function App() {
           </div>
 
           {/* Bottom Floating Navigation Dock */}
-          <FloatingDock activeTab={activeTab} setActiveTab={setActiveTab} />
+          <FloatingDock
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            onOpenChatbot={() => setIsChatbotOpen((prev) => !prev)}
+          />
+
+          {/* Floating AI Chatbot Action Button & Window */}
+          <ChatTriggerButton
+            isOpen={isChatbotOpen}
+            onClick={() => setIsChatbotOpen((prev) => !prev)}
+          />
+          <AIChatbot
+            isOpen={isChatbotOpen}
+            onClose={() => setIsChatbotOpen(false)}
+          />
         </div>
       </AuthProvider>
     </ThemeProvider>
