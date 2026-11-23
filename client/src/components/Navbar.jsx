@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
 import Icon from "./Icon";
@@ -29,6 +29,32 @@ export default function Navbar({
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
+  useEffect(() => {
+    const handleGlobalKeyDown = (e) => {
+      if (e.key === "/") {
+        const targetTag = e.target?.tagName?.toLowerCase();
+        const activeTag = document.activeElement?.tagName?.toLowerCase();
+        const isTyping =
+          targetTag === "input" ||
+          targetTag === "textarea" ||
+          targetTag === "select" ||
+          e.target?.isContentEditable ||
+          activeTag === "input" ||
+          activeTag === "textarea" ||
+          activeTag === "select" ||
+          document.activeElement?.isContentEditable;
+
+        if (!isTyping) {
+          e.preventDefault();
+          document.querySelector(".search-input")?.focus();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleGlobalKeyDown);
+    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
+  }, []);
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       onSearchSubmit();
@@ -57,7 +83,7 @@ export default function Navbar({
           </span>
           <input
             type="text"
-            className="steam-search-input"
+            className="steam-search-input search-input"
             placeholder="Search 900+ books, bestsellers, authors, ISBN..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
