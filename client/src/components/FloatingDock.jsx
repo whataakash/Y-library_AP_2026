@@ -1,7 +1,23 @@
+import { useState, useEffect } from "react";
 import Icon from "./Icon";
 
 // Modern Floating Dock inspired by the mockup
 export default function FloatingDock({ activeTab, setActiveTab, onOpenChatbot }) {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const dockItems = [
     { id: "home", icon: "home", label: "Home" },
     { id: "library", icon: "heart", label: "Favorites" },
@@ -43,6 +59,19 @@ export default function FloatingDock({ activeTab, setActiveTab, onOpenChatbot })
           }}
         >
           <Icon name="chat" size={18} color="var(--steam-orange)" />
+        </button>
+      )}
+
+      {/* Floating Scroll-to-Top Button */}
+      {showScrollTop && (
+        <button
+          type="button"
+          className="steam-dock-item scroll-to-top-btn scroll-to-top"
+          onClick={scrollToTop}
+          title="Scroll to Top"
+          aria-label="Scroll to top"
+        >
+          <Icon name="chevronUp" size={18} />
         </button>
       )}
     </nav>
