@@ -23,7 +23,7 @@ export default function SearchBar({
           className="search-input"
           placeholder="Search by title, author, or ISBN..."
           value={query}
-          onChange={(e) => onQueryChange(e.target.value)}
+          onChange={(e) => onQueryChange(e.target.value.toLowerCase())}
         />
         {query && (
           <button

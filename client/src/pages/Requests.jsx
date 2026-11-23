@@ -124,12 +124,12 @@ export default function Requests() {
               style={{
                 width: "100%",
                 padding: "12px",
-                background: "linear-gradient(135deg, #ff6200, #ff4500)",
+                background: "linear-gradient(135deg, #FF6F5E, #F95C4B)",
                 borderRadius: "10px",
                 color: "#ffffff",
                 fontWeight: "700",
                 fontSize: "14px",
-                boxShadow: "0 6px 18px rgba(255, 98, 0, 0.35)",
+                boxShadow: "0 6px 18px rgba(249, 92, 75, 0.35)",
               }}
             >
               Send Request to Librarian

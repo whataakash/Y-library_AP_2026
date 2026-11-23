@@ -75,7 +75,7 @@ export default function Marketplace() {
           onClick={() => setShowModal(true)}
           style={{
             padding: "12px 24px",
-            background: "linear-gradient(135deg, #ff6200, #ff4500)",
+            background: "linear-gradient(135deg, #FF6F5E, #F95C4B)",
             borderRadius: "10px",
             color: "#ffffff",
             fontWeight: "700",
@@ -83,7 +83,7 @@ export default function Marketplace() {
             display: "inline-flex",
             alignItems: "center",
             gap: "6px",
-            boxShadow: "0 4px 16px rgba(255, 98, 0, 0.4)",
+            boxShadow: "0 4px 16px rgba(249, 92, 75, 0.35)",
           }}
         >
           <Icon name="plus" size={16} color="#fff" />

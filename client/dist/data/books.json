@@ -1,5 +1,3977 @@
 [
   {
+    "bookname": "The Psychology of Money",
+    "book_image": "https://covers.openlibrary.org/b/id/10389354-L.jpg",
+    "isbn": "9782361170561",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2020 publication; 28 indexed editions",
+    "rating": 4,
+    "location": "Central Library / A-01",
+    "author": "Morgan Housel",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "psychology",
+      "money",
+      "housel"
+    ]
+  },
+  {
+    "bookname": "Rich Dad Poor Dad",
+    "book_image": "https://covers.openlibrary.org/b/id/8315603-L.jpg",
+    "isbn": "9781612680019",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "1990 publication; 115 indexed editions",
+    "rating": 4,
+    "location": "Central Library / A-02",
+    "author": "Robert T. Kiyosaki",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "rich",
+      "poor",
+      "kiyosaki"
+    ]
+  },
+  {
+    "bookname": "Skin in the Game",
+    "book_image": "https://covers.openlibrary.org/b/id/10856868-L.jpg",
+    "isbn": "9780241300657",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2017 publication; 11 indexed editions",
+    "rating": 4.23,
+    "location": "Central Library / A-03",
+    "author": "Nassim Nicholas Taleb",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "skin",
+      "game",
+      "taleb"
+    ]
+  },
+  {
+    "bookname": "The Intelligent Investor",
+    "book_image": "https://covers.openlibrary.org/b/id/36434-L.jpg",
+    "isbn": "9782909356105",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "1949 publication; 54 indexed editions",
+    "rating": 4.12,
+    "location": "Central Library / B-01",
+    "author": "Benjamin Graham",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "intelligent",
+      "investor",
+      "graham"
+    ]
+  },
+  {
+    "bookname": "Thinking, Fast and Slow",
+    "book_image": "https://covers.openlibrary.org/b/id/13290711-L.jpg",
+    "isbn": "9781464166174",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2011 publication; 36 indexed editions",
+    "rating": 4.11,
+    "location": "Central Library / B-02",
+    "author": "Daniel Kahneman",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "thinking,",
+      "fast",
+      "slow"
+    ]
+  },
+  {
+    "bookname": "Principles: Life and Work",
+    "book_image": "https://covers.openlibrary.org/b/id/8315355-L.jpg",
+    "isbn": "9781501124020",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2017 publication; 6 indexed editions",
+    "rating": 4,
+    "location": "Central Library / B-03",
+    "author": "Ray Dalio",
+    "genre": "Business",
+    "tags": [
+      "business",
+      "bestseller",
+      "popular",
+      "principles:",
+      "life",
+      "work"
+    ]
+  },
+  {
+    "bookname": "The Black Swan",
+    "book_image": "https://covers.openlibrary.org/b/id/5721840-L.jpg",
+    "isbn": "9780812979183",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2005 publication; 27 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-01",
+    "author": "Nassim Nicholas Taleb",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "black",
+      "swan",
+      "taleb"
+    ]
+  },
+  {
+    "bookname": "Antifragile: Things That Gain from Disorder",
+    "book_image": "https://covers.openlibrary.org/b/id/9180157-L.jpg",
+    "isbn": "9781846141577",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2012 publication; 18 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-02",
+    "author": "Nassim Nicholas Taleb",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "antifragile:",
+      "things",
+      "that"
+    ]
+  },
+  {
+    "bookname": "Fooled by Randomness",
+    "book_image": "https://covers.openlibrary.org/b/id/855791-L.jpg",
+    "isbn": "9783527500369",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2001 publication; 19 indexed editions",
+    "rating": 4,
+    "location": "Central Library / D-01",
+    "author": "Nassim Nicholas Taleb",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "fooled",
+      "randomness",
+      "taleb"
+    ]
+  },
+  {
+    "bookname": "Zero to One",
+    "book_image": "https://covers.openlibrary.org/b/id/9002334-L.jpg",
+    "isbn": "9780753555187",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2001 publication; 14 indexed editions",
+    "rating": 4.1,
+    "location": "Central Library / D-02",
+    "author": "Peter Thiel",
+    "genre": "Business",
+    "tags": [
+      "business",
+      "bestseller",
+      "popular",
+      "zero",
+      "thiel"
+    ]
+  },
+  {
+    "bookname": "The Millionaire Fastlane",
+    "book_image": "https://covers.openlibrary.org/b/id/7892520-L.jpg",
+    "isbn": "9780984358106",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2011 publication; 1 indexed editions",
+    "rating": 4,
+    "location": "Central Library / E-01",
+    "author": "MJ DeMarco",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "millionaire",
+      "fastlane",
+      "demarco"
+    ]
+  },
+  {
+    "bookname": "Your Money or Your Life",
+    "book_image": "https://covers.openlibrary.org/b/id/6975229-L.jpg",
+    "isbn": "9780140267648",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "1992 publication; 10 indexed editions",
+    "rating": 4.13,
+    "location": "Central Library / E-02",
+    "author": "Vicki Robin",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "your",
+      "money",
+      "your"
+    ]
+  },
+  {
+    "bookname": "I Will Teach You to Be Rich",
+    "book_image": "https://covers.openlibrary.org/b/id/6305971-L.jpg",
+    "isbn": "9780340998052",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2009 publication; 13 indexed editions",
+    "rating": 4.31,
+    "location": "Central Library / Best-01",
+    "author": "Ramit Sethi",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "will",
+      "teach",
+      "rich"
+    ]
+  },
+  {
+    "bookname": "Common Stocks and Uncommon Profits",
+    "book_image": "https://covers.openlibrary.org/b/id/788750-L.jpg",
+    "isbn": "9781560150411",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2000 publication; 2 indexed editions",
+    "rating": 4,
+    "location": "Central Library / Best-02",
+    "author": "Philip Fisher",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "common",
+      "stocks",
+      "uncommon"
+    ]
+  },
+  {
+    "bookname": "One Up On Wall Street",
+    "book_image": "https://covers.openlibrary.org/b/id/6241104-L.jpg",
+    "isbn": "9780743200400",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "1989 publication; 18 indexed editions",
+    "rating": 4.25,
+    "location": "Central Library / Best-03",
+    "author": "Peter Lynch",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "wall",
+      "street",
+      "lynch"
+    ]
+  },
+  {
+    "bookname": "A Random Walk Down Wall Street",
+    "book_image": "https://covers.openlibrary.org/b/id/246978-L.jpg",
+    "isbn": "9781324035435",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "1973 publication; 25 indexed editions",
+    "rating": 4.4,
+    "location": "Central Library / A-01",
+    "author": "Burton G. Malkiel",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "random",
+      "walk",
+      "down"
+    ]
+  },
+  {
+    "bookname": "The Little Book of Common Sense Investing",
+    "book_image": "https://covers.openlibrary.org/b/id/1239500-L.jpg",
+    "isbn": "9780470139271",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2007 publication; 4 indexed editions",
+    "rating": 4.4,
+    "location": "Central Library / A-02",
+    "author": "John C. Bogle",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "little",
+      "book",
+      "common"
+    ]
+  },
+  {
+    "bookname": "The Almanack of Naval Ravikant",
+    "book_image": "https://covers.openlibrary.org/b/id/10449931-L.jpg",
+    "isbn": "9781544514208",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2020 publication; 4 indexed editions",
+    "rating": 4.1,
+    "location": "Central Library / A-03",
+    "author": "Eric Jorgenson",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "almanack",
+      "naval",
+      "ravikant"
+    ]
+  },
+  {
+    "bookname": "The Richest Man in Babylon",
+    "book_image": "https://covers.openlibrary.org/b/id/10491331-L.jpg",
+    "isbn": "9781530399567",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "1926 publication; 262 indexed editions",
+    "rating": 4.2,
+    "location": "Central Library / B-01",
+    "author": "George S. Clason",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "richest",
+      "babylon",
+      "clason"
+    ]
+  },
+  {
+    "bookname": "Freakonomics",
+    "book_image": "https://covers.openlibrary.org/b/id/11172914-L.jpg",
+    "isbn": "9788466625128",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2005 publication; 63 indexed editions",
+    "rating": 4,
+    "location": "Central Library / B-02",
+    "author": "Steven D. Levitt, Stephen J. Dubner",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "freakonomics",
+      "dubner"
+    ]
+  },
+  {
+    "bookname": "SuperFreakonomics",
+    "book_image": "https://covers.openlibrary.org/b/id/6304875-L.jpg",
+    "isbn": "9780061959936",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2009 publication; 25 indexed editions",
+    "rating": 4.04,
+    "location": "Central Library / B-03",
+    "author": "Steven D. Levitt, Stephen J. Dubner",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "superfreakonomics",
+      "dubner"
+    ]
+  },
+  {
+    "bookname": "Misbehaving: The Making of Behavioral Economics",
+    "book_image": "https://covers.openlibrary.org/b/id/8270508-L.jpg",
+    "isbn": "9781501238703",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2015 publication; 7 indexed editions",
+    "rating": 4.25,
+    "location": "Central Library / C-01",
+    "author": "Richard H. Thaler",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "misbehaving:",
+      "making",
+      "behavioral"
+    ]
+  },
+  {
+    "bookname": "Nudge",
+    "book_image": "https://covers.openlibrary.org/b/id/6402116-L.jpg",
+    "isbn": "9780141976105",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2008 publication; 17 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-02",
+    "author": "Richard H. Thaler, Cass R. Sunstein",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "nudge",
+      "sunstein"
+    ]
+  },
+  {
+    "bookname": "Capital in the Twenty-First Century",
+    "book_image": "https://covers.openlibrary.org/b/id/10103429-L.jpg",
+    "isbn": "9781784786144",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2014 publication; 2 indexed editions",
+    "rating": 4.78,
+    "location": "Central Library / D-01",
+    "author": "Thomas Piketty",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "capital",
+      "twenty-first",
+      "century"
+    ]
+  },
+  {
+    "bookname": "The Hard Thing About Hard Things",
+    "book_image": "https://covers.openlibrary.org/b/id/7279515-L.jpg",
+    "isbn": "9780062273215",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2014 publication; 3 indexed editions",
+    "rating": 4,
+    "location": "Central Library / D-02",
+    "author": "Ben Horowitz",
+    "genre": "Business",
+    "tags": [
+      "business",
+      "bestseller",
+      "popular",
+      "hard",
+      "thing",
+      "about"
+    ]
+  },
+  {
+    "bookname": "Shoe Dog: A Memoir by the Creator of Nike",
+    "book_image": "https://covers.openlibrary.org/b/id/8858487-L.jpg",
+    "isbn": "9781534415201",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2014 publication; 28 indexed editions",
+    "rating": 4.57,
+    "location": "Central Library / E-01",
+    "author": "Phil Knight",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "shoe",
+      "dog:",
+      "memoir"
+    ]
+  },
+  {
+    "bookname": "The Ride of a Lifetime",
+    "book_image": "https://covers.openlibrary.org/b/id/8788773-L.jpg",
+    "isbn": "9780525499329",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2019 publication; 9 indexed editions",
+    "rating": 4.33,
+    "location": "Central Library / E-02",
+    "author": "Robert Iger",
+    "genre": "Business",
+    "tags": [
+      "business",
+      "bestseller",
+      "popular",
+      "ride",
+      "lifetime",
+      "iger"
+    ]
+  },
+  {
+    "bookname": "Bad Blood: Secrets and Lies in a Silicon Valley Startup",
+    "book_image": "https://covers.openlibrary.org/b/id/12735651-L.jpg",
+    "isbn": "9780593081648",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2018 publication; 19 indexed editions",
+    "rating": 4.25,
+    "location": "Central Library / Best-01",
+    "author": "John Carreyrou",
+    "genre": "Business",
+    "tags": [
+      "business",
+      "bestseller",
+      "popular",
+      "blood:",
+      "secrets",
+      "lies"
+    ]
+  },
+  {
+    "bookname": "The Snowball: Warren Buffett and the Business of Life",
+    "book_image": "https://covers.openlibrary.org/b/id/6916021-L.jpg",
+    "isbn": "9780739334065",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2008 publication; 6 indexed editions",
+    "rating": 4,
+    "location": "Central Library / Best-02",
+    "author": "Alice Schroeder",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "snowball:",
+      "warren",
+      "buffett"
+    ]
+  },
+  {
+    "bookname": "The Essays of Warren Buffett",
+    "book_image": "https://covers.openlibrary.org/b/id/6497216-L.jpg",
+    "isbn": "9780966446128",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "1997 publication; 15 indexed editions",
+    "rating": 4.81,
+    "location": "Central Library / Best-03",
+    "author": "Warren Buffett",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "essays",
+      "warren",
+      "buffett"
+    ]
+  },
+  {
+    "bookname": "Atomic Habits",
+    "book_image": "https://covers.openlibrary.org/b/id/12539702-L.jpg",
+    "isbn": "9780593189641",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2016 publication; 42 indexed editions",
+    "rating": 4,
+    "location": "Central Library / A-01",
+    "author": "James Clear",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "atomic",
+      "habits",
+      "clear"
+    ]
+  },
+  {
+    "bookname": "Deep Work",
+    "book_image": "https://covers.openlibrary.org/b/id/7988607-L.jpg",
+    "isbn": "9783864149351",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2016 publication; 16 indexed editions",
+    "rating": 4,
+    "location": "Central Library / A-02",
+    "author": "Cal Newport",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "deep",
+      "work",
+      "newport"
+    ]
+  },
+  {
+    "bookname": "Can't Hurt Me",
+    "book_image": "https://covers.openlibrary.org/b/isbn/9798776500237-L.jpg",
+    "isbn": "9798776500237",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2021 publication; 1 indexed editions",
+    "rating": 5,
+    "location": "Central Library / A-03",
+    "author": "David Goggins",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "can't",
+      "hurt",
+      "goggins"
+    ]
+  },
+  {
+    "bookname": "The 7 Habits of Highly Effective People",
+    "book_image": "https://covers.openlibrary.org/b/id/10079937-L.jpg",
+    "isbn": "9780743501071",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "1989 publication; 79 indexed editions",
+    "rating": 4.04,
+    "location": "Central Library / B-01",
+    "author": "Stephen R. Covey",
+    "genre": "Business",
+    "tags": [
+      "business",
+      "bestseller",
+      "popular",
+      "habits",
+      "highly",
+      "effective"
+    ]
+  },
+  {
+    "bookname": "Flow: The Psychology of Optimal Experience",
+    "book_image": "https://covers.openlibrary.org/b/id/11041932-L.jpg",
+    "isbn": "9780060162535",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "1990 publication; 25 indexed editions",
+    "rating": 4,
+    "location": "Central Library / B-02",
+    "author": "Mihaly Csikszentmihalyi",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "flow:",
+      "psychology",
+      "optimal"
+    ]
+  },
+  {
+    "bookname": "12 Rules for Life: An Antidote to Chaos",
+    "book_image": "https://covers.openlibrary.org/b/id/8131760-L.jpg",
+    "isbn": "9780345816023",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2015 publication; 26 indexed editions",
+    "rating": 4,
+    "location": "Central Library / B-03",
+    "author": "Jordan B. Peterson",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "rules",
+      "life:",
+      "antidote"
+    ]
+  },
+  {
+    "bookname": "Grit: The Power of Passion and Perseverance",
+    "book_image": "https://covers.openlibrary.org/b/id/7438753-L.jpg",
+    "isbn": "9781785040191",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2016 publication; 14 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-01",
+    "author": "Angela Duckworth",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "grit:",
+      "power",
+      "passion"
+    ]
+  },
+  {
+    "bookname": "Mindset: The New Psychology of Success",
+    "book_image": "https://covers.openlibrary.org/b/id/746414-L.jpg",
+    "isbn": "9787210096528",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2006 publication; 17 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-02",
+    "author": "Carol S. Dweck",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "mindset:",
+      "psychology",
+      "success"
+    ]
+  },
+  {
+    "bookname": "Essentialism: The Disciplined Pursuit of Less",
+    "book_image": "https://covers.openlibrary.org/b/id/7285986-L.jpg",
+    "isbn": "9780753550281",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2014 publication; 6 indexed editions",
+    "rating": 4,
+    "location": "Central Library / D-01",
+    "author": "Greg McKeown",
+    "genre": "Business",
+    "tags": [
+      "business",
+      "bestseller",
+      "popular",
+      "essentialism:",
+      "disciplined",
+      "pursuit"
+    ]
+  },
+  {
+    "bookname": "So Good They Can't Ignore You",
+    "book_image": "https://covers.openlibrary.org/b/isbn/9781638156741-L.jpg",
+    "isbn": "9781638156741",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2021 publication; 1 indexed editions",
+    "rating": 4.79,
+    "location": "Central Library / D-02",
+    "author": "Cal Newport",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "good",
+      "they",
+      "can't"
+    ]
+  },
+  {
+    "bookname": "Digital Minimalism",
+    "book_image": "https://covers.openlibrary.org/b/id/8507540-L.jpg",
+    "isbn": "9780525536512",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2019 publication; 9 indexed editions",
+    "rating": 4,
+    "location": "Central Library / E-01",
+    "author": "Cal Newport",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "digital",
+      "minimalism",
+      "newport"
+    ]
+  },
+  {
+    "bookname": "Make Time",
+    "book_image": "https://covers.openlibrary.org/b/id/14179816-L.jpg",
+    "isbn": "9780525572428",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2018 publication; 4 indexed editions",
+    "rating": 4,
+    "location": "Central Library / E-02",
+    "author": "Jake Knapp, John Zeratsky",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "make",
+      "time",
+      "zeratsky"
+    ]
+  },
+  {
+    "bookname": "The 4-Hour Workweek",
+    "book_image": "https://covers.openlibrary.org/b/isbn/9781669382904-L.jpg",
+    "isbn": "9781669382904",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2022 publication; 1 indexed editions",
+    "rating": 4.9,
+    "location": "Central Library / Best-01",
+    "author": "Timothy Ferriss",
+    "genre": "Business",
+    "tags": [
+      "business",
+      "bestseller",
+      "popular",
+      "4-hour",
+      "workweek",
+      "ferriss"
+    ]
+  },
+  {
+    "bookname": "The Subtle Art of Not Giving a F*ck",
+    "book_image": "https://covers.openlibrary.org/b/id/8231990-L.jpg",
+    "isbn": "9798804636129",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2016 publication; 50 indexed editions",
+    "rating": 4.05,
+    "location": "Central Library / Best-02",
+    "author": "Mark Manson",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "subtle",
+      "giving",
+      "f*ck"
+    ]
+  },
+  {
+    "bookname": "Everything Is F*cked: A Book About Hope",
+    "book_image": "https://covers.openlibrary.org/b/isbn/9781000000745-L.jpg",
+    "isbn": "9781000000745",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2020 publication; 12 indexed editions",
+    "rating": 4.59,
+    "location": "Central Library / Best-03",
+    "author": "Mark Manson",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "everything",
+      "f*cked:",
+      "book"
+    ]
+  },
+  {
+    "bookname": "Man's Search for Meaning",
+    "book_image": "https://covers.openlibrary.org/b/id/8516506-L.jpg",
+    "isbn": "9780671421922",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "1946 publication; 111 indexed editions",
+    "rating": 4.29,
+    "location": "Central Library / A-01",
+    "author": "Viktor E. Frankl",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "man's",
+      "search",
+      "meaning"
+    ]
+  },
+  {
+    "bookname": "Meditations",
+    "book_image": "https://covers.openlibrary.org/b/id/13202688-L.jpg",
+    "isbn": "9781365699108",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2003 publication; 73 indexed editions",
+    "rating": 4,
+    "location": "Central Library / A-02",
+    "author": "Marcus Aurelius",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "meditations",
+      "aurelius"
+    ]
+  },
+  {
+    "bookname": "Letters from a Stoic",
+    "book_image": "https://covers.openlibrary.org/b/id/103759-L.jpg",
+    "isbn": "9780140442106",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "1969 publication; 3 indexed editions",
+    "rating": 4.1,
+    "location": "Central Library / A-03",
+    "author": "Seneca",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "letters",
+      "from",
+      "stoic"
+    ]
+  },
+  {
+    "bookname": "Discourses and Selected Writings",
+    "book_image": "https://covers.openlibrary.org/b/id/12985050-L.jpg",
+    "isbn": "9780140449464",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2008 publication; 1 indexed editions",
+    "rating": 5,
+    "location": "Central Library / B-01",
+    "author": "Epictetus",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "discourses",
+      "selected",
+      "writings"
+    ]
+  },
+  {
+    "bookname": "The Daily Stoic",
+    "book_image": "https://covers.openlibrary.org/b/id/13098570-L.jpg",
+    "isbn": "9780735211735",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2016 publication; 1 indexed editions",
+    "rating": 4.69,
+    "location": "Central Library / B-02",
+    "author": "Ryan Holiday",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "daily",
+      "stoic",
+      "holiday"
+    ]
+  },
+  {
+    "bookname": "The Obstacle Is the Way",
+    "book_image": "https://covers.openlibrary.org/b/id/14428233-L.jpg",
+    "isbn": "9789400510159",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2013 publication; 13 indexed editions",
+    "rating": 4,
+    "location": "Central Library / B-03",
+    "author": "Ryan Holiday",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "obstacle",
+      "holiday"
+    ]
+  },
+  {
+    "bookname": "Ego Is the Enemy",
+    "book_image": "https://covers.openlibrary.org/b/id/12447129-L.jpg",
+    "isbn": "9783959720328",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2016 publication; 8 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-01",
+    "author": "Ryan Holiday",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "enemy",
+      "holiday"
+    ]
+  },
+  {
+    "bookname": "Stillness Is the Key",
+    "book_image": "https://covers.openlibrary.org/b/id/9130310-L.jpg",
+    "isbn": "9780525538585",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2019 publication; 9 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-02",
+    "author": "Ryan Holiday",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "stillness",
+      "holiday"
+    ]
+  },
+  {
+    "bookname": "The Power of Habit",
+    "book_image": "https://covers.openlibrary.org/b/id/9078085-L.jpg",
+    "isbn": "9788417664138",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2012 publication; 22 indexed editions",
+    "rating": 4.05,
+    "location": "Central Library / D-01",
+    "author": "Charles Duhigg",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "power",
+      "habit",
+      "duhigg"
+    ]
+  },
+  {
+    "bookname": "Outliers: The Story of Success",
+    "book_image": "https://covers.openlibrary.org/b/id/10021591-L.jpg",
+    "isbn": "9780316056281",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2008 publication; 32 indexed editions",
+    "rating": 4.02,
+    "location": "Central Library / D-02",
+    "author": "Malcolm Gladwell",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "outliers:",
+      "story",
+      "success"
+    ]
+  },
+  {
+    "bookname": "The Tipping Point",
+    "book_image": "https://covers.openlibrary.org/b/id/10873292-L.jpg",
+    "isbn": "9781586217457",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2000 publication; 21 indexed editions",
+    "rating": 4,
+    "location": "Central Library / E-01",
+    "author": "Malcolm Gladwell",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "tipping",
+      "point",
+      "gladwell"
+    ]
+  },
+  {
+    "bookname": "Blink: The Power of Thinking Without Thinking",
+    "book_image": "https://covers.openlibrary.org/b/id/14421850-L.jpg",
+    "isbn": "9781586217198",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2004 publication; 47 indexed editions",
+    "rating": 4,
+    "location": "Central Library / E-02",
+    "author": "Malcolm Gladwell",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "blink:",
+      "power",
+      "thinking"
+    ]
+  },
+  {
+    "bookname": "Talking to Strangers",
+    "book_image": "https://covers.openlibrary.org/b/id/8779682-L.jpg",
+    "isbn": "9780316299220",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2019 publication; 15 indexed editions",
+    "rating": 4,
+    "location": "Central Library / Best-01",
+    "author": "Malcolm Gladwell",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "talking",
+      "strangers",
+      "gladwell"
+    ]
+  },
+  {
+    "bookname": "David and Goliath",
+    "book_image": "https://covers.openlibrary.org/b/id/7276285-L.jpg",
+    "isbn": "9780316204361",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2013 publication; 19 indexed editions",
+    "rating": 4,
+    "location": "Central Library / Best-02",
+    "author": "Malcolm Gladwell",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "david",
+      "goliath",
+      "gladwell"
+    ]
+  },
+  {
+    "bookname": "Dare to Lead",
+    "book_image": "https://covers.openlibrary.org/b/id/7367250-L.jpg",
+    "isbn": "9788575429587",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2012 publication; 6 indexed editions",
+    "rating": 4,
+    "location": "Central Library / Best-03",
+    "author": "Brené Brown",
+    "genre": "Business",
+    "tags": [
+      "business",
+      "bestseller",
+      "popular",
+      "dare",
+      "lead",
+      "brown"
+    ]
+  },
+  {
+    "bookname": "The Gifts of Imperfection",
+    "book_image": "https://covers.openlibrary.org/b/id/7237826-L.jpg",
+    "isbn": "9780593133583",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2010 publication; 10 indexed editions",
+    "rating": 4.04,
+    "location": "Central Library / A-01",
+    "author": "Brené Brown",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "gifts",
+      "imperfection",
+      "brown"
+    ]
+  },
+  {
+    "bookname": "Daring Greatly",
+    "book_image": "https://covers.openlibrary.org/b/id/7367250-L.jpg",
+    "isbn": "9788575429587",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2012 publication; 6 indexed editions",
+    "rating": 4,
+    "location": "Central Library / A-02",
+    "author": "Brené Brown",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "daring",
+      "greatly",
+      "brown"
+    ]
+  },
+  {
+    "bookname": "The Courage to Be Disliked",
+    "book_image": "https://covers.openlibrary.org/b/id/10873626-L.jpg",
+    "isbn": "9781760630492",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2013 publication; 17 indexed editions",
+    "rating": 4,
+    "location": "Central Library / A-03",
+    "author": "Ichiro Kishimi, Fumitake Koga",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "courage",
+      "disliked",
+      "koga"
+    ]
+  },
+  {
+    "bookname": "Ikigai: The Japanese Secret to a Long and Happy Life",
+    "book_image": "https://covers.openlibrary.org/b/id/11300391-L.jpg",
+    "isbn": "9789390085354",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2016 publication; 13 indexed editions",
+    "rating": 4,
+    "location": "Central Library / B-01",
+    "author": "Héctor García, Francesc Miralles",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "ikigai:",
+      "japanese",
+      "secret"
+    ]
+  },
+  {
+    "bookname": "Show Your Work!",
+    "book_image": "https://covers.openlibrary.org/b/id/7284188-L.jpg",
+    "isbn": "9781974052264",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2014 publication; 6 indexed editions",
+    "rating": 4,
+    "location": "Central Library / B-02",
+    "author": "Austin Kleon",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "show",
+      "your",
+      "work!"
+    ]
+  },
+  {
+    "bookname": "Steal Like an Artist",
+    "book_image": "https://covers.openlibrary.org/b/id/7244512-L.jpg",
+    "isbn": "9780761169253",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2012 publication; 7 indexed editions",
+    "rating": 4.04,
+    "location": "Central Library / B-03",
+    "author": "Austin Kleon",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "steal",
+      "like",
+      "artist"
+    ]
+  },
+  {
+    "bookname": "The War of Art",
+    "book_image": "https://covers.openlibrary.org/b/id/288439-L.jpg",
+    "isbn": "9781590710036",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2002 publication; 5 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-01",
+    "author": "Steven Pressfield",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "pressfield"
+    ]
+  },
+  {
+    "bookname": "Big Magic: Creative Living Beyond Fear",
+    "book_image": "https://covers.openlibrary.org/b/id/7434843-L.jpg",
+    "isbn": "9788378187738",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2014 publication; 31 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-02",
+    "author": "Elizabeth Gilbert",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "magic:",
+      "creative",
+      "living"
+    ]
+  },
+  {
+    "bookname": "The Mountain Is You",
+    "book_image": "https://covers.openlibrary.org/b/id/13838236-L.jpg",
+    "isbn": "9781949759228",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2020 publication; 7 indexed editions",
+    "rating": 4,
+    "location": "Central Library / D-01",
+    "author": "Brianna Wiest",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "mountain",
+      "wiest"
+    ]
+  },
+  {
+    "bookname": "101 Essays That Will Change The Way You Think",
+    "book_image": "https://covers.openlibrary.org/b/id/10524689-L.jpg",
+    "isbn": "9781804221747",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2018 publication; 6 indexed editions",
+    "rating": 4.1,
+    "location": "Central Library / D-02",
+    "author": "Brianna Wiest",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "essays",
+      "that",
+      "will"
+    ]
+  },
+  {
+    "bookname": "Sapiens: A Brief History of Humankind",
+    "book_image": "https://covers.openlibrary.org/b/id/8634250-L.jpg",
+    "isbn": "9788466361903",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2011 publication; 86 indexed editions",
+    "rating": 4.19,
+    "location": "Central Library / E-01",
+    "author": "Yuval Noah Harari",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "sapiens:",
+      "brief",
+      "history"
+    ]
+  },
+  {
+    "bookname": "Homo Deus: A Brief History of Tomorrow",
+    "book_image": "https://covers.openlibrary.org/b/id/7914168-L.jpg",
+    "isbn": "9789389143133",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2015 publication; 39 indexed editions",
+    "rating": 4.29,
+    "location": "Central Library / E-02",
+    "author": "Yuval Noah Harari",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "homo",
+      "deus:",
+      "brief"
+    ]
+  },
+  {
+    "bookname": "21 Lessons for the 21st Century",
+    "book_image": "https://covers.openlibrary.org/b/id/13247357-L.jpg",
+    "isbn": "9780464750611",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2020 publication; 1 indexed editions",
+    "rating": 4.91,
+    "location": "Central Library / Best-01",
+    "author": "Yuval Noah Harari",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "lessons",
+      "21st",
+      "century"
+    ]
+  },
+  {
+    "bookname": "Guns, Germs, and Steel",
+    "book_image": "https://covers.openlibrary.org/b/id/7884018-L.jpg",
+    "isbn": "9781586638634",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "1997 publication; 61 indexed editions",
+    "rating": 4.14,
+    "location": "Central Library / Best-02",
+    "author": "Jared Diamond",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "guns,",
+      "germs,",
+      "steel"
+    ]
+  },
+  {
+    "bookname": "Collapse: How Societies Choose to Fail or Succeed",
+    "book_image": "https://covers.openlibrary.org/b/id/12915198-L.jpg",
+    "isbn": "9780143057185",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2004 publication; 38 indexed editions",
+    "rating": 4,
+    "location": "Central Library / Best-03",
+    "author": "Jared Diamond",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "collapse:",
+      "societies",
+      "choose"
+    ]
+  },
+  {
+    "bookname": "A Short History of Nearly Everything",
+    "book_image": "https://covers.openlibrary.org/b/id/12725620-L.jpg",
+    "isbn": "9780385408189",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2003 publication; 57 indexed editions",
+    "rating": 4.17,
+    "location": "Central Library / A-01",
+    "author": "Bill Bryson",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "short",
+      "history",
+      "nearly"
+    ]
+  },
+  {
+    "bookname": "The Body: A Guide for Occupants",
+    "book_image": "https://covers.openlibrary.org/b/id/12722746-L.jpg",
+    "isbn": "9789734682997",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2019 publication; 28 indexed editions",
+    "rating": 4.23,
+    "location": "Central Library / A-02",
+    "author": "Bill Bryson",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "body:",
+      "guide",
+      "occupants"
+    ]
+  },
+  {
+    "bookname": "The Dawn of Everything: A New History of Humanity",
+    "book_image": "https://covers.openlibrary.org/b/id/11359192-L.jpg",
+    "isbn": "9780241402450",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2021 publication; 19 indexed editions",
+    "rating": 4.1,
+    "location": "Central Library / A-03",
+    "author": "David Graeber, David Wengrow",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "dawn",
+      "everything:",
+      "history"
+    ]
+  },
+  {
+    "bookname": "Debt: The First 5,000 Years",
+    "book_image": "https://covers.openlibrary.org/b/isbn/9781351350372-L.jpg",
+    "isbn": "9781351350372",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2017 publication; 3 indexed editions",
+    "rating": 4.68,
+    "location": "Central Library / B-01",
+    "author": "David Graeber",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "debt:",
+      "first",
+      "5,000"
+    ]
+  },
+  {
+    "bookname": "Bullshit Jobs: A Theory",
+    "book_image": "https://covers.openlibrary.org/b/id/8798647-L.jpg",
+    "isbn": "9783608981087",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2018 publication; 18 indexed editions",
+    "rating": 4.41,
+    "location": "Central Library / B-02",
+    "author": "David Graeber",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "bullshit",
+      "jobs:",
+      "theory"
+    ]
+  },
+  {
+    "bookname": "Why Nations Fail: The Origins of Power, Prosperity, and Poverty",
+    "book_image": "https://covers.openlibrary.org/b/id/7253519-L.jpg",
+    "isbn": "9786077474913",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2012 publication; 15 indexed editions",
+    "rating": 4,
+    "location": "Central Library / B-03",
+    "author": "Daron Acemoglu, James A. Robinson",
+    "genre": "Economics",
+    "tags": [
+      "economics",
+      "bestseller",
+      "popular",
+      "nations",
+      "fail:",
+      "origins"
+    ]
+  },
+  {
+    "bookname": "The Silk Roads: A New History of the World",
+    "book_image": "https://covers.openlibrary.org/b/id/8963642-L.jpg",
+    "isbn": "9781408889930",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2015 publication; 18 indexed editions",
+    "rating": 4.43,
+    "location": "Central Library / C-01",
+    "author": "Peter Frankopan",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "silk",
+      "roads:",
+      "history"
+    ]
+  },
+  {
+    "bookname": "The Lessons of History",
+    "book_image": "https://covers.openlibrary.org/b/id/7240225-L.jpg",
+    "isbn": "9780945353874",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "1968 publication; 26 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-02",
+    "author": "Will Durant, Ariel Durant",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "lessons",
+      "history",
+      "durant"
+    ]
+  },
+  {
+    "bookname": "Prisoners of Geography",
+    "book_image": "https://covers.openlibrary.org/b/id/8900233-L.jpg",
+    "isbn": "9786051733968",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2015 publication; 14 indexed editions",
+    "rating": 4,
+    "location": "Central Library / D-01",
+    "author": "Tim Marshall",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "prisoners",
+      "geography",
+      "marshall"
+    ]
+  },
+  {
+    "bookname": "The Power of Geography",
+    "book_image": "https://covers.openlibrary.org/b/id/11559287-L.jpg",
+    "isbn": "9781783966028",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2021 publication; 4 indexed editions",
+    "rating": 4.5,
+    "location": "Central Library / D-02",
+    "author": "Tim Marshall",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "power",
+      "geography",
+      "marshall"
+    ]
+  },
+  {
+    "bookname": "SPQR: A History of Ancient Rome",
+    "book_image": "https://covers.openlibrary.org/b/id/7418788-L.jpg",
+    "isbn": "9788498929553",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2015 publication; 16 indexed editions",
+    "rating": 4,
+    "location": "Central Library / E-01",
+    "author": "Mary Beard",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "spqr:",
+      "history",
+      "ancient"
+    ]
+  },
+  {
+    "bookname": "Genghis Khan and the Making of the Modern World",
+    "book_image": "https://covers.openlibrary.org/b/id/390818-L.jpg",
+    "isbn": "9781491513705",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2004 publication; 6 indexed editions",
+    "rating": 4,
+    "location": "Central Library / E-02",
+    "author": "Jack Weatherford",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "genghis",
+      "khan",
+      "making"
+    ]
+  },
+  {
+    "bookname": "The Wright Brothers",
+    "book_image": "https://covers.openlibrary.org/b/id/7317364-L.jpg",
+    "isbn": "9781471150364",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2015 publication; 16 indexed editions",
+    "rating": 4.67,
+    "location": "Central Library / Best-01",
+    "author": "David McCullough",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "wright",
+      "brothers",
+      "mccullough"
+    ]
+  },
+  {
+    "bookname": "1776",
+    "book_image": "https://covers.openlibrary.org/b/id/541237-L.jpg",
+    "isbn": "9781416542100",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2005 publication; 16 indexed editions",
+    "rating": 4.14,
+    "location": "Central Library / Best-02",
+    "author": "David McCullough",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "1776",
+      "mccullough"
+    ]
+  },
+  {
+    "bookname": "Team of Rivals: The Political Genius of Abraham Lincoln",
+    "book_image": "https://covers.openlibrary.org/b/id/9286949-L.jpg",
+    "isbn": "9780241966082",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2003 publication; 14 indexed editions",
+    "rating": 4,
+    "location": "Central Library / Best-03",
+    "author": "Doris Kearns Goodwin",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "team",
+      "rivals:",
+      "political"
+    ]
+  },
+  {
+    "bookname": "The Splendid and the Vile",
+    "book_image": "https://covers.openlibrary.org/b/id/9293917-L.jpg",
+    "isbn": "9780385348720",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2020 publication; 8 indexed editions",
+    "rating": 4,
+    "location": "Central Library / A-01",
+    "author": "Erik Larson",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "splendid",
+      "vile",
+      "larson"
+    ]
+  },
+  {
+    "bookname": "The Devil in the White City",
+    "book_image": "https://covers.openlibrary.org/b/id/541027-L.jpg",
+    "isbn": "9781400076314",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2003 publication; 25 indexed editions",
+    "rating": 4,
+    "location": "Central Library / A-02",
+    "author": "Erik Larson",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "devil",
+      "white",
+      "city"
+    ]
+  },
+  {
+    "bookname": "Atomic Accidents",
+    "book_image": "https://covers.openlibrary.org/b/id/12181163-L.jpg",
+    "isbn": "9781605984926",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2014 publication; 1 indexed editions",
+    "rating": 4.87,
+    "location": "Central Library / A-03",
+    "author": "James Mahaffey",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "atomic",
+      "accidents",
+      "mahaffey"
+    ]
+  },
+  {
+    "bookname": "Command and Control",
+    "book_image": "https://covers.openlibrary.org/b/id/7267261-L.jpg",
+    "isbn": "9781846141485",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "1848 publication; 8 indexed editions",
+    "rating": 4.27,
+    "location": "Central Library / B-01",
+    "author": "Eric Schlosser",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "command",
+      "control",
+      "schlosser"
+    ]
+  },
+  {
+    "bookname": "Midnight in Chernobyl",
+    "book_image": "https://covers.openlibrary.org/b/id/9266992-L.jpg",
+    "isbn": "9798703949917",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2019 publication; 12 indexed editions",
+    "rating": 4.68,
+    "location": "Central Library / B-02",
+    "author": "Adam Higginbotham",
+    "genre": "History",
+    "tags": [
+      "history",
+      "bestseller",
+      "popular",
+      "midnight",
+      "chernobyl",
+      "higginbotham"
+    ]
+  },
+  {
+    "bookname": "Steve Jobs",
+    "book_image": "https://covers.openlibrary.org/b/id/12374726-L.jpg",
+    "isbn": "9781982176860",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2011 publication; 56 indexed editions",
+    "rating": 4.2,
+    "location": "Central Library / B-03",
+    "author": "Walter Isaacson",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "steve",
+      "jobs",
+      "isaacson"
+    ]
+  },
+  {
+    "bookname": "Elon Musk",
+    "book_image": "https://covers.openlibrary.org/b/id/14420016-L.jpg",
+    "isbn": "9781982181284",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2023 publication; 5 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-01",
+    "author": "Walter Isaacson",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "elon",
+      "musk",
+      "isaacson"
+    ]
+  },
+  {
+    "bookname": "Leonardo da Vinci",
+    "book_image": "https://covers.openlibrary.org/b/id/8087691-L.jpg",
+    "isbn": "9789522798350",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2017 publication; 21 indexed editions",
+    "rating": 4.03,
+    "location": "Central Library / C-02",
+    "author": "Walter Isaacson",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "leonardo",
+      "vinci",
+      "isaacson"
+    ]
+  },
+  {
+    "bookname": "Einstein: His Life and Universe",
+    "book_image": "https://covers.openlibrary.org/b/id/474440-L.jpg",
+    "isbn": "9781499471069",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2007 publication; 45 indexed editions",
+    "rating": 4.21,
+    "location": "Central Library / D-01",
+    "author": "Walter Isaacson",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "einstein:",
+      "life",
+      "universe"
+    ]
+  },
+  {
+    "bookname": "Benjamin Franklin: An American Life",
+    "book_image": "https://covers.openlibrary.org/b/id/541092-L.jpg",
+    "isbn": "9780743258074",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2003 publication; 17 indexed editions",
+    "rating": 4,
+    "location": "Central Library / D-02",
+    "author": "Walter Isaacson",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "benjamin",
+      "franklin:",
+      "american"
+    ]
+  },
+  {
+    "bookname": "Educated",
+    "book_image": "https://covers.openlibrary.org/b/id/8314077-L.jpg",
+    "isbn": "9783462054002",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2018 publication; 37 indexed editions",
+    "rating": 4.46,
+    "location": "Central Library / E-01",
+    "author": "Tara Westover",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "educated",
+      "westover"
+    ]
+  },
+  {
+    "bookname": "Becoming",
+    "book_image": "https://covers.openlibrary.org/b/id/8824664-L.jpg",
+    "isbn": "9780593303764",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2018 publication; 44 indexed editions",
+    "rating": 4.43,
+    "location": "Central Library / E-02",
+    "author": "Michelle Obama",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "becoming",
+      "obama"
+    ]
+  },
+  {
+    "bookname": "Born a Crime",
+    "book_image": "https://covers.openlibrary.org/b/id/8294078-L.jpg",
+    "isbn": "9780399590443",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2016 publication; 27 indexed editions",
+    "rating": 4.54,
+    "location": "Central Library / Best-01",
+    "author": "Trevor Noah",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "born",
+      "crime",
+      "noah"
+    ]
+  },
+  {
+    "bookname": "When Breath Becomes Air",
+    "book_image": "https://covers.openlibrary.org/b/id/11463139-L.jpg",
+    "isbn": "9788308061909",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2016 publication; 35 indexed editions",
+    "rating": 4.25,
+    "location": "Central Library / Best-02",
+    "author": "Paul Kalanithi",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "when",
+      "breath",
+      "becomes"
+    ]
+  },
+  {
+    "bookname": "The Diary of a Young Girl",
+    "book_image": "https://covers.openlibrary.org/b/id/8584021-L.jpg",
+    "isbn": "9781417643097",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "1944 publication; 294 indexed editions",
+    "rating": 4.21,
+    "location": "Central Library / Best-03",
+    "author": "Anne Frank",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "diary",
+      "young",
+      "girl"
+    ]
+  },
+  {
+    "bookname": "Open: An Autobiography",
+    "book_image": "https://covers.openlibrary.org/b/id/6714053-L.jpg",
+    "isbn": "9780307592804",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2009 publication; 5 indexed editions",
+    "rating": 4.2,
+    "location": "Central Library / A-01",
+    "author": "Andre Agassi",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "open:",
+      "autobiography",
+      "agassi"
+    ]
+  },
+  {
+    "bookname": "Greenlights",
+    "book_image": "https://covers.openlibrary.org/b/id/10512439-L.jpg",
+    "isbn": "9781472280879",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2020 publication; 16 indexed editions",
+    "rating": 4.16,
+    "location": "Central Library / A-02",
+    "author": "Matthew McConaughey",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "greenlights",
+      "mcconaughey"
+    ]
+  },
+  {
+    "bookname": "Total Recall: My Unbelievably True Life Story",
+    "book_image": "https://covers.openlibrary.org/b/id/8728697-L.jpg",
+    "isbn": "9781451662443",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2001 publication; 20 indexed editions",
+    "rating": 4,
+    "location": "Central Library / A-03",
+    "author": "Arnold Schwarzenegger",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "total",
+      "recall:",
+      "unbelievably"
+    ]
+  },
+  {
+    "bookname": "Surely You're Joking, Mr. Feynman!",
+    "book_image": "https://covers.openlibrary.org/b/id/6561414-L.jpg",
+    "isbn": "9781000000809",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "1985 publication; 1 indexed editions",
+    "rating": 4.57,
+    "location": "Central Library / B-01",
+    "author": "Richard P. Feynman",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "surely",
+      "you're",
+      "joking,"
+    ]
+  },
+  {
+    "bookname": "What Do You Care What Other People Think?",
+    "book_image": "https://covers.openlibrary.org/b/id/1468422-L.jpg",
+    "isbn": "9780786177851",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "1988 publication; 19 indexed editions",
+    "rating": 4,
+    "location": "Central Library / B-02",
+    "author": "Richard P. Feynman",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "what",
+      "care",
+      "what"
+    ]
+  },
+  {
+    "bookname": "Kitchen Confidential",
+    "book_image": "https://covers.openlibrary.org/b/id/843879-L.jpg",
+    "isbn": "9780060934910",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2000 publication; 28 indexed editions",
+    "rating": 4.02,
+    "location": "Central Library / B-03",
+    "author": "Anthony Bourdain",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "kitchen",
+      "confidential",
+      "bourdain"
+    ]
+  },
+  {
+    "bookname": "A Promised Land",
+    "book_image": "https://covers.openlibrary.org/b/id/10449357-L.jpg",
+    "isbn": "9781644732571",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2020 publication; 20 indexed editions",
+    "rating": 4.53,
+    "location": "Central Library / C-01",
+    "author": "Barack Obama",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "promised",
+      "land",
+      "obama"
+    ]
+  },
+  {
+    "bookname": "Long Walk to Freedom",
+    "book_image": "https://covers.openlibrary.org/b/id/12702407-L.jpg",
+    "isbn": "9780030565816",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "1994 publication; 62 indexed editions",
+    "rating": 4.57,
+    "location": "Central Library / C-02",
+    "author": "Nelson Mandela",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "long",
+      "walk",
+      "freedom"
+    ]
+  },
+  {
+    "bookname": "The Autobiography of Malcolm X",
+    "book_image": "https://covers.openlibrary.org/b/id/7259420-L.jpg",
+    "isbn": "9783927170049",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "1965 publication; 70 indexed editions",
+    "rating": 4.3,
+    "location": "Central Library / D-01",
+    "author": "Malcolm X, Alex Haley",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "autobiography",
+      "malcolm",
+      "haley"
+    ]
+  },
+  {
+    "bookname": "I Am Malala",
+    "book_image": "https://covers.openlibrary.org/b/id/9358664-L.jpg",
+    "isbn": "9781409149033",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2012 publication; 42 indexed editions",
+    "rating": 4.31,
+    "location": "Central Library / D-02",
+    "author": "Malala Yousafzai",
+    "genre": "Biography",
+    "tags": [
+      "biography",
+      "bestseller",
+      "popular",
+      "malala",
+      "yousafzai"
+    ]
+  },
+  {
+    "bookname": "A Brief History of Time",
+    "book_image": "https://covers.openlibrary.org/b/id/10432365-L.jpg",
+    "isbn": "9780716726487",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "1988 publication; 120 indexed editions",
+    "rating": 4.16,
+    "location": "Central Library / E-01",
+    "author": "Stephen Hawking",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "brief",
+      "history",
+      "time"
+    ]
+  },
+  {
+    "bookname": "The Grand Design",
+    "book_image": "https://covers.openlibrary.org/b/id/6565532-L.jpg",
+    "isbn": "9780553840919",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "1998 publication; 28 indexed editions",
+    "rating": 4,
+    "location": "Central Library / E-02",
+    "author": "Stephen Hawking, Leonard Mlodinow",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "grand",
+      "design",
+      "mlodinow"
+    ]
+  },
+  {
+    "bookname": "Brief Answers to the Big Questions",
+    "book_image": "https://covers.openlibrary.org/b/id/8815165-L.jpg",
+    "isbn": "9786075694634",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2014 publication; 17 indexed editions",
+    "rating": 4.29,
+    "location": "Central Library / Best-01",
+    "author": "Stephen Hawking",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "brief",
+      "answers",
+      "questions"
+    ]
+  },
+  {
+    "bookname": "Cosmos",
+    "book_image": "https://covers.openlibrary.org/b/id/8283901-L.jpg",
+    "isbn": "9781537058504",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "1980 publication; 74 indexed editions",
+    "rating": 4.62,
+    "location": "Central Library / Best-02",
+    "author": "Carl Sagan",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "cosmos",
+      "sagan"
+    ]
+  },
+  {
+    "bookname": "The Demon-Haunted World: Science as a Candle in the Dark",
+    "book_image": "https://covers.openlibrary.org/b/id/13534797-L.jpg",
+    "isbn": "9780963147837",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2002 publication; 2 indexed editions",
+    "rating": 4.73,
+    "location": "Central Library / Best-03",
+    "author": "Carl Sagan",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "demon-haunted",
+      "world:",
+      "science"
+    ]
+  },
+  {
+    "bookname": "Pale Blue Dot",
+    "book_image": "https://covers.openlibrary.org/b/id/14417175-L.jpg",
+    "isbn": "9788571645363",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "1994 publication; 19 indexed editions",
+    "rating": 4.57,
+    "location": "Central Library / A-01",
+    "author": "Carl Sagan",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "pale",
+      "blue",
+      "sagan"
+    ]
+  },
+  {
+    "bookname": "The Selfish Gene",
+    "book_image": "https://covers.openlibrary.org/b/id/133936-L.jpg",
+    "isbn": "9788535911299",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "1976 publication; 42 indexed editions",
+    "rating": 4.36,
+    "location": "Central Library / A-02",
+    "author": "Richard Dawkins",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "selfish",
+      "gene",
+      "dawkins"
+    ]
+  },
+  {
+    "bookname": "The Blind Watchmaker",
+    "book_image": "https://covers.openlibrary.org/b/id/95763-L.jpg",
+    "isbn": "9780140291223",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "1986 publication; 28 indexed editions",
+    "rating": 4,
+    "location": "Central Library / A-03",
+    "author": "Richard Dawkins",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "blind",
+      "watchmaker",
+      "dawkins"
+    ]
+  },
+  {
+    "bookname": "The Gene: An Intimate History",
+    "book_image": "https://covers.openlibrary.org/b/id/11320163-L.jpg",
+    "isbn": "9781476733500",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2016 publication; 20 indexed editions",
+    "rating": 4.13,
+    "location": "Central Library / B-01",
+    "author": "Siddhartha Mukherjee",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "gene:",
+      "intimate",
+      "history"
+    ]
+  },
+  {
+    "bookname": "The Emperor of All Maladies: A Biography of Cancer",
+    "book_image": "https://covers.openlibrary.org/b/id/11320203-L.jpg",
+    "isbn": "9786073143639",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2010 publication; 29 indexed editions",
+    "rating": 4.08,
+    "location": "Central Library / B-02",
+    "author": "Siddhartha Mukherjee",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "emperor",
+      "maladies:",
+      "biography"
+    ]
+  },
+  {
+    "bookname": "The Song of the Cell",
+    "book_image": "https://covers.openlibrary.org/b/id/12982914-L.jpg",
+    "isbn": "9781982117375",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2022 publication; 11 indexed editions",
+    "rating": 4,
+    "location": "Central Library / B-03",
+    "author": "Siddhartha Mukherjee",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "song",
+      "cell",
+      "mukherjee"
+    ]
+  },
+  {
+    "bookname": "Astrophysics for People in a Hurry",
+    "book_image": "https://covers.openlibrary.org/b/id/7984709-L.jpg",
+    "isbn": "9788449333934",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2017 publication; 15 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-01",
+    "author": "Neil deGrasse Tyson",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "astrophysics",
+      "people",
+      "hurry"
+    ]
+  },
+  {
+    "bookname": "Seven Brief Lessons on Physics",
+    "book_image": "https://covers.openlibrary.org/b/id/7398110-L.jpg",
+    "isbn": "9782738133120",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2014 publication; 13 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-02",
+    "author": "Carlo Rovelli",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "seven",
+      "brief",
+      "lessons"
+    ]
+  },
+  {
+    "bookname": "The Order of Time",
+    "book_image": "https://covers.openlibrary.org/b/id/8177373-L.jpg",
+    "isbn": "9787571001636",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2017 publication; 17 indexed editions",
+    "rating": 4.04,
+    "location": "Central Library / D-01",
+    "author": "Carlo Rovelli",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "order",
+      "time",
+      "rovelli"
+    ]
+  },
+  {
+    "bookname": "Helgoland: Making Sense of the Quantum Revolution",
+    "book_image": "https://covers.openlibrary.org/b/id/11140844-L.jpg",
+    "isbn": "9780241454695",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2020 publication; 6 indexed editions",
+    "rating": 5,
+    "location": "Central Library / D-02",
+    "author": "Carlo Rovelli",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "helgoland:",
+      "making",
+      "sense"
+    ]
+  },
+  {
+    "bookname": "Reality Is Not What It Seems",
+    "book_image": "https://covers.openlibrary.org/b/id/10866486-L.jpg",
+    "isbn": "9780241257968",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2016 publication; 1 indexed editions",
+    "rating": 4.67,
+    "location": "Central Library / E-01",
+    "author": "Carlo Rovelli",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "reality",
+      "what",
+      "seems"
+    ]
+  },
+  {
+    "bookname": "The Elegant Universe",
+    "book_image": "https://covers.openlibrary.org/b/id/1007630-L.jpg",
+    "isbn": "9781446477779",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "1999 publication; 30 indexed editions",
+    "rating": 4.06,
+    "location": "Central Library / E-02",
+    "author": "Brian Greene",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "elegant",
+      "universe",
+      "greene"
+    ]
+  },
+  {
+    "bookname": "Until the End of Time",
+    "book_image": "https://covers.openlibrary.org/b/id/9286997-L.jpg",
+    "isbn": "9780241295991",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2020 publication; 11 indexed editions",
+    "rating": 4.6,
+    "location": "Central Library / Best-01",
+    "author": "Brian Greene",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "until",
+      "time",
+      "greene"
+    ]
+  },
+  {
+    "bookname": "Why We Sleep: Unlocking the Power of Sleep and Dreams",
+    "book_image": "https://covers.openlibrary.org/b/id/8814155-L.jpg",
+    "isbn": "9781501144318",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2017 publication; 11 indexed editions",
+    "rating": 4.47,
+    "location": "Central Library / Best-02",
+    "author": "Matthew Walker",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "sleep:",
+      "unlocking",
+      "power"
+    ]
+  },
+  {
+    "bookname": "Breath: The New Science of a Lost Art",
+    "book_image": "https://covers.openlibrary.org/b/id/10096454-L.jpg",
+    "isbn": "9780735213623",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2020 publication; 12 indexed editions",
+    "rating": 4,
+    "location": "Central Library / Best-03",
+    "author": "James Nestor",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "breath:",
+      "science",
+      "lost"
+    ]
+  },
+  {
+    "bookname": "Lifespan: Why We Age―and Why We Don't Have To",
+    "book_image": "https://covers.openlibrary.org/b/id/12619380-L.jpg",
+    "isbn": "9789123969029",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2020 publication; 1 indexed editions",
+    "rating": 4.76,
+    "location": "Central Library / A-01",
+    "author": "David A. Sinclair",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "lifespan:",
+      "age―and",
+      "don't"
+    ]
+  },
+  {
+    "bookname": "Outlive: The Science and Art of Longevity",
+    "book_image": "https://covers.openlibrary.org/b/id/13191259-L.jpg",
+    "isbn": "9781785044540",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2023 publication; 5 indexed editions",
+    "rating": 4.36,
+    "location": "Central Library / A-02",
+    "author": "Peter Attia",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "outlive:",
+      "science",
+      "longevity"
+    ]
+  },
+  {
+    "bookname": "The Man Who Mistook His Wife for a Hat",
+    "book_image": "https://covers.openlibrary.org/b/id/6986188-L.jpg",
+    "isbn": "9788433973382",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "1980 publication; 62 indexed editions",
+    "rating": 4.09,
+    "location": "Central Library / A-03",
+    "author": "Oliver Sacks",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "mistook",
+      "wife",
+      "sacks"
+    ]
+  },
+  {
+    "bookname": "Musicophilia: Tales of Music and the Brain",
+    "book_image": "https://covers.openlibrary.org/b/id/9261340-L.jpg",
+    "isbn": "9788845972614",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2007 publication; 43 indexed editions",
+    "rating": 4,
+    "location": "Central Library / B-01",
+    "author": "Oliver Sacks",
+    "genre": "Psychology",
+    "tags": [
+      "psychology",
+      "bestseller",
+      "popular",
+      "musicophilia:",
+      "tales",
+      "music"
+    ]
+  },
+  {
+    "bookname": "Entangled Life: How Fungi Make Our Worlds",
+    "book_image": "https://covers.openlibrary.org/b/id/10152882-L.jpg",
+    "isbn": "9781473580824",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2020 publication; 11 indexed editions",
+    "rating": 4.54,
+    "location": "Central Library / B-02",
+    "author": "Merlin Sheldrake",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "entangled",
+      "life:",
+      "fungi"
+    ]
+  },
+  {
+    "bookname": "The Hidden Life of Trees",
+    "book_image": "https://covers.openlibrary.org/b/id/8064205-L.jpg",
+    "isbn": "9781771642484",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2015 publication; 18 indexed editions",
+    "rating": 4.25,
+    "location": "Central Library / B-03",
+    "author": "Peter Wohlleben",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "hidden",
+      "life",
+      "trees"
+    ]
+  },
+  {
+    "bookname": "An Immense World",
+    "book_image": "https://covers.openlibrary.org/b/id/12835209-L.jpg",
+    "isbn": "9781529112115",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2022 publication; 7 indexed editions",
+    "rating": 4.5,
+    "location": "Central Library / C-01",
+    "author": "Ed Yong",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "immense",
+      "world",
+      "yong"
+    ]
+  },
+  {
+    "bookname": "I Contain Multitudes: The Microbes Within Us",
+    "book_image": "https://covers.openlibrary.org/b/id/8085300-L.jpg",
+    "isbn": "9781784700171",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2016 publication; 11 indexed editions",
+    "rating": 4.08,
+    "location": "Central Library / C-02",
+    "author": "Ed Yong",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "contain",
+      "multitudes:",
+      "microbes"
+    ]
+  },
+  {
+    "bookname": "What If?: Serious Scientific Answers to Absurd Hypothetical Questions",
+    "book_image": "https://covers.openlibrary.org/b/id/9083979-L.jpg",
+    "isbn": "9786053436157",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "1980 publication; 37 indexed editions",
+    "rating": 4.31,
+    "location": "Central Library / D-01",
+    "author": "Randall Munroe",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "what",
+      "if?:",
+      "serious"
+    ]
+  },
+  {
+    "bookname": "Thing Explainer: Complicated Stuff in Simple Words",
+    "book_image": "https://covers.openlibrary.org/b/id/7402068-L.jpg",
+    "isbn": "9781473620926",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2015 publication; 9 indexed editions",
+    "rating": 4.21,
+    "location": "Central Library / D-02",
+    "author": "Randall Munroe",
+    "genre": "Science",
+    "tags": [
+      "science",
+      "bestseller",
+      "popular",
+      "thing",
+      "explainer:",
+      "complicated"
+    ]
+  },
+  {
+    "bookname": "The Lean Startup",
+    "book_image": "https://covers.openlibrary.org/b/id/7104760-L.jpg",
+    "isbn": "9783868815672",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2011 publication; 8 indexed editions",
+    "rating": 4,
+    "location": "Central Library / E-01",
+    "author": "Eric Ries",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "lean",
+      "startup",
+      "ries"
+    ]
+  },
+  {
+    "bookname": "Clean Code: A Handbook of Agile Software Craftsmanship",
+    "book_image": "https://covers.openlibrary.org/b/id/8065615-L.jpg",
+    "isbn": "9788441540842",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2008 publication; 13 indexed editions",
+    "rating": 4.4,
+    "location": "Central Library / E-02",
+    "author": "Robert C. Martin",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "clean",
+      "code:",
+      "handbook"
+    ]
+  },
+  {
+    "bookname": "The Pragmatic Programmer",
+    "book_image": "https://covers.openlibrary.org/b/id/10143650-L.jpg",
+    "isbn": "9785342616224",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "1999 publication; 11 indexed editions",
+    "rating": 4.35,
+    "location": "Central Library / Best-01",
+    "author": "Andrew Hunt, David Thomas",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "pragmatic",
+      "programmer",
+      "thomas"
+    ]
+  },
+  {
+    "bookname": "Design Patterns: Elements of Reusable Object-Oriented Software",
+    "book_image": "https://covers.openlibrary.org/b/isbn/9781000000849-L.jpg",
+    "isbn": "9781000000849",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2020 publication; 12 indexed editions",
+    "rating": 4.65,
+    "location": "Central Library / Best-02",
+    "author": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "design",
+      "patterns:",
+      "elements"
+    ]
+  },
+  {
+    "bookname": "Refactoring: Improving the Design of Existing Code",
+    "book_image": "https://covers.openlibrary.org/b/id/7087623-L.jpg",
+    "isbn": "9780201485677",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "1999 publication; 1 indexed editions",
+    "rating": 4,
+    "location": "Central Library / Best-03",
+    "author": "Martin Fowler",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "refactoring:",
+      "improving",
+      "design"
+    ]
+  },
+  {
+    "bookname": "Structure and Interpretation of Computer Programs",
+    "book_image": "https://covers.openlibrary.org/b/id/149338-L.jpg",
+    "isbn": "9780070004221",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "1985 publication; 16 indexed editions",
+    "rating": 4.43,
+    "location": "Central Library / A-01",
+    "author": "Harold Abelson, Gerald Jay Sussman",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "structure",
+      "interpretation",
+      "computer"
+    ]
+  },
+  {
+    "bookname": "Introduction to Algorithms",
+    "book_image": "https://covers.openlibrary.org/b/id/2341462-L.jpg",
+    "isbn": "9780262032933",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "1990 publication; 18 indexed editions",
+    "rating": 4.19,
+    "location": "Central Library / A-02",
+    "author": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "introduction",
+      "algorithms",
+      "stein"
+    ]
+  },
+  {
+    "bookname": "Artificial Intelligence: A Modern Approach",
+    "book_image": "https://covers.openlibrary.org/b/id/92018-L.jpg",
+    "isbn": "9788129700414",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "1994 publication; 39 indexed editions",
+    "rating": 4.08,
+    "location": "Central Library / A-03",
+    "author": "Stuart Russell, Peter Norvig",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "artificial",
+      "intelligence:",
+      "modern"
+    ]
+  },
+  {
+    "bookname": "Life 3.0: Being Human in the Age of Artificial Intelligence",
+    "book_image": "https://covers.openlibrary.org/b/isbn/9798708473721-L.jpg",
+    "isbn": "9798708473721",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2021 publication; 1 indexed editions",
+    "rating": 4.77,
+    "location": "Central Library / B-01",
+    "author": "Max Tegmark",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "life",
+      "3.0:",
+      "being"
+    ]
+  },
+  {
+    "bookname": "Superintelligence: Paths, Dangers, Strategies",
+    "book_image": "https://covers.openlibrary.org/b/id/8039542-L.jpg",
+    "isbn": "9788594540607",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2014 publication; 11 indexed editions",
+    "rating": 4.04,
+    "location": "Central Library / B-02",
+    "author": "Nick Bostrom",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "superintelligence:",
+      "paths,",
+      "dangers,"
+    ]
+  },
+  {
+    "bookname": "The Master Algorithm",
+    "book_image": "https://covers.openlibrary.org/b/id/9321915-L.jpg",
+    "isbn": "9780141979243",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2015 publication; 9 indexed editions",
+    "rating": 4,
+    "location": "Central Library / B-03",
+    "author": "Pedro Domingos",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "master",
+      "algorithm",
+      "domingos"
+    ]
+  },
+  {
+    "bookname": "Deep Learning",
+    "book_image": "https://covers.openlibrary.org/b/id/8086288-L.jpg",
+    "isbn": "9780262337373",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2016 publication; 5 indexed editions",
+    "rating": 4,
+    "location": "Central Library / C-01",
+    "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "deep",
+      "learning",
+      "courville"
+    ]
+  },
+  {
+    "bookname": "Competing in the Age of AI",
+    "book_image": "https://covers.openlibrary.org/b/id/11945684-L.jpg",
+    "isbn": "9781633697621",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2020 publication; 1 indexed editions",
+    "rating": 4.65,
+    "location": "Central Library / C-02",
+    "author": "Marco Iansiti, Karim R. Lakhani",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "competing",
+      "lakhani"
+    ]
+  },
+  {
+    "bookname": "Chip War: The Fight for the World's Most Critical Technology",
+    "book_image": "https://covers.openlibrary.org/b/id/12968901-L.jpg",
+    "isbn": "9781982172015",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2022 publication; 8 indexed editions",
+    "rating": 5,
+    "location": "Central Library / D-01",
+    "author": "Chris Miller",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "chip",
+      "war:",
+      "fight"
+    ]
+  },
+  {
+    "bookname": "Hooked: How to Build Habit-Forming Products",
+    "book_image": "https://covers.openlibrary.org/b/isbn/9781637998359-L.jpg",
+    "isbn": "9781637998359",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2019 publication; 1 indexed editions",
+    "rating": 4.45,
+    "location": "Central Library / D-02",
+    "author": "Nir Eyal",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "hooked:",
+      "build",
+      "habit-forming"
+    ]
+  },
+  {
+    "bookname": "Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days",
+    "book_image": "https://covers.openlibrary.org/b/id/7431269-L.jpg",
+    "isbn": "9781501121777",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2001 publication; 9 indexed editions",
+    "rating": 4.19,
+    "location": "Central Library / E-01",
+    "author": "Jake Knapp",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "sprint:",
+      "solve",
+      "problems"
+    ]
+  },
+  {
+    "bookname": "Inspired: How to Create Tech Products Customers Love",
+    "book_image": "https://covers.openlibrary.org/b/id/9700654-L.jpg",
+    "isbn": "9789352131501",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2008 publication; 10 indexed editions",
+    "rating": 4.29,
+    "location": "Central Library / E-02",
+    "author": "Marty Cagan",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "inspired:",
+      "create",
+      "tech"
+    ]
+  },
+  {
+    "bookname": "Cracking the Coding Interview",
+    "book_image": "https://covers.openlibrary.org/b/id/7276811-L.jpg",
+    "isbn": "9780984782802",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2010 publication; 5 indexed editions",
+    "rating": 4,
+    "location": "Central Library / Best-01",
+    "author": "Gayle Laakmann McDowell",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "cracking",
+      "coding",
+      "interview"
+    ]
+  },
+  {
+    "bookname": "Designing Data-Intensive Applications",
+    "book_image": "https://covers.openlibrary.org/b/isbn/9781000000864-L.jpg",
+    "isbn": "9781000000864",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2020 publication; 12 indexed editions",
+    "rating": 4.46,
+    "location": "Central Library / Best-02",
+    "author": "Martin Kleppmann",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "designing",
+      "data-intensive",
+      "applications"
+    ]
+  },
+  {
+    "bookname": "The Phoenix Project",
+    "book_image": "https://covers.openlibrary.org/b/id/9151976-L.jpg",
+    "isbn": "9781950508921",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2013 publication; 15 indexed editions",
+    "rating": 4.09,
+    "location": "Central Library / Best-03",
+    "author": "Gene Kim, Kevin Behr, George Spafford",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "phoenix",
+      "project",
+      "spafford"
+    ]
+  },
+  {
+    "bookname": "Continuous Delivery",
+    "book_image": "https://covers.openlibrary.org/b/id/6998977-L.jpg",
+    "isbn": "9780321670229",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2010 publication; 3 indexed editions",
+    "rating": 4.4,
+    "location": "Central Library / A-01",
+    "author": "Jez Humble, David Farley",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "continuous",
+      "delivery",
+      "farley"
+    ]
+  },
+  {
+    "bookname": "Accelerate: The Science of Lean Software and DevOps",
+    "book_image": "https://covers.openlibrary.org/b/id/8509069-L.jpg",
+    "isbn": "9781942788379",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2018 publication; 3 indexed editions",
+    "rating": 4,
+    "location": "Central Library / A-02",
+    "author": "Nicole Forsgren, Jez Humble, Gene Kim",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "accelerate:",
+      "science",
+      "lean"
+    ]
+  },
+  {
+    "bookname": "Code: The Hidden Language of Computer Hardware and Software",
+    "book_image": "https://covers.openlibrary.org/b/id/460968-L.jpg",
+    "isbn": "9780735611313",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "1999 publication; 7 indexed editions",
+    "rating": 4.12,
+    "location": "Central Library / A-03",
+    "author": "Charles Petzold",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "code:",
+      "hidden",
+      "language"
+    ]
+  },
+  {
+    "bookname": "The Mythical Man-Month",
+    "book_image": "https://covers.openlibrary.org/b/isbn/9781000000869-L.jpg",
+    "isbn": "9781000000869",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2020 publication; 12 indexed editions",
+    "rating": 4.66,
+    "location": "Central Library / B-01",
+    "author": "Frederick P. Brooks Jr.",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "mythical",
+      "man-month",
+      "jr."
+    ]
+  },
+  {
+    "bookname": "Grokking Algorithms",
+    "book_image": "https://covers.openlibrary.org/b/id/8512926-L.jpg",
+    "isbn": "9781617292231",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2016 publication; 1 indexed editions",
+    "rating": 4.08,
+    "location": "Central Library / B-02",
+    "author": "Aditya Bhargava",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "grokking",
+      "algorithms",
+      "bhargava"
+    ]
+  },
+  {
+    "bookname": "Clean Architecture: A Craftsman's Guide to Software Structure",
+    "book_image": "https://covers.openlibrary.org/b/id/8605114-L.jpg",
+    "isbn": "9789352865123",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2017 publication; 7 indexed editions",
+    "rating": 4,
+    "location": "Central Library / B-03",
+    "author": "Robert C. Martin",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "clean",
+      "architecture:",
+      "craftsman's"
+    ]
+  },
+  {
+    "bookname": "You Don't Know JS: Scope & Closures",
+    "book_image": "https://covers.openlibrary.org/b/isbn/9781000000872-L.jpg",
+    "isbn": "9781000000872",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "2020 publication; 12 indexed editions",
+    "rating": 4.45,
+    "location": "Central Library / C-01",
+    "author": "Kyle Simpson",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "don't",
+      "know",
+      "scope"
+    ]
+  },
+  {
+    "bookname": "Domain-Driven Design: Tackling Complexity in the Heart of Software",
+    "book_image": "https://covers.openlibrary.org/b/isbn/9781000000873-L.jpg",
+    "isbn": "9781000000873",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2020 publication; 12 indexed editions",
+    "rating": 4.6,
+    "location": "Central Library / C-02",
+    "author": "Eric Evans",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "domain-driven",
+      "design:",
+      "tackling"
+    ]
+  },
+  {
+    "bookname": "Site Reliability Engineering",
+    "book_image": "https://covers.openlibrary.org/b/id/9196682-L.jpg",
+    "isbn": "9781491929124",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2016 publication; 2 indexed editions",
+    "rating": 4,
+    "location": "Central Library / D-01",
+    "author": "Betsy Beyer, Chris Jones, Jennifer Petoff, Niall Richard Murphy",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "site",
+      "reliability",
+      "engineering"
+    ]
+  },
+  {
+    "bookname": "Building Microservices",
+    "book_image": "https://covers.openlibrary.org/b/id/8513315-L.jpg",
+    "isbn": "9781492034025",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2015 publication; 3 indexed editions",
+    "rating": 4,
+    "location": "Central Library / D-02",
+    "author": "Sam Newman",
+    "genre": "Technology",
+    "tags": [
+      "technology",
+      "bestseller",
+      "popular",
+      "building",
+      "microservices",
+      "newman"
+    ]
+  },
+  {
+    "bookname": "Dune",
+    "book_image": "https://covers.openlibrary.org/b/id/11481354-L.jpg",
+    "isbn": "9780340960196",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "1965 publication; 155 indexed editions",
+    "rating": 4.31,
+    "location": "Central Library / E-01",
+    "author": "Frank Herbert",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "dune",
+      "herbert"
+    ]
+  },
+  {
+    "bookname": "Dune Messiah",
+    "book_image": "https://covers.openlibrary.org/b/id/980253-L.jpg",
+    "isbn": "9780425018477",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "1969 publication; 101 indexed editions",
+    "rating": 4,
+    "location": "Central Library / E-02",
+    "author": "Frank Herbert",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "dune",
+      "messiah",
+      "herbert"
+    ]
+  },
+  {
+    "bookname": "Children of Dune",
+    "book_image": "https://covers.openlibrary.org/b/id/6976407-L.jpg",
+    "isbn": "9788381880473",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "1976 publication; 77 indexed editions",
+    "rating": 4,
+    "location": "Central Library / Best-01",
+    "author": "Frank Herbert",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "children",
+      "dune",
+      "herbert"
+    ]
+  },
+  {
+    "bookname": "Foundation",
+    "book_image": "https://covers.openlibrary.org/b/id/14612610-L.jpg",
+    "isbn": "9780007933587",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "1951 publication; 101 indexed editions",
+    "rating": 4.08,
+    "location": "Central Library / Best-02",
+    "author": "Isaac Asimov",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "foundation",
+      "asimov"
+    ]
+  },
+  {
+    "bookname": "Foundation and Empire",
+    "book_image": "https://covers.openlibrary.org/b/id/9300695-L.jpg",
+    "isbn": "9780246118325",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "1945 publication; 83 indexed editions",
+    "rating": 4.1,
+    "location": "Central Library / Best-03",
+    "author": "Isaac Asimov",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "foundation",
+      "empire",
+      "asimov"
+    ]
+  },
+  {
+    "bookname": "Second Foundation",
+    "book_image": "https://covers.openlibrary.org/b/id/9261324-L.jpg",
+    "isbn": "9789993068808",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "1953 publication; 81 indexed editions",
+    "rating": 4.35,
+    "location": "Central Library / A-01",
+    "author": "Isaac Asimov",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "second",
+      "foundation",
+      "asimov"
+    ]
+  },
+  {
+    "bookname": "I, Robot",
+    "book_image": "https://covers.openlibrary.org/b/id/12385229-L.jpg",
+    "isbn": "9780812439250",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "1950 publication; 99 indexed editions",
+    "rating": 4.25,
+    "location": "Central Library / A-02",
+    "author": "Isaac Asimov",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "robot",
+      "asimov"
+    ]
+  },
+  {
+    "bookname": "Neuromancer",
+    "book_image": "https://covers.openlibrary.org/b/id/283860-L.jpg",
+    "isbn": "9783608504880",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "1984 publication; 65 indexed editions",
+    "rating": 4.05,
+    "location": "Central Library / A-03",
+    "author": "William Gibson",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "neuromancer",
+      "gibson"
+    ]
+  },
+  {
+    "bookname": "Snow Crash",
+    "book_image": "https://covers.openlibrary.org/b/id/392508-L.jpg",
+    "isbn": "9783442236862",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "1992 publication; 41 indexed editions",
+    "rating": 4.08,
+    "location": "Central Library / B-01",
+    "author": "Neal Stephenson",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "snow",
+      "crash",
+      "stephenson"
+    ]
+  },
+  {
+    "bookname": "The Three-Body Problem",
+    "book_image": "https://covers.openlibrary.org/b/isbn/9781637992562-L.jpg",
+    "isbn": "9781637992562",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "2022 publication; 1 indexed editions",
+    "rating": 4.81,
+    "location": "Central Library / B-02",
+    "author": "Cixin Liu",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "three-body",
+      "problem",
+      "liu"
+    ]
+  },
+  {
+    "bookname": "The Dark Forest",
+    "book_image": "https://covers.openlibrary.org/b/id/10526598-L.jpg",
+    "isbn": "9781784971588",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "2008 publication; 31 indexed editions",
+    "rating": 4.42,
+    "location": "Central Library / B-03",
+    "author": "Cixin Liu",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "dark",
+      "forest",
+      "liu"
+    ]
+  },
+  {
+    "bookname": "Death's End",
+    "book_image": "https://covers.openlibrary.org/b/id/7893958-L.jpg",
+    "isbn": "9782330143190",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "2010 publication; 27 indexed editions",
+    "rating": 4.35,
+    "location": "Central Library / C-01",
+    "author": "Cixin Liu",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "death's",
+      "liu"
+    ]
+  },
+  {
+    "bookname": "Project Hail Mary",
+    "book_image": "https://covers.openlibrary.org/b/id/11200092-L.jpg",
+    "isbn": "9788418037016",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "2021 publication; 32 indexed editions",
+    "rating": 4.54,
+    "location": "Central Library / C-02",
+    "author": "Andy Weir",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "project",
+      "hail",
+      "mary"
+    ]
+  },
+  {
+    "bookname": "The Martian",
+    "book_image": "https://covers.openlibrary.org/b/id/11447888-L.jpg",
+    "isbn": "9780606367202",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "2011 publication; 74 indexed editions",
+    "rating": 4.4,
+    "location": "Central Library / D-01",
+    "author": "Andy Weir",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "martian",
+      "weir"
+    ]
+  },
+  {
+    "bookname": "1984",
+    "book_image": "https://covers.openlibrary.org/b/id/9267242-L.jpg",
+    "isbn": "9780786128686",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "1949 publication; 727 indexed editions",
+    "rating": 4.29,
+    "location": "Central Library / D-02",
+    "author": "George Orwell",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "1984",
+      "orwell"
+    ]
+  },
+  {
+    "bookname": "Animal Farm",
+    "book_image": "https://covers.openlibrary.org/b/id/11261770-L.jpg",
+    "isbn": "9798550366127",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "1945 publication; 657 indexed editions",
+    "rating": 4.17,
+    "location": "Central Library / E-01",
+    "author": "George Orwell",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "animal",
+      "farm",
+      "orwell"
+    ]
+  },
+  {
+    "bookname": "Brave New World",
+    "book_image": "https://covers.openlibrary.org/b/id/8231823-L.jpg",
+    "isbn": "9780062696120",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "1932 publication; 723 indexed editions",
+    "rating": 4,
+    "location": "Central Library / E-02",
+    "author": "Aldous Huxley",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "brave",
+      "world",
+      "huxley"
+    ]
+  },
+  {
+    "bookname": "Fahrenheit 451",
+    "book_image": "https://covers.openlibrary.org/b/id/12993656-L.jpg",
+    "isbn": "9780246635716",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "1953 publication; 266 indexed editions",
+    "rating": 4,
+    "location": "Central Library / Best-01",
+    "author": "Ray Bradbury",
+    "genre": "Science Fiction",
+    "tags": [
+      "science fiction",
+      "bestseller",
+      "popular",
+      "fahrenheit",
+      "bradbury"
+    ]
+  },
+  {
+    "bookname": "The Great Gatsby",
+    "book_image": "https://covers.openlibrary.org/b/id/10590366-L.jpg",
+    "isbn": "9787544726436",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "1920 publication; 1181 indexed editions",
+    "rating": 4,
+    "location": "Central Library / Best-02",
+    "author": "F. Scott Fitzgerald",
+    "genre": "Classics",
+    "tags": [
+      "classics",
+      "bestseller",
+      "popular",
+      "great",
+      "gatsby",
+      "fitzgerald"
+    ]
+  },
+  {
+    "bookname": "To Kill a Mockingbird",
+    "book_image": "https://covers.openlibrary.org/b/id/14351077-L.jpg",
+    "isbn": "9781784870799",
+    "total_count": 10,
+    "available_count": 10,
+    "edition": "1960 publication; 214 indexed editions",
+    "rating": 4.13,
+    "location": "Central Library / Best-03",
+    "author": "Harper Lee",
+    "genre": "Classics",
+    "tags": [
+      "classics",
+      "bestseller",
+      "popular",
+      "kill",
+      "mockingbird",
+      "lee"
+    ]
+  },
+  {
+    "bookname": "The Catcher in the Rye",
+    "book_image": "https://covers.openlibrary.org/b/id/9273490-L.jpg",
+    "isbn": "9780140237498",
+    "total_count": 13,
+    "available_count": 12,
+    "edition": "1945 publication; 204 indexed editions",
+    "rating": 4,
+    "location": "Central Library / A-01",
+    "author": "J.D. Salinger",
+    "genre": "Classics",
+    "tags": [
+      "classics",
+      "bestseller",
+      "popular",
+      "catcher",
+      "salinger"
+    ]
+  },
+  {
+    "bookname": "Crime and Punishment",
+    "book_image": "https://covers.openlibrary.org/b/id/9411873-L.jpg",
+    "isbn": "9781722346317",
+    "total_count": 16,
+    "available_count": 16,
+    "edition": "1866 publication; 1178 indexed editions",
+    "rating": 4.3,
+    "location": "Central Library / A-02",
+    "author": "Fyodor Dostoevsky",
+    "genre": "Classics",
+    "tags": [
+      "classics",
+      "bestseller",
+      "popular",
+      "crime",
+      "punishment",
+      "dostoevsky"
+    ]
+  },
+  {
+    "bookname": "The Brothers Karamazov",
+    "book_image": "https://covers.openlibrary.org/b/id/8272336-L.jpg",
+    "isbn": "9781985085411",
+    "total_count": 19,
+    "available_count": 19,
+    "edition": "1880 publication; 394 indexed editions",
+    "rating": 4.3,
+    "location": "Central Library / A-03",
+    "author": "Fyodor Dostoevsky",
+    "genre": "Classics",
+    "tags": [
+      "classics",
+      "bestseller",
+      "popular",
+      "brothers",
+      "karamazov",
+      "dostoevsky"
+    ]
+  },
+  {
+    "bookname": "Notes from Underground",
+    "book_image": "https://covers.openlibrary.org/b/id/10445973-L.jpg",
+    "isbn": "9798355648527",
+    "total_count": 4,
+    "available_count": 3,
+    "edition": "1864 publication; 837 indexed editions",
+    "rating": 4.15,
+    "location": "Central Library / B-01",
+    "author": "Fyodor Dostoevsky",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "notes",
+      "from",
+      "underground"
+    ]
+  },
+  {
+    "bookname": "The Metamorphosis",
+    "book_image": "https://covers.openlibrary.org/b/id/12820198-L.jpg",
+    "isbn": "9781544078472",
+    "total_count": 7,
+    "available_count": 7,
+    "edition": "1915 publication; 957 indexed editions",
+    "rating": 4.17,
+    "location": "Central Library / B-02",
+    "author": "Franz Kafka",
+    "genre": "Philosophy",
+    "tags": [
+      "philosophy",
+      "bestseller",
+      "popular",
+      "metamorphosis",
+      "kafka"
+    ]
+  },
+  {
     "bookname": "Advances in Computers, Volume 49 (Advances in Computers)",
     "book_image": "https://covers.openlibrary.org/b/id/1094406-L.jpg",
     "isbn": "9781000000016",

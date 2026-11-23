@@ -1,64 +1,93 @@
 /* ============================================================
    Y-LIBRARY APP STYLES
-   - Dark Mode: Pitch Black (#000000) + Crisp White + Orange Highlights
-   - Light Mode: Off-white canvas + Crisp White Card + Slate + Orange Accents
-   - Kindle/Paperback Aspect Ratio (1 : 1.5) for Book Tiles
-   - Modern Streaming / Dashboard Inspiration (Mockup Layout)
+   Color Palette:
+   - Paper: #F6F4F1 (Clean warm parchment / light canvas)
+   - Stone: #E4DED2 (Soft warm stone / borders / secondary surfaces)
+   - Coral: #F95C4B (Vibrant signature accent / buttons / glow)
+   - Black: #000000 (Pure pitch black / dark canvas / light text)
 ============================================================ */
 
 :root,
 [data-theme="dark"] {
-  --steam-bg: #000000;
-  --steam-shell-bg: #070709;
-  --steam-panel: #0d0d12;
-  --steam-panel-hover: #14141c;
-  --steam-surface: #0a0a0e;
-  --steam-card-bg: #121217;
-  --steam-card-hover: #191922;
-  --steam-orange: #ff5500;
-  --steam-orange-hover: #ff6a1a;
-  --steam-orange-glow: rgba(255, 85, 0, 0.35);
-  --steam-border: rgba(255, 255, 255, 0.08);
-  --steam-border-focus: rgba(255, 85, 0, 0.6);
-  --steam-text: #ffffff;
-  --steam-text-secondary: #cbd5e1;
-  --steam-muted: #80808e;
-  --steam-input-bg: #0d0d12;
-  --steam-pill-bg: rgba(255, 255, 255, 0.06);
+  /* Palette Constants */
+  --color-paper: #F6F4F1;
+  --color-stone: #E4DED2;
+  --color-coral: #F95C4B;
+  --color-coral-hover: #E84C39;
+  --color-coral-glow: rgba(249, 92, 75, 0.38);
+  --color-black: #000000;
+
+  /* Dark Theme Semantics */
+  --steam-bg: #000000; /* Pure Black canvas */
+  --steam-shell-bg: #070707; /* Dark shell */
+  --steam-panel: #0E0E0E; /* Dark panel */
+  --steam-panel-hover: #171717;
+  --steam-surface: #0A0A0A;
+  --steam-card-bg: #121212;
+  --steam-card-hover: #1A1A1A;
+
+  --steam-orange: #F95C4B; /* Coral accent */
+  --steam-orange-hover: #E84C39;
+  --steam-orange-glow: rgba(249, 92, 75, 0.38);
+
+  --steam-border: rgba(228, 222, 210, 0.12); /* Subtle stone border */
+  --steam-border-focus: rgba(249, 92, 75, 0.6);
+
+  --steam-text: #F6F4F1; /* Paper */
+  --steam-text-secondary: #E4DED2; /* Stone */
+  --steam-muted: #9E978B; /* Warm stone muted */
+
+  --steam-input-bg: #141414;
+  --steam-pill-bg: rgba(246, 244, 241, 0.06);
+
   --steam-card-radius: 16px;
   --steam-pill-radius: 999px;
-  --steam-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
-  --steam-app-shadow: 0 24px 60px rgba(0, 0, 0, 0.95);
-  --steam-dock-bg: rgba(20, 20, 26, 0.92);
-  --steam-dock-border: rgba(255, 255, 255, 0.12);
-  --steam-hero-text: #ffffff;
+  --steam-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
+  --steam-app-shadow: 0 24px 60px rgba(0, 0, 0, 0.98);
+  --steam-dock-bg: rgba(16, 16, 16, 0.94);
+  --steam-dock-border: rgba(228, 222, 210, 0.16);
+  --steam-hero-text: #F6F4F1;
 }
 
 [data-theme="light"] {
-  --steam-bg: #eaedf3;
-  --steam-shell-bg: #ffffff;
-  --steam-panel: #ffffff;
-  --steam-panel-hover: #f1f4f9;
-  --steam-surface: #f8fafc;
-  --steam-card-bg: #ffffff;
-  --steam-card-hover: #f8fafc;
-  --steam-orange: #ff4500;
-  --steam-orange-hover: #e03d00;
-  --steam-orange-glow: rgba(255, 69, 0, 0.25);
-  --steam-border: rgba(0, 0, 0, 0.08);
-  --steam-border-focus: rgba(255, 69, 0, 0.5);
-  --steam-text: #0f172a;
-  --steam-text-secondary: #334155;
-  --steam-muted: #64748b;
-  --steam-input-bg: #f1f5f9;
-  --steam-pill-bg: #f1f5f9;
+  /* Palette Constants */
+  --color-paper: #F6F4F1;
+  --color-stone: #E4DED2;
+  --color-coral: #F95C4B;
+  --color-coral-hover: #E84C39;
+  --color-coral-glow: rgba(249, 92, 75, 0.28);
+  --color-black: #000000;
+
+  /* Light Theme Semantics */
+  --steam-bg: #F6F4F1; /* Paper as main background */
+  --steam-shell-bg: #FFFFFF; /* Clean white card container */
+  --steam-panel: #FFFFFF;
+  --steam-panel-hover: #F2EFE9; /* Warm stone hover */
+  --steam-surface: #F6F4F1; /* Paper */
+  --steam-card-bg: #FFFFFF;
+  --steam-card-hover: #F8F6F2;
+
+  --steam-orange: #F95C4B; /* Coral accent */
+  --steam-orange-hover: #E84C39;
+  --steam-orange-glow: rgba(249, 92, 75, 0.28);
+
+  --steam-border: rgba(228, 222, 210, 0.85); /* Stone border */
+  --steam-border-focus: rgba(249, 92, 75, 0.55);
+
+  --steam-text: #000000; /* Black text */
+  --steam-text-secondary: #3B3730; /* Deep charcoal stone */
+  --steam-muted: #756E63; /* Warm stone muted text */
+
+  --steam-input-bg: #ECE8E0; /* Paper/Stone inset input */
+  --steam-pill-bg: #EAE5DC;
+
   --steam-card-radius: 16px;
   --steam-pill-radius: 999px;
-  --steam-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-  --steam-app-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
-  --steam-dock-bg: rgba(26, 28, 36, 0.94);
-  --steam-dock-border: rgba(255, 255, 255, 0.15);
-  --steam-hero-text: #ffffff;
+  --steam-shadow: 0 10px 30px rgba(74, 70, 63, 0.06);
+  --steam-app-shadow: 0 20px 50px rgba(74, 70, 63, 0.12);
+  --steam-dock-bg: rgba(28, 26, 24, 0.95); /* High-contrast stone-black dock */
+  --steam-dock-border: rgba(246, 244, 241, 0.2);
+  --steam-hero-text: #F6F4F1;
 }
 
 * {
@@ -71,7 +100,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--steam-bg);
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 85, 0, 0.1), transparent 70%);
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(249, 92, 75, 0.12), transparent 70%),
+    radial-gradient(ellipse 50% 30% at 100% 50%, rgba(228, 222, 210, 0.04), transparent 60%);
   color: var(--steam-text);
   min-height: 100vh;
   overflow-x: hidden;
@@ -80,7 +110,8 @@ body {
 
 [data-theme="light"] body {
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 69, 0, 0.06), transparent 70%);
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(249, 92, 75, 0.08), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(228, 222, 210, 0.45), transparent 60%);
 }
 
 button {
@@ -188,7 +219,7 @@ input:focus, select:focus, textarea:focus {
 
 .steam-nav-item.active {
   color: var(--steam-orange);
-  background: rgba(255, 85, 0, 0.08);
+  background: rgba(249, 92, 75, 0.1);
   font-weight: 700;
 }
 
@@ -228,7 +259,7 @@ input:focus, select:focus, textarea:focus {
 
 .steam-continue-item:hover {
   border-color: var(--steam-orange);
-  background: rgba(255, 85, 0, 0.08);
+  background: rgba(249, 92, 75, 0.08);
   transform: translateX(2px);
 }
 
@@ -352,10 +383,10 @@ input:focus, select:focus, textarea:focus {
 }
 
 .steam-cat-pill.active {
-  background: linear-gradient(135deg, #ff4500, #ff6200);
-  color: #ffffff !important;
+  background: linear-gradient(135deg, #FF6F5E 0%, #F95C4B 100%);
+  color: #F6F4F1 !important;
   font-weight: 700;
-  box-shadow: 0 4px 14px rgba(255, 98, 0, 0.4);
+  box-shadow: 0 4px 14px rgba(249, 92, 75, 0.4);
 }
 
 /* Header Actions */
@@ -451,7 +482,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* ============================================================
-   MODERN HERO BANNER (Inspired by Mockup: AVATAR 3 Hero Card)
+   MODERN HERO BANNER (Cinematic Poster Design)
 ============================================================ */
 .modern-hero-banner {
   position: relative;
@@ -460,9 +491,9 @@ input:focus, select:focus, textarea:focus {
   overflow: hidden;
   display: flex;
   align-items: center;
-  border: 1px solid var(--steam-border);
+  border: 1px solid rgba(228, 222, 210, 0.16);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  background: #07070a;
+  background: #000000;
 }
 
 .modern-hero-bg-art {
@@ -483,11 +514,11 @@ input:focus, select:focus, textarea:focus {
   inset: 0;
   background: linear-gradient(
     90deg,
-    #07070a 0%,
-    #07070a 34%,
-    rgba(7, 7, 10, 0.92) 55%,
-    rgba(7, 7, 10, 0.5) 75%,
-    rgba(7, 7, 10, 0.1) 100%
+    #000000 0%,
+    #000000 34%,
+    rgba(0, 0, 0, 0.92) 55%,
+    rgba(0, 0, 0, 0.5) 75%,
+    rgba(0, 0, 0, 0.1) 100%
   );
   z-index: 2;
   pointer-events: none;
@@ -498,7 +529,7 @@ input:focus, select:focus, textarea:focus {
   z-index: 3;
   padding: 36px 40px;
   max-width: 640px;
-  color: #ffffff;
+  color: var(--color-paper);
 }
 
 .modern-hero-trend-pill {
@@ -507,10 +538,10 @@ input:focus, select:focus, textarea:focus {
   gap: 6px;
   padding: 6px 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(249, 92, 75, 0.16);
+  border: 1px solid rgba(249, 92, 75, 0.35);
   backdrop-filter: blur(10px);
-  color: #ffffff;
+  color: var(--color-paper);
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 16px;
@@ -521,7 +552,7 @@ input:focus, select:focus, textarea:focus {
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  color: #ffffff;
+  color: var(--color-paper);
   margin-bottom: 12px;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
@@ -531,19 +562,20 @@ input:focus, select:focus, textarea:focus {
   align-items: center;
   gap: 10px;
   font-size: 13px;
-  color: #cbd5e1;
+  color: var(--color-stone);
   margin-bottom: 14px;
   font-weight: 500;
 }
 
 .modern-hero-bullet {
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(228, 222, 210, 0.4);
 }
 
 .modern-hero-desc {
   font-size: 13.5px;
   line-height: 1.6;
-  color: #cbd5e1;
+  color: var(--color-paper);
+  opacity: 0.88;
   margin-bottom: 24px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -559,8 +591,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 .modern-hero-btn-primary {
-  background: #ffffff;
-  color: #07070a;
+  background: var(--color-paper);
+  color: var(--color-black);
   font-weight: 700;
   font-size: 13px;
   border-radius: 999px;
@@ -573,15 +605,15 @@ input:focus, select:focus, textarea:focus {
 }
 
 .modern-hero-btn-primary:hover {
-  background: #f1f5f9;
+  background: var(--color-stone);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 6px 18px rgba(246, 244, 241, 0.25);
 }
 
 .modern-hero-btn-secondary {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(246, 244, 241, 0.12);
+  color: var(--color-paper);
+  border: 1px solid rgba(228, 222, 210, 0.25);
   backdrop-filter: blur(10px);
   border-radius: 999px;
   padding: 11px 22px;
@@ -594,8 +626,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 .modern-hero-btn-secondary:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: #ffffff;
+  background: rgba(246, 244, 241, 0.22);
+  border-color: var(--color-paper);
   transform: translateY(-1px);
 }
 
@@ -603,10 +635,10 @@ input:focus, select:focus, textarea:focus {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(246, 244, 241, 0.12);
+  border: 1px solid rgba(228, 222, 210, 0.25);
   backdrop-filter: blur(10px);
-  color: #ffffff;
+  color: var(--color-paper);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -635,10 +667,10 @@ input:focus, select:focus, textarea:focus {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: rgba(18, 18, 24, 0.75);
+  background: rgba(14, 14, 14, 0.75);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: #ffffff;
+  border: 1px solid rgba(228, 222, 210, 0.25);
+  color: var(--color-paper);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -682,21 +714,21 @@ input:focus, select:focus, textarea:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #94a3b8;
+  color: var(--steam-muted);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .steam-dock-item:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
+  color: var(--steam-text);
+  background: rgba(228, 222, 210, 0.12);
   transform: scale(1.08);
 }
 
 .steam-dock-item.active {
-  background: linear-gradient(135deg, #ff4500, #ff6200);
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(255, 98, 0, 0.5);
+  background: linear-gradient(135deg, #FF6F5E 0%, #F95C4B 100%);
+  color: #F6F4F1;
+  box-shadow: 0 4px 14px rgba(249, 92, 75, 0.5);
   transform: scale(1.08);
 }
 
@@ -738,7 +770,7 @@ input:focus, select:focus, textarea:focus {
   scroll-behavior: smooth;
   padding: 6px 4px 16px 4px;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 98, 0, 0.3) transparent;
+  scrollbar-color: rgba(249, 92, 75, 0.3) transparent;
 }
 
 .book-shelf-track::-webkit-scrollbar {
@@ -746,7 +778,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .book-shelf-track::-webkit-scrollbar-thumb {
-  background: rgba(255, 98, 0, 0.3);
+  background: rgba(249, 92, 75, 0.3);
   border-radius: 4px;
 }
 
@@ -763,21 +795,22 @@ input:focus, select:focus, textarea:focus {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(20, 20, 26, 0.9);
+  background: var(--steam-panel);
   border: 1px solid var(--steam-border);
-  color: #ffffff;
+  color: var(--steam-text);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 5;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
   transition: all 0.2s;
 }
 
 .book-shelf-arrow:hover {
   background: var(--steam-orange);
   border-color: var(--steam-orange);
+  color: #F6F4F1;
   transform: translateY(-50%) scale(1.1);
   box-shadow: 0 8px 24px var(--steam-orange-glow);
 }
@@ -808,15 +841,15 @@ input:focus, select:focus, textarea:focus {
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  background: #09090d;
+  background: #000000;
   border: 1px solid var(--steam-border);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   transition: border-color 0.22s, box-shadow 0.22s;
 }
 
 .book-tile:hover .book-tile-cover-wrap {
-  border-color: rgba(255, 98, 0, 0.65);
-  box-shadow: 0 12px 28px rgba(255, 98, 0, 0.22), 0 4px 14px rgba(0, 0, 0, 0.7);
+  border-color: var(--steam-orange);
+  box-shadow: 0 12px 28px rgba(249, 92, 75, 0.25), 0 4px 14px rgba(0, 0, 0, 0.6);
 }
 
 .book-tile-cover-img {
@@ -858,10 +891,10 @@ input:focus, select:focus, textarea:focus {
   position: absolute;
   top: 8px;
   right: 8px;
-  background: rgba(0, 0, 0, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(228, 222, 210, 0.2);
   backdrop-filter: blur(6px);
-  color: #f0a500;
+  color: var(--color-stone);
   padding: 3px 7px;
   border-radius: 5px;
   font-size: 10px;
@@ -890,7 +923,7 @@ input:focus, select:focus, textarea:focus {
 
 .book-tile-rating-num {
   font-weight: 800;
-  color: #ff8c42;
+  color: var(--steam-orange);
   font-size: 13px;
 }
 
@@ -911,6 +944,7 @@ input:focus, select:focus, textarea:focus {
   color: var(--steam-text);
   line-height: 1.3;
   margin: 2px 0 0 0;
+  text-transform: capitalize;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -922,6 +956,7 @@ input:focus, select:focus, textarea:focus {
 .book-tile-author {
   font-size: 12px;
   color: var(--steam-muted);
+  text-transform: capitalize;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -938,7 +973,7 @@ input:focus, select:focus, textarea:focus {
 
 .book-tile-location {
   font-size: 11px;
-  color: #f0a500;
+  color: var(--steam-text-secondary);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -965,10 +1000,10 @@ input:focus, select:focus, textarea:focus {
 }
 
 .book-tile-lock-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, #ff6200, #ff4500);
-  border-color: #ff6200;
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(255, 98, 0, 0.4);
+  background: linear-gradient(135deg, #FF6F5E 0%, #F95C4B 100%);
+  border-color: var(--steam-orange);
+  color: #F6F4F1;
+  box-shadow: 0 4px 12px rgba(249, 92, 75, 0.4);
 }
 
 /* ============================================================
@@ -981,6 +1016,52 @@ input:focus, select:focus, textarea:focus {
   padding: 24px;
   box-shadow: var(--steam-shadow);
   transition: background-color 0.25s, border-color 0.25s;
+}
+
+.steam-btn-primary {
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #FF6F5E 0%, #F95C4B 100%);
+  color: #F6F4F1;
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 8px 24px var(--steam-orange-glow);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.steam-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #FF7B6D 0%, #E84C39 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(249, 92, 75, 0.5);
+}
+
+.steam-modal-veil {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.steam-modal {
+  background: var(--steam-panel);
+  border: 1px solid var(--steam-border);
+  border-radius: var(--steam-card-radius);
+  max-width: 540px;
+  width: 100%;
+  padding: 28px;
+  box-shadow: var(--steam-shadow);
+  color: var(--steam-text);
 }
 
 .steam-table {
@@ -1013,15 +1094,6 @@ input:focus, select:focus, textarea:focus {
 @media (max-width: 768px) {
   .steam-sidebar {
     display: none;
-  }
-  .steam-mobile-logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    font-weight: 800;
-    font-size: 16px;
-    color: var(--steam-text);
   }
   .steam-header-categories {
     display: none;

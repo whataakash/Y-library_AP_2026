@@ -232,7 +232,7 @@ export default function UserSwitcherModal({ isOpen, onClose }) {
                         fontSize: "12px",
                         fontWeight: "600",
                         background: isSelected
-                          ? "linear-gradient(135deg, #ff6200, #ff4500)"
+                          ? "linear-gradient(135deg, #FF6F5E, #F95C4B)"
                           : "var(--steam-panel)",
                         color: isSelected ? "#ffffff" : "var(--steam-muted)",
                         border: isSelected
@@ -340,7 +340,7 @@ export default function UserSwitcherModal({ isOpen, onClose }) {
                           fontSize: "12px",
                           fontWeight: "600",
                           background: isSelected
-                            ? "linear-gradient(135deg, #ff6200, #ff4500)"
+                            ? "linear-gradient(135deg, #FF6F5E, #F95C4B)"
                             : "var(--steam-input-bg)",
                           color: isSelected ? "#ffffff" : "var(--steam-muted)",
                           border: isSelected

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { api } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import { calculateBookMatchScore, getRecommendationReason } from "../services/personalization";
+import { capitalizeTitle, capitalizeAuthor } from "../utils/formatters";
 import Icon from "../components/Icon";
 
 export default function BookDetails({ bookId, onBack }) {
@@ -233,8 +234,8 @@ export default function BookDetails({ bookId, onBack }) {
               style={{
                 fontSize: "13px",
                 fontWeight: "800",
-                color: "#ff6200",
-                background: "rgba(255, 85, 0, 0.15)",
+                color: "var(--steam-orange)",
+                background: "rgba(249, 92, 75, 0.15)",
                 padding: "4px 8px",
                 borderRadius: "6px",
               }}
@@ -247,10 +248,10 @@ export default function BookDetails({ bookId, onBack }) {
             {book.genre} · {book.tags?.join(", ")}
           </div>
           <h1 style={{ fontSize: "32px", fontWeight: "800", margin: "6px 0", color: "var(--steam-text)" }}>
-            {book.title}
+            {capitalizeTitle(book.title || book.bookname)}
           </h1>
           <p style={{ fontSize: "16px", color: "var(--steam-muted)", marginBottom: "16px" }}>
-            by {book.author}
+            by {capitalizeAuthor(book.author)}
           </p>
 
           {/* Book Metadata Badges */}
@@ -339,12 +340,12 @@ export default function BookDetails({ bookId, onBack }) {
                 borderRadius: "10px",
                 background:
                   book.copies > 0
-                    ? "linear-gradient(135deg, #ff6200, #ff4500)"
+                    ? "linear-gradient(135deg, #FF6F5E, #F95C4B)"
                     : "#333",
-                color: "#fff",
+                color: "#F6F4F1",
                 fontWeight: "700",
                 fontSize: "13px",
-                boxShadow: book.copies > 0 ? "0 4px 14px rgba(255, 98, 0, 0.4)" : "none",
+                boxShadow: book.copies > 0 ? "0 4px 14px rgba(249, 92, 75, 0.4)" : "none",
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "8px",
@@ -397,9 +398,9 @@ export default function BookDetails({ bookId, onBack }) {
           {lockMsg && (
             <div
               style={{
-                background: "rgba(255, 98, 0, 0.15)",
+                background: "rgba(249, 92, 75, 0.15)",
                 border: "1px solid var(--steam-orange)",
-                color: "#ff8c42",
+                color: "var(--steam-orange)",
                 fontSize: "13px",
                 padding: "10px 14px",
                 borderRadius: "8px",

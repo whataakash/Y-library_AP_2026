@@ -15,18 +15,24 @@ function getLocalFallbackBooks(search, genre, tag) {
     let list = JSON.parse(content);
 
     if (genre && genre !== "All") {
-      list = list.filter((b) => b.genre && b.genre.toLowerCase() === genre.toLowerCase());
+      const g = genre.toLowerCase();
+      list = list.filter((b) => b.genre && b.genre.toLowerCase() === g);
     }
     if (tag) {
-      list = list.filter((b) => b.tags && b.tags.some((t) => t.toLowerCase() === tag.toLowerCase()));
+      const t = tag.toLowerCase();
+      list = list.filter((b) => b.tags && b.tags.some((item) => item.toLowerCase().includes(t)));
     }
     if (search && search.trim() !== "") {
+      // Lowercase search against all lowercased book metadata
       const q = search.trim().toLowerCase();
       list = list.filter(
         (b) =>
           (b.bookname && b.bookname.toLowerCase().includes(q)) ||
           (b.author && b.author.toLowerCase().includes(q)) ||
-          (b.isbn && b.isbn.includes(q)) ||
+          (b.isbn && b.isbn.toLowerCase().includes(q)) ||
+          (b.genre && b.genre.toLowerCase().includes(q)) ||
+          (b.location && b.location.toLowerCase().includes(q)) ||
+          (b.edition && b.edition.toLowerCase().includes(q)) ||
           (b.tags && b.tags.some((t) => t.toLowerCase().includes(q)))
       );
     }
@@ -52,7 +58,7 @@ async function getAllBooks(req, res, next) {
     // Build the dynamic filter object for Prisma
     const whereConditions = {};
 
-    // Filter by genre if supplied
+    // Filter by genre in lowercase
     if (genre && genre !== "All") {
       whereConditions.genre = {
         equals: genre,
@@ -60,21 +66,23 @@ async function getAllBooks(req, res, next) {
       };
     }
 
-    // Filter by specific tag if supplied (e.g. 'fiction', 'money', 'scifi')
+    // Filter by specific tag if supplied in lowercase
     if (tag) {
       whereConditions.tags = {
         has: tag.toLowerCase(),
       };
     }
 
-    // Free text search across title, author, isbn, or tags
+    // Free text search in lowercase across all book metadata
     if (search && search.trim() !== "") {
-      const query = search.trim();
+      const query = search.trim().toLowerCase();
       whereConditions.OR = [
         { bookname: { contains: query, mode: "insensitive" } },
         { author: { contains: query, mode: "insensitive" } },
         { isbn: { contains: query, mode: "insensitive" } },
-        { tags: { has: query.toLowerCase() } },
+        { genre: { contains: query, mode: "insensitive" } },
+        { location: { contains: query, mode: "insensitive" } },
+        { tags: { has: query } },
       ];
     }
 

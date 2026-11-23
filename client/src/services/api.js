@@ -2,21 +2,31 @@
 // Express.js Backend + PostgreSQL (Prisma) + Google Books API Fallback
 // Written cleanly for beginner understanding and faculty presentation
 
+import { capitalizeTitle, capitalizeAuthor } from "../utils/formatters";
+
 export const BACKEND_URL = "http://localhost:5001/api";
 
 // Helper: Normalizes a PostgreSQL Book record from our Express backend
 // Ensures fields match both backend schema (bookname, bookImage, availableCount, tags)
 // and frontend UI components (title, coverImg, copies, totalCopies)
+// Automatically capitalizes bookname/title and author for display to the user
 function normalizeBackendBook(b) {
   const cover = b.book_image || b.bookImage || `https://covers.openlibrary.org/b/isbn/${b.isbn}-L.jpg`;
   const available = b.available_count !== undefined ? b.available_count : b.availableCount !== undefined ? b.availableCount : 1;
   const total = b.total_count !== undefined ? b.total_count : b.totalCount !== undefined ? b.totalCount : 1;
 
+  const rawTitle = b.bookname || b.title || "Untitled Book";
+  const rawAuthor = b.author || "Unknown Author";
+  const displayTitle = capitalizeTitle(rawTitle);
+  const displayAuthor = capitalizeAuthor(rawAuthor);
+
   return {
     id: b.id,
-    title: b.bookname,
-    bookname: b.bookname,
-    author: b.author,
+    title: displayTitle,
+    bookname: displayTitle,
+    author: displayAuthor,
+    rawTitle: rawTitle,
+    rawAuthor: rawAuthor,
     isbn: b.isbn,
     rating: String(b.rating || "4.5"),
     reviewsCount: (b.borrowRecords ? b.borrowRecords.length : 0) + 18,
@@ -35,9 +45,9 @@ function normalizeBackendBook(b) {
     totalCount: total,
     edition: b.edition || "1st Edition",
     price: "Free Campus Loan",
-    summary: `${b.bookname} by ${b.author}. Campus Shelf: ${b.location}. Available copies: ${available} of ${total}.`,
-    eli5Summary: `A fun book called "${b.bookname}"! You can find it on shelf ${b.location} in the university library.`,
-    eli10Summary: `"${b.bookname}" is written by ${b.author}. It is currently catalogued in ${b.location} with edition ${b.edition}.`,
+    summary: `${displayTitle} by ${displayAuthor}. Campus Shelf: ${b.location}. Available copies: ${available} of ${total}.`,
+    eli5Summary: `A fun book called "${displayTitle}"! You can find it on shelf ${b.location} in the university library.`,
+    eli10Summary: `"${displayTitle}" is written by ${displayAuthor}. It is currently catalogued in ${b.location} with edition ${b.edition}.`,
     readers: ["Maya Chen", "Idris Okafor", "Sofia Reyes"],
     borrowRecords: b.borrowRecords || [],
     peerReviews: [
@@ -236,9 +246,10 @@ export const api = {
       const timeoutId = setTimeout(() => controller.abort(), 1200);
 
       const params = new URLSearchParams();
-      if (query.trim()) params.append("search", query.trim());
-      if (genre && genre !== "All") params.append("genre", genre);
-      if (tag) params.append("tag", tag);
+      const cleanSearch = query ? query.trim().toLowerCase() : "";
+      if (cleanSearch) params.append("search", cleanSearch);
+      if (genre && genre !== "All") params.append("genre", genre.toLowerCase());
+      if (tag) params.append("tag", tag.toLowerCase());
 
       const res = await fetch(`${BACKEND_URL}/books?${params.toString()}`, {
         signal: controller.signal,
@@ -260,9 +271,9 @@ export const api = {
     try {
       let searchParam = "bestsellers";
       if (query.trim()) {
-        searchParam = query.trim();
+        searchParam = query.trim().toLowerCase();
       } else if (genre && genre !== "All") {
-        searchParam = `subject:${genre}`;
+        searchParam = `subject:${genre.toLowerCase()}`;
       }
 
       const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
@@ -282,7 +293,7 @@ export const api = {
       console.warn("Google Books API network fallback:", err.message);
     }
 
-    // C) 700 Books Dataset Fallback (/data/books.json)
+    // C) 900 Books Dataset Fallback (/data/books.json)
     try {
       const res = await fetch("/data/books.json");
       if (res.ok) {
@@ -293,17 +304,23 @@ export const api = {
             const q = query.trim().toLowerCase();
             filtered = filtered.filter(
               (b) =>
-                b.bookname.toLowerCase().includes(q) ||
-                b.author.toLowerCase().includes(q) ||
-                b.isbn.includes(q) ||
-                b.tags?.some((t) => t.toLowerCase().includes(q))
+                (b.bookname && b.bookname.toLowerCase().includes(q)) ||
+                (b.title && b.title.toLowerCase().includes(q)) ||
+                (b.author && b.author.toLowerCase().includes(q)) ||
+                (b.isbn && b.isbn.toLowerCase().includes(q)) ||
+                (b.genre && b.genre.toLowerCase().includes(q)) ||
+                (b.location && b.location.toLowerCase().includes(q)) ||
+                (b.edition && b.edition.toLowerCase().includes(q)) ||
+                (b.tags && b.tags.some((t) => t.toLowerCase().includes(q)))
             );
           }
           if (genre && genre !== "All") {
-            filtered = filtered.filter((b) => b.genre.toLowerCase() === genre.toLowerCase());
+            const g = genre.toLowerCase();
+            filtered = filtered.filter((b) => b.genre && b.genre.toLowerCase() === g);
           }
           if (tag) {
-            filtered = filtered.filter((b) => b.tags?.some((t) => t.toLowerCase().includes(tag.toLowerCase())));
+            const t = tag.toLowerCase();
+            filtered = filtered.filter((b) => b.tags && b.tags.some((item) => item.toLowerCase().includes(t)));
           }
           if (filtered.length > 0) {
             const normalized = filtered.map((b) => normalizeBackendBook(b));

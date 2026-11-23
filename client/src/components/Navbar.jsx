@@ -57,9 +57,9 @@ export default function Navbar({
           <input
             type="text"
             className="steam-search-input"
-            placeholder="Search 700+ books, authors, locations, ISBN..."
+            placeholder="Search 900+ books, bestsellers, authors, ISBN..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
             onKeyDown={handleKeyDown}
           />
         </div>
@@ -92,8 +92,8 @@ export default function Navbar({
             <div className="steam-theme-toggle-track">
               <Icon
                 name={isDark ? "sun" : "moon"}
-                size={15}
-                color={isDark ? "#f0a500" : "#ff4500"}
+                size={16}
+                color={isDark ? "var(--color-stone)" : "var(--color-coral)"}
               />
             </div>
           </button>

@@ -143,13 +143,13 @@ export default function Home({ onSelectBook, setActiveTab }) {
           <div className="modern-hero-meta-row">
             <span>{featuredBook.edition ? featuredBook.edition.split(" ")[0] : "Campus Edition"}</span>
             <span className="modern-hero-bullet">•</span>
-            <span style={{ color: "#f0a500", display: "inline-flex", alignItems: "center", gap: "4px" }}>
-              <Icon name="pin" size={13} color="#f0a500" />
+            <span style={{ color: "var(--color-stone)", display: "inline-flex", alignItems: "center", gap: "4px" }}>
+              <Icon name="pin" size={13} color="var(--color-stone)" />
               {featuredBook.location}
             </span>
             <span className="modern-hero-bullet">•</span>
-            <span style={{ color: "#ff8c42", fontWeight: "700", display: "inline-flex", alignItems: "center", gap: "4px" }}>
-              <Icon name="star" size={13} color="#ff8c42" />
+            <span style={{ color: "var(--color-coral)", fontWeight: "700", display: "inline-flex", alignItems: "center", gap: "4px" }}>
+              <Icon name="star" size={13} color="var(--color-coral)" />
               {featuredBook.rating} / 5.0
             </span>
             {featuredBook.matchScore && (
@@ -313,7 +313,7 @@ export default function Home({ onSelectBook, setActiveTab }) {
                         style={{
                           width: `${item.progress}%`,
                           height: "100%",
-                          background: "linear-gradient(90deg, #ff7722, var(--steam-orange))",
+                          background: "linear-gradient(90deg, #F95C4B, #FF7B6D)",
                         }}
                       />
                     </div>
@@ -336,8 +336,8 @@ export default function Home({ onSelectBook, setActiveTab }) {
                   fontSize: "11px",
                   padding: "2px 8px",
                   borderRadius: "6px",
-                  background: "linear-gradient(135deg, #ff6200, #ff4500)",
-                  color: "#ffffff",
+                  background: "linear-gradient(135deg, #FF6F5E, #F95C4B)",
+                  color: "#F6F4F1",
                   fontWeight: "700",
                   textTransform: "uppercase",
                   letterSpacing: "0.5px",

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Icon from "./Icon";
+import { capitalizeTitle, capitalizeAuthor } from "../utils/formatters";
 
 // BookTile: Portrait aspect-ratio (1 : 1.5) book tile
 // Inspired by Kindle digital store layouts, styled in Steam pitch-black & orange
@@ -14,9 +15,11 @@ export default function BookTile({
 
   const [imgError, setImgError] = useState(false);
 
+  const displayTitle = capitalizeTitle(book.title || book.bookname || "");
+  const displayAuthor = capitalizeAuthor(book.author || "");
   const rating = parseFloat(book.rating || "4.5");
   const fullStars = Math.min(5, Math.floor(rating));
-  const reviewsCount = book.reviewsCount || ((Math.abs(hashCode(book.title || book.bookname || "")) % 800) + 25);
+  const reviewsCount = book.reviewsCount || ((Math.abs(hashCode(displayTitle)) % 800) + 25);
   const isAvailable = (book.copies ?? book.available_count ?? 1) > 0;
   const copiesCount = book.copies ?? book.available_count ?? 1;
 
@@ -82,12 +85,12 @@ export default function BookTile({
                 Y-Library Collection
               </div>
               <h5 style={{ fontSize: "13px", fontWeight: "800", color: "#ffffff", lineHeight: "1.3", margin: 0 }}>
-                {book.title || book.bookname}
+                {displayTitle}
               </h5>
             </div>
             <div>
               <div style={{ fontSize: "11px", color: "#cbd5e1", fontWeight: "600" }}>
-                {book.author}
+                {displayAuthor}
               </div>
               <div style={{ fontSize: "9px", color: "rgba(255,255,255,0.4)", marginTop: "4px" }}>
                 ISBN {book.isbn ? book.isbn.slice(-4) : "ED"}
@@ -114,7 +117,7 @@ export default function BookTile({
           <span className="book-tile-rating-num">{rating.toFixed(1)}</span>
           <div className="book-tile-stars">
             {[...Array(5)].map((_, i) => (
-              <span key={i} style={{ color: i < fullStars ? "#ff8c42" : "#3b4252", fontSize: "11px" }}>
+              <span key={i} style={{ color: i < fullStars ? "var(--steam-orange)" : "#3b4252", fontSize: "11px" }}>
                 ★
               </span>
             ))}
@@ -123,13 +126,13 @@ export default function BookTile({
         </div>
 
         {/* Title */}
-        <h4 className="book-tile-title" title={book.title || book.bookname}>
-          {book.title || book.bookname}
+        <h4 className="book-tile-title" title={displayTitle}>
+          {displayTitle}
         </h4>
 
         {/* Author */}
-        <div className="book-tile-author" title={book.author}>
-          {book.author}
+        <div className="book-tile-author" title={displayAuthor}>
+          {displayAuthor}
         </div>
 
         {/* Edition / Format */}
