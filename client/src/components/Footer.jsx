@@ -10,7 +10,7 @@ export default function Footer() {
         “A library is not a luxury but one of the necessities of life.”
       </p>
       <p style={{ marginBottom: "12px" }}>
-        Y—Library Campus Reading Network · Connecting students & ideas.
+        © {new Date().getFullYear()} Y—Library Campus Reading Network · Connecting students & ideas.
       </p>
       <div
         style={{
@@ -25,6 +25,9 @@ export default function Footer() {
         <span>East Wing: 8am - 11pm</span>
         <span>Ask a Librarian: Level 1 Desk</span>
       </div>
+      <p style={{ marginTop: "10px", fontSize: "12px", color: "var(--muted)" }}>
+        Central Library Desk: Mon–Fri 8:00 AM – 9:00 PM · Level 1 Help Center
+      </p>
     </footer>
   );
 }
