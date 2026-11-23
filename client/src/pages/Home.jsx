@@ -9,26 +9,60 @@ import {
 import Icon from "../components/Icon";
 import BookTile from "../components/BookTile";
 
-export default function Home({ onSelectBook, setActiveTab }) {
+export default function Home({
+  onSelectBook,
+  setActiveTab,
+  books: propBooks,
+  searchQuery = "",
+  setSearchQuery,
+  onClearSearch,
+  clearSearch,
+  onQueryChange,
+  onSearchChange,
+}) {
   const { user } = useAuth();
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState(propBooks || []);
+  const [loading, setLoading] = useState(propBooks === undefined);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lockStatus, setLockStatus] = useState("");
 
   useEffect(() => {
-    api.getBooks().then((data) => {
-      setBooks(data);
+    if (propBooks !== undefined) {
+      setBooks(propBooks);
+      setLoading(false);
+      return;
+    }
+    setLoading(true);
+    api.getBooks(searchQuery).then((data) => {
+      setBooks(data || []);
+      setLoading(false);
     });
-  }, []);
+  }, [propBooks, searchQuery]);
+
+  const currentBooks = propBooks !== undefined ? propBooks : books;
+  const isSearchEmpty = propBooks !== undefined ? propBooks.length === 0 : (!loading && currentBooks.length === 0);
+
+  const handleClearSearch = () => {
+    if (onClearSearch) onClearSearch();
+    else if (clearSearch) clearSearch();
+    if (setSearchQuery) setSearchQuery("");
+    if (onSearchChange) onSearchChange("");
+    if (onQueryChange) onQueryChange("");
+    setLoading(true);
+    api.getBooks("").then((data) => {
+      setBooks(data || []);
+      setLoading(false);
+    });
+  };
 
   // Compute personalized recommendations based on active student
-  const personalizedBooks = getPersonalizedRecommendations(user, books, 14);
-  const majorBooks = getMajorSpecificBooks(user, books, 12);
+  const personalizedBooks = getPersonalizedRecommendations(user, currentBooks, 14);
+  const majorBooks = getMajorSpecificBooks(user, currentBooks, 12);
   const userContinueReading = user?.continueReading || [];
 
   // Top featured book tailored to user's highest recommendation
-  const heroCandidates = personalizedBooks.length > 0 ? personalizedBooks : books;
-  const featuredBook = heroCandidates[currentIndex] || heroCandidates[0] || books[0];
+  const heroCandidates = personalizedBooks.length > 0 ? personalizedBooks : currentBooks;
+  const featuredBook = heroCandidates[currentIndex] || heroCandidates[0] || currentBooks[0];
 
   const scrollShelf = (id, direction = "right") => {
     const el = document.getElementById(id);
@@ -52,13 +86,108 @@ export default function Home({ onSelectBook, setActiveTab }) {
     try {
       await api.lockBookDigitally(featuredBook.id, user?.name);
       setLockStatus(`Locked for 24h under ${user?.name}!`);
-      const updated = await api.getBooks();
-      setBooks(updated);
+      const updated = await api.getBooks(searchQuery);
+      setBooks(updated || []);
       setTimeout(() => setLockStatus(""), 4000);
     } catch (err) {
       alert(err.message || "Failed to lock book.");
     }
   };
+
+  if (isSearchEmpty) {
+    return (
+      <div className="home-search-empty-state" style={{ padding: "40px 20px", textAlign: "center" }}>
+        <div
+          style={{
+            maxWidth: "560px",
+            margin: "40px auto",
+            padding: "48px 32px",
+            background: "var(--steam-panel)",
+            borderRadius: "16px",
+            border: "1px solid var(--steam-border)",
+            boxShadow: "var(--steam-shadow)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+          }}
+        >
+          <div
+            style={{
+              width: "80px",
+              height: "80px",
+              borderRadius: "50%",
+              background: "rgba(255, 85, 0, 0.12)",
+              border: "1px solid rgba(255, 85, 0, 0.3)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginBottom: "20px",
+            }}
+          >
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--steam-orange)"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+              <path d="M6 6h10" />
+              <path d="M6 10h7" />
+              <circle cx="16.5" cy="16.5" r="3.5" />
+              <path d="m19 19 3 3" />
+            </svg>
+          </div>
+
+          <h3
+            style={{
+              fontSize: "20px",
+              fontWeight: "800",
+              color: "var(--steam-text)",
+              marginBottom: "10px",
+            }}
+          >
+            No Books Found
+          </h3>
+
+          <p
+            style={{
+              fontSize: "14px",
+              color: "var(--steam-muted)",
+              lineHeight: "1.6",
+              marginBottom: "24px",
+              maxWidth: "420px",
+            }}
+          >
+            No books found matching your query. Try searching by title, author, or ISBN.
+          </p>
+
+          <button
+            type="button"
+            className="steam-btn-primary"
+            onClick={handleClearSearch}
+            style={{
+              padding: "10px 24px",
+              borderRadius: "8px",
+              fontSize: "13px",
+              fontWeight: "700",
+              cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+            }}
+          >
+            <Icon name="search" size={14} color="#000" />
+            <span>Clear Search</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (!featuredBook) {
     return <div style={{ padding: "40px", color: "var(--steam-muted)" }}>Loading personalized campus catalog...</div>;
@@ -441,7 +570,7 @@ export default function Home({ onSelectBook, setActiveTab }) {
         </div>
 
         <div id="shelf-bestsellers" className="book-shelf-track">
-          {books.slice(15, 30).map((book) => (
+          {currentBooks.slice(15, 30).map((book) => (
             <BookTile
               key={book.id || book.isbn}
               book={book}
