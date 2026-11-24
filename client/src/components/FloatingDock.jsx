@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Icon from "./Icon";
 
 // Modern Floating Dock inspired by the mockup
 export default function FloatingDock({ activeTab, setActiveTab, onOpenChatbot }) {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,22 +22,25 @@ export default function FloatingDock({ activeTab, setActiveTab, onOpenChatbot })
   };
 
   const dockItems = [
-    { id: "home", icon: "home", label: "Home" },
-    { id: "library", icon: "heart", label: "Favorites" },
-    { id: "books", icon: "compass", label: "Explore" },
-    { id: "community", icon: "chat", label: "Community" },
-    { id: "requests", icon: "bell", label: "Alerts" },
+    { id: "home", path: "/home", icon: "home", label: "Home" },
+    { id: "library", path: "/library", icon: "heart", label: "Favorites" },
+    { id: "books", path: "/books", icon: "compass", label: "Explore" },
+    { id: "community", path: "/community", icon: "chat", label: "Community" },
+    { id: "requests", path: "/requests", icon: "bell", label: "Alerts" },
   ];
 
   return (
     <nav className="steam-floating-dock" aria-label="Quick Navigation">
       {dockItems.map((item) => {
-        const isActive = activeTab === item.id;
+        const isActive = location.pathname === item.path || activeTab === item.id;
         return (
           <button
             key={item.id}
             className={`steam-dock-item ${isActive ? "active" : ""}`}
-            onClick={() => setActiveTab(item.id)}
+            onClick={() => {
+              if (setActiveTab) setActiveTab(item.id);
+              navigate(item.path);
+            }}
             title={item.label}
           >
             <Icon

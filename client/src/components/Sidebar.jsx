@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Icon from "./Icon";
 import AuthModal from "./AuthModal";
@@ -6,15 +7,22 @@ import { GoogleLogo } from "./GoogleAccountChooserModal";
 
 export default function Sidebar({ activeTab, setActiveTab, onSelectBook, onOpenChatbot }) {
   const { user, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isAuthOpen, setIsAuthOpen] = useState(false);
 
+  const currentPath = location.pathname;
+
   const navItems = [
-    { id: "home", label: "Home", icon: "home" },
-    { id: "books", label: "Explore", icon: "compass" },
-    { id: "library", label: "Favorites & Loans", icon: "heart" },
-    { id: "community", label: "Community", icon: "chat" },
-    { id: "marketplace", label: "Marketplace", icon: "tag" },
-    { id: "requests", label: "Requests", icon: "clipboard" },
+    { id: "home", path: "/home", label: "Home", icon: "home" },
+    { id: "books", path: "/books", label: "Explore", icon: "compass" },
+    { id: "library", path: "/library", label: "Favorites & Loans", icon: "heart" },
+    { id: "community", path: "/community", label: "Community", icon: "chat" },
+    { id: "marketplace", path: "/marketplace", label: "Marketplace", icon: "tag" },
+    { id: "requests", path: "/requests", label: "Requests", icon: "clipboard" },
+    ...(user?.role === "admin" || user?.role === "librarian"
+      ? [{ id: "admin", path: "/admin", label: "Admin Portal", icon: "lock" }]
+      : []),
   ];
 
   // Dynamic user continue reading list
@@ -24,7 +32,7 @@ export default function Sidebar({ activeTab, setActiveTab, onSelectBook, onOpenC
     if (onSelectBook && item.bookId) {
       onSelectBook(item.bookId);
     } else {
-      setActiveTab("books");
+      navigate("/books");
     }
   };
 
@@ -35,7 +43,7 @@ export default function Sidebar({ activeTab, setActiveTab, onSelectBook, onOpenC
           {/* Brand Inspired by Mockup */}
           <div
             className="steam-logo"
-            onClick={() => setActiveTab("home")}
+            onClick={() => navigate("/home")}
             style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: "10px" }}
           >
             <img
@@ -112,12 +120,15 @@ export default function Sidebar({ activeTab, setActiveTab, onSelectBook, onOpenC
           {/* Navigation List */}
           <nav className="steam-nav-list" style={{ marginTop: "18px" }}>
             {navItems.map((item) => {
-              const isActive = activeTab === item.id;
+              const isActive = currentPath === item.path || activeTab === item.id || (item.id === "home" && currentPath === "/");
               return (
                 <button
                   key={item.id}
                   className={`steam-nav-item ${isActive ? "active" : ""}`}
-                  onClick={() => setActiveTab(item.id)}
+                  onClick={() => {
+                    if (setActiveTab) setActiveTab(item.id);
+                    navigate(item.path);
+                  }}
                 >
                   <Icon
                     name={item.icon}
