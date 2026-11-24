@@ -170,8 +170,9 @@ export default function AIChatbot({ isOpen, onClose }) {
               className="steam-chatbot-ctrl-btn"
               onClick={() => setIsExpanded(!isExpanded)}
               title={isExpanded ? "Collapse size" : "Expand size"}
+              aria-label={isExpanded ? "Collapse size" : "Expand size"}
             >
-              <Icon name={isExpanded ? "minimize" : "maximize"} size={16} color="var(--steam-muted)" />
+              <Icon name={isExpanded ? "minimize" : "maximize"} size={15} color="currentColor" />
             </button>
 
             {/* Close */}
@@ -180,8 +181,9 @@ export default function AIChatbot({ isOpen, onClose }) {
               className="steam-chatbot-ctrl-btn close"
               onClick={onClose}
               title="Close Chat"
+              aria-label="Close Chat"
             >
-              <Icon name="x" size={16} color="var(--steam-muted)" />
+              <Icon name="x" size={15} color="currentColor" />
             </button>
           </div>
         </header>

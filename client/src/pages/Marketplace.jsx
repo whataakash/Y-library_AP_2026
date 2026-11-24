@@ -83,7 +83,7 @@ export default function Marketplace() {
             display: "inline-flex",
             alignItems: "center",
             gap: "6px",
-            boxShadow: "0 4px 16px rgba(121, 82, 245, 0.35)",
+            boxShadow: "0 4px 16px rgba(255, 42, 42, 0.35)",
           }}
         >
           <Icon name="plus" size={16} color="#fff" />

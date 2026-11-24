@@ -32,23 +32,23 @@ export default function BookTile({
     return hash;
   }
 
-  // Palette colors from neo-editorial mobile design
+  // Palette colors with vibrant red accents
   const genreColorMap = {
-    Technology: { bg: "#654DE9", text: "#FFFFFF" },
-    "Science Fiction": { bg: "#654DE9", text: "#FFFFFF" },
-    Fantasy: { bg: "#654DE9", text: "#FFFFFF" },
-    Economics: { bg: "#F5C95C", text: "#181818" },
-    Business: { bg: "#F5C95C", text: "#181818" },
-    Biography: { bg: "#F5C95C", text: "#181818" },
-    Science: { bg: "#CFD78C", text: "#181818" },
-    Psychology: { bg: "#CFD78C", text: "#181818" },
-    History: { bg: "#BD554C", text: "#FFFFFF" },
-    Thriller: { bg: "#BD554C", text: "#FFFFFF" },
-    Mystery: { bg: "#181818", text: "#FFFFFF" },
-    Philosophy: { bg: "#181818", text: "#FFFFFF" },
-    Classics: { bg: "#181818", text: "#FFFFFF" },
+    Technology: { bg: "#FF2A2A", text: "#FFFFFF" },
+    "Science Fiction": { bg: "#E6192E", text: "#FFFFFF" },
+    Fantasy: { bg: "#FF3850", text: "#FFFFFF" },
+    Economics: { bg: "#1A1A1E", text: "#FFFFFF" },
+    Business: { bg: "#251216", text: "#FFD4D8" },
+    Biography: { bg: "#1A1A1E", text: "#FFFFFF" },
+    Science: { bg: "#FF2A2A", text: "#FFFFFF" },
+    Psychology: { bg: "#251216", text: "#FFD4D8" },
+    History: { bg: "#D9162A", text: "#FFFFFF" },
+    Thriller: { bg: "#FF2A2A", text: "#FFFFFF" },
+    Mystery: { bg: "#101014", text: "#FFFFFF" },
+    Philosophy: { bg: "#101014", text: "#FFFFFF" },
+    Classics: { bg: "#101014", text: "#FFFFFF" },
   };
-  const genreStyle = genreColorMap[book.genre] || { bg: "#654DE9", text: "#FFFFFF" };
+  const genreStyle = genreColorMap[book.genre] || { bg: "#FF2A2A", text: "#FFFFFF" };
   const bgSolidColor = genreStyle.bg;
   const jacketTextColor = genreStyle.text;
 

@@ -152,22 +152,23 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: rgba(121, 82, 245, 0.12);
-  border: 1px solid rgba(121, 82, 245, 0.3);
+  background: rgba(255, 42, 42, 0.12);
+  border: 1px solid rgba(255, 42, 42, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .steam-chatbot-status-online {
   position: absolute;
-  bottom: -2px;
-  right: -2px;
-  width: 10px;
-  height: 10px;
+  bottom: 0px;
+  right: 0px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: #10b981;
-  border: 2px solid var(--steam-panel);
+  border: 1.5px solid #000000;
 }
 
 .steam-chatbot-header-info {
@@ -236,28 +237,33 @@
 .steam-chatbot-header-controls {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
 .steam-chatbot-ctrl-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 8px;
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--steam-muted);
   cursor: pointer;
-  transition: background 0.15s;
+  transition: all 0.15s ease;
 }
 
 .steam-chatbot-ctrl-btn:hover {
-  background: var(--steam-panel-hover);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .steam-chatbot-ctrl-btn.close:hover {
-  background: rgba(239, 68, 68, 0.15);
+  background: rgba(255, 42, 42, 0.2);
+  color: #ff4d4d;
+  border-color: rgba(255, 42, 42, 0.5);
 }
 
 /* Body */
@@ -297,8 +303,8 @@
   width: 56px;
   height: 56px;
   border-radius: 16px;
-  background: rgba(121, 82, 245, 0.15);
-  border: 1px solid rgba(121, 82, 245, 0.3);
+  background: rgba(255, 42, 42, 0.15);
+  border: 1px solid rgba(255, 42, 42, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -562,8 +568,8 @@
   width: 30px;
   height: 30px;
   border-radius: 8px;
-  background: rgba(121, 82, 245, 0.15);
-  border: 1px solid rgba(121, 82, 245, 0.3);
+  background: rgba(255, 42, 42, 0.15);
+  border: 1px solid rgba(255, 42, 42, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;

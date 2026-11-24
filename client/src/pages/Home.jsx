@@ -64,6 +64,43 @@ export default function Home({
   const heroCandidates = personalizedBooks.length > 0 ? personalizedBooks : currentBooks;
   const featuredBook = heroCandidates[currentIndex] || heroCandidates[0] || currentBooks[0];
 
+  // Top iconic bestseller books from the campus database
+  const iconicBestsellerQueries = [
+    "atomic habits",
+    "psychology of money",
+    "deep work",
+    "sapiens",
+    "thinking, fast and slow",
+    "zero to one",
+  ];
+
+  const matchedBestsellers = iconicBestsellerQueries
+    .map((query) =>
+      currentBooks.find((b) => {
+        const title = (b.title || b.bookname || "").toLowerCase();
+        return title.includes(query);
+      })
+    )
+    .filter(Boolean);
+
+  const fallbackBestsellers = currentBooks.filter((b) => {
+    const tags = Array.isArray(b.tags) ? b.tags.map((t) => String(t).toLowerCase()) : [];
+    return tags.includes("bestseller") || tags.includes("popular");
+  });
+
+  const showcaseBooks =
+    matchedBestsellers.length >= 6
+      ? matchedBestsellers.slice(0, 6)
+      : [
+          ...matchedBestsellers,
+          ...fallbackBestsellers.filter(
+            (b) => !matchedBestsellers.some((m) => (m.id || m.title || m.bookname) === (b.id || b.title || b.bookname))
+          ),
+          ...currentBooks.filter(
+            (b) => !matchedBestsellers.some((m) => (m.id || m.title || m.bookname) === (b.id || b.title || b.bookname))
+          ),
+        ].slice(0, 6);
+
   const scrollShelf = (id, direction = "right") => {
     const el = document.getElementById(id);
     if (el) {
@@ -197,158 +234,95 @@ export default function Home({
 
   return (
     <div>
-      {/* Personalized Welcome Banner Pill */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          marginBottom: "16px",
-          padding: "10px 18px",
-          borderRadius: "14px",
-          background: "var(--steam-panel)",
-          border: "1px solid var(--steam-border)",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <span style={{ fontSize: "18px" }}>👋</span>
-          <div>
-            <span style={{ fontWeight: "700", color: "var(--steam-text)", fontSize: "14px" }}>
-              Welcome back, {user?.name}!
-            </span>
-            <span style={{ color: "var(--steam-muted)", fontSize: "12px", marginLeft: "8px" }}>
-              Personalized catalog for {user?.major} ({user?.year})
-            </span>
-          </div>
-        </div>
-
-        {/* User's Preferred Genres Badges */}
-        <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
-          <span style={{ fontSize: "11px", color: "var(--steam-muted)", fontWeight: "600" }}>
-            Focus:
-          </span>
-          {(user?.preferredGenres || []).slice(0, 3).map((g) => (
-            <span
-              key={g}
-              style={{
-                fontSize: "11px",
-                padding: "3px 10px",
-                borderRadius: "999px",
-                background: "rgba(255, 85, 0, 0.1)",
-                color: "var(--steam-orange)",
-                fontWeight: "600",
-                border: "1px solid rgba(255, 85, 0, 0.25)",
-              }}
-            >
-              {g}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Modern Hero Card (Directly inspired by Mockup: AVATAR 3 Hero Banner) */}
-      <div className="modern-hero-banner">
-        {/* Ambient Cover Artwork on Right */}
-        <div
-          className="modern-hero-bg-art"
-          style={{ backgroundImage: `url(${featuredBook.coverImg || featuredBook.book_image})` }}
-        />
-        <div className="modern-hero-gradient-overlay" />
-
-        {/* Content on Left */}
-        <div className="modern-hero-content">
-          {/* Flame Trending Pill with Personal Match Insight */}
-          <div className="modern-hero-trend-pill">
-            <span style={{ fontSize: "13px" }}>🔥</span>
-            <span>{recommendationReason}</span>
-          </div>
-
-          {/* Book Title */}
-          <h1 className="modern-hero-title">
-            {featuredBook.title || featuredBook.bookname}
+      {/* 3D Curved Showcase Hero Section (Matching Mockup Reference) */}
+      <section className="curved-hero-section">
+        {/* Header Block */}
+        <div className="curved-hero-header">
+          <span className="curved-hero-eyebrow">Campus Bestsellers</span>
+          <h1 className="curved-hero-title">
+            Read what you love, until you love to read
           </h1>
-
-          {/* Metadata Row: Year · Shelf Location · Rating */}
-          <div className="modern-hero-meta-row">
-            <span>{featuredBook.edition ? featuredBook.edition.split(" ")[0] : "Campus Edition"}</span>
-            <span className="modern-hero-bullet">•</span>
-            <span style={{ color: "var(--color-stone)", display: "inline-flex", alignItems: "center", gap: "4px" }}>
-              <Icon name="pin" size={13} color="var(--color-stone)" />
-              {featuredBook.location}
-            </span>
-            <span className="modern-hero-bullet">•</span>
-            <span style={{ color: "var(--color-coral)", fontWeight: "700", display: "inline-flex", alignItems: "center", gap: "4px" }}>
-              <Icon name="star" size={13} color="var(--color-coral)" />
-              {featuredBook.rating} / 5.0
-            </span>
-            {featuredBook.matchScore && (
-              <>
-                <span className="modern-hero-bullet">•</span>
-                <span style={{ color: "#4ade80", fontWeight: "700" }}>
-                  {featuredBook.matchScore}% Match
-                </span>
-              </>
-            )}
-          </div>
-
-          {/* Description */}
-          <p className="modern-hero-desc">
-            {featuredBook.summary}
+          <p className="curved-hero-subtitle">
+            Explore 900+ all-time bestsellers, faculty picks, and essential reads across campus.
           </p>
+          <button
+            type="button"
+            className="curved-hero-cta-btn"
+            onClick={() => setActiveTab("books")}
+            aria-label="See more books"
+          >
+            <span>See more Books</span>
+            <span className="curved-hero-cta-arrow">
+              <Icon name="arrowRight" size={14} color="#ffffff" />
+            </span>
+          </button>
+        </div>
 
-          {/* Action Buttons: Watch/Read & Download/Lock */}
-          <div className="modern-hero-btn-row">
-            <button
-              className="modern-hero-btn-primary"
-              onClick={() => onSelectBook(featuredBook)}
-            >
-              <Icon name="play" size={14} color="#000000" />
-              <span>Read / Details</span>
-            </button>
-
-            <button
-              className="modern-hero-btn-secondary"
-              onClick={handleLockDigitally}
-              disabled={featuredBook.copies <= 0}
-            >
-              <Icon name="lock" size={14} color="currentColor" />
-              <span>{featuredBook.copies > 0 ? "Lock (24h)" : "Waitlist"}</span>
-            </button>
-
-            <button
-              className="modern-hero-btn-icon"
-              onClick={() => setActiveTab("books")}
-              title="Explore More"
-            >
-              <Icon name="store" size={16} color="currentColor" />
-            </button>
+        {/* 3D Panoramic Stage */}
+        <div className="curved-hero-stage">
+          <div className="curved-hero-deck">
+            {showcaseBooks.slice(0, 6).map((book, idx) => {
+              const cover = book.coverImg || book.book_image;
+              const title = book.title || book.bookname || "Library Book";
+              const genre = book.genre || "Collection";
+              return (
+                <div
+                  key={book.id || `${title}-${idx}`}
+                  className={`curved-hero-card card-pos-${idx}`}
+                  onClick={() => onSelectBook(book)}
+                  title={`${title} (${genre}) - Click to inspect`}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      onSelectBook(book);
+                    }
+                  }}
+                >
+                  {cover ? (
+                    <img
+                      src={cover}
+                      alt={title}
+                      className="curved-hero-card-img"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="curved-hero-card-fallback">
+                      <div className="curved-hero-card-title">{title}</div>
+                      <div className="curved-hero-card-genre">{genre}</div>
+                    </div>
+                  )}
+                  <div className="curved-hero-card-caption">
+                    <div className="curved-hero-card-title">{title}</div>
+                    <div className="curved-hero-card-genre">{genre}</div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-
-          {lockStatus && (
-            <div style={{ marginTop: "10px", fontSize: "12px", color: "#4ade80", fontWeight: "600" }}>
-              ✓ {lockStatus}
-            </div>
-          )}
         </div>
 
-        {/* Vertical Switcher Buttons on Right (Inspired by mockup: ⌃ and ⌄ buttons) */}
-        <div className="modern-hero-vertical-nav">
-          <button
-            className="modern-hero-nav-circle"
-            onClick={handlePrevHero}
-            title="Previous Recommendation"
-          >
-            <Icon name="chevronUp" size={16} color="#ffffff" />
-          </button>
-          <button
-            className="modern-hero-nav-circle"
-            onClick={handleNextHero}
-            title="Next Recommendation"
-          >
-            <Icon name="chevronDown" size={16} color="#ffffff" />
-          </button>
+        {/* 4 Feature Steps Underneath */}
+        <div className="curved-hero-features-row">
+          <div className="curved-hero-feature-item">
+            <span className="curved-hero-feature-num">#01</span>
+            <span className="curved-hero-feature-title">Curated Catalog</span>
+          </div>
+          <div className="curved-hero-feature-item">
+            <span className="curved-hero-feature-num">#02</span>
+            <span className="curved-hero-feature-title">Faculty Picks</span>
+          </div>
+          <div className="curved-hero-feature-item">
+            <span className="curved-hero-feature-num">#03</span>
+            <span className="curved-hero-feature-title">Digital Holds</span>
+          </div>
+          <div className="curved-hero-feature-item">
+            <span className="curved-hero-feature-num">#04</span>
+            <span className="curved-hero-feature-title">Campus Copilot</span>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Subtle Result Count Summary */}
       <p

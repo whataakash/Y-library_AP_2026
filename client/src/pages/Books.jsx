@@ -90,7 +90,7 @@ export default function Books({
                   ? "1px solid var(--steam-orange)"
                   : "1px solid var(--steam-border)",
                 boxShadow: isSelected
-                  ? "0 4px 14px rgba(121, 82, 245, 0.35)"
+                  ? "0 4px 14px rgba(255, 42, 42, 0.35)"
                   : "none",
               }}
             >

@@ -28,6 +28,10 @@ import {
   Repeat,
   CircleAlert,
   CircleCheck,
+  X,
+  ArrowRight,
+  Plus,
+  Minus,
 } from "runeicons-react";
 
 // Re-export popular Rune icons for direct named imports if desired
@@ -60,6 +64,10 @@ export {
   Repeat,
   CircleAlert,
   CircleCheck,
+  X,
+  ArrowRight,
+  Plus,
+  Minus,
 };
 
 // Map of canonical icon names to their respective runeicons-react component
@@ -118,6 +126,14 @@ const RUNE_ICON_MAP = {
 
   // Alerts
   alert: CircleAlert,
+
+  // Actions & Controls
+  x: X,
+  close: X,
+  plus: Plus,
+  minus: Minus,
+  arrowRight: ArrowRight,
+  "arrow-right": ArrowRight,
 };
 
 /**
@@ -164,6 +180,52 @@ export default function Icon({
       >
         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
         <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+      </svg>
+    );
+  }
+
+  if (name === "maximize" || name === "expand") {
+    return (
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        style={{ display: "inline-block", verticalAlign: "middle", ...style }}
+        className={className}
+        {...rest}
+      >
+        <path d="M15 3h6v6" />
+        <path d="M9 21H3v-6" />
+        <path d="M21 3l-7 7" />
+        <path d="M3 21l7-7" />
+      </svg>
+    );
+  }
+
+  if (name === "minimize" || name === "collapse") {
+    return (
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        style={{ display: "inline-block", verticalAlign: "middle", ...style }}
+        className={className}
+        {...rest}
+      >
+        <path d="M4 14h6v6" />
+        <path d="M20 10h-6V4" />
+        <path d="M14 10l7-7" />
+        <path d="M10 14l-7 7" />
       </svg>
     );
   }
