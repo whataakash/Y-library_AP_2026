@@ -58,16 +58,16 @@ export default function LandingPage({ defaultOpenAuth = false }) {
     <div
       style={{
         minHeight: "100vh",
-        background: "var(--steam-bg, #0b0f19)",
-        color: "var(--steam-text, #f1f5f9)",
+        background: "var(--steam-bg, #000000)",
+        color: "var(--steam-text, #F4F0FF)",
         fontFamily: "system-ui, -apple-system, sans-serif",
       }}
     >
       {/* 1. Header / Navbar */}
       <header
         style={{
-          borderBottom: "1px solid var(--steam-border, #1e293b)",
-          background: "rgba(11, 15, 25, 0.85)",
+          borderBottom: "1px solid var(--steam-border, #1E1A2E)",
+          background: "rgba(0, 0, 0, 0.92)",
           backdropFilter: "blur(12px)",
           position: "sticky",
           top: 0,
@@ -145,9 +145,9 @@ export default function LandingPage({ defaultOpenAuth = false }) {
             display: "inline-block",
             padding: "4px 14px",
             borderRadius: "999px",
-            background: "#241D44",
-            border: "1px solid #45367A",
-            color: "#D6CAFC",
+            background: "#141022",
+            border: "1px solid #2B214C",
+            color: "#D4CBF7",
             fontSize: "12px",
             fontWeight: "700",
             textTransform: "uppercase",

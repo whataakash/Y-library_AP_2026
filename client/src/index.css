@@ -15,21 +15,21 @@
 
 :root,
 [data-theme="dark"] {
-  /* Dark Purplish Tint Theme (Default) */
-  --steam-bg: #0C0A17; /* Dark Obsidian Purple Canvas */
-  --steam-shell-bg: #0C0A17;
-  --steam-panel: #161226; /* Dark Midnight Purple Panel */
-  --steam-panel-hover: #221C3D;
-  --steam-surface: #161226;
-  --steam-card-bg: #1C1633; /* Deep Card Purple */
-  --steam-card-hover: #261F46;
+  /* Solid Black Canvas with Purple Font / Accent Hierarchy */
+  --steam-bg: #000000; /* Pure Black Canvas */
+  --steam-shell-bg: #000000;
+  --steam-panel: #0A0A0C; /* Deep Black Panel */
+  --steam-panel-hover: #141418;
+  --steam-surface: #000000;
+  --steam-card-bg: #0E0E12; /* Deep Black Card */
+  --steam-card-hover: #18181E;
 
   /* Primary Accent: Electric Purple */
   --steam-orange: #7952F5;
   --steam-orange-hover: #6740E6;
   --steam-orange-glow: transparent;
 
-  --steam-border: #2B234C; /* Clean purple border */
+  --steam-border: #1E1A2E; /* Subtle dark purple-black border */
   --steam-border-focus: #7952F5;
 
   /* Font Visibility: Mix of light and dark purple */
@@ -37,15 +37,15 @@
   --steam-text-secondary: #D4CBF7; /* Soft light lavender for subheadings */
   --steam-muted: #A396D1; /* Medium lavender for secondary text */
 
-  --steam-input-bg: #140F24;
-  --steam-pill-bg: #221C3D;
+  --steam-input-bg: #0A0A0C;
+  --steam-pill-bg: #181428;
 
   --steam-card-radius: 14px;
   --steam-pill-radius: 999px;
   --steam-shadow: none;
   --steam-app-shadow: none;
-  --steam-dock-bg: #161226;
-  --steam-dock-border: #2B234C;
+  --steam-dock-bg: #0A0A0C;
+  --steam-dock-border: #1E1A2E;
   --steam-hero-text: #F4F0FF;
 }
 
