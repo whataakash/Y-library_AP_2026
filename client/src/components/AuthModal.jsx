@@ -46,11 +46,11 @@ export default function AuthModal({ isOpen, onClose }) {
     }
   };
 
-  const handleDemoLogin = async (demoEmail) => {
+  const handleDemoLogin = async (demoEmail, demoPassword = "StudentPass123!") => {
     setErrorMsg("");
     setLoading(true);
     try {
-      await loginWithCredentials(demoEmail, "password123");
+      await loginWithCredentials(demoEmail, demoPassword);
       onClose();
     } catch (err) {
       setErrorMsg(err.message || "Demo login failed");
@@ -309,24 +309,108 @@ export default function AuthModal({ isOpen, onClose }) {
             </button>
           </form>
 
-          {/* Quick Demo Student Sign-In for Faculty */}
+          {/* Quick Demo Role Sign-In for Faculty & Presentation */}
           <div
             style={{
-              marginTop: "24px",
-              paddingTop: "16px",
+              marginTop: "20px",
+              paddingTop: "14px",
               borderTop: "1px solid var(--steam-border)",
             }}
           >
-            <div style={{ fontSize: "11px", fontWeight: "700", color: "var(--steam-muted)", marginBottom: "8px" }}>
-              DEMO: 1-CLICK STUDENT SIGN-IN
+            <div style={{ fontSize: "11px", fontWeight: "700", color: "var(--steam-muted)", marginBottom: "8px", display: "flex", justifyContent: "space-between" }}>
+              <span>DEMO: 1-CLICK ROLE SIGN-IN</span>
+              <span style={{ color: "var(--steam-orange)" }}>Bcrypt Encrypted</span>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
+            
+            {/* Admins */}
+            <div style={{ fontSize: "10px", fontWeight: "700", color: "#ef4444", marginBottom: "4px" }}>
+              👑 ADMINISTRATORS
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px", marginBottom: "10px" }}>
               <button
                 type="button"
-                onClick={() => handleDemoLogin("alex.morgan@y-university.edu")}
+                onClick={() => handleDemoLogin("arthur.vance@y-university.edu", "AdminPassword123!")}
                 style={{
-                  padding: "7px 10px",
-                  borderRadius: "8px",
+                  padding: "6px 8px",
+                  borderRadius: "6px",
+                  background: "rgba(239, 68, 68, 0.08)",
+                  border: "1px solid rgba(239, 68, 68, 0.25)",
+                  color: "var(--steam-text)",
+                  fontSize: "11px",
+                  fontWeight: "600",
+                  textAlign: "left",
+                }}
+              >
+                Dr. Vance (Dean)
+              </button>
+              <button
+                type="button"
+                onClick={() => handleDemoLogin("elena.rostova@y-university.edu", "AdminPassword123!")}
+                style={{
+                  padding: "6px 8px",
+                  borderRadius: "6px",
+                  background: "rgba(239, 68, 68, 0.08)",
+                  border: "1px solid rgba(239, 68, 68, 0.25)",
+                  color: "var(--steam-text)",
+                  fontSize: "11px",
+                  fontWeight: "600",
+                  textAlign: "left",
+                }}
+              >
+                Elena Rostova (SysDir)
+              </button>
+            </div>
+
+            {/* Librarians */}
+            <div style={{ fontSize: "10px", fontWeight: "700", color: "#38bdf8", marginBottom: "4px" }}>
+              📚 LIBRARIANS
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px", marginBottom: "10px" }}>
+              <button
+                type="button"
+                onClick={() => handleDemoLogin("margaret.hollowell@y-university.edu", "LibrarianPass123!")}
+                style={{
+                  padding: "6px 8px",
+                  borderRadius: "6px",
+                  background: "rgba(14, 165, 233, 0.08)",
+                  border: "1px solid rgba(14, 165, 233, 0.25)",
+                  color: "var(--steam-text)",
+                  fontSize: "11px",
+                  fontWeight: "600",
+                  textAlign: "left",
+                }}
+              >
+                Margaret H. (Collections)
+              </button>
+              <button
+                type="button"
+                onClick={() => handleDemoLogin("samuel.thorne@y-university.edu", "LibrarianPass123!")}
+                style={{
+                  padding: "6px 8px",
+                  borderRadius: "6px",
+                  background: "rgba(14, 165, 233, 0.08)",
+                  border: "1px solid rgba(14, 165, 233, 0.25)",
+                  color: "var(--steam-text)",
+                  fontSize: "11px",
+                  fontWeight: "600",
+                  textAlign: "left",
+                }}
+              >
+                Samuel Thorne (Circulation)
+              </button>
+            </div>
+
+            {/* Students */}
+            <div style={{ fontSize: "10px", fontWeight: "700", color: "#fbbf24", marginBottom: "4px" }}>
+              🎓 STUDENTS
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px" }}>
+              <button
+                type="button"
+                onClick={() => handleDemoLogin("alex.morgan@y-university.edu", "StudentPass123!")}
+                style={{
+                  padding: "6px 8px",
+                  borderRadius: "6px",
                   background: "var(--steam-input-bg)",
                   border: "1px solid var(--steam-border)",
                   color: "var(--steam-text)",
@@ -339,10 +423,10 @@ export default function AuthModal({ isOpen, onClose }) {
               </button>
               <button
                 type="button"
-                onClick={() => handleDemoLogin("maya.chen@y-university.edu")}
+                onClick={() => handleDemoLogin("maya.chen@y-university.edu", "StudentPass123!")}
                 style={{
-                  padding: "7px 10px",
-                  borderRadius: "8px",
+                  padding: "6px 8px",
+                  borderRadius: "6px",
                   background: "var(--steam-input-bg)",
                   border: "1px solid var(--steam-border)",
                   color: "var(--steam-text)",
@@ -351,7 +435,7 @@ export default function AuthModal({ isOpen, onClose }) {
                   textAlign: "left",
                 }}
               >
-                Maya Chen (Architecture)
+                Maya Chen (Arch)
               </button>
             </div>
           </div>

@@ -28,6 +28,7 @@ export default function UserSwitcherModal({ isOpen, onClose }) {
   } = useAuth();
 
   const [isCreating, setIsCreating] = useState(false);
+  const [roleFilter, setRoleFilter] = useState("all");
   const [newName, setNewName] = useState("");
   const [newMajor, setNewMajor] = useState("");
   const [newYear, setNewYear] = useState("Year 1");
@@ -104,13 +105,43 @@ export default function UserSwitcherModal({ isOpen, onClose }) {
 
         {!isCreating ? (
           <div>
-            <p style={{ color: "var(--steam-muted)", fontSize: "13px", marginBottom: "16px" }}>
-              Select a student to see how the home catalog, recommendations, reading progress, and shelves instantly re-personalize:
+            <p style={{ color: "var(--steam-muted)", fontSize: "13px", marginBottom: "12px" }}>
+              Switch between demo accounts across different university roles to preview personalized catalogs, quotas, and permission views:
             </p>
 
-            {/* List of Student Profiles */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "24px" }}>
-              {users.map((u) => {
+            {/* Role Filter Tabs */}
+            <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
+              {[
+                { id: "all", label: `All (${users.length})` },
+                { id: "admin", label: "👑 Admins (2)" },
+                { id: "librarian", label: "📚 Librarians (2)" },
+                { id: "student", label: "🎓 Students (5)" },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setRoleFilter(tab.id)}
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: "600",
+                    padding: "6px 12px",
+                    borderRadius: "8px",
+                    border: roleFilter === tab.id ? "1px solid var(--steam-orange)" : "1px solid var(--steam-border)",
+                    background: roleFilter === tab.id ? "rgba(255, 85, 0, 0.15)" : "var(--steam-input-bg)",
+                    color: roleFilter === tab.id ? "var(--steam-orange)" : "var(--steam-text-secondary)",
+                    cursor: "pointer",
+                    transition: "all 0.15s",
+                  }}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            {/* List of User Profiles */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "24px", maxHeight: "360px", overflowY: "auto", paddingRight: "4px" }}>
+              {users
+                .filter((u) => roleFilter === "all" || (u.role || "student") === roleFilter)
+                .map((u) => {
                 const isActive = u.id === user.id;
                 return (
                   <div
@@ -145,10 +176,25 @@ export default function UserSwitcherModal({ isOpen, onClose }) {
                         }}
                       />
                       <div>
-                        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
                           <span style={{ fontWeight: "700", fontSize: "15px", color: "var(--steam-text)" }}>
                             {u.name}
                           </span>
+                          {u.role === "admin" && (
+                            <span style={{ fontSize: "10px", fontWeight: "700", background: "rgba(239, 68, 68, 0.18)", color: "#ef4444", border: "1px solid rgba(239, 68, 68, 0.4)", padding: "1px 6px", borderRadius: "4px" }}>
+                              👑 ADMIN
+                            </span>
+                          )}
+                          {u.role === "librarian" && (
+                            <span style={{ fontSize: "10px", fontWeight: "700", background: "rgba(14, 165, 233, 0.18)", color: "#38bdf8", border: "1px solid rgba(14, 165, 233, 0.4)", padding: "1px 6px", borderRadius: "4px" }}>
+                              📚 LIBRARIAN
+                            </span>
+                          )}
+                          {(!u.role || u.role === "student") && (
+                            <span style={{ fontSize: "10px", fontWeight: "700", background: "rgba(245, 158, 11, 0.15)", color: "#fbbf24", border: "1px solid rgba(245, 158, 11, 0.3)", padding: "1px 6px", borderRadius: "4px" }}>
+                              🎓 STUDENT
+                            </span>
+                          )}
                           {isActive && (
                             <span
                               style={{
