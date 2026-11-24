@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
-import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import FloatingDock from "./components/FloatingDock";
 import AIChatbot from "./components/Chatbot/AIChatbot";
@@ -89,27 +88,20 @@ function MainLayout() {
   // Once authenticated: render the full application layout with route-based views
   return (
     <div className="steam-app-layout">
-      {/* Left Steam Sidebar with real URL links */}
-      <Sidebar
-        activeTab={activeTab}
+      {/* Topbar Header with all Navigation buttons */}
+      <Navbar
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        onSearchSubmit={handleSearchSubmit}
         setActiveTab={(tab) => navigate("/" + tab)}
-        onSelectBook={handleSelectBook}
+        activeCategory={selectedCategory}
+        onSelectCategory={handleSelectCategory}
         onOpenChatbot={() => setIsChatbotOpen(true)}
+        onSelectBook={handleSelectBook}
       />
 
-      {/* Right Main Area */}
+      {/* Main Content Area */}
       <div className="steam-main-area">
-        {/* Topbar Header */}
-        <Navbar
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          onSearchSubmit={handleSearchSubmit}
-          setActiveTab={(tab) => navigate("/" + tab)}
-          activeCategory={selectedCategory}
-          onSelectCategory={handleSelectCategory}
-          onOpenChatbot={() => setIsChatbotOpen(true)}
-        />
-
         {/* Dynamic Route-Driven Content Scroll */}
         <main className="steam-content-scroll">
           <Routes>
