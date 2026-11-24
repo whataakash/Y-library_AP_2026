@@ -2,94 +2,105 @@
 
 /* ============================================================
    Y-LIBRARY APP STYLES
-   Color Palette:
-   - Paper: #F6F4F1 (Clean warm parchment / light canvas)
-   - Stone: #E4DED2 (Soft warm stone / borders / secondary surfaces)
-   - Coral: #F95C4B (Vibrant signature accent / buttons / glow)
-   - Black: #000000 (Pure pitch black / dark canvas / light text)
+   Color Palette (Flat, No Gradients):
+   - Cotton:     #EDEBDD (RGB: 237, 235, 221)
+   - Cherry Red: #810100 (RGB: 129, 1, 0)
+   - Maroon:     #630000 (RGB: 99, 0, 0)
+   - Noir Black: #1B1717 (RGB: 27, 23, 23)
 ============================================================ */
 
 :root,
 [data-theme="dark"] {
   /* Palette Constants */
-  --color-paper: #F6F4F1;
-  --color-stone: #E4DED2;
-  --color-coral: #F95C4B;
-  --color-coral-hover: #E84C39;
-  --color-coral-glow: rgba(249, 92, 75, 0.38);
-  --color-black: #000000;
+  --color-cotton: #EDEBDD;
+  --color-cherry: #810100;
+  --color-maroon: #630000;
+  --color-noir: #1B1717;
 
-  /* Dark Theme Semantics */
-  --steam-bg: #000000; /* Pure Black canvas */
-  --steam-shell-bg: #070707; /* Dark shell */
-  --steam-panel: #0E0E0E; /* Dark panel */
-  --steam-panel-hover: #171717;
-  --steam-surface: #0A0A0A;
-  --steam-card-bg: #121212;
-  --steam-card-hover: #1A1A1A;
+  /* Backward-compatible variables */
+  --color-paper: #EDEBDD;
+  --color-stone: #EDEBDD;
+  --color-coral: #810100;
+  --color-coral-hover: #630000;
+  --color-coral-glow: rgba(129, 1, 0, 0.4);
+  --color-black: #1B1717;
 
-  --steam-orange: #F95C4B; /* Coral accent */
-  --steam-orange-hover: #E84C39;
-  --steam-orange-glow: rgba(249, 92, 75, 0.38);
+  /* Dark Theme Semantics (Flat solid tones, NO gradients) */
+  --steam-bg: #1B1717; /* Noir Black canvas */
+  --steam-shell-bg: #1B1717;
+  --steam-panel: #241F1F; /* Noir Black panel */
+  --steam-panel-hover: #2D2727;
+  --steam-surface: #1B1717;
+  --steam-card-bg: #221D1D;
+  --steam-card-hover: #2B2525;
 
-  --steam-border: rgba(228, 222, 210, 0.12); /* Subtle stone border */
-  --steam-border-focus: rgba(249, 92, 75, 0.6);
+  --steam-orange: #810100; /* Cherry Red accent */
+  --steam-orange-hover: #630000; /* Maroon hover */
+  --steam-orange-glow: rgba(129, 1, 0, 0.4);
 
-  --steam-text: #F6F4F1; /* Paper */
-  --steam-text-secondary: #E4DED2; /* Stone */
-  --steam-muted: #9E978B; /* Warm stone muted */
+  --steam-border: rgba(237, 235, 221, 0.12); /* Subtle cotton border */
+  --steam-border-focus: #810100;
 
-  --steam-input-bg: #141414;
-  --steam-pill-bg: rgba(246, 244, 241, 0.06);
+  --steam-text: #EDEBDD; /* Cotton text */
+  --steam-text-secondary: rgba(237, 235, 221, 0.8);
+  --steam-muted: rgba(237, 235, 221, 0.55);
 
-  --steam-card-radius: 16px;
+  --steam-input-bg: #241F1F;
+  --steam-pill-bg: #262020;
+
+  --steam-card-radius: 14px;
   --steam-pill-radius: 999px;
-  --steam-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
-  --steam-app-shadow: 0 24px 60px rgba(0, 0, 0, 0.98);
-  --steam-dock-bg: rgba(16, 16, 16, 0.94);
-  --steam-dock-border: rgba(228, 222, 210, 0.16);
-  --steam-hero-text: #F6F4F1;
+  --steam-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --steam-app-shadow: 0 16px 40px rgba(0, 0, 0, 0.85);
+  --steam-dock-bg: #241F1F;
+  --steam-dock-border: rgba(237, 235, 221, 0.15);
+  --steam-hero-text: #EDEBDD;
 }
 
 [data-theme="light"] {
   /* Palette Constants */
-  --color-paper: #F6F4F1;
-  --color-stone: #E4DED2;
-  --color-coral: #F95C4B;
-  --color-coral-hover: #E84C39;
-  --color-coral-glow: rgba(249, 92, 75, 0.28);
-  --color-black: #000000;
+  --color-cotton: #EDEBDD;
+  --color-cherry: #810100;
+  --color-maroon: #630000;
+  --color-noir: #1B1717;
 
-  /* Light Theme Semantics */
-  --steam-bg: #F6F4F1; /* Paper as main background */
-  --steam-shell-bg: #FFFFFF; /* Clean white card container */
-  --steam-panel: #FFFFFF;
-  --steam-panel-hover: #F2EFE9; /* Warm stone hover */
-  --steam-surface: #F6F4F1; /* Paper */
+  --color-paper: #EDEBDD;
+  --color-stone: #1B1717;
+  --color-coral: #810100;
+  --color-coral-hover: #630000;
+  --color-coral-glow: rgba(129, 1, 0, 0.25);
+  --color-black: #1B1717;
+
+  /* Light Theme Semantics (Flat solid tones, NO gradients) */
+  --steam-bg: #EDEBDD; /* Cotton canvas */
+  --steam-shell-bg: #F5F3E9;
+  --steam-panel: #F5F3E9;
+  --steam-panel-hover: #E4E0CE;
+  --steam-surface: #EDEBDD;
   --steam-card-bg: #FFFFFF;
-  --steam-card-hover: #F8F6F2;
+  --steam-card-hover: #F8F6EC;
 
-  --steam-orange: #F95C4B; /* Coral accent */
-  --steam-orange-hover: #E84C39;
-  --steam-orange-glow: rgba(249, 92, 75, 0.28);
+  --steam-orange: #810100; /* Cherry Red */
+  --steam-orange-hover: #630000; /* Maroon */
+  --steam-orange-glow: rgba(129, 1, 0, 0.25);
 
-  --steam-border: rgba(228, 222, 210, 0.85); /* Stone border */
-  --steam-border-focus: rgba(249, 92, 75, 0.55);
+  --steam-border: rgba(27, 23, 23, 0.14); /* Noir border */
+  --steam-border-focus: #810100;
 
-  --steam-text: #000000; /* Black text */
-  --steam-text-secondary: #3B3730; /* Deep charcoal stone */
-  --steam-muted: #756E63; /* Warm stone muted text */
+  --steam-text: #1B1717; /* Noir Black text */
+  --steam-text-secondary: #3D3535;
+  --steam-muted: #6B6161;
 
-  --steam-input-bg: #ECE8E0; /* Paper/Stone inset input */
-  --steam-pill-bg: #EAE5DC;
+  --steam-input-bg: #EAE6D6;
+  --steam-pill-bg: #E3DFC9;
 
-  --steam-card-radius: 16px;
+  --steam-card-radius: 14px;
   --steam-pill-radius: 999px;
-  --steam-shadow: 0 10px 30px rgba(74, 70, 63, 0.06);
-  --steam-app-shadow: 0 20px 50px rgba(74, 70, 63, 0.12);
-  --steam-dock-bg: rgba(28, 26, 24, 0.95); /* High-contrast stone-black dock */
-  --steam-dock-border: rgba(246, 244, 241, 0.2);
-  --steam-hero-text: #F6F4F1;
+  --steam-shadow: 0 4px 16px rgba(27, 23, 23, 0.08);
+  --steam-app-shadow: 0 8px 30px rgba(27, 23, 23, 0.12);
+  --steam-dock-bg: #1B1717;
+  --steam-dock-border: rgba(237, 235, 221, 0.2);
+  --steam-hero-text: #EDEBDD;
 }
 
 * {
@@ -101,9 +112,7 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--steam-bg);
-  background-image:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(249, 92, 75, 0.12), transparent 70%),
-    radial-gradient(ellipse 50% 30% at 100% 50%, rgba(228, 222, 210, 0.04), transparent 60%);
+  background-image: none;
   color: var(--steam-text);
   min-height: 100vh;
   overflow-x: hidden;
@@ -111,9 +120,7 @@ body {
 }
 
 [data-theme="light"] body {
-  background-image:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(249, 92, 75, 0.08), transparent 70%),
-    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(228, 222, 210, 0.45), transparent 60%);
+  background-image: none;
 }
 
 button {
@@ -605,7 +612,7 @@ input:focus, select:focus, textarea:focus {
 
 .continue-item-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #F95C4B, #FF7B6D);
+  background: var(--steam-orange);
 }
 
 .continue-item-play {
@@ -834,10 +841,10 @@ input:focus, select:focus, textarea:focus {
 }
 
 .steam-subcat-pill.active {
-  background: linear-gradient(135deg, #FF6F5E 0%, #F95C4B 100%);
-  color: #F6F4F1 !important;
+  background: var(--steam-orange);
+  color: var(--color-cotton) !important;
   font-weight: 700;
-  box-shadow: 0 3px 10px rgba(249, 92, 75, 0.4);
+  box-shadow: 0 3px 10px rgba(129, 1, 0, 0.4);
 }
 
 /* Legacy Header Navbar */
@@ -914,10 +921,10 @@ input:focus, select:focus, textarea:focus {
 }
 
 .steam-cat-pill.active {
-  background: linear-gradient(135deg, #FF6F5E 0%, #F95C4B 100%);
-  color: #F6F4F1 !important;
+  background: var(--steam-orange);
+  color: var(--color-cotton) !important;
   font-weight: 700;
-  box-shadow: 0 4px 14px rgba(249, 92, 75, 0.4);
+  box-shadow: 0 4px 14px rgba(129, 1, 0, 0.4);
 }
 
 /* Header Actions */
@@ -1043,14 +1050,7 @@ input:focus, select:focus, textarea:focus {
 .modern-hero-gradient-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    #000000 0%,
-    #000000 34%,
-    rgba(0, 0, 0, 0.92) 55%,
-    rgba(0, 0, 0, 0.5) 75%,
-    rgba(0, 0, 0, 0.1) 100%
-  );
+  background: rgba(27, 23, 23, 0.88);
   z-index: 2;
   pointer-events: none;
 }
@@ -1257,9 +1257,9 @@ input:focus, select:focus, textarea:focus {
 }
 
 .steam-dock-item.active {
-  background: linear-gradient(135deg, #FF6F5E 0%, #F95C4B 100%);
-  color: #F6F4F1;
-  box-shadow: 0 4px 14px rgba(249, 92, 75, 0.5);
+  background: var(--steam-orange);
+  color: var(--color-cotton);
+  box-shadow: 0 4px 14px rgba(129, 1, 0, 0.5);
   transform: scale(1.08);
 }
 
@@ -1531,10 +1531,10 @@ input:focus, select:focus, textarea:focus {
 }
 
 .book-tile-lock-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, #FF6F5E 0%, #F95C4B 100%);
+  background: var(--steam-orange);
   border-color: var(--steam-orange);
-  color: #F6F4F1;
-  box-shadow: 0 4px 12px rgba(249, 92, 75, 0.4);
+  color: var(--color-cotton);
+  box-shadow: 0 4px 12px rgba(129, 1, 0, 0.4);
 }
 
 /* ============================================================
@@ -1552,8 +1552,8 @@ input:focus, select:focus, textarea:focus {
 .steam-btn-primary {
   padding: 12px 20px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #FF6F5E 0%, #F95C4B 100%);
-  color: #F6F4F1;
+  background: var(--steam-orange);
+  color: var(--color-cotton);
   font-weight: 700;
   font-size: 13px;
   display: inline-flex;
@@ -1567,9 +1567,9 @@ input:focus, select:focus, textarea:focus {
 }
 
 .steam-btn-primary:hover:not(:disabled) {
-  background: linear-gradient(135deg, #FF7B6D 0%, #E84C39 100%);
+  background: var(--steam-orange-hover);
   transform: translateY(-1px);
-  box-shadow: 0 10px 28px rgba(249, 92, 75, 0.5);
+  box-shadow: 0 10px 28px rgba(99, 0, 0, 0.5);
 }
 
 .steam-modal-veil {

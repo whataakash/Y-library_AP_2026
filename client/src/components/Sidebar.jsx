@@ -217,7 +217,7 @@ export default function Sidebar({ activeTab, setActiveTab, onSelectBook, onOpenC
                           style={{
                             width: `${item.progress || 20}%`,
                             height: "100%",
-                            background: "linear-gradient(90deg, #F95C4B, #FF7B6D)",
+                            background: "var(--steam-orange)",
                           }}
                         />
                       </div>

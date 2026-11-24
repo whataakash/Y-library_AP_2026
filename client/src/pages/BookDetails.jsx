@@ -546,7 +546,7 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
                 borderRadius: "10px",
                 background:
                   book.copies > 0
-                    ? "linear-gradient(135deg, #FF6F5E, #F95C4B)"
+                    ? "var(--steam-orange)"
                     : "#333",
                 color: "#F6F4F1",
                 fontWeight: "700",

@@ -32,22 +32,22 @@ export default function BookTile({
     return hash;
   }
 
-  // Genre gradient for graceful typographic book jackets
-  const genreGradients = {
-    Technology: "linear-gradient(135deg, #1e3a8a 0%, #090d16 100%)",
-    "Science Fiction": "linear-gradient(135deg, #312e81 0%, #0a0818 100%)",
-    Fantasy: "linear-gradient(135deg, #581c87 0%, #150624 100%)",
-    Philosophy: "linear-gradient(135deg, #78350f 0%, #1c0d02 100%)",
-    Psychology: "linear-gradient(135deg, #134e4a 0%, #031412 100%)",
-    Economics: "linear-gradient(135deg, #14532d 0%, #031408 100%)",
-    History: "linear-gradient(135deg, #701a75 0%, #1a031c 100%)",
-    Science: "linear-gradient(135deg, #0e7490 0%, #02171e 100%)",
-    Classics: "linear-gradient(135deg, #831843 0%, #20040f 100%)",
-    Mystery: "linear-gradient(135deg, #1f2937 0%, #030712 100%)",
-    Thriller: "linear-gradient(135deg, #991b1b 0%, #180303 100%)",
-    Biography: "linear-gradient(135deg, #374151 0%, #080a0e 100%)",
+  // Flat solid palette colors for graceful typographic book jackets (No gradients)
+  const genreColors = {
+    Technology: "#630000",
+    "Science Fiction": "#810100",
+    Fantasy: "#630000",
+    Philosophy: "#1B1717",
+    Psychology: "#241F1F",
+    Economics: "#630000",
+    History: "#810100",
+    Science: "#630000",
+    Classics: "#241F1F",
+    Mystery: "#1B1717",
+    Thriller: "#810100",
+    Biography: "#241F1F",
   };
-  const bgGradient = genreGradients[book.genre] || "linear-gradient(135deg, #18181b 0%, #040406 100%)";
+  const bgSolidColor = genreColors[book.genre] || "#1B1717";
 
   return (
     <div
@@ -71,7 +71,7 @@ export default function BookTile({
             style={{
               width: "100%",
               height: "100%",
-              background: bgGradient,
+              background: bgSolidColor,
               padding: "16px 12px",
               display: "flex",
               flexDirection: "column",

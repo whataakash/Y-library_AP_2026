@@ -191,7 +191,7 @@ export default function Dashboard({ onSelectBook, setActiveTab }) {
               style={{
                 width: `${goalPercent}%`,
                 height: "100%",
-                background: "linear-gradient(90deg, #F95C4B, #FF7B6D)",
+                background: "var(--steam-orange)",
               }}
             />
           </div>
@@ -289,7 +289,7 @@ export default function Dashboard({ onSelectBook, setActiveTab }) {
                   fontSize: "12px",
                   fontWeight: "600",
                   background: isSelected
-                    ? "linear-gradient(135deg, #FF6F5E, #F95C4B)"
+                    ? "var(--steam-orange)"
                     : "var(--steam-input-bg)",
                   color: isSelected ? "#F6F4F1" : "var(--steam-muted)",
                   border: isSelected

@@ -31,7 +31,7 @@ export default function Community({ onSelectBook }) {
           <div
             key={person.id}
             style={{
-              background: "linear-gradient(180deg, #0d0d11 0%, #040406 100%)",
+              background: "var(--steam-card-bg)",
               border: "1px solid var(--steam-border)",
               borderRadius: "16px",
               padding: "24px",

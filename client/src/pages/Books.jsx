@@ -83,7 +83,7 @@ export default function Books({
                 fontSize: "13px",
                 fontWeight: "600",
                 background: isSelected
-                  ? "linear-gradient(135deg, #FF6F5E, #F95C4B)"
+                  ? "var(--steam-orange)"
                   : "var(--steam-input-bg)",
                 color: isSelected ? "#F6F4F1" : "var(--steam-muted)",
                 border: isSelected

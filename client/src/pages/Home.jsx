@@ -455,7 +455,7 @@ export default function Home({
                         style={{
                           width: `${item.progress}%`,
                           height: "100%",
-                          background: "linear-gradient(90deg, #F95C4B, #FF7B6D)",
+                          background: "var(--steam-orange)",
                         }}
                       />
                     </div>
@@ -478,7 +478,7 @@ export default function Home({
                   fontSize: "11px",
                   padding: "2px 8px",
                   borderRadius: "6px",
-                  background: "linear-gradient(135deg, #FF6F5E, #F95C4B)",
+                  background: "var(--steam-orange)",
                   color: "#F6F4F1",
                   fontWeight: "700",
                   textTransform: "uppercase",

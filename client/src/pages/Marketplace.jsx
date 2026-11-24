@@ -75,7 +75,7 @@ export default function Marketplace() {
           onClick={() => setShowModal(true)}
           style={{
             padding: "12px 24px",
-            background: "linear-gradient(135deg, #FF6F5E, #F95C4B)",
+            background: "var(--steam-orange)",
             borderRadius: "10px",
             color: "#ffffff",
             fontWeight: "700",
@@ -124,7 +124,7 @@ export default function Marketplace() {
           <div
             key={item.id}
             style={{
-              background: "linear-gradient(180deg, #0d0d11 0%, #040406 100%)",
+              background: "var(--steam-card-bg)",
               border: "1px solid var(--steam-border)",
               borderRadius: "16px",
               overflow: "hidden",
