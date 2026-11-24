@@ -166,7 +166,7 @@ export default function Requests() {
               <div
                 key={req.id}
                 style={{
-                  background: "#161b22",
+                  background: "var(--steam-card-bg)",
                   border: "1px solid var(--steam-border)",
                   borderRadius: "14px",
                   padding: "18px 20px",
@@ -195,7 +195,7 @@ export default function Requests() {
                   <p style={{ fontSize: "13px", color: "var(--steam-muted)", marginTop: "2px" }}>
                     by {req.author} · Requested by {req.requester} ({req.department})
                   </p>
-                  <p style={{ fontSize: "12px", color: "#c9d1d9", marginTop: "8px" }}>
+                  <p style={{ fontSize: "12px", color: "var(--steam-text-secondary)", marginTop: "8px" }}>
                     “{req.reason}”
                   </p>
                 </div>

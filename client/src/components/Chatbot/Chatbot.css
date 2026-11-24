@@ -168,7 +168,7 @@
   height: 9px;
   border-radius: 50%;
   background: #10b981;
-  border: 1.5px solid #000000;
+  border: 1.5px solid var(--steam-panel);
 }
 
 .steam-chatbot-header-info {
@@ -653,12 +653,12 @@
 
 .steam-chatbot-inline-code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  background: rgba(0, 0, 0, 0.35);
+  background: var(--steam-input-bg);
   padding: 2px 5px;
   border-radius: 4px;
   font-size: 11px;
-  color: #ff9d8f;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--steam-orange);
+  border: 1px solid var(--steam-border);
 }
 
 .steam-chatbot-bullet-line {

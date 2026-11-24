@@ -110,11 +110,12 @@ export default function Community({ onSelectBook }) {
                 style={{
                   marginTop: "16px",
                   padding: "10px 14px",
-                  background: "rgba(0,0,0,0.3)",
+                  background: "var(--steam-input-bg)",
+                  border: "1px solid var(--steam-border)",
                   borderRadius: "8px",
                   fontSize: "12px",
                   fontStyle: "italic",
-                  color: "#c9d1d9",
+                  color: "var(--steam-text-secondary)",
                 }}
               >
                 “{person.recentReview}”
@@ -127,19 +128,19 @@ export default function Community({ onSelectBook }) {
               style={{
                 marginTop: "20px",
                 padding: "10px",
-                background: "rgba(255, 255, 255, 0.08)",
+                background: "var(--steam-panel-hover)",
                 border: "1px solid var(--steam-border)",
                 borderRadius: "8px",
                 fontSize: "13px",
                 fontWeight: "600",
-                color: "#fff",
+                color: "var(--steam-text)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "8px",
               }}
             >
-              <Icon name="chat" size={15} color="#fff" />
+              <Icon name="chat" size={15} color="var(--steam-orange)" />
               <span>Invite to Reading Circle</span>
             </button>
           </div>

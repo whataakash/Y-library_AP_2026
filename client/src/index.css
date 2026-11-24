@@ -50,36 +50,36 @@
 }
 
 [data-theme="light"] {
-  /* Soft Rose Warm Light Theme */
-  --steam-bg: #FFF5F6; /* Soft warm rose canvas */
-  --steam-shell-bg: #FFF5F6;
+  /* Clean High-Contrast Light Theme with Crisp Dark Text & Vibrant Red Accents */
+  --steam-bg: #FAF5F6; /* Soft clean warm rose canvas */
+  --steam-shell-bg: #FAF5F6;
   --steam-panel: #FFFFFF;
-  --steam-panel-hover: #FCE8EA;
+  --steam-panel-hover: #F8E8EB;
   --steam-surface: #FFFFFF;
   --steam-card-bg: #FFFFFF;
-  --steam-card-hover: #FAF0F2;
+  --steam-card-hover: #F8ECEE;
 
   --steam-orange: #FF2A2A;
-  --steam-orange-hover: #E01616;
+  --steam-orange-hover: #D91414;
   --steam-orange-glow: transparent;
 
-  --steam-border: #F0D0D4;
+  --steam-border: #E8CCD0;
   --steam-border-focus: #FF2A2A;
 
-  --steam-text: #1A080B; /* Deep dark crimson-black */
-  --steam-text-secondary: #4A1A22;
-  --steam-muted: #824D55;
+  --steam-text: #120406; /* Pitch dark crimson-black for maximum contrast (18:1 ratio) */
+  --steam-text-secondary: #3D1219; /* Deep dark rose-slate for subheadings (11:1 ratio) */
+  --steam-muted: #6A3841; /* Clear readable medium-dark rose for secondary text (6.5:1 ratio) */
 
-  --steam-input-bg: #F8ECEE;
-  --steam-pill-bg: #F5E2E5;
+  --steam-input-bg: #F4E2E6;
+  --steam-pill-bg: #F0D4DA;
 
   --steam-card-radius: 14px;
   --steam-pill-radius: 999px;
   --steam-shadow: none;
   --steam-app-shadow: none;
-  --steam-dock-bg: #0A0A0C;
-  --steam-dock-border: #241416;
-  --steam-hero-text: #1A080B;
+  --steam-dock-bg: #FFFFFF;
+  --steam-dock-border: #E8CCD0;
+  --steam-hero-text: #120406;
 }
 
 /* Strict Zero Shadow & Zero Glow Anywhere */
@@ -827,7 +827,7 @@ input:focus, select:focus, textarea:focus {
 
 .steam-subcat-pill.active {
   background: var(--steam-orange);
-  color: var(--steam-text) !important;
+  color: #FFFFFF !important;
   font-weight: 700;
 }
 
@@ -906,7 +906,7 @@ input:focus, select:focus, textarea:focus {
 
 .steam-cat-pill.active {
   background: var(--steam-orange);
-  color: var(--steam-text) !important;
+  color: #FFFFFF !important;
   font-weight: 700;
 }
 
@@ -1258,6 +1258,54 @@ input:focus, select:focus, textarea:focus {
   color: #FFFFFF;
 }
 
+/* Light Theme Overrides for 3D Curved Hero Section */
+[data-theme="light"] .curved-hero-section {
+  background: #FFFFFF;
+  border-color: #E8CCD0;
+}
+
+[data-theme="light"] .curved-hero-title {
+  color: #120406;
+}
+
+[data-theme="light"] .curved-hero-subtitle {
+  color: #6A3841;
+}
+
+[data-theme="light"] .curved-hero-cta-btn {
+  background: #FAF5F6;
+  border-color: #E8CCD0;
+  color: #120406;
+}
+
+[data-theme="light"] .curved-hero-cta-btn:hover {
+  background: #F8E8EB;
+  border-color: #FF2A2A;
+}
+
+[data-theme="light"] .curved-hero-card {
+  background: #FFFFFF;
+  border-color: #E8CCD0;
+}
+
+[data-theme="light"] .curved-hero-card-fallback {
+  background: #FAF5F6;
+  color: #120406;
+}
+
+[data-theme="light"] .curved-hero-card-caption {
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid rgba(255, 42, 42, 0.35);
+}
+
+[data-theme="light"] .curved-hero-card-title {
+  color: #120406;
+}
+
+[data-theme="light"] .curved-hero-feature-title {
+  color: #120406;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1100px) {
   .curved-hero-stage {
@@ -1324,7 +1372,8 @@ input:focus, select:focus, textarea:focus {
 
 .steam-dock-item:hover {
   color: var(--steam-text);
-  background: rgba(228, 222, 210, 0.12);
+  background: var(--steam-panel-hover);
+  border-color: var(--steam-border);
   transform: scale(1.08);
 }
 
@@ -1493,14 +1542,14 @@ input:focus, select:focus, textarea:focus {
   position: absolute;
   top: 8px;
   right: 8px;
-  background: rgba(0, 0, 0, 0.85);
-  border: 1px solid rgba(228, 222, 210, 0.2);
-  backdrop-filter: blur(6px);
-  color: var(--color-stone);
-  padding: 3px 7px;
-  border-radius: 5px;
+  background: #000000;
+  border: 1px solid #FF2A2A;
+  color: #FFFFFF;
+  padding: 3px 8px;
+  border-radius: 6px;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   z-index: 2;
   max-width: 80%;

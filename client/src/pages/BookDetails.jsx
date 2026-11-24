@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { api } from "../services/api";
 import { useAuth } from "../context/AuthContext";
-import { calculateBookMatchScore, getRecommendationReason } from "../services/personalization";
 import { capitalizeTitle, capitalizeAuthor } from "../utils/formatters";
 import Icon from "../components/Icon";
 
@@ -12,9 +11,6 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
   
   // State for the currently displayed book
   const [book, setBook] = useState(propBook || null);
-  const [ageLevel, setAgeLevel] = useState("5");
-  const [llmSummary, setLlmSummary] = useState("");
-  const [llmLoading, setLlmLoading] = useState(false);
 
   // Peer review form
   const [reviewRating, setReviewRating] = useState(5);
@@ -95,7 +91,6 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
     // 1. If full book object is passed via props, use it immediately
     if (propBook) {
       setBook(propBook);
-      loadSummary(propBook, "5");
       return;
     }
 
@@ -104,19 +99,10 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
       api.getBookById(bookId).then((data) => {
         if (data) {
           setBook(data);
-          loadSummary(data, "5");
         }
       });
     }
   }, [propBook, bookId]);
-
-  const loadSummary = async (bookData, age) => {
-    setLlmLoading(true);
-    setAgeLevel(age);
-    const summary = await api.getLLMSummary(bookData, age);
-    setLlmSummary(summary);
-    setLlmLoading(false);
-  };
 
   const handleLock = async () => {
     try {
@@ -175,9 +161,6 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
 
   const isRead = user?.readBooks?.some((id) => String(id) === String(book.id));
   const isFavorite = user?.favorites?.some((id) => String(id) === String(book.id));
-
-  const matchScore = calculateBookMatchScore(user, book);
-  const recommendationReason = getRecommendationReason(user, book);
 
   const getEstimatedReadingHours = () => {
     if (!book) return 5;
@@ -291,44 +274,8 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
           </div>
         </div>
 
-        {/* Right Column: Information & Personalization Engine */}
+        {/* Right Column: Information & Details */}
         <div>
-          {/* Personalized Student Insight Banner */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              background: "rgba(255, 85, 0, 0.08)",
-              border: "1px solid rgba(255, 85, 0, 0.3)",
-              padding: "10px 16px",
-              borderRadius: "10px",
-              marginBottom: "16px",
-            }}
-          >
-            <span style={{ fontSize: "16px" }}>✨</span>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: "12px", fontWeight: "700", color: "var(--steam-orange)" }}>
-                {recommendationReason}
-              </div>
-              <div style={{ fontSize: "11px", color: "var(--steam-muted)" }}>
-                Curated specifically for {user?.name} ({user?.major})
-              </div>
-            </div>
-            <span
-              style={{
-                fontSize: "13px",
-                fontWeight: "800",
-                color: "var(--steam-orange)",
-                background: "rgba(255, 42, 42, 0.15)",
-                padding: "4px 8px",
-                borderRadius: "6px",
-              }}
-            >
-              {matchScore}%
-            </span>
-          </div>
-
           <div style={{ fontSize: "12px", color: "var(--steam-orange)", fontWeight: "700" }}>
             {book.genre} · {book.tags?.join(", ")}
           </div>
@@ -616,49 +563,6 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
               ✓ {lockMsg}
             </div>
           )}
-
-          {/* AI ELI5 Explanations */}
-          <div style={{ marginBottom: "28px" }}>
-            <h3 style={{ fontSize: "16px", fontWeight: "700", marginBottom: "10px", color: "var(--steam-text)" }}>
-              AI Simplified Explanations
-            </h3>
-            <div style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
-              {[
-                { label: "ELI5 (Child)", val: "5" },
-                { label: "ELI10 (Student)", val: "10" },
-                { label: "Freshman College", val: "15" },
-              ].map((lvl) => (
-                <button
-                  key={lvl.val}
-                  onClick={() => loadSummary(book, lvl.val)}
-                  style={{
-                    padding: "6px 14px",
-                    borderRadius: "6px",
-                    fontSize: "12px",
-                    fontWeight: "600",
-                    background: ageLevel === lvl.val ? "var(--steam-orange)" : "var(--steam-input-bg)",
-                    color: "#fff",
-                    border: "1px solid var(--steam-border)",
-                  }}
-                >
-                  {lvl.label}
-                </button>
-              ))}
-            </div>
-            <div
-              style={{
-                background: "var(--steam-input-bg)",
-                padding: "16px",
-                borderRadius: "10px",
-                border: "1px solid var(--steam-border)",
-                fontSize: "13px",
-                lineHeight: 1.6,
-                color: "var(--steam-text-secondary)",
-              }}
-            >
-              {llmLoading ? "Generating AI summary..." : llmSummary}
-            </div>
-          </div>
 
           {/* Peer Reviews */}
           <div>

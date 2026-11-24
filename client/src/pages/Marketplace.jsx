@@ -102,8 +102,8 @@ export default function Marketplace() {
               borderRadius: "999px",
               fontSize: "13px",
               fontWeight: "600",
-              background: filter === t ? "var(--steam-orange)" : "#161b22",
-              color: filter === t ? "#fff" : "var(--steam-muted)",
+              background: filter === t ? "var(--steam-orange)" : "var(--steam-input-bg)",
+              color: filter === t ? "#fff" : "var(--steam-text)",
               border: "1px solid var(--steam-border)",
             }}
           >
@@ -150,7 +150,7 @@ export default function Marketplace() {
                   padding: "4px 10px",
                   borderRadius: "6px",
                   background: item.type === "Signed Copy" ? "#f59e0b" : "var(--steam-orange)",
-                  color: "#000",
+                  color: item.type === "Signed Copy" ? "#000000" : "#ffffff",
                   fontWeight: "800",
                   fontSize: "11px",
                   display: "inline-flex",
@@ -196,7 +196,7 @@ export default function Marketplace() {
                 {item.author}
               </p>
 
-              <div style={{ fontSize: "12px", color: "#d0d7de", marginBottom: "8px" }}>
+              <div style={{ fontSize: "12px", color: "var(--steam-text-secondary)", marginBottom: "8px" }}>
                 <b>Condition:</b> {item.condition}
               </div>
 

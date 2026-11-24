@@ -269,7 +269,7 @@ export default function Navbar({
               <Icon
                 name={isDark ? "sun" : "moon"}
                 size={14}
-                color={isDark ? "var(--color-stone)" : "var(--color-coral)"}
+                color={isDark ? "var(--steam-text)" : "var(--steam-orange)"}
               />
             </button>
 

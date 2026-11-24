@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 import { api } from "../services/api";
 import { useAuth } from "../context/AuthContext";
-import {
-  getPersonalizedRecommendations,
-  getMajorSpecificBooks,
-  getRecommendationReason,
-} from "../services/personalization";
 import Icon from "../components/Icon";
 import BookTile from "../components/BookTile";
 
@@ -55,13 +50,10 @@ export default function Home({
     });
   };
 
-  // Compute personalized recommendations based on active student
-  const personalizedBooks = getPersonalizedRecommendations(user, currentBooks, 14);
-  const majorBooks = getMajorSpecificBooks(user, currentBooks, 12);
   const userContinueReading = user?.continueReading || [];
 
-  // Top featured book tailored to user's highest recommendation
-  const heroCandidates = personalizedBooks.length > 0 ? personalizedBooks : currentBooks;
+  // Top featured book from current books
+  const heroCandidates = currentBooks;
   const featuredBook = heroCandidates[currentIndex] || heroCandidates[0] || currentBooks[0];
 
   // Top iconic bestseller books from the campus database
@@ -227,10 +219,8 @@ export default function Home({
   }
 
   if (!featuredBook) {
-    return <div style={{ padding: "40px", color: "var(--steam-muted)" }}>Loading personalized campus catalog...</div>;
+    return <div style={{ padding: "40px", color: "var(--steam-muted)" }}>Loading campus catalog...</div>;
   }
-
-  const recommendationReason = getRecommendationReason(user, featuredBook);
 
   return (
     <div>
@@ -441,29 +431,13 @@ export default function Home({
         </section>
       )}
 
-      {/* SECTION 2: Recommended For You (Personalized ML-style algorithm) */}
+      {/* SECTION 2: Popular Across Campus */}
       <section className="book-shelf-wrap" style={{ marginTop: "40px" }}>
         <div className="steam-section-head">
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <h2 style={{ fontSize: "20px", fontWeight: "800" }}>Recommended For You</h2>
-              <span
-                style={{
-                  fontSize: "11px",
-                  padding: "2px 8px",
-                  borderRadius: "6px",
-                  background: "var(--steam-orange)",
-                  color: "#F6F4F1",
-                  fontWeight: "700",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.5px",
-                }}
-              >
-                Personalized
-              </span>
-            </div>
+            <h2 style={{ fontSize: "20px", fontWeight: "800" }}>Popular Across Campus</h2>
             <p style={{ fontSize: "12px", color: "var(--steam-muted)", marginTop: "2px" }}>
-              Ranked for {user?.name} based on {user?.major} and your interest in {(user?.preferredGenres || []).join(", ")}
+              Most requested library titles across university departments
             </p>
           </div>
           <button
@@ -476,8 +450,8 @@ export default function Home({
           </button>
         </div>
 
-        <div id="shelf-personalized" className="book-shelf-track">
-          {personalizedBooks.map((book) => (
+        <div id="shelf-popular" className="book-shelf-track">
+          {currentBooks.slice(0, 15).map((book) => (
             <BookTile
               key={book.id || book.isbn}
               book={book}
@@ -489,61 +463,20 @@ export default function Home({
 
         <button
           className="book-shelf-arrow"
-          onClick={() => scrollShelf("shelf-personalized", "right")}
-          title="Next recommendations"
+          onClick={() => scrollShelf("shelf-popular", "right")}
+          title="Next titles"
         >
           <Icon name="chevronRight" size={18} />
         </button>
       </section>
 
-      {/* SECTION 3: Major-Specific Shelf (e.g. Computer Science, Architecture, Economics) */}
-      <section className="book-shelf-wrap" style={{ marginTop: "40px" }}>
-        <div className="steam-section-head">
-          <div>
-            <h2 style={{ fontSize: "20px", fontWeight: "800" }}>
-              Department Shelf: {user?.major}
-            </h2>
-            <p style={{ fontSize: "12px", color: "var(--steam-muted)", marginTop: "2px" }}>
-              Essential references and textbooks for {user?.year} coursework
-            </p>
-          </div>
-          <button
-            className="steam-link"
-            onClick={() => setActiveTab("books")}
-            style={{ fontSize: "13px", fontWeight: "600", display: "flex", alignItems: "center", gap: "4px" }}
-          >
-            <span>Explore Department</span>
-            <Icon name="chevronRight" size={14} />
-          </button>
-        </div>
-
-        <div id="shelf-major" className="book-shelf-track">
-          {majorBooks.map((book) => (
-            <BookTile
-              key={book.id || book.isbn}
-              book={book}
-              onSelect={onSelectBook}
-              showAction={false}
-            />
-          ))}
-        </div>
-
-        <button
-          className="book-shelf-arrow"
-          onClick={() => scrollShelf("shelf-major", "right")}
-          title="Next department books"
-        >
-          <Icon name="chevronRight" size={18} />
-        </button>
-      </section>
-
-      {/* SECTION 4: Campus Bestsellers & Popular */}
+      {/* SECTION 3: Campus Bestsellers */}
       <section className="book-shelf-wrap" style={{ marginTop: "40px" }}>
         <div className="steam-section-head">
           <div>
             <h2 style={{ fontSize: "20px", fontWeight: "800" }}>Campus Bestsellers</h2>
             <p style={{ fontSize: "12px", color: "var(--steam-muted)", marginTop: "2px" }}>
-              Most borrowed titles across all campus faculties this month
+              Top borrowed volumes across all academic faculties this semester
             </p>
           </div>
           <button
@@ -551,7 +484,7 @@ export default function Home({
             onClick={() => setActiveTab("books")}
             style={{ fontSize: "13px", fontWeight: "600", display: "flex", alignItems: "center", gap: "4px" }}
           >
-            <span>See all</span>
+            <span>Explore All</span>
             <Icon name="chevronRight" size={14} />
           </button>
         </div>
@@ -571,6 +504,45 @@ export default function Home({
           className="book-shelf-arrow"
           onClick={() => scrollShelf("shelf-bestsellers", "right")}
           title="Next bestsellers"
+        >
+          <Icon name="chevronRight" size={18} />
+        </button>
+      </section>
+
+      {/* SECTION 4: New Arrivals & Catalog Highlights */}
+      <section className="book-shelf-wrap" style={{ marginTop: "40px" }}>
+        <div className="steam-section-head">
+          <div>
+            <h2 style={{ fontSize: "20px", fontWeight: "800" }}>New Arrivals & Catalog Highlights</h2>
+            <p style={{ fontSize: "12px", color: "var(--steam-muted)", marginTop: "2px" }}>
+              Recently cataloged additions to university shelves and reference archives
+            </p>
+          </div>
+          <button
+            className="steam-link"
+            onClick={() => setActiveTab("books")}
+            style={{ fontSize: "13px", fontWeight: "600", display: "flex", alignItems: "center", gap: "4px" }}
+          >
+            <span>See all</span>
+            <Icon name="chevronRight" size={14} />
+          </button>
+        </div>
+
+        <div id="shelf-recent" className="book-shelf-track">
+          {currentBooks.slice(30, 45).map((book) => (
+            <BookTile
+              key={book.id || book.isbn}
+              book={book}
+              onSelect={onSelectBook}
+              showAction={false}
+            />
+          ))}
+        </div>
+
+        <button
+          className="book-shelf-arrow"
+          onClick={() => scrollShelf("shelf-recent", "right")}
+          title="Next additions"
         >
           <Icon name="chevronRight" size={18} />
         </button>
