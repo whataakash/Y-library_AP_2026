@@ -24,6 +24,72 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
   const [isBorrowing, setIsBorrowing] = useState(false);
   const [copiedIsbn, setCopiedIsbn] = useState(false);
 
+  // Role-based permissions
+  const isAdmin = user?.role === "admin";
+  const isLibrarian = user?.role === "librarian";
+
+  // Admin/Librarian Edit Modal state
+  const [isEditing, setIsEditing] = useState(false);
+  const [editForm, setEditForm] = useState({
+    title: "",
+    author: "",
+    genre: "",
+    location: "",
+    copies: 1,
+    totalCopies: 1,
+  });
+
+  const handleOpenEdit = () => {
+    setEditForm({
+      title: book?.title || book?.bookname || "",
+      author: book?.author || "",
+      genre: book?.genre || "General",
+      location: book?.location || "Central Library / A-01",
+      copies: book?.copies ?? book?.available_count ?? 1,
+      totalCopies: book?.totalCopies ?? book?.total_count ?? 1,
+    });
+    setIsEditing(true);
+  };
+
+  const handleSaveBookEdit = async (e) => {
+    e.preventDefault();
+    try {
+      const updated = await api.updateBook(book.id, {
+        bookname: editForm.title,
+        author: editForm.author,
+        genre: editForm.genre,
+        location: editForm.location,
+        available_count: parseInt(editForm.copies, 10),
+        total_count: parseInt(editForm.totalCopies, 10),
+      });
+      setBook((prev) => ({
+        ...prev,
+        title: editForm.title,
+        bookname: editForm.title,
+        author: editForm.author,
+        genre: editForm.genre,
+        location: editForm.location,
+        copies: parseInt(editForm.copies, 10),
+        available_count: parseInt(editForm.copies, 10),
+        totalCopies: parseInt(editForm.totalCopies, 10),
+        total_count: parseInt(editForm.totalCopies, 10),
+      }));
+      setIsEditing(false);
+      setBorrowMsg("✓ Book details updated successfully!");
+      setTimeout(() => setBorrowMsg(""), 4000);
+    } catch (err) {
+      alert("Failed to update: " + err.message);
+    }
+  };
+
+  const handleDeleteBook = async () => {
+    if (!isAdmin) return;
+    if (window.confirm(`Are you sure you want to delete "${book.title}" from the catalog?`)) {
+      await api.deleteBook(book.id);
+      if (onBack) onBack();
+    }
+  };
+
   // Load book details whenever propBook or bookId changes
   useEffect(() => {
     // 1. If full book object is passed via props, use it immediately
@@ -410,6 +476,66 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
             </div>
           </div>
 
+          {/* Role-Based Privileged Action Bar (Admins & Librarians) */}
+          {(isAdmin || isLibrarian) && (
+            <div
+              style={{
+                marginBottom: "20px",
+                padding: "14px 18px",
+                borderRadius: "10px",
+                background: isAdmin ? "rgba(239, 68, 68, 0.08)" : "rgba(14, 165, 233, 0.08)",
+                border: isAdmin ? "1px solid rgba(239, 68, 68, 0.3)" : "1px solid rgba(14, 165, 233, 0.3)",
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "10px" }}>
+                <div>
+                  <div style={{ fontSize: "11px", fontWeight: "800", color: isAdmin ? "#ef4444" : "#38bdf8", textTransform: "uppercase" }}>
+                    {isAdmin ? "👑 Administrator Privileges" : "📚 Librarian Inventory Privileges"}
+                  </div>
+                  <div style={{ fontSize: "13px", color: "var(--steam-text)", fontWeight: "600" }}>
+                    {isAdmin
+                      ? "You can edit book details, shelf location, copies, or remove this title."
+                      : "You can update physical shelf coordinates and physical copy counts."}
+                  </div>
+                </div>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <button
+                    onClick={handleOpenEdit}
+                    style={{
+                      padding: "8px 14px",
+                      borderRadius: "8px",
+                      background: "rgba(59, 130, 246, 0.2)",
+                      border: "1px solid #3b82f6",
+                      color: "#60a5fa",
+                      fontSize: "13px",
+                      fontWeight: "700",
+                      cursor: "pointer",
+                    }}
+                  >
+                    ✏️ Edit Book & Shelf
+                  </button>
+                  {isAdmin && (
+                    <button
+                      onClick={handleDeleteBook}
+                      style={{
+                        padding: "8px 14px",
+                        borderRadius: "8px",
+                        background: "rgba(239, 68, 68, 0.2)",
+                        border: "1px solid #ef4444",
+                        color: "#f87171",
+                        fontSize: "13px",
+                        fontWeight: "700",
+                        cursor: "pointer",
+                      }}
+                    >
+                      🗑️ Delete Book
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* CTAs: PostgreSQL Borrow & Digital Lock */}
           <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "20px" }}>
             <button
@@ -593,6 +719,113 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
           </div>
         </div>
       </div>
+
+      {/* Admin / Librarian Quick Edit Modal */}
+      {isEditing && (
+        <div className="steam-modal-veil" onClick={() => setIsEditing(false)}>
+          <div className="steam-modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: "540px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "18px" }}>
+              <h3 style={{ fontSize: "20px", fontWeight: "800", color: "var(--steam-text)" }}>
+                {isAdmin ? "👑 Admin: Edit Book Metadata" : "📚 Librarian: Edit Shelf & Copies"}
+              </h3>
+              <button onClick={() => setIsEditing(false)} style={{ color: "var(--steam-muted)", fontSize: "16px" }}>✕</button>
+            </div>
+
+            <form onSubmit={handleSaveBookEdit}>
+              {isAdmin && (
+                <>
+                  <div style={{ marginBottom: "14px" }}>
+                    <label style={{ display: "block", fontSize: "12px", fontWeight: "700", marginBottom: "4px" }}>Title</label>
+                    <input
+                      type="text"
+                      required
+                      value={editForm.title}
+                      onChange={(e) => setEditForm({ ...editForm, title: e.target.value })}
+                      style={{ width: "100%", padding: "8px 12px" }}
+                    />
+                  </div>
+                  <div style={{ marginBottom: "14px" }}>
+                    <label style={{ display: "block", fontSize: "12px", fontWeight: "700", marginBottom: "4px" }}>Author</label>
+                    <input
+                      type="text"
+                      required
+                      value={editForm.author}
+                      onChange={(e) => setEditForm({ ...editForm, author: e.target.value })}
+                      style={{ width: "100%", padding: "8px 12px" }}
+                    />
+                  </div>
+                  <div style={{ marginBottom: "14px" }}>
+                    <label style={{ display: "block", fontSize: "12px", fontWeight: "700", marginBottom: "4px" }}>Genre</label>
+                    <input
+                      type="text"
+                      required
+                      value={editForm.genre}
+                      onChange={(e) => setEditForm({ ...editForm, genre: e.target.value })}
+                      style={{ width: "100%", padding: "8px 12px" }}
+                    />
+                  </div>
+                </>
+              )}
+
+              {/* Both Admin and Librarian can adjust shelf location and copies */}
+              <div style={{ marginBottom: "14px" }}>
+                <label style={{ display: "block", fontSize: "12px", fontWeight: "700", marginBottom: "4px" }}>
+                  📍 Physical Shelf Coordinates
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Central Library / Floor 2, Shelf B-14"
+                  value={editForm.location}
+                  onChange={(e) => setEditForm({ ...editForm, location: e.target.value })}
+                  style={{ width: "100%", padding: "8px 12px" }}
+                />
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "20px" }}>
+                <div>
+                  <label style={{ display: "block", fontSize: "12px", fontWeight: "700", marginBottom: "4px" }}>Total Copies</label>
+                  <input
+                    type="number"
+                    min="1"
+                    required
+                    value={editForm.totalCopies}
+                    onChange={(e) => setEditForm({ ...editForm, totalCopies: e.target.value })}
+                    style={{ width: "100%", padding: "8px 12px" }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: "block", fontSize: "12px", fontWeight: "700", marginBottom: "4px" }}>Available Copies</label>
+                  <input
+                    type="number"
+                    min="0"
+                    required
+                    value={editForm.copies}
+                    onChange={(e) => setEditForm({ ...editForm, copies: e.target.value })}
+                    style={{ width: "100%", padding: "8px 12px" }}
+                  />
+                </div>
+              </div>
+
+              <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}>
+                <button
+                  type="button"
+                  onClick={() => setIsEditing(false)}
+                  style={{ padding: "10px 16px", borderRadius: "8px", background: "transparent", border: "1px solid var(--steam-border)", color: "var(--steam-text)" }}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  style={{ padding: "10px 20px", borderRadius: "8px", background: "var(--steam-orange)", border: "none", color: "#ffffff", fontWeight: "700" }}
+                >
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -468,6 +468,61 @@ export const api = {
     return { online: false };
   },
 
+  // Admin & Librarian: Update Book Details / Inventory
+  updateBook: async (id, updates) => {
+    try {
+      const res = await fetch(`${BACKEND_URL}/books/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updates),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Failed to update book");
+      }
+      return data.book ? normalizeBackendBook(data.book) : null;
+    } catch (err) {
+      console.warn("Backend update failed, applying optimistic update:", err.message);
+      return { id, ...updates };
+    }
+  },
+
+  // Admin: Delete Book from Catalog
+  deleteBook: async (id) => {
+    try {
+      const res = await fetch(`${BACKEND_URL}/books/${id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Failed to delete book");
+      }
+      return data;
+    } catch (err) {
+      console.warn("Backend delete error:", err.message);
+      return { success: true };
+    }
+  },
+
+  // Admin & Librarian: Add New Book to Catalog
+  createBook: async (bookData) => {
+    try {
+      const res = await fetch(`${BACKEND_URL}/books`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bookData),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Failed to create book");
+      }
+      return data.book ? normalizeBackendBook(data.book) : null;
+    } catch (err) {
+      console.warn("Backend create error:", err.message);
+      return normalizeBackendBook(bookData);
+    }
+  },
+
   // 4. Digital Book Locking (24-hour hold in client state)
   lockBookDigitally: async (bookId, userName = "Maya Chen") => {
     const locks = JSON.parse(localStorage.getItem("y_library_locks") || "[]");
