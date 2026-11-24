@@ -148,8 +148,8 @@ export default function Sidebar({ activeTab, setActiveTab, onSelectBook, onOpenC
               onClick={onOpenChatbot}
               style={{
                 marginTop: "10px",
-                background: "rgba(249, 92, 75, 0.1)",
-                border: "1px solid rgba(249, 92, 75, 0.25)",
+                background: "rgba(121, 82, 245, 0.1)",
+                border: "1px solid rgba(121, 82, 245, 0.25)",
               }}
               title="Open Y-Library AI Assistant"
             >

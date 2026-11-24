@@ -60,8 +60,8 @@ export default function FloatingDock({ activeTab, setActiveTab, onOpenChatbot })
           onClick={onOpenChatbot}
           title="Ask AI Assistant"
           style={{
-            background: "rgba(249, 92, 75, 0.2)",
-            border: "1px solid rgba(249, 92, 75, 0.4)",
+            background: "rgba(121, 82, 245, 0.2)",
+            border: "1px solid rgba(121, 82, 245, 0.4)",
           }}
         >
           <Icon name="chat" size={18} color="var(--steam-orange)" />

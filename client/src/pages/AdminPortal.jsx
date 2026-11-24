@@ -258,7 +258,6 @@ export default function AdminPortal() {
             fontSize: "14px",
             fontWeight: "700",
             cursor: "pointer",
-            boxShadow: "0 4px 12px rgba(255, 85, 0, 0.35)",
           }}
         >
           + Add New Book to Catalog

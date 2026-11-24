@@ -320,7 +320,7 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
                 fontSize: "13px",
                 fontWeight: "800",
                 color: "var(--steam-orange)",
-                background: "rgba(249, 92, 75, 0.15)",
+                background: "rgba(121, 82, 245, 0.15)",
                 padding: "4px 8px",
                 borderRadius: "6px",
               }}
@@ -551,7 +551,7 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
                 color: "#F6F4F1",
                 fontWeight: "700",
                 fontSize: "13px",
-                boxShadow: book.copies > 0 ? "0 4px 14px rgba(249, 92, 75, 0.4)" : "none",
+                boxShadow: book.copies > 0 ? "0 4px 14px rgba(121, 82, 245, 0.4)" : "none",
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "8px",
@@ -604,7 +604,7 @@ export default function BookDetails({ book: propBook, bookId, onBack }) {
           {lockMsg && (
             <div
               style={{
-                background: "rgba(249, 92, 75, 0.15)",
+                background: "rgba(121, 82, 245, 0.15)",
                 border: "1px solid var(--steam-orange)",
                 color: "var(--steam-orange)",
                 fontSize: "13px",

@@ -129,7 +129,7 @@ export default function Requests() {
                 color: "#ffffff",
                 fontWeight: "700",
                 fontSize: "14px",
-                boxShadow: "0 6px 18px rgba(249, 92, 75, 0.35)",
+                boxShadow: "0 6px 18px rgba(121, 82, 245, 0.35)",
               }}
             >
               Send Request to Librarian

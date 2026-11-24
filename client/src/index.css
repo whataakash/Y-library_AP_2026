@@ -2,122 +2,92 @@
 
 /* ============================================================
    Y-LIBRARY APP STYLES
-   Neo-Editorial Palette (Flat, No Gradients):
-   - Linen Cream:    #F1EFE3 (RGB: 241, 239, 227)
-   - Royal Violet:   #654DE9 (RGB: 101, 77, 233)
-   - Golden Amber:   #F5C95C (RGB: 245, 201, 92)
-   - Pistachio Sage: #CFD78C (RGB: 207, 215, 140)
-   - Terracotta:     #BD554C (RGB: 189, 85, 76)
-   - Deep Charcoal:  #181818 (RGB: 24, 24, 24)
-   - Clean White:    #FFFFFF
+   Purplish Modern Palette (Flat, No Shadows, No Gradients):
+   - Dark Obsidian Purple: #0C0A17 (RGB: 12, 10, 23)
+   - Rich Midnight Purple: #161226 (RGB: 22, 18, 38)
+   - Deep Card Purple:     #1C1633 (RGB: 28, 22, 51)
+   - Panel Hover Purple:   #251E45 (RGB: 37, 30, 69)
+   - Crisp Lilac Text:     #F4F0FF (RGB: 244, 240, 255)
+   - Soft Light Lavender:  #D4CBF7 (RGB: 212, 203, 247)
+   - Muted Medium Purple:  #A396D1 (RGB: 163, 150, 209)
+   - Electric Purple:      #7952F5 (RGB: 121, 82, 245)
 ============================================================ */
 
 :root,
-[data-theme="light"] {
-  /* Palette Constants */
-  --palette-cream: #F1EFE3;
-  --palette-violet: #654DE9;
-  --palette-violet-hover: #533CD1;
-  --palette-amber: #F5C95C;
-  --palette-sage: #CFD78C;
-  --palette-terracotta: #BD554C;
-  --palette-charcoal: #181818;
+[data-theme="dark"] {
+  /* Dark Purplish Tint Theme (Default) */
+  --steam-bg: #0C0A17; /* Dark Obsidian Purple Canvas */
+  --steam-shell-bg: #0C0A17;
+  --steam-panel: #161226; /* Dark Midnight Purple Panel */
+  --steam-panel-hover: #221C3D;
+  --steam-surface: #161226;
+  --steam-card-bg: #1C1633; /* Deep Card Purple */
+  --steam-card-hover: #261F46;
 
-  /* Backward-compatible variables */
-  --color-paper: #F1EFE3;
-  --color-stone: #E5E1D1;
-  --color-coral: #654DE9;
-  --color-coral-hover: #533CD1;
-  --color-coral-glow: rgba(101, 77, 233, 0.28);
-  --color-black: #181818;
+  /* Primary Accent: Electric Purple */
+  --steam-orange: #7952F5;
+  --steam-orange-hover: #6740E6;
+  --steam-orange-glow: transparent;
 
-  /* Semantics for Light / Editorial mode */
-  --steam-bg: #F1EFE3; /* Warm Linen Canvas */
-  --steam-shell-bg: #F1EFE3;
-  --steam-panel: #FAF8F2; /* Soft white/cream card */
-  --steam-panel-hover: #E7E3D4;
-  --steam-surface: #FAF8F2;
-  --steam-card-bg: #FAF8F2;
-  --steam-card-hover: #F0ECE0;
+  --steam-border: #2B234C; /* Clean purple border */
+  --steam-border-focus: #7952F5;
 
-  --steam-orange: #654DE9; /* Royal Violet accent */
-  --steam-orange-hover: #533CD1;
-  --steam-orange-glow: rgba(101, 77, 233, 0.28);
+  /* Font Visibility: Mix of light and dark purple */
+  --steam-text: #F4F0FF; /* Bright crisp lilac-white for maximum legibility */
+  --steam-text-secondary: #D4CBF7; /* Soft light lavender for subheadings */
+  --steam-muted: #A396D1; /* Medium lavender for secondary text */
 
-  --steam-amber: #F5C95C;
-  --steam-sage: #CFD78C;
-  --steam-terracotta: #BD554C;
+  --steam-input-bg: #140F24;
+  --steam-pill-bg: #221C3D;
 
-  --steam-border: rgba(24, 24, 24, 0.1); /* Crisp minimal border */
-  --steam-border-focus: #654DE9;
-
-  --steam-text: #181818; /* Deep Charcoal bold text */
-  --steam-text-secondary: #4A4644;
-  --steam-muted: #7E7872;
-
-  --steam-input-bg: #EAE6D8;
-  --steam-pill-bg: #E7E3D4;
-
-  --steam-card-radius: 18px;
+  --steam-card-radius: 14px;
   --steam-pill-radius: 999px;
-  --steam-shadow: 0 4px 18px rgba(24, 24, 24, 0.06);
-  --steam-app-shadow: 0 12px 36px rgba(24, 24, 24, 0.08);
-  --steam-dock-bg: #181818; /* Charcoal black floating pill nav */
-  --steam-dock-border: rgba(241, 239, 227, 0.2);
-  --steam-hero-text: #181818;
+  --steam-shadow: none;
+  --steam-app-shadow: none;
+  --steam-dock-bg: #161226;
+  --steam-dock-border: #2B234C;
+  --steam-hero-text: #F4F0FF;
 }
 
-[data-theme="dark"] {
-  /* Palette Constants */
-  --palette-cream: #F1EFE3;
-  --palette-violet: #654DE9;
-  --palette-violet-hover: #7E6CF3;
-  --palette-amber: #F5C95C;
-  --palette-sage: #CFD78C;
-  --palette-terracotta: #BD554C;
-  --palette-charcoal: #181818;
+[data-theme="light"] {
+  /* Soft Lavender Purplish Light Theme */
+  --steam-bg: #F5F2FC; /* Soft Lavender canvas */
+  --steam-shell-bg: #F5F2FC;
+  --steam-panel: #FFFFFF;
+  --steam-panel-hover: #ECE6F8;
+  --steam-surface: #FFFFFF;
+  --steam-card-bg: #FFFFFF;
+  --steam-card-hover: #F8F5FD;
 
-  --color-paper: #F1EFE3;
-  --color-stone: #E5E1D1;
-  --color-coral: #654DE9;
-  --color-coral-hover: #7E6CF3;
-  --color-coral-glow: rgba(101, 77, 233, 0.35);
-  --color-black: #181818;
+  --steam-orange: #7952F5;
+  --steam-orange-hover: #6740E6;
+  --steam-orange-glow: transparent;
 
-  /* Semantics for Dark mode (Charcoal canvas with vibrant violet/amber/sage accents) */
-  --steam-bg: #121212;
-  --steam-shell-bg: #161616;
-  --steam-panel: #1E1E1E;
-  --steam-panel-hover: #282828;
-  --steam-surface: #1A1A1A;
-  --steam-card-bg: #1E1E1E;
-  --steam-card-hover: #262626;
+  --steam-border: #DCD3EE;
+  --steam-border-focus: #7952F5;
 
-  --steam-orange: #654DE9; /* Royal Violet accent */
-  --steam-orange-hover: #7E6CF3;
-  --steam-orange-glow: rgba(101, 77, 233, 0.35);
+  --steam-text: #16102B; /* Deep dark purple-black for sharp readability */
+  --steam-text-secondary: #3B2E63;
+  --steam-muted: #6C5B9E;
 
-  --steam-amber: #F5C95C;
-  --steam-sage: #CFD78C;
-  --steam-terracotta: #BD554C;
+  --steam-input-bg: #EBE5F5;
+  --steam-pill-bg: #E6DEF3;
 
-  --steam-border: rgba(241, 239, 227, 0.12);
-  --steam-border-focus: #654DE9;
-
-  --steam-text: #F1EFE3; /* Warm Linen Cream text */
-  --steam-text-secondary: rgba(241, 239, 227, 0.8);
-  --steam-muted: rgba(241, 239, 227, 0.55);
-
-  --steam-input-bg: #262626;
-  --steam-pill-bg: #282828;
-
-  --steam-card-radius: 18px;
+  --steam-card-radius: 14px;
   --steam-pill-radius: 999px;
-  --steam-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  --steam-app-shadow: 0 16px 40px rgba(0, 0, 0, 0.85);
-  --steam-dock-bg: #1E1E1E;
-  --steam-dock-border: rgba(241, 239, 227, 0.15);
-  --steam-hero-text: #F1EFE3;
+  --steam-shadow: none;
+  --steam-app-shadow: none;
+  --steam-dock-bg: #161226;
+  --steam-dock-border: #2B234C;
+  --steam-hero-text: #16102B;
+}
+
+/* Strict Zero Shadow & Zero Glow Anywhere */
+*,
+*::before,
+*::after {
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 * {
@@ -247,7 +217,7 @@ input:focus, select:focus, textarea:focus {
 
 .steam-nav-item.active {
   color: var(--steam-orange);
-  background: rgba(249, 92, 75, 0.1);
+  background: rgba(121, 82, 245, 0.1);
   font-weight: 700;
 }
 
@@ -287,7 +257,7 @@ input:focus, select:focus, textarea:focus {
 
 .steam-continue-item:hover {
   border-color: var(--steam-orange);
-  background: rgba(249, 92, 75, 0.08);
+  background: rgba(121, 82, 245, 0.08);
   transform: translateX(2px);
 }
 
@@ -420,7 +390,7 @@ input:focus, select:focus, textarea:focus {
 
 .steam-top-nav-btn.active {
   color: var(--steam-orange);
-  background: rgba(249, 92, 75, 0.1);
+  background: rgba(121, 82, 245, 0.1);
   font-weight: 600;
 }
 
@@ -432,7 +402,6 @@ input:focus, select:focus, textarea:focus {
   height: 2px;
   background: var(--steam-orange);
   border-radius: 2px;
-  box-shadow: 0 0 6px var(--steam-orange);
 }
 
 /* 3. Search Bar */
@@ -463,7 +432,6 @@ input:focus, select:focus, textarea:focus {
 
 .steam-top-search-input:focus {
   border-color: var(--steam-orange);
-  box-shadow: 0 0 8px var(--steam-orange-glow);
   outline: none;
 }
 
@@ -482,8 +450,8 @@ input:focus, select:focus, textarea:focus {
   gap: 6px;
   padding: 5px 11px;
   border-radius: 8px;
-  background: rgba(249, 92, 75, 0.1);
-  border: 1px solid rgba(249, 92, 75, 0.28);
+  background: rgba(121, 82, 245, 0.1);
+  border: 1px solid rgba(121, 82, 245, 0.28);
   color: var(--steam-orange);
   font-size: 12px;
   font-weight: 600;
@@ -493,7 +461,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .steam-top-ai-btn:hover {
-  background: rgba(249, 92, 75, 0.18);
+  background: rgba(121, 82, 245, 0.18);
   transform: translateY(-1px);
 }
 
@@ -530,7 +498,7 @@ input:focus, select:focus, textarea:focus {
 .steam-top-continue-trigger:hover,
 .steam-top-continue-trigger.open {
   border-color: var(--steam-orange);
-  background: rgba(249, 92, 75, 0.1);
+  background: rgba(121, 82, 245, 0.1);
 }
 
 .continue-badge {
@@ -587,7 +555,7 @@ input:focus, select:focus, textarea:focus {
 
 .steam-continue-popover-item:hover {
   border-color: var(--steam-orange);
-  background: rgba(249, 92, 75, 0.08);
+  background: rgba(121, 82, 245, 0.08);
 }
 
 .continue-item-thumb {
@@ -683,7 +651,7 @@ input:focus, select:focus, textarea:focus {
 
 .steam-top-user-pill:hover {
   border-color: var(--steam-orange);
-  background: rgba(249, 92, 75, 0.08);
+  background: rgba(121, 82, 245, 0.08);
 }
 
 .steam-top-user-avatar {
@@ -711,7 +679,7 @@ input:focus, select:focus, textarea:focus {
   font-size: 10px;
   font-weight: 700;
   color: var(--steam-orange);
-  background: rgba(249, 92, 75, 0.12);
+  background: rgba(121, 82, 245, 0.12);
   padding: 1px 5px;
   border-radius: 4px;
   white-space: nowrap;
@@ -859,9 +827,8 @@ input:focus, select:focus, textarea:focus {
 
 .steam-subcat-pill.active {
   background: var(--steam-orange);
-  color: var(--color-cotton) !important;
+  color: var(--steam-text) !important;
   font-weight: 700;
-  box-shadow: 0 3px 10px rgba(129, 1, 0, 0.4);
 }
 
 /* Legacy Header Navbar */
@@ -939,9 +906,8 @@ input:focus, select:focus, textarea:focus {
 
 .steam-cat-pill.active {
   background: var(--steam-orange);
-  color: var(--color-cotton) !important;
+  color: var(--steam-text) !important;
   font-weight: 700;
-  box-shadow: 0 4px 14px rgba(129, 1, 0, 0.4);
 }
 
 /* Header Actions */
@@ -1086,8 +1052,8 @@ input:focus, select:focus, textarea:focus {
   gap: 6px;
   padding: 6px 14px;
   border-radius: 999px;
-  background: rgba(249, 92, 75, 0.16);
-  border: 1px solid rgba(249, 92, 75, 0.35);
+  background: rgba(121, 82, 245, 0.16);
+  border: 1px solid rgba(121, 82, 245, 0.35);
   backdrop-filter: blur(10px);
   color: var(--color-paper);
   font-size: 12px;
@@ -1275,8 +1241,7 @@ input:focus, select:focus, textarea:focus {
 
 .steam-dock-item.active {
   background: var(--steam-orange);
-  color: var(--color-cotton);
-  box-shadow: 0 4px 14px rgba(129, 1, 0, 0.5);
+  color: #ffffff;
   transform: scale(1.08);
 }
 
@@ -1318,7 +1283,7 @@ input:focus, select:focus, textarea:focus {
   scroll-behavior: smooth;
   padding: 6px 4px 16px 4px;
   scrollbar-width: thin;
-  scrollbar-color: rgba(249, 92, 75, 0.3) transparent;
+  scrollbar-color: rgba(121, 82, 245, 0.3) transparent;
 }
 
 .book-shelf-track::-webkit-scrollbar {
@@ -1326,7 +1291,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .book-shelf-track::-webkit-scrollbar-thumb {
-  background: rgba(249, 92, 75, 0.3);
+  background: rgba(121, 82, 245, 0.3);
   border-radius: 4px;
 }
 
@@ -1397,7 +1362,7 @@ input:focus, select:focus, textarea:focus {
 
 .book-tile:hover .book-tile-cover-wrap {
   border-color: var(--steam-orange);
-  box-shadow: 0 12px 28px rgba(249, 92, 75, 0.25), 0 4px 14px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 12px 28px rgba(121, 82, 245, 0.25), 0 4px 14px rgba(0, 0, 0, 0.6);
 }
 
 .book-tile-cover-img {
@@ -1550,8 +1515,7 @@ input:focus, select:focus, textarea:focus {
 .book-tile-lock-btn:hover:not(:disabled) {
   background: var(--steam-orange);
   border-color: var(--steam-orange);
-  color: var(--color-cotton);
-  box-shadow: 0 4px 12px rgba(129, 1, 0, 0.4);
+  color: #ffffff;
 }
 
 /* ============================================================
@@ -1570,14 +1534,13 @@ input:focus, select:focus, textarea:focus {
   padding: 12px 20px;
   border-radius: 10px;
   background: var(--steam-orange);
-  color: var(--color-cotton);
+  color: #ffffff;
   font-weight: 700;
   font-size: 13px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  box-shadow: 0 8px 24px var(--steam-orange-glow);
   border: none;
   cursor: pointer;
   transition: all 0.2s;
@@ -1586,7 +1549,6 @@ input:focus, select:focus, textarea:focus {
 .steam-btn-primary:hover:not(:disabled) {
   background: var(--steam-orange-hover);
   transform: translateY(-1px);
-  box-shadow: 0 10px 28px rgba(99, 0, 0, 0.5);
 }
 
 .steam-modal-veil {

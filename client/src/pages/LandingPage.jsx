@@ -118,13 +118,12 @@ export default function LandingPage({ defaultOpenAuth = false }) {
             style={{
               padding: "8px 20px",
               borderRadius: "8px",
-              background: "var(--steam-orange, #ff5500)",
+              background: "var(--steam-orange)",
               border: "none",
               color: "#ffffff",
               fontSize: "13px",
               fontWeight: "700",
               cursor: "pointer",
-              boxShadow: "0 4px 14px rgba(255, 85, 0, 0.35)",
             }}
           >
             Sign In / Register
@@ -146,9 +145,9 @@ export default function LandingPage({ defaultOpenAuth = false }) {
             display: "inline-block",
             padding: "4px 14px",
             borderRadius: "999px",
-            background: "rgba(255, 85, 0, 0.12)",
-            border: "1px solid rgba(255, 85, 0, 0.3)",
-            color: "var(--steam-orange, #ff5500)",
+            background: "#241D44",
+            border: "1px solid #45367A",
+            color: "#D6CAFC",
             fontSize: "12px",
             fontWeight: "700",
             textTransform: "uppercase",
@@ -207,13 +206,12 @@ export default function LandingPage({ defaultOpenAuth = false }) {
             style={{
               padding: "14px 28px",
               borderRadius: "10px",
-              background: "var(--steam-orange, #ff5500)",
+              background: "var(--steam-orange)",
               border: "none",
               color: "#ffffff",
               fontSize: "16px",
               fontWeight: "700",
               cursor: "pointer",
-              boxShadow: "0 6px 20px rgba(255, 85, 0, 0.4)",
             }}
           >
             Sign In to Access Library →
