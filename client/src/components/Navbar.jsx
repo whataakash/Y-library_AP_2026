@@ -403,8 +403,8 @@ export default function Navbar({
           </div>
         </div>
 
-        {/* Secondary Category Sub-Bar (Visible on Explore/Home) */}
-        {(currentPath === "/books" || currentPath === "/home" || currentPath === "/") && (
+        {/* Secondary Category Sub-Bar (Visible ONLY under Explore) */}
+        {currentPath === "/books" && (
           <div className="steam-topbar-subcategories">
             <div className="steam-subcat-scroll">
               <span className="steam-subcat-label">Genres:</span>
