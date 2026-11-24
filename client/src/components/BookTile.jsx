@@ -32,22 +32,25 @@ export default function BookTile({
     return hash;
   }
 
-  // Flat solid palette colors for graceful typographic book jackets (No gradients)
-  const genreColors = {
-    Technology: "#630000",
-    "Science Fiction": "#810100",
-    Fantasy: "#630000",
-    Philosophy: "#1B1717",
-    Psychology: "#241F1F",
-    Economics: "#630000",
-    History: "#810100",
-    Science: "#630000",
-    Classics: "#241F1F",
-    Mystery: "#1B1717",
-    Thriller: "#810100",
-    Biography: "#241F1F",
+  // Palette colors from neo-editorial mobile design
+  const genreColorMap = {
+    Technology: { bg: "#654DE9", text: "#FFFFFF" },
+    "Science Fiction": { bg: "#654DE9", text: "#FFFFFF" },
+    Fantasy: { bg: "#654DE9", text: "#FFFFFF" },
+    Economics: { bg: "#F5C95C", text: "#181818" },
+    Business: { bg: "#F5C95C", text: "#181818" },
+    Biography: { bg: "#F5C95C", text: "#181818" },
+    Science: { bg: "#CFD78C", text: "#181818" },
+    Psychology: { bg: "#CFD78C", text: "#181818" },
+    History: { bg: "#BD554C", text: "#FFFFFF" },
+    Thriller: { bg: "#BD554C", text: "#FFFFFF" },
+    Mystery: { bg: "#181818", text: "#FFFFFF" },
+    Philosophy: { bg: "#181818", text: "#FFFFFF" },
+    Classics: { bg: "#181818", text: "#FFFFFF" },
   };
-  const bgSolidColor = genreColors[book.genre] || "#1B1717";
+  const genreStyle = genreColorMap[book.genre] || { bg: "#654DE9", text: "#FFFFFF" };
+  const bgSolidColor = genreStyle.bg;
+  const jacketTextColor = genreStyle.text;
 
   return (
     <div
@@ -84,12 +87,12 @@ export default function BookTile({
               <div style={{ fontSize: "9px", letterSpacing: "1px", textTransform: "uppercase", color: "var(--steam-orange)", fontWeight: "800", marginBottom: "8px" }}>
                 Y-Library Collection
               </div>
-              <h5 style={{ fontSize: "13px", fontWeight: "800", color: "#ffffff", lineHeight: "1.3", margin: 0 }}>
+              <h5 style={{ fontSize: "13px", fontWeight: "800", color: jacketTextColor, lineHeight: "1.3", margin: 0 }}>
                 {displayTitle}
               </h5>
             </div>
             <div>
-              <div style={{ fontSize: "11px", color: "#cbd5e1", fontWeight: "600" }}>
+              <div style={{ fontSize: "11px", color: jacketTextColor, opacity: 0.85, fontWeight: "600" }}>
                 {displayAuthor}
               </div>
               <div style={{ fontSize: "9px", color: "rgba(255,255,255,0.4)", marginTop: "4px" }}>
