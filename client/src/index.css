@@ -329,8 +329,8 @@ input:focus, select:focus, textarea:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 24px;
-  gap: 16px;
+  padding: 8px 18px;
+  gap: 12px;
   max-width: 100%;
 }
 
@@ -338,70 +338,55 @@ input:focus, select:focus, textarea:focus {
 .steam-top-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
   flex-shrink: 0;
   user-select: none;
 }
 
 .steam-brand-img {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
   object-fit: contain;
 }
 
 .steam-brand-text {
   display: flex;
-  flex-direction: column;
+  align-items: center;
 }
 
 .steam-brand-title {
-  font-size: 15px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  color: var(--steam-orange);
-  line-height: 1.1;
-}
-
-.steam-brand-subtitle {
-  font-size: 9px;
-  color: var(--steam-muted);
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 800;
   letter-spacing: 0.5px;
-  text-transform: uppercase;
-  margin-top: 2px;
+  color: var(--steam-orange);
+  line-height: 1;
 }
 
 /* 2. Top Navigation Links */
 .steam-top-nav-list {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   flex-shrink: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.steam-top-nav-list::-webkit-scrollbar {
-  display: none;
 }
 
 .steam-top-nav-btn {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 8px 13px;
-  border-radius: 10px;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--steam-muted);
   background: transparent;
   border: 1px solid transparent;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 .steam-top-nav-btn:hover {
@@ -411,16 +396,15 @@ input:focus, select:focus, textarea:focus {
 
 .steam-top-nav-btn.active {
   color: var(--steam-orange);
-  background: rgba(249, 92, 75, 0.12);
-  border-color: rgba(249, 92, 75, 0.25);
-  font-weight: 700;
+  background: rgba(249, 92, 75, 0.1);
+  font-weight: 600;
 }
 
 .steam-top-nav-active-bar {
   position: absolute;
   bottom: -2px;
-  left: 12px;
-  right: 12px;
+  left: 8px;
+  right: 8px;
   height: 2px;
   background: var(--steam-orange);
   border-radius: 2px;
@@ -430,11 +414,16 @@ input:focus, select:focus, textarea:focus {
 /* 3. Search Bar */
 .steam-top-search-wrap {
   flex: 1;
-  min-width: 170px;
-  max-width: 320px;
+  min-width: 130px;
+  max-width: 200px;
   position: relative;
   display: flex;
   align-items: center;
+  transition: max-width 0.25s ease;
+}
+
+.steam-top-search-wrap:focus-within {
+  max-width: 250px;
 }
 
 .steam-top-search-input {
@@ -442,7 +431,7 @@ input:focus, select:focus, textarea:focus {
   background: var(--steam-input-bg);
   border: 1px solid var(--steam-border);
   border-radius: 999px;
-  padding: 8px 16px 8px 36px;
+  padding: 6px 12px 6px 30px;
   font-size: 12px;
   color: var(--steam-text);
   transition: all 0.2s ease;
@@ -450,7 +439,7 @@ input:focus, select:focus, textarea:focus {
 
 .steam-top-search-input:focus {
   border-color: var(--steam-orange);
-  box-shadow: 0 0 10px var(--steam-orange-glow);
+  box-shadow: 0 0 8px var(--steam-orange-glow);
   outline: none;
 }
 
@@ -458,7 +447,7 @@ input:focus, select:focus, textarea:focus {
 .steam-topbar-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
@@ -466,23 +455,22 @@ input:focus, select:focus, textarea:focus {
 .steam-top-ai-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 13px;
-  border-radius: 999px;
-  background: rgba(249, 92, 75, 0.12);
-  border: 1px solid rgba(249, 92, 75, 0.35);
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 8px;
+  background: rgba(249, 92, 75, 0.1);
+  border: 1px solid rgba(249, 92, 75, 0.28);
   color: var(--steam-orange);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .steam-top-ai-btn:hover {
-  background: rgba(249, 92, 75, 0.2);
+  background: rgba(249, 92, 75, 0.18);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(249, 92, 75, 0.25);
 }
 
 .ai-pill-tag {
@@ -634,21 +622,21 @@ input:focus, select:focus, textarea:focus {
 /* Icon Buttons (Theme & Bell) */
 .steam-top-icon-btn {
   position: relative;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   background: var(--steam-input-bg);
   border: 1px solid var(--steam-border);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 .steam-top-icon-btn:hover {
   border-color: var(--steam-orange);
-  transform: scale(1.05);
+  color: var(--steam-orange);
 }
 
 /* User Profile Pill */
@@ -659,13 +647,13 @@ input:focus, select:focus, textarea:focus {
 .steam-top-user-pill {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 5px 12px 5px 6px;
-  border-radius: 999px;
+  gap: 7px;
+  padding: 4px 8px 4px 5px;
+  border-radius: 8px;
   background: var(--steam-panel-hover);
   border: 1px solid var(--steam-border);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   user-select: none;
 }
 
@@ -675,8 +663,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 .steam-top-user-avatar {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -684,32 +672,29 @@ input:focus, select:focus, textarea:focus {
 
 .steam-top-user-meta {
   display: flex;
-  flex-direction: column;
-  min-width: 0;
-  max-width: 130px;
+  align-items: center;
+  gap: 6px;
 }
 
 .steam-top-user-name {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--steam-text);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.2;
 }
 
-.steam-top-user-role {
+.steam-top-user-role-badge {
   font-size: 10px;
+  font-weight: 700;
   color: var(--steam-orange);
-  font-weight: 600;
+  background: rgba(249, 92, 75, 0.12);
+  padding: 1px 5px;
+  border-radius: 4px;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .steam-top-user-switch-icon {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--steam-muted);
   margin-left: 2px;
 }

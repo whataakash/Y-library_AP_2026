@@ -42,16 +42,16 @@ export default function Navbar({
 
   const currentPath = location.pathname;
 
-  // Navigation Items matching the original sidebar
+  // Streamlined, clean navigation items
   const navItems = [
     { id: "home", path: "/home", label: "Home", icon: "home" },
     { id: "books", path: "/books", label: "Explore", icon: "compass" },
-    { id: "library", path: "/library", label: "Favorites & Loans", icon: "heart" },
+    { id: "library", path: "/library", label: "Library", icon: "heart" },
     { id: "community", path: "/community", label: "Community", icon: "chat" },
     { id: "marketplace", path: "/marketplace", label: "Marketplace", icon: "tag" },
     { id: "requests", path: "/requests", label: "Requests", icon: "clipboard" },
     ...(user?.role === "admin" || user?.role === "librarian"
-      ? [{ id: "admin", path: "/admin", label: "Admin Portal", icon: "lock" }]
+      ? [{ id: "admin", path: "/admin", label: "Admin", icon: "lock" }]
       : []),
   ];
 
@@ -137,7 +137,7 @@ export default function Navbar({
       <header className="steam-topbar-wrapper">
         {/* Main Top Navigation Row */}
         <div className="steam-topbar-main">
-          {/* 1. Left: Brand Logo & Title */}
+          {/* Brand Logo & Title */}
           <div
             className="steam-top-brand"
             onClick={() => navigate("/home")}
@@ -150,11 +150,10 @@ export default function Navbar({
             />
             <div className="steam-brand-text">
               <span className="steam-brand-title">Y—LIBRARY</span>
-              <span className="steam-brand-subtitle">CAMPUS CATALOG</span>
             </div>
           </div>
 
-          {/* 2. Middle-Left: Top Navigation Buttons */}
+          {/* Navigation Links (Fully Visible & Uncluttered) */}
           <nav className="steam-top-nav-list" aria-label="Main Navigation">
             {navItems.map((item) => {
               const active = isItemActive(item);
@@ -168,7 +167,7 @@ export default function Navbar({
                 >
                   <Icon
                     name={item.icon}
-                    size={15}
+                    size={14}
                     color={active ? "var(--steam-orange)" : "var(--steam-muted)"}
                   />
                   <span>{item.label}</span>
@@ -178,22 +177,22 @@ export default function Navbar({
             })}
           </nav>
 
-          {/* 3. Middle-Right: Search Input */}
+          {/* Clean Compact Search Input */}
           <div className="steam-top-search-wrap">
             <span className="steam-search-icon">
-              <Icon name="search" size={14} color="var(--steam-muted)" />
+              <Icon name="search" size={13} color="var(--steam-muted)" />
             </span>
             <input
               type="text"
               className="steam-top-search-input search-input"
-              placeholder="Search 900+ books, authors, ISBN... (/)"
+              placeholder="Search books, ISBN... (/)"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
               onKeyDown={handleKeyDown}
             />
           </div>
 
-          {/* 4. Far Right: Actions, AI Button & User Card */}
+          {/* Streamlined Right Controls */}
           <div className="steam-topbar-actions">
             {/* AI Assistant Button */}
             <button
@@ -202,12 +201,11 @@ export default function Navbar({
               onClick={onOpenChatbot}
               title="Open AI Library Assistant"
             >
-              <Icon name="chat" size={15} color="var(--steam-orange)" />
-              <span className="ai-btn-text">AI Assistant</span>
-              <span className="ai-pill-tag">AI</span>
+              <Icon name="chat" size={14} color="var(--steam-orange)" />
+              <span className="ai-btn-text">AI Assist</span>
             </button>
 
-            {/* Continue Reading Dropdown */}
+            {/* In-progress Reading Quick Dropdown */}
             {userContinueReading.length > 0 && (
               <div className="steam-top-continue-wrap" ref={continueRef}>
                 <button
@@ -216,7 +214,7 @@ export default function Navbar({
                   onClick={() => setIsContinueOpen(!isContinueOpen)}
                   title="Continue Reading"
                 >
-                  <Icon name="play" size={12} color="var(--steam-orange)" />
+                  <Icon name="play" size={11} color="var(--steam-orange)" />
                   <span className="continue-label">Reading</span>
                   <span className="continue-badge">{userContinueReading.length}</span>
                 </button>
@@ -260,7 +258,7 @@ export default function Navbar({
               </div>
             )}
 
-            {/* Theme Toggle */}
+            {/* Dark / Light Theme Toggle */}
             <button
               type="button"
               className="steam-top-icon-btn"
@@ -270,7 +268,7 @@ export default function Navbar({
             >
               <Icon
                 name={isDark ? "sun" : "moon"}
-                size={15}
+                size={14}
                 color={isDark ? "var(--color-stone)" : "var(--color-coral)"}
               />
             </button>
@@ -288,11 +286,11 @@ export default function Navbar({
                 )
               }
             >
-              <Icon name="bell" size={15} color="var(--steam-text)" />
+              <Icon name="bell" size={14} color="var(--steam-text)" />
               <span className="steam-badge-dot" />
             </button>
 
-            {/* User Profile / Switcher Pill */}
+            {/* Clean User Profile Pill with Switcher */}
             {isAuthenticated ? (
               <div className="steam-top-user-wrap" ref={profileRef}>
                 <div
@@ -309,16 +307,16 @@ export default function Navbar({
                     className="steam-top-user-avatar"
                   />
                   <div className="steam-top-user-meta">
-                    <div className="steam-top-user-name">{user?.name}</div>
-                    <div className="steam-top-user-role">
+                    <span className="steam-top-user-name">
+                      {user?.name?.split(" ")[0] || "User"}
+                    </span>
+                    <span className="steam-top-user-role-badge">
                       {user?.role === "admin"
                         ? "Admin"
                         : user?.role === "librarian"
                         ? "Librarian"
-                        : user?.major
-                        ? user.major.split("&")[0].trim()
                         : "Student"}
-                    </div>
+                    </span>
                   </div>
                   <span className="steam-top-user-switch-icon" title="Switch User">⇄</span>
                 </div>
@@ -356,7 +354,7 @@ export default function Navbar({
                       }}
                     >
                       <Icon name="heart" size={14} color="var(--steam-orange)" />
-                      <span>My Favorites & Loans</span>
+                      <span>My Library & Loans</span>
                     </button>
 
                     {user?.role === "admin" && (
@@ -396,7 +394,7 @@ export default function Navbar({
                 className="steam-top-signin-btn"
                 onClick={() => setIsAuthModalOpen(true)}
               >
-                <GoogleLogo size={15} />
+                <GoogleLogo size={14} />
                 <span>Sign In</span>
               </button>
             )}
