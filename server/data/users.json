@@ -1,9 +1,192 @@
 [
   {
     "id": 1,
+    "name": "Dr. Arthur Vance",
+    "email": "arthur.vance@y-university.edu",
+    "role": "admin",
+    "password": "$2b$10$K5qehnzvQG8AaWWTvp3A/OTcBRl7iy2w9dUguEmbbuTgYNQ6ocCd2",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
+    "major": "Campus Dean of Academic Affairs & Systems",
+    "year": "Administration Staff",
+    "preferredGenres": [
+      "Technology",
+      "Economics",
+      "Philosophy",
+      "History"
+    ],
+    "interests": [
+      "university policy",
+      "systems architecture",
+      "governance",
+      "higher education"
+    ],
+    "readBooks": [
+      "9781501124020",
+      "9780812979183"
+    ],
+    "favorites": [
+      "9781501124020",
+      "9780812979183"
+    ],
+    "continueReading": [
+      {
+        "bookId": "9781501124020",
+        "title": "Principles: Life and Work",
+        "author": "Ray Dalio",
+        "cover": "https://covers.openlibrary.org/b/id/8315355-L.jpg",
+        "chapter": "Part 2 · Life Principles",
+        "progress": 72,
+        "lastRead": "Yesterday"
+      }
+    ],
+    "readingGoal": {
+      "target": 20,
+      "completed": 15,
+      "streakDays": 45
+    },
+    "createdAt": "2026-11-20T08:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "name": "Elena Rostova",
+    "email": "elena.rostova@y-university.edu",
+    "role": "admin",
+    "password": "$2b$10$K5qehnzvQG8AaWWTvp3A/OTcBRl7iy2w9dUguEmbbuTgYNQ6ocCd2",
+    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop",
+    "major": "Director of Library Information Systems",
+    "year": "System Operations",
+    "preferredGenres": [
+      "Technology",
+      "Science",
+      "Business",
+      "Mathematics"
+    ],
+    "interests": [
+      "database systems",
+      "information security",
+      "catalog auditing",
+      "open access"
+    ],
+    "readBooks": [
+      "9780753555187"
+    ],
+    "favorites": [
+      "9780753555187"
+    ],
+    "continueReading": [
+      {
+        "bookId": "9780753555187",
+        "title": "Zero to One",
+        "author": "Peter Thiel",
+        "cover": "https://covers.openlibrary.org/b/id/9002334-L.jpg",
+        "chapter": "Ch. 3 · All Happy Companies Are Different",
+        "progress": 88,
+        "lastRead": "2 days ago"
+      }
+    ],
+    "readingGoal": {
+      "target": 18,
+      "completed": 12,
+      "streakDays": 30
+    },
+    "createdAt": "2026-11-20T08:30:00.000Z"
+  },
+  {
+    "id": 3,
+    "name": "Margaret Hollowell",
+    "email": "margaret.hollowell@y-university.edu",
+    "role": "librarian",
+    "password": "$2b$10$3yrCwb0ktqKGsOWXQEeBg.jwNcqV9sSpVPoE00PfI4Pthm6afXuh.",
+    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop",
+    "major": "Head of Collections & Rare Manuscripts",
+    "year": "Senior Cataloger",
+    "preferredGenres": [
+      "History",
+      "Classics",
+      "Philosophy",
+      "Art & Design"
+    ],
+    "interests": [
+      "archival preservation",
+      "historical manuscripts",
+      "catalog classification",
+      "dewey decimal"
+    ],
+    "readBooks": [
+      "9780241300657"
+    ],
+    "favorites": [
+      "9780241300657"
+    ],
+    "continueReading": [
+      {
+        "bookId": "9780241300657",
+        "title": "Skin in the Game",
+        "author": "Nassim Nicholas Taleb",
+        "cover": "https://covers.openlibrary.org/b/id/10856868-L.jpg",
+        "chapter": "Ch. 5 · The Logic of Risk Taking",
+        "progress": 55,
+        "lastRead": "3 hours ago"
+      }
+    ],
+    "readingGoal": {
+      "target": 25,
+      "completed": 19,
+      "streakDays": 60
+    },
+    "createdAt": "2026-11-20T09:00:00.000Z"
+  },
+  {
+    "id": 4,
+    "name": "Samuel Thorne",
+    "email": "samuel.thorne@y-university.edu",
+    "role": "librarian",
+    "password": "$2b$10$3yrCwb0ktqKGsOWXQEeBg.jwNcqV9sSpVPoE00PfI4Pthm6afXuh.",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop",
+    "major": "Research & Circulation Librarian",
+    "year": "Circulation Desk Lead",
+    "preferredGenres": [
+      "Science Fiction",
+      "Science",
+      "Technology",
+      "Fantasy"
+    ],
+    "interests": [
+      "reference research",
+      "student outreach",
+      "digital archives",
+      "inter-library loan"
+    ],
+    "readBooks": [
+      "9781846141577"
+    ],
+    "favorites": [
+      "9781846141577"
+    ],
+    "continueReading": [
+      {
+        "bookId": "9781846141577",
+        "title": "Antifragile: Things That Gain from Disorder",
+        "author": "Nassim Nicholas Taleb",
+        "cover": "https://covers.openlibrary.org/b/id/9180157-L.jpg",
+        "chapter": "Book 1 · The Antifragile: An Introduction",
+        "progress": 60,
+        "lastRead": "5 hours ago"
+      }
+    ],
+    "readingGoal": {
+      "target": 20,
+      "completed": 14,
+      "streakDays": 28
+    },
+    "createdAt": "2026-11-20T09:30:00.000Z"
+  },
+  {
+    "id": 5,
     "name": "Alex Morgan",
     "email": "alex.morgan@y-university.edu",
-    "password": "6b5766a1ab8b91b41123fe0376f94d8b:f00e801310458bee6bc141fb92317030cc8599053c7b8f6368811d20b95c3337eb981f9972d277e625a8b29496ac5c921bfcb044e38109423b1b03f4c4ba96c0",
+    "role": "student",
+    "password": "$2b$10$XIer91uy6r38yA8jLD0GcePSnraZi.vGx2HN87q.2Ei7e6fQzFiaS",
     "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop",
     "major": "Computer Science & AI",
     "year": "Senior (Year 4)",
@@ -20,20 +203,18 @@
       "python"
     ],
     "readBooks": [
-      "gbook_1",
-      "gbook_4"
+      "9780753555187"
     ],
     "favorites": [
-      "gbook_1",
-      "gbook_14"
+      "9780753555187"
     ],
     "continueReading": [
       {
-        "bookId": "gbook_1",
-        "title": "Clean Code",
-        "author": "Robert C. Martin",
-        "cover": "https://covers.openlibrary.org/b/id/1094406-L.jpg",
-        "chapter": "Ch. 3 · Functions & Meaningful Names",
+        "bookId": "9780753555187",
+        "title": "Zero to One",
+        "author": "Peter Thiel",
+        "cover": "https://covers.openlibrary.org/b/id/9002334-L.jpg",
+        "chapter": "Ch. 4 · The Ideology of Competition",
         "progress": 68,
         "lastRead": "2 hours ago"
       }
@@ -43,13 +224,14 @@
       "completed": 8,
       "streakDays": 14
     },
-    "createdAt": "2026-11-22T23:21:40.810Z"
+    "createdAt": "2026-11-21T10:00:00.000Z"
   },
   {
-    "id": 2,
+    "id": 6,
     "name": "Maya Chen",
     "email": "maya.chen@y-university.edu",
-    "password": "4e28ef846871186eb22089258a3a33eb:3edfd0d948a28be233feabbba9f9c10b816c072d180b8b1a4b502f4b37a14657d7dc0d6dd80f617d3a3e320c95d5f66cdc7e5c993e7694d25954a9e358c26783",
+    "role": "student",
+    "password": "$2b$10$XIer91uy6r38yA8jLD0GcePSnraZi.vGx2HN87q.2Ei7e6fQzFiaS",
     "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop",
     "major": "Architecture & Urban Design",
     "year": "Junior (Year 3)",
@@ -57,29 +239,29 @@
       "History",
       "Philosophy",
       "Classics",
-      "General Fiction"
+      "Art & Design"
     ],
     "interests": [
-      "architecture",
-      "design",
-      "urbanism",
-      "history"
+      "sustainable urbanism",
+      "biophilic design",
+      "architectural history",
+      "spatial acoustics"
     ],
     "readBooks": [
-      "gbook_2"
+      "9780241300657"
     ],
     "favorites": [
-      "gbook_2"
+      "9780241300657"
     ],
     "continueReading": [
       {
-        "bookId": "gbook_2",
-        "title": "Architecture: Form, Space, & Order",
-        "author": "Francis D. K. Ching",
-        "cover": "https://covers.openlibrary.org/b/id/8314120-L.jpg",
-        "chapter": "Ch. 4 · Spatial Enclosures",
-        "progress": 84,
-        "lastRead": "3 hours ago"
+        "bookId": "9780241300657",
+        "title": "Skin in the Game",
+        "author": "Nassim Nicholas Taleb",
+        "cover": "https://covers.openlibrary.org/b/id/10856868-L.jpg",
+        "chapter": "Ch. 8 · Symmetry in Risk",
+        "progress": 82,
+        "lastRead": "Yesterday"
       }
     ],
     "readingGoal": {
@@ -87,80 +269,145 @@
       "completed": 10,
       "streakDays": 21
     },
-    "createdAt": "2026-11-22T23:21:40.832Z"
+    "createdAt": "2026-11-21T10:30:00.000Z"
   },
   {
-    "id": 1795389700862,
+    "id": 7,
     "name": "Jordan Lee",
     "email": "jordan.lee@y-university.edu",
-    "password": "2db42352295f07e0ebe86096ade2da8d:c246143f42fdf2dea364598a6c96b75b1e769f6870ab5f877002dcae001be8ca533c6beb38917f93c2fd18257d39615eb01a1ad3e292fda5a4a5dd4918aac138",
-    "avatar": "https://images.unsplash.com/photo-1534528744385?w=200&h=200&fit=crop",
-    "major": "Economics & Finance",
-    "year": "Year 3",
+    "role": "student",
+    "password": "$2b$10$XIer91uy6r38yA8jLD0GcePSnraZi.vGx2HN87q.2Ei7e6fQzFiaS",
+    "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&h=200&fit=crop",
+    "major": "Economics & Financial Markets",
+    "year": "Sophomore (Year 2)",
     "preferredGenres": [
-      "Technology",
-      "Science"
-    ],
-    "interests": [],
-    "readBooks": [],
-    "favorites": [],
-    "continueReading": [],
-    "readingGoal": {
-      "target": 10,
-      "completed": 0,
-      "streakDays": 1
-    },
-    "createdAt": "2026-11-22T23:21:40.862Z"
-  },
-  {
-    "id": 1795389700886,
-    "name": "Google Student",
-    "email": "google.student@gmail.com",
-    "googleId": "google_998877",
-    "avatar": "https://example.com/avatar.jpg",
-    "major": "Computer Science & AI",
-    "year": "Year 1",
-    "preferredGenres": [
-      "Technology",
-      "Science Fiction",
-      "Science"
+      "Economics",
+      "Business",
+      "Psychology",
+      "History"
     ],
     "interests": [
-      "artificial intelligence"
+      "behavioral economics",
+      "macroeconomics",
+      "portfolio theory",
+      "venture capital"
     ],
-    "readBooks": [],
-    "favorites": [],
-    "continueReading": [],
-    "readingGoal": {
-      "target": 10,
-      "completed": 0,
-      "streakDays": 1
-    },
-    "createdAt": "2026-11-22T23:21:40.886Z"
-  },
-  {
-    "id": 1795424807969,
-    "name": "Leo Hoffman",
-    "email": "leo.hoffman.econ@gmail.com",
-    "googleId": "google_3918239102",
-    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-    "major": "Computer Science & AI",
-    "year": "Year 1",
-    "preferredGenres": [],
-    "interests": [
-      "artificial intelligence"
+    "readBooks": [
+      "9782361170561",
+      "9782909356105"
     ],
-    "readBooks": [],
     "favorites": [
-      "9781544514208"
+      "9782361170561",
+      "9782909356105"
     ],
-    "continueReading": [],
+    "continueReading": [
+      {
+        "bookId": "9782361170561",
+        "title": "The Psychology of Money",
+        "author": "Morgan Housel",
+        "cover": "https://covers.openlibrary.org/b/id/10389354-L.jpg",
+        "chapter": "Ch. 7 · Freedom",
+        "progress": 45,
+        "lastRead": "4 hours ago"
+      }
+    ],
+    "readingGoal": {
+      "target": 14,
+      "completed": 9,
+      "streakDays": 16
+    },
+    "createdAt": "2026-11-21T11:00:00.000Z"
+  },
+  {
+    "id": 8,
+    "name": "Priya Sharma",
+    "email": "priya.sharma@y-university.edu",
+    "role": "student",
+    "password": "$2b$10$XIer91uy6r38yA8jLD0GcePSnraZi.vGx2HN87q.2Ei7e6fQzFiaS",
+    "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop",
+    "major": "Data Science & Computational Linguistics",
+    "year": "Freshman (Year 1)",
+    "preferredGenres": [
+      "Technology",
+      "Science",
+      "Philosophy",
+      "Psychology"
+    ],
+    "interests": [
+      "natural language processing",
+      "semantic networks",
+      "cognitive science",
+      "robotics"
+    ],
+    "readBooks": [
+      "9781464166174"
+    ],
+    "favorites": [
+      "9781464166174"
+    ],
+    "continueReading": [
+      {
+        "bookId": "9781464166174",
+        "title": "Thinking, Fast and Slow",
+        "author": "Daniel Kahneman",
+        "cover": "https://covers.openlibrary.org/b/id/13290711-L.jpg",
+        "chapter": "Part 1 · Two Systems",
+        "progress": 30,
+        "lastRead": "5 hours ago"
+      }
+    ],
     "readingGoal": {
       "target": 10,
-      "completed": 0,
-      "streakDays": 1
+      "completed": 5,
+      "streakDays": 9
     },
-    "createdAt": "2026-11-23T09:06:47.969Z",
-    "updatedAt": "2026-11-23T10:50:46.484Z"
+    "createdAt": "2026-11-21T11:30:00.000Z"
+  },
+  {
+    "id": 9,
+    "name": "Marcus Aurelius Davies",
+    "email": "marcus.davies@y-university.edu",
+    "role": "student",
+    "password": "$2b$10$XIer91uy6r38yA8jLD0GcePSnraZi.vGx2HN87q.2Ei7e6fQzFiaS",
+    "avatar": "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=200&h=200&fit=crop",
+    "major": "Classical Literature & Moral Philosophy",
+    "year": "Senior (Year 4)",
+    "preferredGenres": [
+      "Philosophy",
+      "Classics",
+      "History",
+      "General Fiction"
+    ],
+    "interests": [
+      "stoicism",
+      "epistemology",
+      "ancient greek literature",
+      "ethics"
+    ],
+    "readBooks": [
+      "9781544514208",
+      "9780812979183"
+    ],
+    "favorites": [
+      "9781544514208",
+      "9780812979183"
+    ],
+    "continueReading": [
+      {
+        "bookId": "9781544514208",
+        "title": "The Almanack of Naval Ravikant",
+        "author": "Eric Jorgenson",
+        "cover": "https://covers.openlibrary.org/b/id/10449931-L.jpg",
+        "chapter": "Building Judgment",
+        "progress": 90,
+        "lastRead": "1 hour ago"
+      }
+    ],
+    "readingGoal": {
+      "target": 16,
+      "completed": 13,
+      "streakDays": 35
+    },
+    "createdAt": "2026-11-21T12:00:00.000Z"
   }
 ]

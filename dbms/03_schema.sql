@@ -88,3 +88,24 @@ CREATE INDEX idx_users_preferred_genres ON users USING GIN(preferred_genres);
 CREATE INDEX idx_borrow_book_id ON borrow_records(book_id);
 CREATE INDEX idx_borrow_user_id ON borrow_records(user_id);
 CREATE INDEX idx_borrow_status ON borrow_records(status);
+
+-- -----------------------------------------------------------------------------
+-- 5. SEED DEMO USERS (2 Admins, 2 Librarians, 5 Students)
+-- Password hashes encrypted using industry-standard bcrypt (cost factor 10)
+-- Credentials:
+--   Admins (2):     'AdminPassword123!'
+--   Librarians (2): 'LibrarianPass123!'
+--   Students (5):   'StudentPass123!'
+-- -----------------------------------------------------------------------------
+INSERT INTO users (name, email, password, major, year, preferred_genres, interests)
+VALUES
+  ('Dr. Arthur Vance', 'arthur.vance@y-university.edu', '$2b$10$q0Suem1oyXX0FbORnCTlSuceArCv1xD0w.qtW5PiJZJRR/Ed4ISUO', 'Campus Dean of Academic Affairs & Systems', 'Administration Staff', ARRAY['Technology', 'Economics', 'Philosophy', 'History'], ARRAY['governance', 'policy']),
+  ('Elena Rostova', 'elena.rostova@y-university.edu', '$2b$10$q0Suem1oyXX0FbORnCTlSuceArCv1xD0w.qtW5PiJZJRR/Ed4ISUO', 'Director of Library Information Systems', 'System Operations', ARRAY['Technology', 'Science', 'Business', 'Mathematics'], ARRAY['database systems', 'security']),
+  ('Margaret Hollowell', 'margaret.hollowell@y-university.edu', '$2b$10$iPsa/fDH.DTSYzbV67fBUepxRnducB5603Lawf7t.94d8zqr4WT4a', 'Head of Collections & Rare Manuscripts', 'Senior Cataloger', ARRAY['History', 'Classics', 'Philosophy'], ARRAY['preservation', 'manuscripts']),
+  ('Samuel Thorne', 'samuel.thorne@y-university.edu', '$2b$10$iPsa/fDH.DTSYzbV67fBUepxRnducB5603Lawf7t.94d8zqr4WT4a', 'Research & Circulation Librarian', 'Circulation Desk Lead', ARRAY['Science Fiction', 'Science', 'Technology'], ARRAY['research', 'archives']),
+  ('Alex Morgan', 'alex.morgan@y-university.edu', '$2b$10$VnS3JpwtMXaOpmywHefbEOVdvTowjfBDZqSlLTQ/XTgWE8LU.oHb.', 'Computer Science & AI', 'Senior (Year 4)', ARRAY['Technology', 'Science Fiction', 'Mathematics'], ARRAY['ai', 'algorithms']),
+  ('Maya Chen', 'maya.chen@y-university.edu', '$2b$10$VnS3JpwtMXaOpmywHefbEOVdvTowjfBDZqSlLTQ/XTgWE8LU.oHb.', 'Architecture & Urban Design', 'Junior (Year 3)', ARRAY['History', 'Philosophy', 'Classics'], ARRAY['architecture', 'design']),
+  ('Jordan Lee', 'jordan.lee@y-university.edu', '$2b$10$VnS3JpwtMXaOpmywHefbEOVdvTowjfBDZqSlLTQ/XTgWE8LU.oHb.', 'Economics & Financial Markets', 'Sophomore (Year 2)', ARRAY['Economics', 'Business', 'Psychology'], ARRAY['macroeconomics', 'finance']),
+  ('Priya Sharma', 'priya.sharma@y-university.edu', '$2b$10$VnS3JpwtMXaOpmywHefbEOVdvTowjfBDZqSlLTQ/XTgWE8LU.oHb.', 'Data Science & Computational Linguistics', 'Freshman (Year 1)', ARRAY['Technology', 'Science', 'Philosophy'], ARRAY['nlp', 'robotics']),
+  ('Marcus Aurelius Davies', 'marcus.davies@y-university.edu', '$2b$10$VnS3JpwtMXaOpmywHefbEOVdvTowjfBDZqSlLTQ/XTgWE8LU.oHb.', 'Classical Literature & Moral Philosophy', 'Senior (Year 4)', ARRAY['Philosophy', 'Classics', 'History'], ARRAY['stoicism', 'ethics'])
+ON CONFLICT (email) DO NOTHING;

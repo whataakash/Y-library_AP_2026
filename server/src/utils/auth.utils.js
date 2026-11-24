@@ -1,28 +1,40 @@
-// Native Node.js Authentication Utilities (Password Hashing & JWT)
-// 100% portable, secure, zero external dependencies required
+// Native Node.js Authentication Utilities (Password Hashing with bcrypt & JWT)
+// Industry-standard bcrypt encryption with 10 salt rounds and HMAC-SHA256 tokens
 const crypto = require("crypto");
+const bcrypt = require("bcryptjs");
 
 const JWT_SECRET = process.env.JWT_SECRET || "y-library-campus-secret-key-2026";
 const TOKEN_EXPIRY_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 /**
- * Hash a plain-text password using crypto.scrypt
+ * Hash a plain-text password using bcrypt (10 salt rounds)
  */
 function hashPassword(password) {
-  const salt = crypto.randomBytes(16).toString("hex");
-  const derivedKey = crypto.scryptSync(password, salt, 64);
-  return `${salt}:${derivedKey.toString("hex")}`;
+  const salt = bcrypt.genSaltSync(10);
+  return bcrypt.hashSync(password, salt);
 }
 
 /**
- * Verify a plain-text password against a stored salt:hash string
+ * Verify a plain-text password against a stored bcrypt hash (or fallback legacy format)
  */
 function verifyPassword(password, storedHash) {
-  if (!storedHash || !storedHash.includes(":")) return false;
-  const [salt, key] = storedHash.split(":");
-  const keyBuffer = Buffer.from(key, "hex");
-  const derivedKey = crypto.scryptSync(password, salt, 64);
-  return crypto.timingSafeEqual(keyBuffer, derivedKey);
+  if (!storedHash || typeof storedHash !== "string") return false;
+  // Standard bcrypt hash check ($2a$ or $2b$)
+  if (storedHash.startsWith("$2a$") || storedHash.startsWith("$2b$") || storedHash.startsWith("$2y$")) {
+    return bcrypt.compareSync(password, storedHash);
+  }
+  // Fallback for legacy salt:hex format
+  if (storedHash.includes(":")) {
+    try {
+      const [salt, key] = storedHash.split(":");
+      const keyBuffer = Buffer.from(key, "hex");
+      const derivedKey = crypto.scryptSync(password, salt, 64);
+      return crypto.timingSafeEqual(keyBuffer, derivedKey);
+    } catch (e) {
+      return false;
+    }
+  }
+  return false;
 }
 
 /**

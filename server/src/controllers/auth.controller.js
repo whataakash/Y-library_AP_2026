@@ -7,61 +7,15 @@ const { hashPassword, verifyPassword, generateToken } = require("../utils/auth.u
 
 const USERS_FILE_PATH = path.join(__dirname, "../../data/users.json");
 
-// Initial preset students if database is in offline mode
-const DEFAULT_STUDENTS = [
-  {
-    id: 1,
-    name: "Alex Morgan",
-    email: "alex.morgan@y-university.edu",
-    password: hashPassword("password123"),
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop",
-    major: "Computer Science & AI",
-    year: "Senior (Year 4)",
-    preferredGenres: ["Technology", "Science Fiction", "Mathematics", "Science"],
-    interests: ["artificial intelligence", "algorithms", "machine learning", "python"],
-    readBooks: ["gbook_1", "gbook_4"],
-    favorites: ["gbook_1", "gbook_14"],
-    continueReading: [
-      {
-        bookId: "gbook_1",
-        title: "Clean Code",
-        author: "Robert C. Martin",
-        cover: "https://covers.openlibrary.org/b/id/1094406-L.jpg",
-        chapter: "Ch. 3 · Functions & Meaningful Names",
-        progress: 68,
-        lastRead: "2 hours ago",
-      },
-    ],
-    readingGoal: { target: 12, completed: 8, streakDays: 14 },
-    createdAt: new Date().toISOString(),
-  },
-  {
-    id: 2,
-    name: "Maya Chen",
-    email: "maya.chen@y-university.edu",
-    password: hashPassword("password123"),
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop",
-    major: "Architecture & Urban Design",
-    year: "Junior (Year 3)",
-    preferredGenres: ["History", "Philosophy", "Classics", "General Fiction"],
-    interests: ["architecture", "design", "urbanism", "history"],
-    readBooks: ["gbook_2"],
-    favorites: ["gbook_2"],
-    continueReading: [
-      {
-        bookId: "gbook_2",
-        title: "Architecture: Form, Space, & Order",
-        author: "Francis D. K. Ching",
-        cover: "https://covers.openlibrary.org/b/id/8314120-L.jpg",
-        chapter: "Ch. 4 · Spatial Enclosures",
-        progress: 84,
-        lastRead: "3 hours ago",
-      },
-    ],
-    readingGoal: { target: 15, completed: 10, streakDays: 21 },
-    createdAt: new Date().toISOString(),
-  },
-];
+// Initial preset users (Admins, Librarians, Students) loaded from data/users.json
+let DEFAULT_STUDENTS = [];
+try {
+  if (fs.existsSync(USERS_FILE_PATH)) {
+    DEFAULT_STUDENTS = JSON.parse(fs.readFileSync(USERS_FILE_PATH, "utf-8"));
+  }
+} catch (e) {
+  console.warn("Could not load users.json, using fallback:", e.message);
+}
 
 function getLocalUsers() {
   try {
@@ -241,7 +195,9 @@ async function login(req, res, next) {
         });
       }
 
-      const token = generateToken({ id: user.id, email: user.email, name: user.name });
+      const userRole = user.role || (user.email.includes("vance") || user.email.includes("rostova") || user.email.includes("admin") ? "admin" : user.email.includes("hollowell") || user.email.includes("thorne") || user.email.includes("librarian") ? "librarian" : "student");
+
+      const token = generateToken({ id: user.id, email: user.email, name: user.name, role: userRole });
       return res.json({
         success: true,
         message: "Login successful!",
@@ -250,6 +206,7 @@ async function login(req, res, next) {
           id: user.id,
           name: user.name,
           email: user.email,
+          role: userRole,
           avatar: user.avatar,
           major: user.major,
           year: user.year,
